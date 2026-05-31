@@ -1,0 +1,148 @@
+# Day87 - RAG笔记检索项目索引层
+
+学习定位：建立 chunk、embedding、metadata 的索引结构。
+
+## 2小时安排
+
+- 15 分钟：读定位和最小代码。
+- 25 分钟：手打一遍最小案例。
+- 70 分钟：完成 5 道递进题。
+- 10 分钟：记录 Debug、边界情况和项目迁移点。
+
+## 核心知识点：LLM Project Build
+
+### 定义
+
+今天的主题是把一个小能力固定成可复用、可测试、可迁移的工程单元。
+
+### 为什么存在
+
+长期学习不能只靠临时理解。每个能力都要能进入项目：有输入、有输出、有失败处理、有复盘入口。
+
+### 最小案例
+
+```python
+def package_context(question: str, sources: list[str]) -> dict:
+    return {"question": question, "sources": sources, "instruction": "只基于来源回答"}
+```
+
+### 常见错误
+
+- 只在临时脚本里跑通，没有沉淀成函数。
+- 输入字段没有校验，结果出了错才发现。
+- 只 print 结果，不保存中间产物。
+- 没有 README、测试或 Debug 记录，几天后难以接上。
+
+### 工程应用
+
+- 数据清洗和指标计算。
+- Quant research 小项目。
+- LLM report assistant。
+- Agent tool prototype。
+- 个人作品集沉淀。
+
+### 未来扩展
+
+- 增加单元测试。
+- 增加 CLI/API/UI 入口。
+- 接入真实数据。
+- 写入项目 README 和复盘文档。
+
+## Debug 日志
+
+- 路径错误：先打印当前工作目录。
+- 类型错误：先检查输入字段和 dtype。
+- 结果异常：先缩小到 3 行样例数据。
+- 依赖错误：记录安装命令和 Python 版本。
+
+## 面试 / 项目角度
+
+能说明今天代码的输入、输出、失败情况，以及它如何进入一个真实项目。
+
+## Quant 关联
+
+这一天服务于 Quant 学习：让数据、指标、回测和报告更可复现。
+
+## LLM / Agent 关联
+
+这一天服务于 LLM/Agent 学习：明确输入、输出、失败情况和可审查边界。
+
+## 复习检查
+
+- [ ] 我能独立解释今天能力解决什么问题。
+- [ ] 我能手打一遍最小案例。
+- [ ] 我能完成 5 道递进题。
+- [ ] 我能说清输入、输出和失败情况。
+- [ ] 我知道它如何迁移到 Quant / LLM / Agent 项目。
+
+## 题目驱动训练
+
+### 参考题 / 资料
+
+- [OpenAI API docs](https://platform.openai.com/docs/)
+- [json](https://docs.python.org/3/library/json.html)
+- [pytest docs](https://docs.pytest.org/)
+
+### 今日产出
+
+一个和“RAG笔记检索项目索引层”相关的可复用函数、脚本或项目模块。
+
+### 5 道递进题
+
+#### 1. Easy - Prompt Builder
+
+题目：把变量填进模板，生成可复用 prompt。
+
+讲解：prompt 不要散落在业务代码里。
+
+```python
+def build_review_prompt(topic: str, facts: dict) -> str:
+    return f"请基于事实审查 {topic}。事实: {facts}。输出风险、依据、下一步。"
+```
+
+#### 2. Easy - JSON 字段校验
+
+题目：检查模型输出是否包含 required fields。
+
+讲解：LLM 输出必须先校验，再进入流程。
+
+```python
+def validate_json(data: dict, required: list[str]) -> list[str]:
+    return [field for field in required if field not in data]
+```
+
+#### 3. Medium - 来源打包
+
+题目：给回答附上 source 列表。
+
+讲解：RAG/报告类任务必须保留来源。
+
+```python
+def attach_sources(answer: str, sources: list[str]) -> dict:
+    return {"answer": answer, "sources": sources}
+```
+
+#### 4. Medium - 失败重试提示
+
+题目：输出不合格时返回 retry prompt。
+
+讲解：不要假装模型结果一定正确。
+
+```python
+def build_retry_prompt(errors: list[str]) -> str:
+    return "输出缺少字段: " + ", ".join(errors) + "。请只返回合法 JSON。"
+```
+
+#### 5. Hard - LLM Pipeline
+
+题目：raw result -> validate -> final package。
+
+讲解：把模型调用当成不稳定外部服务。
+
+```python
+def package_llm_result(raw: dict, required: list[str]) -> dict:
+    errors = validate_json(raw, required)
+    if errors:
+        return {"ok": False, "errors": errors, "retry_prompt": build_retry_prompt(errors)}
+    return {"ok": True, "data": raw}
+```

@@ -1,0 +1,170 @@
+# Day22 - 项目骨架与Git工作流
+
+学习定位：把一个学习脚本整理成可维护的小项目。
+
+## 2小时安排
+
+- 15 分钟：读定位和最小代码。
+- 25 分钟：手打一遍最小案例。
+- 70 分钟：完成 5 道递进题。
+- 10 分钟：记录 Debug、边界情况和项目迁移点。
+
+## 核心知识点：Project Skeleton
+
+### 定义
+
+Project Skeleton 是把今天能力固定成可复用模块的方式。
+
+### 为什么存在
+
+它让代码从“这次能跑”变成“下次能复查、能迁移、能被项目调用”。
+
+### 最小案例
+
+```python
+from pathlib import Path
+
+root = Path("quant_research_starter")
+for name in ["data", "src", "tests", "docs"]:
+    (root / name).mkdir(parents=True, exist_ok=True)
+(root / "README.md").write_text("# Quant Research Starter\n", encoding="utf-8")
+```
+
+### 常见错误
+
+- 直接把逻辑写在 notebook 或临时脚本里。
+- 输入字段没有校验。
+- 结果只 print，不保存。
+- 失败原因没有记录。
+
+### 工程应用
+
+- 数据清洗和指标计算。
+- Quant research 小项目。
+- LLM report assistant。
+- Agent tool prototype。
+
+### 未来扩展
+
+- 增加测试。
+- 增加 README 运行说明。
+- 增加 CLI/API/UI 入口。
+- 接入真实项目数据。
+
+## Debug 日志
+
+- 路径错误：先打印当前工作目录。
+- 类型错误：先检查输入字段和 dtype。
+- 结果异常：先缩小到 3 行样例数据。
+- 依赖错误：记录安装命令和 Python 版本。
+
+## 面试 / 项目角度
+
+能说明今天代码的输入、输出、失败情况，以及它如何进入一个真实项目。
+
+## Quant 关联
+
+量化项目最怕脚本散落，固定骨架能让数据、代码、报告分开。
+
+## LLM / Agent 关联
+
+Agent 工具也需要清楚入口、输入输出和测试位置。
+
+## 复习检查
+
+- [ ] 我能独立解释今天能力解决什么问题。
+- [ ] 我能手打一遍最小案例。
+- [ ] 我能完成 5 道递进题。
+- [ ] 我能说清输入、输出和失败情况。
+- [ ] 我知道它如何迁移到 Quant / LLM / Agent 项目。
+
+## 题目驱动训练
+
+### 参考题 / 资料
+
+- [Python Docs](https://docs.python.org/3/)
+- [pathlib](https://docs.python.org/3/library/pathlib.html)
+- [GitHub Actions docs](https://docs.github.com/actions)
+
+### 今日产出
+
+一个可复用项目目录。
+
+### 5 道递进题
+
+#### 1. Easy - 标准化项目
+
+题目：把原始 dict 转成统一字段。
+
+讲解：统一字段名，后续函数才稳定。
+
+```python
+def normalize_project(raw: dict) -> dict:
+    return {
+        "name": str(raw.get("name", "")).strip(),
+        "value": float(raw.get("value", 0) or 0),
+        "tag": str(raw.get("tag", "default")).strip(),
+    }
+```
+
+#### 2. Easy - 校验项目
+
+题目：返回错误列表，而不是直接崩溃。
+
+讲解：错误要可复盘。
+
+```python
+def validate_project(row: dict) -> list[str]:
+    errors = []
+    if not row.get("name"):
+        errors.append("name is required")
+    if row.get("value", 0) < 0:
+        errors.append("value must be non-negative")
+    return errors
+```
+
+#### 3. Medium - 批量汇总
+
+题目：按 tag 汇总 value。
+
+讲解：这是数据项目和日志分析的通用动作。
+
+```python
+from collections import defaultdict
+
+def summarize_project(rows: list[dict]) -> dict[str, float]:
+    summary = defaultdict(float)
+    for row in rows:
+        summary[row["tag"]] += row["value"]
+    return dict(summary)
+```
+
+#### 4. Medium - 保存结果
+
+题目：把 summary 保存成 JSON。
+
+讲解：结果落盘，第二天才能继续。
+
+```python
+import json
+from pathlib import Path
+
+def save_project_summary(path: str, summary: dict) -> None:
+    Path(path).write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+```
+
+#### 5. Hard - Tool 化
+
+题目：输入原始 rows，返回 ok/data/errors。
+
+讲解：这就是 Agent-ready 的最小工程形状。
+
+```python
+def project_tool(rows: list[dict]) -> dict:
+    clean_rows = [normalize_project(row) for row in rows]
+    errors = [validate_project(row) for row in clean_rows]
+    flat_errors = [e for group in errors for e in group]
+    if flat_errors:
+        return {"ok": False, "errors": flat_errors}
+    return {"ok": True, "data": summarize_project(clean_rows)}
+```
