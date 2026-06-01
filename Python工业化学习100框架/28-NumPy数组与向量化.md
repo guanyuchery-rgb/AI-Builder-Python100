@@ -1,179 +1,225 @@
-# Day28 - NumPy数组与向量化
+# Day28 - NumPy 数组与向量化
 
-学习定位：用 NumPy 做批量数值计算，减少手写循环。
+学习定位：学习 NumPy 的数组计算。今天只做 array、均值、标准差、向量化收益率。
 
-## 2小时安排
+## 今日前置
 
-- 15 分钟：读定位和最小代码。
-- 25 分钟：手打一遍最小案例。
-- 70 分钟：完成 5 道递进题。
-- 10 分钟：记录 Debug、边界情况和项目迁移点。
+- 已完成前面天数的基础能力。
+- 今天只增加一个小能力，不把后面项目一次性做完。
+- 如果卡住，先回到最小案例，不直接堆新库。
 
-## 核心知识点：Vectorization
+## 今日只允许新增
+
+- np.array
+- mean()
+- std()
+- 切片
+- 向量化
+
+## 今日不要做
+
+- 不要今天学习矩阵分解；不要追求高级线代。
+- 不使用真实身份、真实账号、真实密钥或不可公开数据。
+- 不把不能解释的代码提交到项目里。
+
+## 2 小时学习节奏
+
+- 15 分钟：读学习定位和知识地图。
+- 25 分钟：手打最小案例并运行。
+- 35 分钟：完成 7 道简单路线题。
+- 35 分钟：完成 5 道基础巩固题。
+- 10 分钟：记录 Debug 和下一步。
+
+## 今日知识地图
+
+- Array：它比逐行循环更适合大量数值计算。
+- Vectorization：Quant 和机器学习会大量使用这个模式。
+
+## 知识点 1：Array
 
 ### 定义
 
-Vectorization 是把今天能力固定成可复用模块的方式。
+Array 是适合数值计算的连续数据结构。
 
 ### 为什么存在
 
-它让代码从“这次能跑”变成“下次能复查、能迁移、能被项目调用”。
+它比逐行循环更适合大量数值计算。
 
 ### 最小案例
+
+看下面“今日最小可运行任务”，先跑通，再改一处输入。
+
+### 常见错误
+
+- 没有先确认输入字段和输出格式。
+- 直接复制复杂代码，但解释不清每一步。
+- 跑通后没有保存结果或记录失败情况。
+
+### 工程应用
+
+- 数据分析脚本。
+- Quant 研究小模块。
+- LLM / Agent 工具边界。
+- 个人作品集项目。
+
+### 未来扩展
+
+今天只做最小版本；未来可以加测试、日志、配置、服务接口或页面。
+
+## 知识点 2：Vectorization
+
+### 定义
+
+向量化是一次对一组数据做计算。
+
+### 为什么存在
+
+Quant 和机器学习会大量使用这个模式。
+
+### 最小案例
+
+看下面“今日最小可运行任务”，先跑通，再改一处输入。
+
+### 常见错误
+
+- 没有先确认输入字段和输出格式。
+- 直接复制复杂代码，但解释不清每一步。
+- 跑通后没有保存结果或记录失败情况。
+
+### 工程应用
+
+- 数据分析脚本。
+- Quant 研究小模块。
+- LLM / Agent 工具边界。
+- 个人作品集项目。
+
+### 未来扩展
+
+今天只做最小版本；未来可以加测试、日志、配置、服务接口或页面。
+
+## 今日最小可运行任务
 
 ```python
 import numpy as np
 
 prices = np.array([100, 102, 101, 105], dtype=float)
 returns = prices[1:] / prices[:-1] - 1
-print(returns.mean(), returns.std())
+print("returns", returns)
+print("mean", returns.mean())
 ```
-
-### 常见错误
-
-- 直接把逻辑写在 notebook 或临时脚本里。
-- 输入字段没有校验。
-- 结果只 print，不保存。
-- 失败原因没有记录。
-
-### 工程应用
-
-- 数据清洗和指标计算。
-- Quant research 小项目。
-- LLM report assistant。
-- Agent tool prototype。
-
-### 未来扩展
-
-- 增加测试。
-- 增加 README 运行说明。
-- 增加 CLI/API/UI 入口。
-- 接入真实项目数据。
 
 ## Debug 日志
 
-- 路径错误：先打印当前工作目录。
-- 类型错误：先检查输入字段和 dtype。
-- 结果异常：先缩小到 3 行样例数据。
-- 依赖错误：记录安装命令和 Python 版本。
+记录这三件事：
 
-## 面试 / 项目角度
+- 输入是什么。
+- 程序在哪一步失败。
+- 修复后输出是什么。
 
-能说明今天代码的输入、输出、失败情况，以及它如何进入一个真实项目。
+## Quant / LLM / Agent 迁移点
 
-## Quant 关联
-
-大规模指标计算需要向量化思维。
-
-## LLM / Agent 关联
-
-Agent tool 内部可以用 NumPy 算，输出仍保持简单 dict。
-
-## 复习检查
-
-- [ ] 我能独立解释今天能力解决什么问题。
-- [ ] 我能手打一遍最小案例。
-- [ ] 我能完成 5 道递进题。
-- [ ] 我能说清输入、输出和失败情况。
-- [ ] 我知道它如何迁移到 Quant / LLM / Agent 项目。
+今天的交付物是：用 NumPy 算出一组价格的收益率。它以后可以作为 Quant 数据模块、LLM 报告模块或 Agent tool 的一个稳定零件。
 
 ## 简单路线 7 题（不超前）
 
-只用今天及之前学过的能力。做不出来时，先回看当天最小案例，不跳到后面知识。
+1. 新建 `day28` 文件夹或脚本。
+2. 手打一遍“今日最小可运行任务”，不要复制后直接跳过。
+3. 把示例数据改成 2-3 条自己的虚拟数据。
+4. 故意制造一个小错误，记录报错信息和修复方式。
+5. 给输出结果加一个清晰字段名或标题。
+6. 把运行命令写进当天笔记。
+7. 用 3 行话总结今天能力如何迁移到 用 NumPy 算出一组价格的收益率。
 
-1. 为今天主题新建一个最小 `.py` 文件。
-2. 写一个只处理 3 行样例数据的版本。
-3. 打印输入字段和输出字段。
-4. 把核心逻辑整理成一个函数。
-5. 保存一个 JSON 或 Markdown 结果。
-6. 写 1 条 Debug 记录。
-7. 写一句它如何进入 Quant / LLM / Agent 项目。
-## 题目驱动训练
+## 5 道基础巩固题
 
-### 参考题 / 资料
+#### 1. 复现最小案例
 
-- [NumPy docs](https://numpy.org/doc/stable/)
-- [Python Docs](https://docs.python.org/3/)
-- [LeetCode 53 - Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
+题目：完整手打最小案例，并确认输出和预期一致。
 
-### 今日产出
+讲解：先不改结构，只确认能跑。
 
-收益率数组和统计值。
-
-### 5 道递进题
-
-#### 1. Easy - 数组输入校验
-
-题目：把 list 转成 float array，并拒绝空输入。
-
-讲解：数值计算前先保护边界。
+参考解法骨架：
 
 ```python
-import numpy as np
-
-def to_float_array(values: list[float]) -> np.ndarray:
-    if not values:
-        raise ValueError("values cannot be empty")
-    return np.array(values, dtype=float)
+# Day28 - 复现最小案例
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day28 复现最小案例")
 ```
 
-#### 2. Easy - 基础统计
+#### 2. 替换输入数据
 
-题目：返回均值、标准差、最小值、最大值。
+题目：把示例里的数据改成自己的虚拟数据。
 
-讲解：先用清楚指标描述数据。
+讲解：只改输入，不改处理逻辑。
+
+参考解法骨架：
 
 ```python
-import numpy as np
-
-def basic_stats(values: list[float]) -> dict:
-    arr = to_float_array(values)
-    return {"mean": float(arr.mean()), "std": float(arr.std(ddof=1)), "min": float(arr.min()), "max": float(arr.max())}
+# Day28 - 替换输入数据
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day28 替换输入数据")
 ```
 
-#### 3. Medium - 相关系数
+#### 3. 增加边界检查
 
-题目：计算两个序列的相关系数。
+题目：为空数据、缺字段或异常输入加一个检查。
 
-讲解：相关性需要长度一致，且不是因果。
+讲解：检查失败时返回清晰错误。
+
+参考解法骨架：
 
 ```python
-import numpy as np
-
-def correlation(x: list[float], y: list[float]) -> float:
-    if len(x) != len(y):
-        raise ValueError("x and y must have same length")
-    return float(np.corrcoef(to_float_array(x), to_float_array(y))[0, 1])
+# Day28 - 增加边界检查
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day28 增加边界检查")
 ```
 
-#### 4. Medium - 标准化
+#### 4. 保存结果
 
-题目：把数据转成 z-score。
+题目：把结果保存为 `.md`、`.json`、`.csv` 或数据库记录。
 
-讲解：很多模型和因子比较前需要统一尺度。
+讲解：工业项目不能只依赖 print。
+
+参考解法骨架：
 
 ```python
-import numpy as np
-
-def zscore(values: list[float]) -> list[float]:
-    arr = to_float_array(values)
-    std = arr.std(ddof=1)
-    if std == 0:
-        return [0.0 for _ in values]
-    return ((arr - arr.mean()) / std).tolist()
+# Day28 - 保存结果
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day28 保存结果")
 ```
 
-#### 5. Hard - 指标包
+#### 5. 写复盘说明
 
-题目：组合统计、相关性和标准化输出。
+题目：写下今天的输入、处理、输出、失败情况。
 
-讲解：项目中更常用的是指标包，而不是单个函数。
+讲解：保证六个月后还能重新接上。
+
+参考解法骨架：
 
 ```python
-def build_metric_pack(values: list[float], benchmark: list[float]) -> dict:
-    return {
-        "stats": basic_stats(values),
-        "corr_to_benchmark": correlation(values, benchmark),
-        "zscore_tail": zscore(values)[-3:],
-    }
+# Day28 - 写复盘说明
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day28 写复盘说明")
 ```
+
+## 复习检查
+
+- [ ] 我能解释今天新增的关键词。
+- [ ] 我能从零手打最小案例。
+- [ ] 我知道今天输入、处理、输出分别是什么。
+- [ ] 我完成了 7 道简单路线题和 5 道基础巩固题。
+- [ ] 我没有暴露真实身份、账号、密钥或私人数据。
+
+## 参考资料
+
+- [NumPy quickstart](https://numpy.org/doc/stable/user/quickstart.html)

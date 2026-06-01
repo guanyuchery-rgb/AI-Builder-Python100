@@ -1,159 +1,226 @@
-# Day67 - 项目二Prompt与上下文打包
+# Day67 - 项目二 Prompt 与上下文打包
 
-学习定位：把报告输入、指标和来源组织成 prompt pack。
+学习定位：把事实、指标、来源打包成 prompt。
 
-## 2小时安排
+## 今日前置
 
-- 15 分钟：读定位和最小代码。
-- 25 分钟：手打一遍最小案例。
-- 70 分钟：完成 5 道递进题。
-- 10 分钟：记录 Debug、边界情况和项目迁移点。
+- 已完成前面天数的基础能力。
+- 今天只增加一个小能力，不把后面项目一次性做完。
+- 如果卡住，先回到最小案例，不直接堆新库。
 
-## 核心知识点：LLM Project Build
+## 今日只允许新增
+
+- 小步实现
+- 输入校验
+- 结构化输出
+- README 记录
+- Debug 记录
+
+## 今日不要做
+
+- 不要把无关材料塞进去
+- 不使用真实身份、真实账号、真实密钥或不可公开数据。
+- 不把不能解释的代码提交到项目里。
+
+## 2 小时学习节奏
+
+- 15 分钟：读学习定位和知识地图。
+- 25 分钟：手打最小案例并运行。
+- 35 分钟：完成 7 道简单路线题。
+- 35 分钟：完成 5 道基础巩固题。
+- 10 分钟：记录 Debug 和下一步。
+
+## 今日知识地图
+
+- Context Packing：它把前面学过的语法、数据和项目方法放进可维护结构。
+- Small Step Delivery：这样 6 月学习不会因为项目太大而断掉。
+
+## 知识点 1：Context Packing
 
 ### 定义
 
-今天的主题是把一个小能力固定成可复用、可测试、可迁移的工程单元。
+Context Packing 是今天要沉淀的最小工程能力。
 
 ### 为什么存在
 
-长期学习不能只靠临时理解。每个能力都要能进入项目：有输入、有输出、有失败处理、有复盘入口。
+它把前面学过的语法、数据和项目方法放进可维护结构。
 
 ### 最小案例
 
-```python
-def package_context(question: str, sources: list[str]) -> dict:
-    return {"question": question, "sources": sources, "instruction": "只基于来源回答"}
-```
+看下面“今日最小可运行任务”，先跑通，再改一处输入。
 
 ### 常见错误
 
-- 只在临时脚本里跑通，没有沉淀成函数。
-- 输入字段没有校验，结果出了错才发现。
-- 只 print 结果，不保存中间产物。
-- 没有 README、测试或 Debug 记录，几天后难以接上。
+- 没有先确认输入字段和输出格式。
+- 直接复制复杂代码，但解释不清每一步。
+- 跑通后没有保存结果或记录失败情况。
 
 ### 工程应用
 
-- 数据清洗和指标计算。
-- Quant research 小项目。
-- LLM report assistant。
-- Agent tool prototype。
-- 个人作品集沉淀。
+- 数据分析脚本。
+- Quant 研究小模块。
+- LLM / Agent 工具边界。
+- 个人作品集项目。
 
 ### 未来扩展
 
-- 增加单元测试。
-- 增加 CLI/API/UI 入口。
-- 接入真实数据。
-- 写入项目 README 和复盘文档。
+今天只做最小版本；未来可以加测试、日志、配置、服务接口或页面。
+
+## 知识点 2：Small Step Delivery
+
+### 定义
+
+小步交付是每天只完成一个可运行增量。
+
+### 为什么存在
+
+这样 6 月学习不会因为项目太大而断掉。
+
+### 最小案例
+
+看下面“今日最小可运行任务”，先跑通，再改一处输入。
+
+### 常见错误
+
+- 没有先确认输入字段和输出格式。
+- 直接复制复杂代码，但解释不清每一步。
+- 跑通后没有保存结果或记录失败情况。
+
+### 工程应用
+
+- 数据分析脚本。
+- Quant 研究小模块。
+- LLM / Agent 工具边界。
+- 个人作品集项目。
+
+### 未来扩展
+
+今天只做最小版本；未来可以加测试、日志、配置、服务接口或页面。
+
+## 今日最小可运行任务
+
+```python
+def build_prompt(facts: list[str]) -> str:
+    fact_text = "
+".join(f"- {x}" for x in facts)
+    return f"请只基于事实输出 summary/risk/next_step：
+{fact_text}"
+
+print(build_prompt(["样本量 30", "最大回撤 -8%"] ))
+```
 
 ## Debug 日志
 
-- 路径错误：先打印当前工作目录。
-- 类型错误：先检查输入字段和 dtype。
-- 结果异常：先缩小到 3 行样例数据。
-- 依赖错误：记录安装命令和 Python 版本。
+记录这三件事：
 
-## 面试 / 项目角度
+- 输入是什么。
+- 程序在哪一步失败。
+- 修复后输出是什么。
 
-能说明今天代码的输入、输出、失败情况，以及它如何进入一个真实项目。
+## Quant / LLM / Agent 迁移点
 
-## Quant 关联
-
-这一天服务于 Quant 学习：让数据、指标、回测和报告更可复现。
-
-## LLM / Agent 关联
-
-这一天服务于 LLM/Agent 学习：明确输入、输出、失败情况和可审查边界。
-
-## 复习检查
-
-- [ ] 我能独立解释今天能力解决什么问题。
-- [ ] 我能手打一遍最小案例。
-- [ ] 我能完成 5 道递进题。
-- [ ] 我能说清输入、输出和失败情况。
-- [ ] 我知道它如何迁移到 Quant / LLM / Agent 项目。
+今天的交付物是：输出 context prompt。它以后可以作为 Quant 数据模块、LLM 报告模块或 Agent tool 的一个稳定零件。
 
 ## 简单路线 7 题（不超前）
 
-只用今天及之前学过的能力。做不出来时，先回看当天最小案例，不跳到后面知识。
+1. 新建 `day67` 文件夹或脚本。
+2. 手打一遍“今日最小可运行任务”，不要复制后直接跳过。
+3. 把示例数据改成 2-3 条自己的虚拟数据。
+4. 故意制造一个小错误，记录报错信息和修复方式。
+5. 给输出结果加一个清晰字段名或标题。
+6. 把运行命令写进当天笔记。
+7. 用 3 行话总结今天能力如何迁移到 输出 context prompt
 
-1. 在项目目录里确认 README 存在。
-2. 写一个今天模块的最小函数。
-3. 准备 3 行样例输入。
-4. 输出一个可保存的 dict。
-5. 写一个成功案例测试。
-6. 写一个失败案例测试。
-7. 记录今天模块如何接到项目主流程。
-## 题目驱动训练
+## 5 道基础巩固题
 
-### 参考题 / 资料
+#### 1. 复现最小案例
 
-- [OpenAI API docs](https://platform.openai.com/docs/)
-- [json](https://docs.python.org/3/library/json.html)
-- [pytest docs](https://docs.pytest.org/)
+题目：完整手打最小案例，并确认输出和预期一致。
 
-### 今日产出
+讲解：先不改结构，只确认能跑。
 
-一个和“项目二Prompt与上下文打包”相关的可复用函数、脚本或项目模块。
-
-### 5 道递进题
-
-#### 1. Easy - Prompt Builder
-
-题目：把变量填进模板，生成可复用 prompt。
-
-讲解：prompt 不要散落在业务代码里。
+参考解法骨架：
 
 ```python
-def build_review_prompt(topic: str, facts: dict) -> str:
-    return f"请基于事实审查 {topic}。事实: {facts}。输出风险、依据、下一步。"
+# Day67 - 复现最小案例
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day67 复现最小案例")
 ```
 
-#### 2. Easy - JSON 字段校验
+#### 2. 替换输入数据
 
-题目：检查模型输出是否包含 required fields。
+题目：把示例里的数据改成自己的虚拟数据。
 
-讲解：LLM 输出必须先校验，再进入流程。
+讲解：只改输入，不改处理逻辑。
+
+参考解法骨架：
 
 ```python
-def validate_json(data: dict, required: list[str]) -> list[str]:
-    return [field for field in required if field not in data]
+# Day67 - 替换输入数据
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day67 替换输入数据")
 ```
 
-#### 3. Medium - 来源打包
+#### 3. 增加边界检查
 
-题目：给回答附上 source 列表。
+题目：为空数据、缺字段或异常输入加一个检查。
 
-讲解：RAG/报告类任务必须保留来源。
+讲解：检查失败时返回清晰错误。
+
+参考解法骨架：
 
 ```python
-def attach_sources(answer: str, sources: list[str]) -> dict:
-    return {"answer": answer, "sources": sources}
+# Day67 - 增加边界检查
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day67 增加边界检查")
 ```
 
-#### 4. Medium - 失败重试提示
+#### 4. 保存结果
 
-题目：输出不合格时返回 retry prompt。
+题目：把结果保存为 `.md`、`.json`、`.csv` 或数据库记录。
 
-讲解：不要假装模型结果一定正确。
+讲解：工业项目不能只依赖 print。
+
+参考解法骨架：
 
 ```python
-def build_retry_prompt(errors: list[str]) -> str:
-    return "输出缺少字段: " + ", ".join(errors) + "。请只返回合法 JSON。"
+# Day67 - 保存结果
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day67 保存结果")
 ```
 
-#### 5. Hard - LLM Pipeline
+#### 5. 写复盘说明
 
-题目：raw result -> validate -> final package。
+题目：写下今天的输入、处理、输出、失败情况。
 
-讲解：把模型调用当成不稳定外部服务。
+讲解：保证六个月后还能重新接上。
+
+参考解法骨架：
 
 ```python
-def package_llm_result(raw: dict, required: list[str]) -> dict:
-    errors = validate_json(raw, required)
-    if errors:
-        return {"ok": False, "errors": errors, "retry_prompt": build_retry_prompt(errors)}
-    return {"ok": True, "data": raw}
+# Day67 - 写复盘说明
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day67 写复盘说明")
 ```
+
+## 复习检查
+
+- [ ] 我能解释今天新增的关键词。
+- [ ] 我能从零手打最小案例。
+- [ ] 我知道今天输入、处理、输出分别是什么。
+- [ ] 我完成了 7 道简单路线题和 5 道基础巩固题。
+- [ ] 我没有暴露真实身份、账号、密钥或私人数据。
+
+## 参考资料
+
+- [Python 官方文档](https://docs.python.org/3/)

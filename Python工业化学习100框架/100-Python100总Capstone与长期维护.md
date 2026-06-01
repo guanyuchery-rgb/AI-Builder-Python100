@@ -1,175 +1,228 @@
-# Day100 - Python100总Capstone与长期维护
+# Day100 - Python100 总 Capstone 与长期维护
 
-学习定位：把 Python100 收口为长期维护资产。
+学习定位：把 Python100 收为长期资产。
 
-## 2小时安排
+## 今日前置
 
-- 15 分钟：读定位和最小代码。
-- 25 分钟：手打一遍最小案例。
-- 70 分钟：完成 5 道递进题。
-- 10 分钟：记录 Debug、边界情况和项目迁移点。
+- 已完成前面天数的基础能力。
+- 今天只增加一个小能力，不把后面项目一次性做完。
+- 如果卡住，先回到最小案例，不直接堆新库。
 
-## 核心知识点：Portfolio and Maintenance
+## 今日只允许新增
+
+- 小步实现
+- 输入校验
+- 结构化输出
+- README 记录
+- Debug 记录
+
+## 今日不要做
+
+- 不要继续无限扩展
+- 不使用真实身份、真实账号、真实密钥或不可公开数据。
+- 不把不能解释的代码提交到项目里。
+
+## 2 小时学习节奏
+
+- 15 分钟：读学习定位和知识地图。
+- 25 分钟：手打最小案例并运行。
+- 35 分钟：完成 7 道简单路线题。
+- 35 分钟：完成 5 道基础巩固题。
+- 10 分钟：记录 Debug 和下一步。
+
+## 今日知识地图
+
+- Maintenance System：它把前面学过的语法、数据和项目方法放进可维护结构。
+- Small Step Delivery：这样 6 月学习不会因为项目太大而断掉。
+
+## 知识点 1：Maintenance System
 
 ### 定义
 
-今天的主题是把一个小能力固定成可复用、可测试、可迁移的工程单元。
+Maintenance System 是今天要沉淀的最小工程能力。
 
 ### 为什么存在
 
-长期学习不能只靠临时理解。每个能力都要能进入项目：有输入、有输出、有失败处理、有复盘入口。
+它把前面学过的语法、数据和项目方法放进可维护结构。
 
 ### 最小案例
 
-```python
-from pathlib import Path
-
-def list_project_files(root: str) -> list[str]:
-    return [p.name for p in Path(root).iterdir() if p.is_file()]
-```
+看下面“今日最小可运行任务”，先跑通，再改一处输入。
 
 ### 常见错误
 
-- 只在临时脚本里跑通，没有沉淀成函数。
-- 输入字段没有校验，结果出了错才发现。
-- 只 print 结果，不保存中间产物。
-- 没有 README、测试或 Debug 记录，几天后难以接上。
+- 没有先确认输入字段和输出格式。
+- 直接复制复杂代码，但解释不清每一步。
+- 跑通后没有保存结果或记录失败情况。
 
 ### 工程应用
 
-- 数据清洗和指标计算。
-- Quant research 小项目。
-- LLM report assistant。
-- Agent tool prototype。
-- 个人作品集沉淀。
+- 数据分析脚本。
+- Quant 研究小模块。
+- LLM / Agent 工具边界。
+- 个人作品集项目。
 
 ### 未来扩展
 
-- 增加单元测试。
-- 增加 CLI/API/UI 入口。
-- 接入真实数据。
-- 写入项目 README 和复盘文档。
+今天只做最小版本；未来可以加测试、日志、配置、服务接口或页面。
+
+## 知识点 2：Small Step Delivery
+
+### 定义
+
+小步交付是每天只完成一个可运行增量。
+
+### 为什么存在
+
+这样 6 月学习不会因为项目太大而断掉。
+
+### 最小案例
+
+看下面“今日最小可运行任务”，先跑通，再改一处输入。
+
+### 常见错误
+
+- 没有先确认输入字段和输出格式。
+- 直接复制复杂代码，但解释不清每一步。
+- 跑通后没有保存结果或记录失败情况。
+
+### 工程应用
+
+- 数据分析脚本。
+- Quant 研究小模块。
+- LLM / Agent 工具边界。
+- 个人作品集项目。
+
+### 未来扩展
+
+今天只做最小版本；未来可以加测试、日志、配置、服务接口或页面。
+
+## 今日最小可运行任务
+
+```python
+from pathlib import Path
+
+notes = [
+    "目标：Python100 总 Capstone 与长期维护",
+    "当前状态：最小可运行",
+    "下一步：补一个测试或示例",
+]
+Path("day100_summary.md").write_text("\n".join(notes), encoding="utf-8")
+print("written day100_summary.md")
+```
 
 ## Debug 日志
 
-- 路径错误：先打印当前工作目录。
-- 类型错误：先检查输入字段和 dtype。
-- 结果异常：先缩小到 3 行样例数据。
-- 依赖错误：记录安装命令和 Python 版本。
+记录这三件事：
 
-## 面试 / 项目角度
+- 输入是什么。
+- 程序在哪一步失败。
+- 修复后输出是什么。
 
-能说明今天代码的输入、输出、失败情况，以及它如何进入一个真实项目。
+## Quant / LLM / Agent 迁移点
 
-## Quant 关联
-
-这一天服务于 Quant 学习：让数据、指标、回测和报告更可复现。
-
-## LLM / Agent 关联
-
-这一天服务于 LLM/Agent 学习：明确输入、输出、失败情况和可审查边界。
-
-## 复习检查
-
-- [ ] 我能独立解释今天能力解决什么问题。
-- [ ] 我能手打一遍最小案例。
-- [ ] 我能完成 5 道递进题。
-- [ ] 我能说清输入、输出和失败情况。
-- [ ] 我知道它如何迁移到 Quant / LLM / Agent 项目。
+今天的交付物是：检查 README/requirements/tests。它以后可以作为 Quant 数据模块、LLM 报告模块或 Agent tool 的一个稳定零件。
 
 ## 简单路线 7 题（不超前）
 
-只用今天及之前学过的能力。做不出来时，先回看当天最小案例，不跳到后面知识。
+1. 新建 `day100` 文件夹或脚本。
+2. 手打一遍“今日最小可运行任务”，不要复制后直接跳过。
+3. 把示例数据改成 2-3 条自己的虚拟数据。
+4. 故意制造一个小错误，记录报错信息和修复方式。
+5. 给输出结果加一个清晰字段名或标题。
+6. 把运行命令写进当天笔记。
+7. 用 3 行话总结今天能力如何迁移到 检查 README/requirements/tests
 
-1. 写出今天模块的输入、输出、失败情况。
-2. 用 dict 模拟一次状态。
-3. 写一个 next_action 判断。
-4. 写一个人工审查条件。
-5. 保存一段运行摘要。
-6. 补一条作品集说明。
-7. 写下长期维护时最先检查的文件。
-## 题目驱动训练
+## 5 道基础巩固题
 
-### 参考题 / 资料
+#### 1. 复现最小案例
 
-- [pathlib](https://docs.python.org/3/library/pathlib.html)
-- [GitHub Actions docs](https://docs.github.com/actions)
-- [Python Docs](https://docs.python.org/3/)
+题目：完整手打最小案例，并确认输出和预期一致。
 
-### 今日产出
+讲解：先不改结构，只确认能跑。
 
-一个和“Python100总Capstone与长期维护”相关的可复用函数、脚本或项目模块。
-
-### 5 道递进题
-
-#### 1. Easy - 标准化输入
-
-题目：把原始 dict 转成统一字段。
-
-讲解：统一字段名，后续函数才稳定。
+参考解法骨架：
 
 ```python
-def normalize_row(raw: dict) -> dict:
-    return {"name": str(raw.get("name", "")).strip(), "value": float(raw.get("value", 0) or 0), "tag": str(raw.get("tag", "default"))}
+# Day100 - 复现最小案例
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day100 复现最小案例")
 ```
 
-#### 2. Easy - 校验输入
+#### 2. 替换输入数据
 
-题目：返回错误列表，而不是直接崩溃。
+题目：把示例里的数据改成自己的虚拟数据。
 
-讲解：错误要可复盘。
+讲解：只改输入，不改处理逻辑。
+
+参考解法骨架：
 
 ```python
-def validate_row(row: dict) -> list[str]:
-    errors = []
-    if not row.get("name"):
-        errors.append("name is required")
-    if row.get("value", 0) < 0:
-        errors.append("value must be non-negative")
-    return errors
+# Day100 - 替换输入数据
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day100 替换输入数据")
 ```
 
-#### 3. Medium - 批量汇总
+#### 3. 增加边界检查
 
-题目：按 tag 汇总 value。
+题目：为空数据、缺字段或异常输入加一个检查。
 
-讲解：这是数据项目和日志分析的通用动作。
+讲解：检查失败时返回清晰错误。
+
+参考解法骨架：
 
 ```python
-from collections import defaultdict
-
-def summarize_rows(rows: list[dict]) -> dict[str, float]:
-    summary = defaultdict(float)
-    for row in rows:
-        summary[row["tag"]] += row["value"]
-    return dict(summary)
+# Day100 - 增加边界检查
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day100 增加边界检查")
 ```
 
-#### 4. Medium - 保存结果
+#### 4. 保存结果
 
-题目：把 summary 保存成 JSON。
+题目：把结果保存为 `.md`、`.json`、`.csv` 或数据库记录。
 
-讲解：结果落盘，第二天才能继续。
+讲解：工业项目不能只依赖 print。
+
+参考解法骨架：
 
 ```python
-import json
-from pathlib import Path
-
-def save_summary(path: str, summary: dict) -> None:
-    Path(path).write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+# Day100 - 保存结果
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day100 保存结果")
 ```
 
-#### 5. Hard - Tool 化
+#### 5. 写复盘说明
 
-题目：输入原始 rows，返回 ok/data/errors。
+题目：写下今天的输入、处理、输出、失败情况。
 
-讲解：这是 Agent-ready 的最小工程形状。
+讲解：保证六个月后还能重新接上。
+
+参考解法骨架：
 
 ```python
-def summary_tool(rows: list[dict]) -> dict:
-    clean_rows = [normalize_row(row) for row in rows]
-    errors = [error for row in clean_rows for error in validate_row(row)]
-    if errors:
-        return {"ok": False, "errors": errors}
-    return {"ok": True, "data": summarize_rows(clean_rows)}
+# Day100 - 写复盘说明
+# 1. 准备输入
+# 2. 调用今天的最小能力
+# 3. 检查输出并记录 Debug
+print("TODO: run Day100 写复盘说明")
 ```
+
+## 复习检查
+
+- [ ] 我能解释今天新增的关键词。
+- [ ] 我能从零手打最小案例。
+- [ ] 我知道今天输入、处理、输出分别是什么。
+- [ ] 我完成了 7 道简单路线题和 5 道基础巩固题。
+- [ ] 我没有暴露真实身份、账号、密钥或私人数据。
+
+## 参考资料
+
+- [Python 官方文档](https://docs.python.org/3/)
