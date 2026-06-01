@@ -174,6 +174,17 @@ print("run Day42 结果保存")
 print("run Day42 迁移说明")
 ```
 
+## Hot100 / LeetCode 挑战（基础完成后）
+
+> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
+
+- 关联题：[Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+- 难度：Medium
+- 题型：二分 / 旋转数组
+- 为什么放在今天：CI 之后适合练能被单测覆盖的边界题。
+- 带注释解题提示：比较 nums[mid] 和 nums[right] 判断最小值在哪侧；注释说明为什么保留 mid。
+- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
 ## Debug 记录模板
 
 ```text

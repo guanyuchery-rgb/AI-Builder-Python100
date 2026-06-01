@@ -167,6 +167,17 @@ print("run Day59 结果保存")
 print("run Day59 迁移说明")
 ```
 
+## Hot100 / LeetCode 挑战（基础完成后）
+
+> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
+
+- 关联题：[Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+- 难度：Medium
+- 题型：二叉树 / 递归构造
+- 为什么放在今天：LLM 报告助手项目后，练由两个视角重建结构。
+- 带注释解题提示：前序第一个是根；中序切分左右子树；注释说明索引范围比切片更省空间。
+- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
 ## Debug 记录模板
 
 ```text

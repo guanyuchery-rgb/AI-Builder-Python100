@@ -170,6 +170,17 @@ print("run Day23 结果保存")
 print("run Day23 迁移说明")
 ```
 
+## Hot100 / LeetCode 挑战（基础完成后）
+
+> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
+
+- 关联题：[Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
+- 难度：Easy
+- 题型：数组 / 集合
+- 为什么放在今天：pandas 数据体检常见重复值检查，这题是集合去重的算法版。
+- 带注释解题提示：遍历列表时维护 seen 集合；遇到已存在元素立即返回，注释说明 early return 的意义。
+- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
 ## Debug 记录模板
 
 ```text

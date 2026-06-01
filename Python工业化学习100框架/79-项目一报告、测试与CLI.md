@@ -166,6 +166,17 @@ print("run Day79 结果保存")
 print("run Day79 迁移说明")
 ```
 
+## Hot100 / LeetCode 挑战（基础完成后）
+
+> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
+
+- 关联题：[Jump Game](https://leetcode.com/problems/jump-game/)
+- 难度：Medium
+- 题型：贪心 / 可达性
+- 为什么放在今天：报告和 CLI 日适合练“当前最远能到哪里”的可达性。
+- 带注释解题提示：维护 farthest；如果当前位置超过 farthest 就失败，注释说明不用真的模拟每条路径。
+- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
 ## Debug 记录模板
 
 ```text

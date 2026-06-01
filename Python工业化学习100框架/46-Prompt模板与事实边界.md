@@ -167,6 +167,17 @@ print("run Day46 结果保存")
 print("run Day46 迁移说明")
 ```
 
+## Hot100 / LeetCode 挑战（基础完成后）
+
+> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
+
+- 关联题：[Reorder List](https://leetcode.com/problems/reorder-list/)
+- 难度：Medium
+- 题型：链表 / 快慢指针
+- 为什么放在今天：进入 LLM 阶段，算法挑战继续独立推进，练多步骤拆解。
+- 带注释解题提示：三步：找中点、反转后半段、交错合并；注释把每一步单独写成小段。
+- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
 ## Debug 记录模板
 
 ```text

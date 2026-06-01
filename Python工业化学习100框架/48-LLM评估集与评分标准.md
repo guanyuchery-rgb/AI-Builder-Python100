@@ -167,6 +167,17 @@ print("run Day48 结果保存")
 print("run Day48 迁移说明")
 ```
 
+## Hot100 / LeetCode 挑战（基础完成后）
+
+> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
+
+- 关联题：[Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
+- 难度：Easy
+- 题型：链表 / 快慢指针
+- 为什么放在今天：LLM 评估集之外补一题循环检测，帮助理解无限循环风险。
+- 带注释解题提示：slow 每次一步，fast 每次两步；注释说明相遇代表存在环。
+- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
 ## Debug 记录模板
 
 ```text

@@ -172,6 +172,17 @@ print("run Day43 结果保存")
 print("run Day43 迁移说明")
 ```
 
+## Hot100 / LeetCode 挑战（基础完成后）
+
+> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
+
+- 关联题：[Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
+- 难度：Medium
+- 题型：答案二分
+- 为什么放在今天：模块打包之后，训练把“可行性检查”拆成函数。
+- 带注释解题提示：对速度做二分；can_finish(speed) 返回是否能在 h 小时内完成，注释标清上取整。
+- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
 ## Debug 记录模板
 
 ```text

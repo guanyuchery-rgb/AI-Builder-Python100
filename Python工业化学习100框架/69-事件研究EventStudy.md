@@ -169,6 +169,17 @@ print("run Day69 结果保存")
 print("run Day69 迁移说明")
 ```
 
+## Hot100 / LeetCode 挑战（基础完成后）
+
+> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
+
+- 关联题：[Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
+- 难度：Medium
+- 题型：Trie / 字典树
+- 为什么放在今天：事件研究后进入前缀索引，和检索/RAG 有天然关联。
+- 带注释解题提示：每个节点保存 children 和 is_end；注释说明 insert/search/startsWith 的终止条件不同。
+- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
 ## Debug 记录模板
 
 ```text

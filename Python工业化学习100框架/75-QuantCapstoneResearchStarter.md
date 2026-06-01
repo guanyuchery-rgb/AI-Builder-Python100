@@ -174,6 +174,17 @@ print("run Day75 结果保存")
 print("run Day75 迁移说明")
 ```
 
+## Hot100 / LeetCode 挑战（基础完成后）
+
+> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
+
+- 关联题：[Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
+- 难度：Medium
+- 题型：字符串 / 中心扩展
+- 为什么放在今天：Quant Capstone 后，用字符串中等题收束阶段。
+- 带注释解题提示：枚举每个中心向两边扩展；注释说明奇数中心和偶数中心都要处理。
+- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
 ## Debug 记录模板
 
 ```text

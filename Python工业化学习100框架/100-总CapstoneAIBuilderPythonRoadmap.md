@@ -174,6 +174,17 @@ print("run Day100 结果保存")
 print("run Day100 迁移说明")
 ```
 
+## Hot100 / LeetCode 挑战（基础完成后）
+
+> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
+
+- 关联题：[Distinct Subsequences](https://leetcode.com/problems/distinct-subsequences/)
+- 难度：Hard
+- 题型：动态规划 / 计数
+- 为什么放在今天：总 Capstone 用计数 DP 收尾，兼具难度和可复盘价值。
+- 带注释解题提示：dp[i][j] 表示 s 前 i 个形成 t 前 j 个的方案数；相等时可选用或不用当前字符。
+- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
 ## Debug 记录模板
 
 ```text

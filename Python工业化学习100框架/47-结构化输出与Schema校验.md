@@ -166,6 +166,17 @@ print("run Day47 结果保存")
 print("run Day47 迁移说明")
 ```
 
+## Hot100 / LeetCode 挑战（基础完成后）
+
+> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
+
+- 关联题：[Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
+- 难度：Medium
+- 题型：链表 / 双指针
+- 为什么放在今天：Schema 校验之后，练习带哑节点的边界删除。
+- 带注释解题提示：fast 先走 n 步，再 fast/slow 同步；注释说明删除头节点为什么需要 dummy。
+- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
 ## Debug 记录模板
 
 ```text

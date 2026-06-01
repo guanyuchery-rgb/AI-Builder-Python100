@@ -2,6 +2,10 @@
 
 Python100 的公开课程路线图。
 
+## 算法挑战线
+
+前 20 天专注零基础语法、工程化小项目和可运行习惯，不提前塞 Hot100 难题。Day21-Day100 每天在主线内容之后追加 1 道 Hot100 / LeetCode 挑战题，难度从 Easy/Medium 承接到 Medium/Hard，覆盖数组、哈希、双指针、滑动窗口、栈、二分、链表、树、图、动态规划、回溯和贪心。
+
 ## 阶段一：Python 零基础与语法地基
 
 | Day | Topic | Output | Project Link |
