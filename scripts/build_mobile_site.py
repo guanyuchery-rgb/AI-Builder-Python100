@@ -39,6 +39,7 @@ def markdown_to_html(markdown: str) -> str:
     in_code = False
     in_list = False
     code_lines: list[str] = []
+    i = 0
 
     def close_list() -> None:
         nonlocal in_list
@@ -57,7 +58,23 @@ def markdown_to_html(markdown: str) -> str:
         )
         return escaped
 
-    for line in lines:
+    def is_table_separator(line: str) -> bool:
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        return bool(cells) and all(re.fullmatch(r":?-{3,}:?", cell or "") for cell in cells)
+
+    def render_table(table_lines: list[str]) -> str:
+        rows = [
+            [inline(cell.strip()) for cell in line.strip().strip("|").split("|")]
+            for line in table_lines
+        ]
+        header = "".join(f"<th>{cell}</th>" for cell in rows[0])
+        body_rows = []
+        for row in rows[2:]:
+            body_rows.append("<tr>" + "".join(f"<td>{cell}</td>" for cell in row) + "</tr>")
+        return "<table><thead><tr>" + header + "</tr></thead><tbody>" + "".join(body_rows) + "</tbody></table>"
+
+    while i < len(lines):
+        line = lines[i]
         if line.startswith("```"):
             if not in_code:
                 close_list()
@@ -66,14 +83,31 @@ def markdown_to_html(markdown: str) -> str:
             else:
                 output.append("<pre><code>" + html.escape("\n".join(code_lines)) + "</code></pre>")
                 in_code = False
+            i += 1
             continue
 
         if in_code:
             code_lines.append(line)
+            i += 1
             continue
 
         if not line.strip():
             close_list()
+            i += 1
+            continue
+
+        if (
+            line.strip().startswith("|")
+            and i + 1 < len(lines)
+            and is_table_separator(lines[i + 1])
+        ):
+            close_list()
+            table_lines = [line, lines[i + 1]]
+            i += 2
+            while i < len(lines) and lines[i].strip().startswith("|"):
+                table_lines.append(lines[i])
+                i += 1
+            output.append(render_table(table_lines))
             continue
 
         heading = re.match(r"^(#{1,6})\s+(.*)$", line)
@@ -82,6 +116,7 @@ def markdown_to_html(markdown: str) -> str:
             level = len(heading.group(1))
             text = inline(heading.group(2))
             output.append(f"<h{level}>{text}</h{level}>")
+            i += 1
             continue
 
         if line.startswith("- "):
@@ -89,10 +124,12 @@ def markdown_to_html(markdown: str) -> str:
                 output.append("<ul>")
                 in_list = True
             output.append(f"<li>{inline(line[2:])}</li>")
+            i += 1
             continue
 
         close_list()
         output.append(f"<p>{inline(line)}</p>")
+        i += 1
 
     close_list()
     return "\n".join(output)
@@ -106,6 +143,7 @@ def build_mobile_markdown() -> None:
         "",
         "## 学习入口",
         "",
+        "- [成长路线图 GROWTH_ROADMAP](GROWTH_ROADMAP.md)",
         "- [课程地图 COURSE_MAP](COURSE_MAP.md)",
         "- [Python工业化学习100框架 README](Python工业化学习100框架/README.md)",
     ]
@@ -129,6 +167,11 @@ def build_index_html() -> None:
     DOCS_DIR.mkdir(exist_ok=True)
     nav = []
     articles = []
+    roadmap = ROOT / "GROWTH_ROADMAP.md"
+    if roadmap.exists():
+        nav.append('<a href="#growth-roadmap">成长路线图</a>')
+        body = markdown_to_html(roadmap.read_text(encoding="utf-8"))
+        articles.append(f'<article id="growth-roadmap">{body}</article>')
     for path in course_files():
         anchor = path.stem
         title = path.stem
@@ -202,6 +245,19 @@ def build_index_html() -> None:
     h4 {{ margin-top: 22px; }}
     p, li {{ word-break: break-word; }}
     a {{ color: var(--accent); }}
+    table {{
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 15px;
+    }}
+    th, td {{
+      text-align: left;
+      vertical-align: top;
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+    }}
+    th {{ background: #f5f5f7; }}
     pre {{
       overflow-x: auto;
       padding: 14px;

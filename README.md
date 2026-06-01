@@ -7,6 +7,7 @@
 ## 在线阅读
 
 - GitHub Pages: 仓库启用 Pages 后可直接在线阅读课程网页。
+- 成长路线图：[GROWTH_ROADMAP.md](GROWTH_ROADMAP.md)
 - 课程地图：[COURSE_MAP.md](COURSE_MAP.md)
 - 手机入口：[MOBILE.md](MOBILE.md)
 - 100 天课程目录：[Python工业化学习100框架](Python工业化学习100框架/README.md)
@@ -42,6 +43,8 @@ Day01-Day20 只打 Python 和工程基础，不强行刷难题。Day21 之后，
 ## 开源说明
 
 本仓库是公开学习资源。示例代码和示例数据均应使用虚拟数据；不要提交真实身份、账号、密钥、交易账户、私人文档或不可公开资料。
+
+本地 Obsidian Vault 可以记录更真实的 Debug、学习日志和认知变化；公开 GitHub 仓库只保留适合外部阅读的课程、练习、项目和精选学习资产。
 
 ## License
 

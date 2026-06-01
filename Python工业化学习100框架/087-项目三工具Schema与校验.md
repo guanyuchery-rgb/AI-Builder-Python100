@@ -1,39 +1,39 @@
-# Day78 - 项目一：指标与回测层
+# Day87 - 项目三：工具 Schema 与校验
 
 > 阶段七：项目实战、作品集与长期维护
 
 ## 学习定位
 
-实现 metrics/backtest。
+实现 tool schema validation。
 
-今天的目标不是背语法，而是产出：**metrics.py/backtest.py**。
+今天的目标不是背语法，而是产出：**tool_schema.py**。
 
 ## 前置知识
 
-- 推荐前置：Day77 data
-- 上一站：Day77
-- 下一站：Day79
+- 推荐前置：Day86 skeleton
+- 上一站：Day86
+- 下一站：Day88
 
 ## 今日知识地图
 
-- 实现 metrics/backtest
-- metrics layer
+- 实现 tool schema validation
+- tool schema
 - 输入输出边界
 - 可复盘结果
 
 ## 核心讲解
 
-今天的关键词是 **实现 metrics/backtest**。学习时不要只看语法表面，而要始终追问三件事：输入是什么、处理逻辑是什么、输出要给谁使用。这个习惯会贯穿数据分析、Quant、LLM 应用和 Agent tool 设计。
+今天的关键词是 **实现 tool schema validation**。学习时不要只看语法表面，而要始终追问三件事：输入是什么、处理逻辑是什么、输出要给谁使用。这个习惯会贯穿数据分析、Quant、LLM 应用和 Agent tool 设计。
 
-从工程角度看，今天的能力要服务于 **Quant 项目核心**。也就是说，代码不只是“能跑”，还要能被未来的自己复查：文件名清楚、变量名能表达含义、失败时有可读错误、结果能保存。
+从工程角度看，今天的能力要服务于 **Agent 工具安全**。也就是说，代码不只是“能跑”，还要能被未来的自己复查：文件名清楚、变量名能表达含义、失败时有可读错误、结果能保存。
 
-难度承接上，今天依赖 **Day77 data**；完成后会自然进入 **Day79**。如果今天卡住，优先回看 Day77，不要跳到更复杂的库或项目。
+难度承接上，今天依赖 **Day86 skeleton**；完成后会自然进入 **Day88**。如果今天卡住，优先回看 Day86，不要跳到更复杂的库或项目。
 
 ## 知识点结构
 
 ### 定义
 
-实现 metrics/backtest，是把一个具体问题拆成可运行、可检查、可复用代码的过程。
+实现 tool schema validation，是把一个具体问题拆成可运行、可检查、可复用代码的过程。
 
 ### 为什么存在
 
@@ -42,13 +42,15 @@
 ### 最小案例
 
 ```python
-import pandas as pd
+def tool_result(ok: bool, data=None, error: str | None = None) -> dict:
+    return {"ok": ok, "data": data, "error": error}
 
-df = pd.DataFrame({"ret": [0.01, -0.02, 0.03], "position": [1, 0, 1]})
-df["strategy_ret"] = df["ret"] * df["position"]
-df["equity"] = (1 + df["strategy_ret"]).cumprod()
-summary = {"mean": df["strategy_ret"].mean(), "final_equity": df["equity"].iloc[-1]}
-print(summary)
+def run_tool(payload: dict) -> dict:
+    if payload.get("risk") == "high":
+        return tool_result(False, error="human review required")
+    return tool_result(True, data={"status": "done"})
+
+print(run_tool({"task": "summarize", "risk": "low"}))
 ```
 
 ### 常见错误
@@ -80,12 +82,12 @@ print(summary)
 ## 简单路线 7 题
 
 1. 读完“学习定位”，用一句话写下今天要解决的问题。
-2. 手打最小案例并运行，确认得到 `metrics.py/backtest.py`。
+2. 手打最小案例并运行，确认得到 `tool_schema.py`。
 3. 把示例输入改成 2-3 条虚拟数据，不使用真实隐私数据。
 4. 故意制造一个小错误，记录报错、原因和修复方式。
 5. 给输出加一个清晰字段名或标题，避免只看到裸数字。
 6. 把今天代码保存到本地练习文件夹，并写下运行命令。
-7. 用 3 行话说明它如何服务于 `Quant 项目核心`。
+7. 用 3 行话说明它如何服务于 `Agent 工具安全`。
 
 ## 5 道基础巩固题
 
@@ -98,11 +100,11 @@ print(summary)
 参考解法骨架：
 
 ```python
-# Day78 - 复现任务
+# Day87 - 复现任务
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day78 复现任务")
+print("run Day87 复现任务")
 ```
 
 #### 2. 输入替换
@@ -114,11 +116,11 @@ print("run Day78 复现任务")
 参考解法骨架：
 
 ```python
-# Day78 - 输入替换
+# Day87 - 输入替换
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day78 输入替换")
+print("run Day87 输入替换")
 ```
 
 #### 3. 边界检查
@@ -130,11 +132,11 @@ print("run Day78 输入替换")
 参考解法骨架：
 
 ```python
-# Day78 - 边界检查
+# Day87 - 边界检查
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day78 边界检查")
+print("run Day87 边界检查")
 ```
 
 #### 4. 结果保存
@@ -146,39 +148,47 @@ print("run Day78 边界检查")
 参考解法骨架：
 
 ```python
-# Day78 - 结果保存
+# Day87 - 结果保存
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day78 结果保存")
+print("run Day87 结果保存")
 ```
 
 #### 5. 迁移说明
 
-题目：写一段说明：今天能力如何迁移到 Quant 项目核心。
+题目：写一段说明：今天能力如何迁移到 Agent 工具安全。
 
 讲解：把语法学习变成项目资产。
 
 参考解法骨架：
 
 ```python
-# Day78 - 迁移说明
+# Day87 - 迁移说明
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day78 迁移说明")
+print("run Day87 迁移说明")
 ```
 
 ## Hot100 / LeetCode 挑战（基础完成后）
 
 > 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
 
-- 关联题：[Unique Paths](https://leetcode.com/problems/unique-paths/)
+- 关联题：[Task Scheduler](https://leetcode.com/problems/task-scheduler/)
 - 难度：Medium
-- 题型：动态规划 / 网格
-- 为什么放在今天：指标与回测层之后，练二维状态表，和路径累计很接近。
-- 带注释解题提示：dp[r][c]=上方+左方；注释说明第一行和第一列只有一种走法。
+- 题型：贪心 / 计数
+- 为什么放在今天：工具 Schema 日练调度问题，和任务执行器概念相近。
+- 带注释解题提示：先统计最高频任务；用公式估算空槽，也可用堆模拟，注释说明冷却时间含义。
 - 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
+## 项目深化方向
+
+- 把 Agent 原型拆成 `tool_schema.py`、`router.py`、`executor.py`、`state.py` 和 `audit_log.py`。
+- 每个 tool 都要写清输入、输出、失败返回和人工审查条件。
+- 增加 3 个风险测试：参数缺失、工具失败、高风险动作需要确认。
+- 交付物至少包括：端到端 demo、执行日志、状态文件和 README 流程图。
+- 进阶目标：能解释 Agent 不是自动魔法，而是计划、执行、观察、审查的工程系统。
 
 ## Debug 记录模板
 

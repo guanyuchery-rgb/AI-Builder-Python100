@@ -64,6 +64,19 @@
     h4 { margin-top: 22px; }
     p, li { word-break: break-word; }
     a { color: var(--accent); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 15px;
+    }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+    }
+    th { background: #f5f5f7; }
     pre {
       overflow-x: auto;
       padding: 14px;
@@ -90,8 +103,19 @@
     <h1>AI Builder Python100</h1>
     <p class="sub">开源 100 天课程：Python + Data + Quant + LLM + Agent</p>
   </header>
-  <nav><a href="#01-Python环境与第一段程序">01-Python环境与第一段程序</a><a href="#02-变量、类型与输入输出">02-变量、类型与输入输出</a><a href="#03-分支结构与输入验证">03-分支结构与输入验证</a><a href="#04-循环、计数器与重复任务">04-循环、计数器与重复任务</a><a href="#05-列表与最小算法">05-列表与最小算法</a><a href="#06-函数、参数与返回值">06-函数、参数与返回值</a><a href="#07-字符串、字典与集合">07-字符串、字典与集合</a><a href="#08-文件读写与异常处理">08-文件读写与异常处理</a><a href="#09-模块、包与可复用脚本">09-模块、包与可复用脚本</a><a href="#10-零基础小项目学习记录CLI">10-零基础小项目学习记录CLI</a><a href="#11-CSV、JSON与结构化数据">11-CSV、JSON与结构化数据</a><a href="#12-正则表达式与文本解析">12-正则表达式与文本解析</a><a href="#13-列表推导式、迭代器与生成器">13-列表推导式、迭代器与生成器</a><a href="#14-日期时间与时间序列意识">14-日期时间与时间序列意识</a><a href="#15-面向对象与dataclass">15-面向对象与dataclass</a><a href="#16-argparse与命令行参数">16-argparse与命令行参数</a><a href="#17-logging与Debug记录">17-logging与Debug记录</a><a href="#18-pytest与最小测试">18-pytest与最小测试</a><a href="#19-类型标注、配置与输入边界">19-类型标注、配置与输入边界</a><a href="#20-工程化小项目DataCLI">20-工程化小项目DataCLI</a><a href="#21-项目骨架、README与Git工作流">21-项目骨架、README与Git工作流</a><a href="#22-虚拟环境与requirements">22-虚拟环境与requirements</a><a href="#23-pandas读取与数据体检">23-pandas读取与数据体检</a><a href="#24-缺失值、类型转换与清洗">24-缺失值、类型转换与清洗</a><a href="#25-分组聚合与业务指标">25-分组聚合与业务指标</a><a href="#26-表连接、映射与维表">26-表连接、映射与维表</a><a href="#27-时间序列、滚动窗口与移动平均">27-时间序列、滚动窗口与移动平均</a><a href="#28-NumPy数组与向量化计算">28-NumPy数组与向量化计算</a><a href="#29-统计指标、样本量与置信思维">29-统计指标、样本量与置信思维</a><a href="#30-可视化与Markdown报告">30-可视化与Markdown报告</a><a href="#31-SQLite本地数据库">31-SQLite本地数据库</a><a href="#32-SQL查询、Join与窗口意识">32-SQL查询、Join与窗口意识</a><a href="#33-配置文件与环境变量">33-配置文件与环境变量</a><a href="#34-数据校验与错误报告">34-数据校验与错误报告</a><a href="#35-数据分析Capstone本地指标管道">35-数据分析Capstone本地指标管道</a><a href="#36-自动化文件整理与批处理">36-自动化文件整理与批处理</a><a href="#37-HTTP、API与JSON数据获取">37-HTTP、API与JSON数据获取</a><a href="#38-可重试DataClient与失败处理">38-可重试DataClient与失败处理</a><a href="#39-FastAPI最小服务">39-FastAPI最小服务</a><a href="#40-Streamlit数据看板">40-Streamlit数据看板</a><a href="#41-Docker轻量运行说明">41-Docker轻量运行说明</a><a href="#42-GitHubActions最小CI">42-GitHubActions最小CI</a><a href="#43-模块打包与src布局">43-模块打包与src布局</a><a href="#44-开源README、示例与文档">44-开源README、示例与文档</a><a href="#45-应用交付CapstoneDataTool">45-应用交付CapstoneDataTool</a><a href="#46-Prompt模板与事实边界">46-Prompt模板与事实边界</a><a href="#47-结构化输出与Schema校验">47-结构化输出与Schema校验</a><a href="#48-LLM评估集与评分标准">48-LLM评估集与评分标准</a><a href="#49-Embedding与余弦相似度">49-Embedding与余弦相似度</a><a href="#50-本地笔记检索器">50-本地笔记检索器</a><a href="#51-RAG上下文打包与引用">51-RAG上下文打包与引用</a><a href="#52-隐私脱敏与安全边界">52-隐私脱敏与安全边界</a><a href="#53-缓存、成本与延迟控制">53-缓存、成本与延迟控制</a><a href="#54-AgentTool输入输出契约">54-AgentTool输入输出契约</a><a href="#55-工具路由与参数选择">55-工具路由与参数选择</a><a href="#56-Agent计划-执行-观察循环">56-Agent计划-执行-观察循环</a><a href="#57-Human-in-the-Loop审查点">57-Human-in-the-Loop审查点</a><a href="#58-Agent日志与可观测性">58-Agent日志与可观测性</a><a href="#59-LLMReportAssistant小项目">59-LLMReportAssistant小项目</a><a href="#60-LLMAgentCapstone本地知识助手">60-LLMAgentCapstone本地知识助手</a><a href="#61-行情数据适配器">61-行情数据适配器</a><a href="#62-收益率、波动率与最大回撤">62-收益率、波动率与最大回撤</a><a href="#63-交易信号与未来函数防护">63-交易信号与未来函数防护</a><a href="#64-最小回测引擎">64-最小回测引擎</a><a href="#65-手续费、滑点与现实约束">65-手续费、滑点与现实约束</a><a href="#66-仓位管理与风险预算">66-仓位管理与风险预算</a><a href="#67-组合指标与多资产权重">67-组合指标与多资产权重</a><a href="#68-因子分析最小框架">68-因子分析最小框架</a><a href="#69-事件研究EventStudy">69-事件研究EventStudy</a><a href="#70-Quant报告与图表输出">70-Quant报告与图表输出</a><a href="#71-配置驱动的策略实验">71-配置驱动的策略实验</a><a href="#72-量化函数测试与样例数据">72-量化函数测试与样例数据</a><a href="#73-SQLite保存回测结果">73-SQLite保存回测结果</a><a href="#74-Streamlit策略看板">74-Streamlit策略看板</a><a href="#75-QuantCapstoneResearchStarter">75-QuantCapstoneResearchStarter</a><a href="#76-项目一QuantResearchStarter骨架">76-项目一QuantResearchStarter骨架</a><a href="#77-项目一数据层实现">77-项目一数据层实现</a><a href="#78-项目一指标与回测层">78-项目一指标与回测层</a><a href="#79-项目一报告、测试与CLI">79-项目一报告、测试与CLI</a><a href="#80-项目一复盘与README打磨">80-项目一复盘与README打磨</a><a href="#81-项目二LLMReportAssistant骨架">81-项目二LLMReportAssistant骨架</a><a href="#82-项目二上下文打包与Prompt">82-项目二上下文打包与Prompt</a><a href="#83-项目二结构化解析与审查规则">83-项目二结构化解析与审查规则</a><a href="#84-项目二评估集与样例报告">84-项目二评估集与样例报告</a><a href="#85-项目二交付、复盘与公开说明">85-项目二交付、复盘与公开说明</a><a href="#86-项目三AgentToolPrototype骨架">86-项目三AgentToolPrototype骨架</a><a href="#87-项目三工具Schema与校验">87-项目三工具Schema与校验</a><a href="#88-项目三执行、错误恢复与日志">88-项目三执行、错误恢复与日志</a><a href="#89-项目三状态存储与人工审查">89-项目三状态存储与人工审查</a><a href="#90-项目三端到端演示与README">90-项目三端到端演示与README</a><a href="#91-项目四本地RAG笔记助手骨架">91-项目四本地RAG笔记助手骨架</a><a href="#92-项目四索引与检索层">92-项目四索引与检索层</a><a href="#93-项目四回答Prompt与来源引用">93-项目四回答Prompt与来源引用</a><a href="#94-项目四RAG评估与错误案例">94-项目四RAG评估与错误案例</a><a href="#95-项目四交付与复盘">95-项目四交付与复盘</a><a href="#96-GitHubPages与课程网站维护">96-GitHubPages与课程网站维护</a><a href="#97-作品集README与项目索引">97-作品集README与项目索引</a><a href="#98-项目讲解脚本与面试故事">98-项目讲解脚本与面试故事</a><a href="#99-错误库、片段库与长期维护">99-错误库、片段库与长期维护</a><a href="#100-总CapstoneAIBuilderPythonRoadmap">100-总CapstoneAIBuilderPythonRoadmap</a></nav>
-  <main><article id="01-Python环境与第一段程序"><h1>Day01 - Python 环境与第一段程序</h1>
+  <nav><a href="#growth-roadmap">成长路线图</a><a href="#001-Python环境与第一段程序">001-Python环境与第一段程序</a><a href="#002-变量、类型与输入输出">002-变量、类型与输入输出</a><a href="#003-分支结构与输入验证">003-分支结构与输入验证</a><a href="#004-循环、计数器与重复任务">004-循环、计数器与重复任务</a><a href="#005-列表与最小算法">005-列表与最小算法</a><a href="#006-函数、参数与返回值">006-函数、参数与返回值</a><a href="#007-字符串、字典与集合">007-字符串、字典与集合</a><a href="#008-文件读写与异常处理">008-文件读写与异常处理</a><a href="#009-模块、包与可复用脚本">009-模块、包与可复用脚本</a><a href="#010-零基础小项目学习记录CLI">010-零基础小项目学习记录CLI</a><a href="#011-CSV、JSON与结构化数据">011-CSV、JSON与结构化数据</a><a href="#012-正则表达式与文本解析">012-正则表达式与文本解析</a><a href="#013-列表推导式、迭代器与生成器">013-列表推导式、迭代器与生成器</a><a href="#014-日期时间与时间序列意识">014-日期时间与时间序列意识</a><a href="#015-面向对象与dataclass">015-面向对象与dataclass</a><a href="#016-argparse与命令行参数">016-argparse与命令行参数</a><a href="#017-logging与Debug记录">017-logging与Debug记录</a><a href="#018-pytest与最小测试">018-pytest与最小测试</a><a href="#019-类型标注、配置与输入边界">019-类型标注、配置与输入边界</a><a href="#020-工程化小项目DataCLI">020-工程化小项目DataCLI</a><a href="#021-项目骨架、README与Git工作流">021-项目骨架、README与Git工作流</a><a href="#022-虚拟环境与requirements">022-虚拟环境与requirements</a><a href="#023-pandas读取与数据体检">023-pandas读取与数据体检</a><a href="#024-缺失值、类型转换与清洗">024-缺失值、类型转换与清洗</a><a href="#025-分组聚合与业务指标">025-分组聚合与业务指标</a><a href="#026-表连接、映射与维表">026-表连接、映射与维表</a><a href="#027-时间序列、滚动窗口与移动平均">027-时间序列、滚动窗口与移动平均</a><a href="#028-NumPy数组与向量化计算">028-NumPy数组与向量化计算</a><a href="#029-统计指标、样本量与置信思维">029-统计指标、样本量与置信思维</a><a href="#030-可视化与Markdown报告">030-可视化与Markdown报告</a><a href="#031-SQLite本地数据库">031-SQLite本地数据库</a><a href="#032-SQL查询、Join与窗口意识">032-SQL查询、Join与窗口意识</a><a href="#033-配置文件与环境变量">033-配置文件与环境变量</a><a href="#034-数据校验与错误报告">034-数据校验与错误报告</a><a href="#035-数据分析Capstone本地指标管道">035-数据分析Capstone本地指标管道</a><a href="#036-自动化文件整理与批处理">036-自动化文件整理与批处理</a><a href="#037-HTTP、API与JSON数据获取">037-HTTP、API与JSON数据获取</a><a href="#038-可重试DataClient与失败处理">038-可重试DataClient与失败处理</a><a href="#039-FastAPI最小服务">039-FastAPI最小服务</a><a href="#040-Streamlit数据看板">040-Streamlit数据看板</a><a href="#041-Docker轻量运行说明">041-Docker轻量运行说明</a><a href="#042-GitHubActions最小CI">042-GitHubActions最小CI</a><a href="#043-模块打包与src布局">043-模块打包与src布局</a><a href="#044-开源README、示例与文档">044-开源README、示例与文档</a><a href="#045-应用交付CapstoneDataTool">045-应用交付CapstoneDataTool</a><a href="#046-Prompt模板与事实边界">046-Prompt模板与事实边界</a><a href="#047-结构化输出与Schema校验">047-结构化输出与Schema校验</a><a href="#048-LLM评估集与评分标准">048-LLM评估集与评分标准</a><a href="#049-Embedding与余弦相似度">049-Embedding与余弦相似度</a><a href="#050-本地笔记检索器">050-本地笔记检索器</a><a href="#051-RAG上下文打包与引用">051-RAG上下文打包与引用</a><a href="#052-隐私脱敏与安全边界">052-隐私脱敏与安全边界</a><a href="#053-缓存、成本与延迟控制">053-缓存、成本与延迟控制</a><a href="#054-AgentTool输入输出契约">054-AgentTool输入输出契约</a><a href="#055-工具路由与参数选择">055-工具路由与参数选择</a><a href="#056-Agent计划-执行-观察循环">056-Agent计划-执行-观察循环</a><a href="#057-Human-in-the-Loop审查点">057-Human-in-the-Loop审查点</a><a href="#058-Agent日志与可观测性">058-Agent日志与可观测性</a><a href="#059-LLMReportAssistant小项目">059-LLMReportAssistant小项目</a><a href="#060-LLMAgentCapstone本地知识助手">060-LLMAgentCapstone本地知识助手</a><a href="#061-行情数据适配器">061-行情数据适配器</a><a href="#062-收益率、波动率与最大回撤">062-收益率、波动率与最大回撤</a><a href="#063-交易信号与未来函数防护">063-交易信号与未来函数防护</a><a href="#064-最小回测引擎">064-最小回测引擎</a><a href="#065-手续费、滑点与现实约束">065-手续费、滑点与现实约束</a><a href="#066-仓位管理与风险预算">066-仓位管理与风险预算</a><a href="#067-组合指标与多资产权重">067-组合指标与多资产权重</a><a href="#068-因子分析最小框架">068-因子分析最小框架</a><a href="#069-事件研究EventStudy">069-事件研究EventStudy</a><a href="#070-Quant报告与图表输出">070-Quant报告与图表输出</a><a href="#071-配置驱动的策略实验">071-配置驱动的策略实验</a><a href="#072-量化函数测试与样例数据">072-量化函数测试与样例数据</a><a href="#073-SQLite保存回测结果">073-SQLite保存回测结果</a><a href="#074-Streamlit策略看板">074-Streamlit策略看板</a><a href="#075-QuantCapstoneResearchStarter">075-QuantCapstoneResearchStarter</a><a href="#076-项目一QuantResearchStarter骨架">076-项目一QuantResearchStarter骨架</a><a href="#077-项目一数据层实现">077-项目一数据层实现</a><a href="#078-项目一指标与回测层">078-项目一指标与回测层</a><a href="#079-项目一报告、测试与CLI">079-项目一报告、测试与CLI</a><a href="#080-项目一复盘与README打磨">080-项目一复盘与README打磨</a><a href="#081-项目二LLMReportAssistant骨架">081-项目二LLMReportAssistant骨架</a><a href="#082-项目二上下文打包与Prompt">082-项目二上下文打包与Prompt</a><a href="#083-项目二结构化解析与审查规则">083-项目二结构化解析与审查规则</a><a href="#084-项目二评估集与样例报告">084-项目二评估集与样例报告</a><a href="#085-项目二交付、复盘与公开说明">085-项目二交付、复盘与公开说明</a><a href="#086-项目三AgentToolPrototype骨架">086-项目三AgentToolPrototype骨架</a><a href="#087-项目三工具Schema与校验">087-项目三工具Schema与校验</a><a href="#088-项目三执行、错误恢复与日志">088-项目三执行、错误恢复与日志</a><a href="#089-项目三状态存储与人工审查">089-项目三状态存储与人工审查</a><a href="#090-项目三端到端演示与README">090-项目三端到端演示与README</a><a href="#091-项目四本地RAG笔记助手骨架">091-项目四本地RAG笔记助手骨架</a><a href="#092-项目四索引与检索层">092-项目四索引与检索层</a><a href="#093-项目四回答Prompt与来源引用">093-项目四回答Prompt与来源引用</a><a href="#094-项目四RAG评估与错误案例">094-项目四RAG评估与错误案例</a><a href="#095-项目四交付与复盘">095-项目四交付与复盘</a><a href="#096-GitHubPages与课程网站维护">096-GitHubPages与课程网站维护</a><a href="#097-作品集README与项目索引">097-作品集README与项目索引</a><a href="#098-项目讲解脚本与面试故事">098-项目讲解脚本与面试故事</a><a href="#099-错误库、片段库与长期维护">099-错误库、片段库与长期维护</a><a href="#100-总CapstoneAIBuilderPythonRoadmap">100-总CapstoneAIBuilderPythonRoadmap</a></nav>
+  <main><article id="growth-roadmap"><h1>成长路线图</h1>
+<p>这个仓库不是单纯的语法教程，而是一条从 Python 零基础走向 AI Builder 和 Quant Researcher 的成长路径。</p>
+<h2>阶段视图</h2>
+<table><thead><tr><th>阶段</th><th>主线</th><th>能力结果</th></tr></thead><tbody><tr><td>Day01-Day15</td><td>Python 基础</td><td>能写输入、判断、循环、列表、函数和简单数据对象</td></tr><tr><td>Day16-Day30</td><td>函数 + 数据结构</td><td>能把脚本组织成可运行、可测试、可复查的小工具</td></tr><tr><td>Day31-Day45</td><td>SQL + Linux</td><td>能使用本地数据库、命令行、API、Web 工具和轻量交付方式</td></tr><tr><td>Day46-Day60</td><td>项目开发</td><td>能搭建 LLM/RAG/Agent 原型，并记录评估、日志和边界</td></tr><tr><td>Day61-Day80</td><td>数据工程</td><td>能处理行情数据、指标、回测、结果存储和研究报告</td></tr><tr><td>Day81-Day100</td><td>Agent + Quant 准备</td><td>能把项目整理成作品集，并进入更系统的 Agent、Quant 和面试题训练</td></tr></tbody></table>
+<h2>双版本定位</h2>
+<ul>
+<li>GitHub 版：公开展示，保持简洁，适合外部访客快速理解路线、项目和练习。</li>
+<li>本地 Obsidian 版：学习实验室，记录真实错误、调试过程、学习日志和认知变化。</li>
+</ul>
+<h2>成长资产</h2>
+<p>公开仓库保留课程、练习、项目说明和精选学习方法。本地 Vault 保留更细的真实过程，例如语法错误、缩进错误、REPL 使用、变量命名误区和算法模式沉淀。</p>
+<p>这些真实错误不是噪音，而是长期学习资产。它们会逐步转化为 Debug 能力、工程判断和项目复盘能力。</p></article><article id="001-Python环境与第一段程序"><h1>Day01 - Python 环境与第一段程序</h1>
 <p>&gt; 阶段一：Python 零基础与语法地基</p>
 <h2>学习定位</h2>
 <p>运行 <code>.py</code> 文件并理解 print 输出。</p>
@@ -200,7 +224,7 @@ print(&quot;hello&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="02-变量、类型与输入输出"><h1>Day02 - 变量、类型与输入输出</h1>
+</ul></article><article id="002-变量、类型与输入输出"><h1>Day02 - 变量、类型与输入输出</h1>
 <p>&gt; 阶段一：Python 零基础与语法地基</p>
 <h2>学习定位</h2>
 <p>用变量保存输入，并完成基础类型转换。</p>
@@ -309,7 +333,7 @@ print(type(text))</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="03-分支结构与输入验证"><h1>Day03 - 分支结构与输入验证</h1>
+</ul></article><article id="003-分支结构与输入验证"><h1>Day03 - 分支结构与输入验证</h1>
 <p>&gt; 阶段一：Python 零基础与语法地基</p>
 <h2>学习定位</h2>
 <p>用 if/elif/else 做最小判断。</p>
@@ -438,7 +462,7 @@ else:
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="04-循环、计数器与重复任务"><h1>Day04 - 循环、计数器与重复任务</h1>
+</ul></article><article id="004-循环、计数器与重复任务"><h1>Day04 - 循环、计数器与重复任务</h1>
 <p>&gt; 阶段一：Python 零基础与语法地基</p>
 <h2>学习定位</h2>
 <p>用循环处理重复输出和累计。</p>
@@ -546,12 +570,11 @@ for day in range(1, 6):
 <li>[ ] 我能从零手打最小案例。</li>
 <li>[ ] 我完成了 7 道简单路线题和 5 道基础巩固题。</li>
 <li>[ ] 我把结果保存成可复查产物。</li>
-<li>[ ] 我没有暴露真实身份、账号、密钥或私人数据。</li>
 </ul>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="05-列表与最小算法"><h1>Day05 - 列表与最小算法</h1>
+</ul></article><article id="005-列表与最小算法"><h1>Day05 - 列表与最小算法</h1>
 <p>&gt; 阶段一：Python 零基础与语法地基</p>
 <h2>学习定位</h2>
 <p>用列表保存一组数据，并完成求和、最大值、计数。</p>
@@ -671,7 +694,7 @@ print(count)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="06-函数、参数与返回值"><h1>Day06 - 函数、参数与返回值</h1>
+</ul></article><article id="006-函数、参数与返回值"><h1>Day06 - 函数、参数与返回值</h1>
 <p>&gt; 阶段一：Python 零基础与语法地基</p>
 <h2>学习定位</h2>
 <p>把重复逻辑封装成可复用函数。</p>
@@ -794,7 +817,7 @@ if __name__ == &quot;__main__&quot;:
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="07-字符串、字典与集合"><h1>Day07 - 字符串、字典与集合</h1>
+</ul></article><article id="007-字符串、字典与集合"><h1>Day07 - 字符串、字典与集合</h1>
 <p>&gt; 阶段一：Python 零基础与语法地基</p>
 <h2>学习定位</h2>
 <p>处理文本字段、键值数据和去重。</p>
@@ -907,7 +930,7 @@ print(normalize_tag(&quot; Python Basics &quot;))</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="08-文件读写与异常处理"><h1>Day08 - 文件读写与异常处理</h1>
+</ul></article><article id="008-文件读写与异常处理"><h1>Day08 - 文件读写与异常处理</h1>
 <p>&gt; 阶段一：Python 零基础与语法地基</p>
 <h2>学习定位</h2>
 <p>读写文本文件，并处理文件不存在的情况。</p>
@@ -1021,7 +1044,7 @@ Path(&quot;report.md&quot;).write_text(&quot;# Report\n\nDone.\n&quot;, encoding
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="09-模块、包与可复用脚本"><h1>Day09 - 模块、包与可复用脚本</h1>
+</ul></article><article id="009-模块、包与可复用脚本"><h1>Day09 - 模块、包与可复用脚本</h1>
 <p>&gt; 阶段一：Python 零基础与语法地基</p>
 <h2>学习定位</h2>
 <p>把代码拆成模块，避免所有逻辑写在一个文件。</p>
@@ -1144,7 +1167,7 @@ print(&quot;ok&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="10-零基础小项目学习记录CLI"><h1>Day10 - 零基础小项目：学习记录 CLI</h1>
+</ul></article><article id="010-零基础小项目学习记录CLI"><h1>Day10 - 零基础小项目：学习记录 CLI</h1>
 <p>&gt; 阶段一：Python 零基础与语法地基</p>
 <h2>学习定位</h2>
 <p>串联输入、函数、文件和异常，完成第一个小工具。</p>
@@ -1260,7 +1283,7 @@ for note in notes:
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="11-CSV、JSON与结构化数据"><h1>Day11 - CSV、JSON 与结构化数据</h1>
+</ul></article><article id="011-CSV、JSON与结构化数据"><h1>Day11 - CSV、JSON 与结构化数据</h1>
 <p>&gt; 阶段二：Python 工程化基本功</p>
 <h2>学习定位</h2>
 <p>读写 CSV/JSON，理解结构化文件。</p>
@@ -1393,7 +1416,7 @@ print(&quot;run Day11 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="12-正则表达式与文本解析"><h1>Day12 - 正则表达式与文本解析</h1>
+</ul></article><article id="012-正则表达式与文本解析"><h1>Day12 - 正则表达式与文本解析</h1>
 <p>&gt; 阶段二：Python 工程化基本功</p>
 <h2>学习定位</h2>
 <p>从文本中提取固定模式的信息。</p>
@@ -1519,7 +1542,7 @@ print(&quot;run Day12 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="13-列表推导式、迭代器与生成器"><h1>Day13 - 列表推导式、迭代器与生成器</h1>
+</ul></article><article id="013-列表推导式、迭代器与生成器"><h1>Day13 - 列表推导式、迭代器与生成器</h1>
 <p>&gt; 阶段二：Python 工程化基本功</p>
 <h2>学习定位</h2>
 <p>用更清晰的方式处理序列数据。</p>
@@ -1651,7 +1674,7 @@ print(&quot;run Day13 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="14-日期时间与时间序列意识"><h1>Day14 - 日期时间与时间序列意识</h1>
+</ul></article><article id="014-日期时间与时间序列意识"><h1>Day14 - 日期时间与时间序列意识</h1>
 <p>&gt; 阶段二：Python 工程化基本功</p>
 <h2>学习定位</h2>
 <p>处理日期字符串、排序和时间间隔。</p>
@@ -1780,7 +1803,7 @@ print(&quot;run Day14 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="15-面向对象与dataclass"><h1>Day15 - 面向对象与 dataclass</h1>
+</ul></article><article id="015-面向对象与dataclass"><h1>Day15 - 面向对象与 dataclass</h1>
 <p>&gt; 阶段二：Python 工程化基本功</p>
 <h2>学习定位</h2>
 <p>用对象表达稳定的数据结构。</p>
@@ -1910,7 +1933,7 @@ print(&quot;run Day15 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="16-argparse与命令行参数"><h1>Day16 - argparse 与命令行参数</h1>
+</ul></article><article id="016-argparse与命令行参数"><h1>Day16 - argparse 与命令行参数</h1>
 <p>&gt; 阶段二：Python 工程化基本功</p>
 <h2>学习定位</h2>
 <p>让脚本支持从终端传参。</p>
@@ -2040,7 +2063,7 @@ print(&quot;run Day16 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="17-logging与Debug记录"><h1>Day17 - logging 与 Debug 记录</h1>
+</ul></article><article id="017-logging与Debug记录"><h1>Day17 - logging 与 Debug 记录</h1>
 <p>&gt; 阶段二：Python 工程化基本功</p>
 <h2>学习定位</h2>
 <p>用日志记录运行过程和错误。</p>
@@ -2171,7 +2194,7 @@ print(&quot;run Day17 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="18-pytest与最小测试"><h1>Day18 - pytest 与最小测试</h1>
+</ul></article><article id="018-pytest与最小测试"><h1>Day18 - pytest 与最小测试</h1>
 <p>&gt; 阶段二：Python 工程化基本功</p>
 <h2>学习定位</h2>
 <p>用测试保护函数行为。</p>
@@ -2304,7 +2327,7 @@ print(&quot;run Day18 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.pytest.org/">pytest 文档</a></li>
-</ul></article><article id="19-类型标注、配置与输入边界"><h1>Day19 - 类型标注、配置与输入边界</h1>
+</ul></article><article id="019-类型标注、配置与输入边界"><h1>Day19 - 类型标注、配置与输入边界</h1>
 <p>&gt; 阶段二：Python 工程化基本功</p>
 <h2>学习定位</h2>
 <p>用类型和配置让代码更可读。</p>
@@ -2434,7 +2457,7 @@ print(&quot;run Day19 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="20-工程化小项目DataCLI"><h1>Day20 - 工程化小项目：Data CLI</h1>
+</ul></article><article id="020-工程化小项目DataCLI"><h1>Day20 - 工程化小项目：Data CLI</h1>
 <p>&gt; 阶段二：Python 工程化基本功</p>
 <h2>学习定位</h2>
 <p>把文件、CLI、日志、测试串成可交付脚本。</p>
@@ -2563,7 +2586,7 @@ print(&quot;run Day20 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="21-项目骨架、README与Git工作流"><h1>Day21 - 项目骨架、README 与 Git 工作流</h1>
+</ul></article><article id="021-项目骨架、README与Git工作流"><h1>Day21 - 项目骨架、README 与 Git 工作流</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>建立开源项目的最小结构。</p>
@@ -2703,7 +2726,7 @@ print(&quot;run Day21 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="22-虚拟环境与requirements"><h1>Day22 - 虚拟环境与 requirements</h1>
+</ul></article><article id="022-虚拟环境与requirements"><h1>Day22 - 虚拟环境与 requirements</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>固定依赖，保证别人能复现运行。</p>
@@ -2841,7 +2864,7 @@ print(&quot;run Day22 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/library/venv.html">venv 文档</a></li>
-</ul></article><article id="23-pandas读取与数据体检"><h1>Day23 - pandas 读取与数据体检</h1>
+</ul></article><article id="023-pandas读取与数据体检"><h1>Day23 - pandas 读取与数据体检</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>读取表格并检查行列、类型、缺失值。</p>
@@ -2982,7 +3005,7 @@ print(&quot;run Day23 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://pandas.pydata.org/docs/">pandas 文档</a></li>
-</ul></article><article id="24-缺失值、类型转换与清洗"><h1>Day24 - 缺失值、类型转换与清洗</h1>
+</ul></article><article id="024-缺失值、类型转换与清洗"><h1>Day24 - 缺失值、类型转换与清洗</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>把脏表变成可计算表。</p>
@@ -3122,7 +3145,7 @@ print(&quot;run Day24 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="25-分组聚合与业务指标"><h1>Day25 - 分组聚合与业务指标</h1>
+</ul></article><article id="025-分组聚合与业务指标"><h1>Day25 - 分组聚合与业务指标</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>按类别计算 count、mean、std。</p>
@@ -3260,7 +3283,7 @@ print(&quot;run Day25 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="26-表连接、映射与维表"><h1>Day26 - 表连接、映射与维表</h1>
+</ul></article><article id="026-表连接、映射与维表"><h1>Day26 - 表连接、映射与维表</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>把事实表和维度表连接起来。</p>
@@ -3399,7 +3422,7 @@ print(&quot;run Day26 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="27-时间序列、滚动窗口与移动平均"><h1>Day27 - 时间序列、滚动窗口与移动平均</h1>
+</ul></article><article id="027-时间序列、滚动窗口与移动平均"><h1>Day27 - 时间序列、滚动窗口与移动平均</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>处理按时间排序的数据和 rolling 指标。</p>
@@ -3538,7 +3561,7 @@ print(&quot;run Day27 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="28-NumPy数组与向量化计算"><h1>Day28 - NumPy 数组与向量化计算</h1>
+</ul></article><article id="028-NumPy数组与向量化计算"><h1>Day28 - NumPy 数组与向量化计算</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>用数组方式计算收益率和统计量。</p>
@@ -3677,7 +3700,7 @@ print(&quot;run Day28 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://numpy.org/doc/stable/">NumPy 文档</a></li>
-</ul></article><article id="29-统计指标、样本量与置信思维"><h1>Day29 - 统计指标、样本量与置信思维</h1>
+</ul></article><article id="029-统计指标、样本量与置信思维"><h1>Day29 - 统计指标、样本量与置信思维</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>把均值、波动、标准误写成可解释函数。</p>
@@ -3817,7 +3840,7 @@ print(&quot;run Day29 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="30-可视化与Markdown报告"><h1>Day30 - 可视化与 Markdown 报告</h1>
+</ul></article><article id="030-可视化与Markdown报告"><h1>Day30 - 可视化与 Markdown 报告</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>保存图表和文字报告。</p>
@@ -3957,7 +3980,7 @@ print(&quot;run Day30 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="31-SQLite本地数据库"><h1>Day31 - SQLite 本地数据库</h1>
+</ul></article><article id="031-SQLite本地数据库"><h1>Day31 - SQLite 本地数据库</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>把结构化结果保存到轻量数据库。</p>
@@ -4097,7 +4120,7 @@ print(&quot;run Day31 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/library/sqlite3.html">sqlite3 文档</a></li>
-</ul></article><article id="32-SQL查询、Join与窗口意识"><h1>Day32 - SQL 查询、Join 与窗口意识</h1>
+</ul></article><article id="032-SQL查询、Join与窗口意识"><h1>Day32 - SQL 查询、Join 与窗口意识</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>用 SQL 回答分析问题。</p>
@@ -4241,7 +4264,7 @@ print(&quot;run Day32 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="33-配置文件与环境变量"><h1>Day33 - 配置文件与环境变量</h1>
+</ul></article><article id="033-配置文件与环境变量"><h1>Day33 - 配置文件与环境变量</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>把路径、参数和模式从代码里拿出来。</p>
@@ -4381,7 +4404,7 @@ print(&quot;run Day33 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="34-数据校验与错误报告"><h1>Day34 - 数据校验与错误报告</h1>
+</ul></article><article id="034-数据校验与错误报告"><h1>Day34 - 数据校验与错误报告</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>把字段、类型、行数检查写成函数。</p>
@@ -4524,7 +4547,7 @@ print(&quot;run Day34 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="35-数据分析Capstone本地指标管道"><h1>Day35 - 数据分析 Capstone：本地指标管道</h1>
+</ul></article><article id="035-数据分析Capstone本地指标管道"><h1>Day35 - 数据分析 Capstone：本地指标管道</h1>
 <p>&gt; 阶段三：数据分析与本地数据系统</p>
 <h2>学习定位</h2>
 <p>串联读取、清洗、聚合、报告。</p>
@@ -4663,7 +4686,7 @@ print(&quot;run Day35 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="36-自动化文件整理与批处理"><h1>Day36 - 自动化文件整理与批处理</h1>
+</ul></article><article id="036-自动化文件整理与批处理"><h1>Day36 - 自动化文件整理与批处理</h1>
 <p>&gt; 阶段四：应用接口、自动化与交付</p>
 <h2>学习定位</h2>
 <p>批量处理文件并生成清单。</p>
@@ -4802,7 +4825,7 @@ print(&quot;run Day36 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="37-HTTP、API与JSON数据获取"><h1>Day37 - HTTP、API 与 JSON 数据获取</h1>
+</ul></article><article id="037-HTTP、API与JSON数据获取"><h1>Day37 - HTTP、API 与 JSON 数据获取</h1>
 <p>&gt; 阶段四：应用接口、自动化与交付</p>
 <h2>学习定位</h2>
 <p>请求 API 并解析 JSON。</p>
@@ -4942,7 +4965,7 @@ print(&quot;run Day37 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="38-可重试DataClient与失败处理"><h1>Day38 - 可重试 Data Client 与失败处理</h1>
+</ul></article><article id="038-可重试DataClient与失败处理"><h1>Day38 - 可重试 Data Client 与失败处理</h1>
 <p>&gt; 阶段四：应用接口、自动化与交付</p>
 <h2>学习定位</h2>
 <p>给网络请求加超时、重试、错误返回。</p>
@@ -5079,7 +5102,7 @@ print(&quot;run Day38 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="39-FastAPI最小服务"><h1>Day39 - FastAPI 最小服务</h1>
+</ul></article><article id="039-FastAPI最小服务"><h1>Day39 - FastAPI 最小服务</h1>
 <p>&gt; 阶段四：应用接口、自动化与交付</p>
 <h2>学习定位</h2>
 <p>把函数暴露成 HTTP API。</p>
@@ -5223,7 +5246,7 @@ print(&quot;run Day39 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="40-Streamlit数据看板"><h1>Day40 - Streamlit 数据看板</h1>
+</ul></article><article id="040-Streamlit数据看板"><h1>Day40 - Streamlit 数据看板</h1>
 <p>&gt; 阶段四：应用接口、自动化与交付</p>
 <h2>学习定位</h2>
 <p>把 CSV 和指标显示成页面。</p>
@@ -5365,7 +5388,7 @@ print(&quot;run Day40 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="41-Docker轻量运行说明"><h1>Day41 - Docker 轻量运行说明</h1>
+</ul></article><article id="041-Docker轻量运行说明"><h1>Day41 - Docker 轻量运行说明</h1>
 <p>&gt; 阶段四：应用接口、自动化与交付</p>
 <h2>学习定位</h2>
 <p>用 Dockerfile 记录运行环境。</p>
@@ -5504,7 +5527,7 @@ print(&quot;run Day41 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="42-GitHubActions最小CI"><h1>Day42 - GitHub Actions 最小 CI</h1>
+</ul></article><article id="042-GitHubActions最小CI"><h1>Day42 - GitHub Actions 最小 CI</h1>
 <p>&gt; 阶段四：应用接口、自动化与交付</p>
 <h2>学习定位</h2>
 <p>让 GitHub 自动运行测试。</p>
@@ -5649,7 +5672,7 @@ print(&quot;run Day42 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="43-模块打包与src布局"><h1>Day43 - 模块打包与 src 布局</h1>
+</ul></article><article id="043-模块打包与src布局"><h1>Day43 - 模块打包与 src 布局</h1>
 <p>&gt; 阶段四：应用接口、自动化与交付</p>
 <h2>学习定位</h2>
 <p>把代码放进 src 并支持导入。</p>
@@ -5792,7 +5815,7 @@ print(&quot;run Day43 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="44-开源README、示例与文档"><h1>Day44 - 开源 README、示例与文档</h1>
+</ul></article><article id="044-开源README、示例与文档"><h1>Day44 - 开源 README、示例与文档</h1>
 <p>&gt; 阶段四：应用接口、自动化与交付</p>
 <h2>学习定位</h2>
 <p>写别人能看懂的项目入口。</p>
@@ -5937,7 +5960,7 @@ print(&quot;run Day44 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="45-应用交付CapstoneDataTool"><h1>Day45 - 应用交付 Capstone：Data Tool</h1>
+</ul></article><article id="045-应用交付CapstoneDataTool"><h1>Day45 - 应用交付 Capstone：Data Tool</h1>
 <p>&gt; 阶段四：应用接口、自动化与交付</p>
 <h2>学习定位</h2>
 <p>把 CLI、API、页面、CI 组成最小交付。</p>
@@ -6082,7 +6105,7 @@ print(&quot;run Day45 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="46-Prompt模板与事实边界"><h1>Day46 - Prompt 模板与事实边界</h1>
+</ul></article><article id="046-Prompt模板与事实边界"><h1>Day46 - Prompt 模板与事实边界</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>把 prompt 写成可复用模板。</p>
@@ -6220,7 +6243,7 @@ print(&quot;run Day46 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="47-结构化输出与Schema校验"><h1>Day47 - 结构化输出与 Schema 校验</h1>
+</ul></article><article id="047-结构化输出与Schema校验"><h1>Day47 - 结构化输出与 Schema 校验</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>让模型输出可被程序检查。</p>
@@ -6357,7 +6380,7 @@ print(&quot;run Day47 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="48-LLM评估集与评分标准"><h1>Day48 - LLM 评估集与评分标准</h1>
+</ul></article><article id="048-LLM评估集与评分标准"><h1>Day48 - LLM 评估集与评分标准</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>用固定样例评估 prompt/tool。</p>
@@ -6495,7 +6518,7 @@ print(&quot;run Day48 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="49-Embedding与余弦相似度"><h1>Day49 - Embedding 与余弦相似度</h1>
+</ul></article><article id="049-Embedding与余弦相似度"><h1>Day49 - Embedding 与余弦相似度</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>理解向量检索的数学基础。</p>
@@ -6637,7 +6660,7 @@ print(&quot;run Day49 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="50-本地笔记检索器"><h1>Day50 - 本地笔记检索器</h1>
+</ul></article><article id="050-本地笔记检索器"><h1>Day50 - 本地笔记检索器</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>从 Markdown 片段里找相关内容。</p>
@@ -6777,7 +6800,7 @@ print(&quot;run Day50 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="51-RAG上下文打包与引用"><h1>Day51 - RAG 上下文打包与引用</h1>
+</ul></article><article id="051-RAG上下文打包与引用"><h1>Day51 - RAG 上下文打包与引用</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>把检索结果组织成回答上下文。</p>
@@ -6917,7 +6940,7 @@ print(&quot;run Day51 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="52-隐私脱敏与安全边界"><h1>Day52 - 隐私脱敏与安全边界</h1>
+</ul></article><article id="052-隐私脱敏与安全边界"><h1>Day52 - 隐私脱敏与安全边界</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>在公开仓库和 prompt 前脱敏。</p>
@@ -7054,7 +7077,7 @@ print(&quot;run Day52 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="53-缓存、成本与延迟控制"><h1>Day53 - 缓存、成本与延迟控制</h1>
+</ul></article><article id="053-缓存、成本与延迟控制"><h1>Day53 - 缓存、成本与延迟控制</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>减少重复请求和等待时间。</p>
@@ -7191,7 +7214,7 @@ print(&quot;run Day53 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="54-AgentTool输入输出契约"><h1>Day54 - Agent Tool 输入输出契约</h1>
+</ul></article><article id="054-AgentTool输入输出契约"><h1>Day54 - Agent Tool 输入输出契约</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>把函数设计成 Agent 可调用工具。</p>
@@ -7333,7 +7356,7 @@ print(&quot;run Day54 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="55-工具路由与参数选择"><h1>Day55 - 工具路由与参数选择</h1>
+</ul></article><article id="055-工具路由与参数选择"><h1>Day55 - 工具路由与参数选择</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>根据任务选择不同工具。</p>
@@ -7475,7 +7498,7 @@ print(&quot;run Day55 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="56-Agent计划-执行-观察循环"><h1>Day56 - Agent 计划-执行-观察循环</h1>
+</ul></article><article id="056-Agent计划-执行-观察循环"><h1>Day56 - Agent 计划-执行-观察循环</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>用状态机理解 Agent 流程。</p>
@@ -7617,7 +7640,7 @@ print(&quot;run Day56 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="57-Human-in-the-Loop审查点"><h1>Day57 - Human-in-the-Loop 审查点</h1>
+</ul></article><article id="057-Human-in-the-Loop审查点"><h1>Day57 - Human-in-the-Loop 审查点</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>高风险步骤必须人工确认。</p>
@@ -7759,7 +7782,7 @@ print(&quot;run Day57 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="58-Agent日志与可观测性"><h1>Day58 - Agent 日志与可观测性</h1>
+</ul></article><article id="058-Agent日志与可观测性"><h1>Day58 - Agent 日志与可观测性</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>记录每次工具调用和结果。</p>
@@ -7901,7 +7924,7 @@ print(&quot;run Day58 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="59-LLMReportAssistant小项目"><h1>Day59 - LLM Report Assistant 小项目</h1>
+</ul></article><article id="059-LLMReportAssistant小项目"><h1>Day59 - LLM Report Assistant 小项目</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>生成带风险提示的结构化报告。</p>
@@ -8039,7 +8062,7 @@ print(&quot;run Day59 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="60-LLMAgentCapstone本地知识助手"><h1>Day60 - LLM/Agent Capstone：本地知识助手</h1>
+</ul></article><article id="060-LLMAgentCapstone本地知识助手"><h1>Day60 - LLM/Agent Capstone：本地知识助手</h1>
 <p>&gt; 阶段五：LLM / RAG / Agent 基础</p>
 <h2>学习定位</h2>
 <p>串联检索、prompt、schema、日志。</p>
@@ -8186,7 +8209,7 @@ print(&quot;run Day60 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="61-行情数据适配器"><h1>Day61 - 行情数据适配器</h1>
+</ul></article><article id="061-行情数据适配器"><h1>Day61 - 行情数据适配器</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>统一读取不同行情数据源。</p>
@@ -8326,7 +8349,7 @@ print(&quot;run Day61 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="62-收益率、波动率与最大回撤"><h1>Day62 - 收益率、波动率与最大回撤</h1>
+</ul></article><article id="062-收益率、波动率与最大回撤"><h1>Day62 - 收益率、波动率与最大回撤</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>计算最基础风险收益指标。</p>
@@ -8466,7 +8489,7 @@ print(&quot;run Day62 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="63-交易信号与未来函数防护"><h1>Day63 - 交易信号与未来函数防护</h1>
+</ul></article><article id="063-交易信号与未来函数防护"><h1>Day63 - 交易信号与未来函数防护</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>用历史数据生成信号并 shift。</p>
@@ -8603,7 +8626,7 @@ print(&quot;run Day63 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="64-最小回测引擎"><h1>Day64 - 最小回测引擎</h1>
+</ul></article><article id="064-最小回测引擎"><h1>Day64 - 最小回测引擎</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>把持仓和收益合成净值曲线。</p>
@@ -8743,7 +8766,7 @@ print(&quot;run Day64 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="65-手续费、滑点与现实约束"><h1>Day65 - 手续费、滑点与现实约束</h1>
+</ul></article><article id="065-手续费、滑点与现实约束"><h1>Day65 - 手续费、滑点与现实约束</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>给回测加入简单成本。</p>
@@ -8880,7 +8903,7 @@ print(&quot;run Day65 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="66-仓位管理与风险预算"><h1>Day66 - 仓位管理与风险预算</h1>
+</ul></article><article id="066-仓位管理与风险预算"><h1>Day66 - 仓位管理与风险预算</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>限制单资产仓位和总风险。</p>
@@ -9020,7 +9043,7 @@ print(&quot;run Day66 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="67-组合指标与多资产权重"><h1>Day67 - 组合指标与多资产权重</h1>
+</ul></article><article id="067-组合指标与多资产权重"><h1>Day67 - 组合指标与多资产权重</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>计算组合收益和权重约束。</p>
@@ -9160,7 +9183,7 @@ print(&quot;run Day67 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="68-因子分析最小框架"><h1>Day68 - 因子分析最小框架</h1>
+</ul></article><article id="068-因子分析最小框架"><h1>Day68 - 因子分析最小框架</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>按因子分组观察未来收益。</p>
@@ -9300,7 +9323,7 @@ print(&quot;run Day68 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="69-事件研究EventStudy"><h1>Day69 - 事件研究 Event Study</h1>
+</ul></article><article id="069-事件研究EventStudy"><h1>Day69 - 事件研究 Event Study</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>观察事件日前后窗口收益。</p>
@@ -9440,7 +9463,7 @@ print(&quot;run Day69 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="70-Quant报告与图表输出"><h1>Day70 - Quant 报告与图表输出</h1>
+</ul></article><article id="070-Quant报告与图表输出"><h1>Day70 - Quant 报告与图表输出</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>把策略指标写成可读报告。</p>
@@ -9580,7 +9603,7 @@ print(&quot;run Day70 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="71-配置驱动的策略实验"><h1>Day71 - 配置驱动的策略实验</h1>
+</ul></article><article id="071-配置驱动的策略实验"><h1>Day71 - 配置驱动的策略实验</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>用 config 控制窗口、成本、路径。</p>
@@ -9720,7 +9743,7 @@ print(&quot;run Day71 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="72-量化函数测试与样例数据"><h1>Day72 - 量化函数测试与样例数据</h1>
+</ul></article><article id="072-量化函数测试与样例数据"><h1>Day72 - 量化函数测试与样例数据</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>给指标、信号、回测写测试。</p>
@@ -9860,7 +9883,7 @@ print(&quot;run Day72 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="73-SQLite保存回测结果"><h1>Day73 - SQLite 保存回测结果</h1>
+</ul></article><article id="073-SQLite保存回测结果"><h1>Day73 - SQLite 保存回测结果</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>把实验结果存入本地数据库。</p>
@@ -10000,7 +10023,7 @@ print(&quot;run Day73 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="74-Streamlit策略看板"><h1>Day74 - Streamlit 策略看板</h1>
+</ul></article><article id="074-Streamlit策略看板"><h1>Day74 - Streamlit 策略看板</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>本地展示策略指标和曲线。</p>
@@ -10142,7 +10165,7 @@ print(&quot;run Day74 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="75-QuantCapstoneResearchStarter"><h1>Day75 - Quant Capstone：Research Starter</h1>
+</ul></article><article id="075-QuantCapstoneResearchStarter"><h1>Day75 - Quant Capstone：Research Starter</h1>
 <p>&gt; 阶段六：Quant 研究与回测基础</p>
 <h2>学习定位</h2>
 <p>整合数据、指标、回测、报告。</p>
@@ -10287,7 +10310,7 @@ print(&quot;run Day75 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="76-项目一QuantResearchStarter骨架"><h1>Day76 - 项目一：QuantResearchStarter 骨架</h1>
+</ul></article><article id="076-项目一QuantResearchStarter骨架"><h1>Day76 - 项目一：QuantResearchStarter 骨架</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>搭建正式项目一目录。</p>
@@ -10410,6 +10433,14 @@ print(&quot;run Day76 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：每个中心扩展时每找到一次就计数；注释说明返回数量，不是最长字符串。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把脚本拆成 <code>data_layer.py</code>、<code>metrics.py</code>、<code>backtest.py</code> 和 <code>report.py</code>，每个文件只负责一类事情。</li>
+<li>增加 3 个最小测试：空数据、单一资产、多资产权重异常。</li>
+<li>所有样例数据使用虚拟行情，不写真实账户、真实持仓或私人交易记录。</li>
+<li>交付物至少包括：可运行命令、样例输出、Markdown 报告和 README 复盘。</li>
+<li>进阶目标：能解释收益率、波动率、最大回撤、手续费和未来函数风险。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -10427,7 +10458,7 @@ print(&quot;run Day76 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="77-项目一数据层实现"><h1>Day77 - 项目一：数据层实现</h1>
+</ul></article><article id="077-项目一数据层实现"><h1>Day77 - 项目一：数据层实现</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>实现 load/clean/validate。</p>
@@ -10547,6 +10578,14 @@ print(&quot;run Day77 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：dp[i] 表示前 i 个字符的解码数；注释说明单字符和双字符分别何时有效。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把脚本拆成 <code>data_layer.py</code>、<code>metrics.py</code>、<code>backtest.py</code> 和 <code>report.py</code>，每个文件只负责一类事情。</li>
+<li>增加 3 个最小测试：空数据、单一资产、多资产权重异常。</li>
+<li>所有样例数据使用虚拟行情，不写真实账户、真实持仓或私人交易记录。</li>
+<li>交付物至少包括：可运行命令、样例输出、Markdown 报告和 README 复盘。</li>
+<li>进阶目标：能解释收益率、波动率、最大回撤、手续费和未来函数风险。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -10564,7 +10603,7 @@ print(&quot;run Day77 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="78-项目一指标与回测层"><h1>Day78 - 项目一：指标与回测层</h1>
+</ul></article><article id="078-项目一指标与回测层"><h1>Day78 - 项目一：指标与回测层</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>实现 metrics/backtest。</p>
@@ -10687,6 +10726,14 @@ print(&quot;run Day78 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：dp[r][c]=上方+左方；注释说明第一行和第一列只有一种走法。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把脚本拆成 <code>data_layer.py</code>、<code>metrics.py</code>、<code>backtest.py</code> 和 <code>report.py</code>，每个文件只负责一类事情。</li>
+<li>增加 3 个最小测试：空数据、单一资产、多资产权重异常。</li>
+<li>所有样例数据使用虚拟行情，不写真实账户、真实持仓或私人交易记录。</li>
+<li>交付物至少包括：可运行命令、样例输出、Markdown 报告和 README 复盘。</li>
+<li>进阶目标：能解释收益率、波动率、最大回撤、手续费和未来函数风险。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -10704,7 +10751,7 @@ print(&quot;run Day78 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="79-项目一报告、测试与CLI"><h1>Day79 - 项目一：报告、测试与 CLI</h1>
+</ul></article><article id="079-项目一报告、测试与CLI"><h1>Day79 - 项目一：报告、测试与 CLI</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>完成项目一可运行交付。</p>
@@ -10824,6 +10871,14 @@ print(&quot;run Day79 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：维护 farthest；如果当前位置超过 farthest 就失败，注释说明不用真的模拟每条路径。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把脚本拆成 <code>data_layer.py</code>、<code>metrics.py</code>、<code>backtest.py</code> 和 <code>report.py</code>，每个文件只负责一类事情。</li>
+<li>增加 3 个最小测试：空数据、单一资产、多资产权重异常。</li>
+<li>所有样例数据使用虚拟行情，不写真实账户、真实持仓或私人交易记录。</li>
+<li>交付物至少包括：可运行命令、样例输出、Markdown 报告和 README 复盘。</li>
+<li>进阶目标：能解释收益率、波动率、最大回撤、手续费和未来函数风险。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -10841,7 +10896,7 @@ print(&quot;run Day79 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="80-项目一复盘与README打磨"><h1>Day80 - 项目一：复盘与 README 打磨</h1>
+</ul></article><article id="080-项目一复盘与README打磨"><h1>Day80 - 项目一：复盘与 README 打磨</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>补项目说明、限制和下一步。</p>
@@ -10969,6 +11024,14 @@ print(&quot;run Day80 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：dp[i] 表示前 i 个字符能否被切分；注释说明枚举 j 时检查 s[j:i]。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把脚本拆成 <code>data_layer.py</code>、<code>metrics.py</code>、<code>backtest.py</code> 和 <code>report.py</code>，每个文件只负责一类事情。</li>
+<li>增加 3 个最小测试：空数据、单一资产、多资产权重异常。</li>
+<li>所有样例数据使用虚拟行情，不写真实账户、真实持仓或私人交易记录。</li>
+<li>交付物至少包括：可运行命令、样例输出、Markdown 报告和 README 复盘。</li>
+<li>进阶目标：能解释收益率、波动率、最大回撤、手续费和未来函数风险。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -10986,7 +11049,7 @@ print(&quot;run Day80 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="81-项目二LLMReportAssistant骨架"><h1>Day81 - 项目二：LLMReportAssistant 骨架</h1>
+</ul></article><article id="081-项目二LLMReportAssistant骨架"><h1>Day81 - 项目二：LLMReportAssistant 骨架</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>搭建正式项目二目录。</p>
@@ -11107,6 +11170,14 @@ print(&quot;run Day81 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：DFS 传入 start、path、remaining；注释说明同一个数字可重复使用所以递归仍传 i。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 LLM 报告助手拆成 <code>context.py</code>、<code>prompt.py</code>、<code>parser.py</code>、<code>review.py</code> 和 <code>evals.py</code>。</li>
+<li>每个输出都要有来源、结构化字段和失败原因，不能只保存一段自然语言回答。</li>
+<li>增加 3 个评估样例：资料不足、字段缺失、输出格式错误。</li>
+<li>交付物至少包括：样例输入、样例输出、错误案例和公开 README。</li>
+<li>进阶目标：能说明 LLM 在项目里负责生成，程序负责校验和保存。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -11124,7 +11195,7 @@ print(&quot;run Day81 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="82-项目二上下文打包与Prompt"><h1>Day82 - 项目二：上下文打包与 Prompt</h1>
+</ul></article><article id="082-项目二上下文打包与Prompt"><h1>Day82 - 项目二：上下文打包与 Prompt</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>实现 context_builder 和 prompt_builder。</p>
@@ -11245,6 +11316,14 @@ print(&quot;run Day82 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：used 标记已使用元素；path 长度等于 nums 长度时收集答案。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 LLM 报告助手拆成 <code>context.py</code>、<code>prompt.py</code>、<code>parser.py</code>、<code>review.py</code> 和 <code>evals.py</code>。</li>
+<li>每个输出都要有来源、结构化字段和失败原因，不能只保存一段自然语言回答。</li>
+<li>增加 3 个评估样例：资料不足、字段缺失、输出格式错误。</li>
+<li>交付物至少包括：样例输入、样例输出、错误案例和公开 README。</li>
+<li>进阶目标：能说明 LLM 在项目里负责生成，程序负责校验和保存。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -11262,7 +11341,7 @@ print(&quot;run Day82 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="83-项目二结构化解析与审查规则"><h1>Day83 - 项目二：结构化解析与审查规则</h1>
+</ul></article><article id="083-项目二结构化解析与审查规则"><h1>Day83 - 项目二：结构化解析与审查规则</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>实现 schema 和 risk review。</p>
@@ -11387,6 +11466,14 @@ print(&quot;run Day83 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：每个递归节点都可加入答案；注释说明子集不要求长度固定。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 LLM 报告助手拆成 <code>context.py</code>、<code>prompt.py</code>、<code>parser.py</code>、<code>review.py</code> 和 <code>evals.py</code>。</li>
+<li>每个输出都要有来源、结构化字段和失败原因，不能只保存一段自然语言回答。</li>
+<li>增加 3 个评估样例：资料不足、字段缺失、输出格式错误。</li>
+<li>交付物至少包括：样例输入、样例输出、错误案例和公开 README。</li>
+<li>进阶目标：能说明 LLM 在项目里负责生成，程序负责校验和保存。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -11404,7 +11491,7 @@ print(&quot;run Day83 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="84-项目二评估集与样例报告"><h1>Day84 - 项目二：评估集与样例报告</h1>
+</ul></article><article id="084-项目二评估集与样例报告"><h1>Day84 - 项目二：评估集与样例报告</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>添加 eval cases 和 example output。</p>
@@ -11524,6 +11611,14 @@ print(&quot;run Day84 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：DFS 搜索上下左右，进入前标记 visited，退出后恢复；注释说明这是回溯核心。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 LLM 报告助手拆成 <code>context.py</code>、<code>prompt.py</code>、<code>parser.py</code>、<code>review.py</code> 和 <code>evals.py</code>。</li>
+<li>每个输出都要有来源、结构化字段和失败原因，不能只保存一段自然语言回答。</li>
+<li>增加 3 个评估样例：资料不足、字段缺失、输出格式错误。</li>
+<li>交付物至少包括：样例输入、样例输出、错误案例和公开 README。</li>
+<li>进阶目标：能说明 LLM 在项目里负责生成，程序负责校验和保存。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -11541,7 +11636,7 @@ print(&quot;run Day84 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="85-项目二交付、复盘与公开说明"><h1>Day85 - 项目二：交付、复盘与公开说明</h1>
+</ul></article><article id="085-项目二交付、复盘与公开说明"><h1>Day85 - 项目二：交付、复盘与公开说明</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>完成项目二 README 和限制说明。</p>
@@ -11669,6 +11764,14 @@ print(&quot;run Day85 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：用列、主对角线、副对角线三个集合剪枝；Hard 可先输出一种解法再整理。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 LLM 报告助手拆成 <code>context.py</code>、<code>prompt.py</code>、<code>parser.py</code>、<code>review.py</code> 和 <code>evals.py</code>。</li>
+<li>每个输出都要有来源、结构化字段和失败原因，不能只保存一段自然语言回答。</li>
+<li>增加 3 个评估样例：资料不足、字段缺失、输出格式错误。</li>
+<li>交付物至少包括：样例输入、样例输出、错误案例和公开 README。</li>
+<li>进阶目标：能说明 LLM 在项目里负责生成，程序负责校验和保存。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -11686,7 +11789,7 @@ print(&quot;run Day85 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="86-项目三AgentToolPrototype骨架"><h1>Day86 - 项目三：AgentToolPrototype 骨架</h1>
+</ul></article><article id="086-项目三AgentToolPrototype骨架"><h1>Day86 - 项目三：AgentToolPrototype 骨架</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>搭建正式项目三目录。</p>
@@ -11811,6 +11914,14 @@ print(&quot;run Day86 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：按结束时间排序，尽量保留结束早的区间；注释说明删除数=总数-保留数。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 Agent 原型拆成 <code>tool_schema.py</code>、<code>router.py</code>、<code>executor.py</code>、<code>state.py</code> 和 <code>audit_log.py</code>。</li>
+<li>每个 tool 都要写清输入、输出、失败返回和人工审查条件。</li>
+<li>增加 3 个风险测试：参数缺失、工具失败、高风险动作需要确认。</li>
+<li>交付物至少包括：端到端 demo、执行日志、状态文件和 README 流程图。</li>
+<li>进阶目标：能解释 Agent 不是自动魔法，而是计划、执行、观察、审查的工程系统。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -11828,7 +11939,7 @@ print(&quot;run Day86 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="87-项目三工具Schema与校验"><h1>Day87 - 项目三：工具 Schema 与校验</h1>
+</ul></article><article id="087-项目三工具Schema与校验"><h1>Day87 - 项目三：工具 Schema 与校验</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>实现 tool schema validation。</p>
@@ -11953,6 +12064,14 @@ print(&quot;run Day87 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：先统计最高频任务；用公式估算空槽，也可用堆模拟，注释说明冷却时间含义。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 Agent 原型拆成 <code>tool_schema.py</code>、<code>router.py</code>、<code>executor.py</code>、<code>state.py</code> 和 <code>audit_log.py</code>。</li>
+<li>每个 tool 都要写清输入、输出、失败返回和人工审查条件。</li>
+<li>增加 3 个风险测试：参数缺失、工具失败、高风险动作需要确认。</li>
+<li>交付物至少包括：端到端 demo、执行日志、状态文件和 README 流程图。</li>
+<li>进阶目标：能解释 Agent 不是自动魔法，而是计划、执行、观察、审查的工程系统。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -11970,7 +12089,7 @@ print(&quot;run Day87 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="88-项目三执行、错误恢复与日志"><h1>Day88 - 项目三：执行、错误恢复与日志</h1>
+</ul></article><article id="088-项目三执行、错误恢复与日志"><h1>Day88 - 项目三：执行、错误恢复与日志</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>实现 tool executor 和 run log。</p>
@@ -12090,6 +12209,14 @@ print(&quot;run Day88 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：用 Counter 统计牌，再按从小到大尝试组成连续组；注释说明为什么必须从最小牌开始。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 Agent 原型拆成 <code>tool_schema.py</code>、<code>router.py</code>、<code>executor.py</code>、<code>state.py</code> 和 <code>audit_log.py</code>。</li>
+<li>每个 tool 都要写清输入、输出、失败返回和人工审查条件。</li>
+<li>增加 3 个风险测试：参数缺失、工具失败、高风险动作需要确认。</li>
+<li>交付物至少包括：端到端 demo、执行日志、状态文件和 README 流程图。</li>
+<li>进阶目标：能解释 Agent 不是自动魔法，而是计划、执行、观察、审查的工程系统。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -12107,7 +12234,7 @@ print(&quot;run Day88 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="89-项目三状态存储与人工审查"><h1>Day89 - 项目三：状态存储与人工审查</h1>
+</ul></article><article id="089-项目三状态存储与人工审查"><h1>Day89 - 项目三：状态存储与人工审查</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>实现 state store 和 review gate。</p>
@@ -12230,6 +12357,14 @@ print(&quot;run Day89 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：跳过任何维度超过 target 的 triplet；其余用于覆盖目标维度，注释说明三维都满足才成功。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 Agent 原型拆成 <code>tool_schema.py</code>、<code>router.py</code>、<code>executor.py</code>、<code>state.py</code> 和 <code>audit_log.py</code>。</li>
+<li>每个 tool 都要写清输入、输出、失败返回和人工审查条件。</li>
+<li>增加 3 个风险测试：参数缺失、工具失败、高风险动作需要确认。</li>
+<li>交付物至少包括：端到端 demo、执行日志、状态文件和 README 流程图。</li>
+<li>进阶目标：能解释 Agent 不是自动魔法，而是计划、执行、观察、审查的工程系统。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -12247,7 +12382,7 @@ print(&quot;run Day89 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="90-项目三端到端演示与README"><h1>Day90 - 项目三：端到端演示与 README</h1>
+</ul></article><article id="090-项目三端到端演示与README"><h1>Day90 - 项目三：端到端演示与 README</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>串联任务、工具、日志、审查。</p>
@@ -12375,6 +12510,14 @@ print(&quot;run Day90 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：先记录每个字符最后出现位置；遍历时维护当前片段最远边界。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 Agent 原型拆成 <code>tool_schema.py</code>、<code>router.py</code>、<code>executor.py</code>、<code>state.py</code> 和 <code>audit_log.py</code>。</li>
+<li>每个 tool 都要写清输入、输出、失败返回和人工审查条件。</li>
+<li>增加 3 个风险测试：参数缺失、工具失败、高风险动作需要确认。</li>
+<li>交付物至少包括：端到端 demo、执行日志、状态文件和 README 流程图。</li>
+<li>进阶目标：能解释 Agent 不是自动魔法，而是计划、执行、观察、审查的工程系统。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -12392,7 +12535,7 @@ print(&quot;run Day90 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="91-项目四本地RAG笔记助手骨架"><h1>Day91 - 项目四：本地 RAG 笔记助手骨架</h1>
+</ul></article><article id="091-项目四本地RAG笔记助手骨架"><h1>Day91 - 项目四：本地 RAG 笔记助手骨架</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>搭建 Markdown 笔记检索项目。</p>
@@ -12515,6 +12658,14 @@ print(&quot;run Day91 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：总油量不足直接失败；局部油量为负时从下一站重启，注释说明为什么前面起点都不行。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 RAG 笔记助手拆成 <code>loader.py</code>、<code>chunker.py</code>、<code>retriever.py</code>、<code>prompt.py</code> 和 <code>evaluator.py</code>。</li>
+<li>每次回答都必须保留引用来源、检索片段和“不足以回答”的分支。</li>
+<li>增加 3 个评估样例：命中资料、资料冲突、资料不存在。</li>
+<li>交付物至少包括：本地索引、样例问题、带引用回答和错误案例复盘。</li>
+<li>进阶目标：能说明 RAG 的质量取决于资料、切分、检索和回答边界。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -12532,7 +12683,7 @@ print(&quot;run Day91 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="92-项目四索引与检索层"><h1>Day92 - 项目四：索引与检索层</h1>
+</ul></article><article id="092-项目四索引与检索层"><h1>Day92 - 项目四：索引与检索层</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>切分笔记并返回 top_k。</p>
@@ -12655,6 +12806,14 @@ print(&quot;run Day92 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：维护 left_max/right_max；移动较低一侧并累计水量，Hard 可画图后再写代码。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 RAG 笔记助手拆成 <code>loader.py</code>、<code>chunker.py</code>、<code>retriever.py</code>、<code>prompt.py</code> 和 <code>evaluator.py</code>。</li>
+<li>每次回答都必须保留引用来源、检索片段和“不足以回答”的分支。</li>
+<li>增加 3 个评估样例：命中资料、资料冲突、资料不存在。</li>
+<li>交付物至少包括：本地索引、样例问题、带引用回答和错误案例复盘。</li>
+<li>进阶目标：能说明 RAG 的质量取决于资料、切分、检索和回答边界。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -12672,7 +12831,7 @@ print(&quot;run Day92 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="93-项目四回答Prompt与来源引用"><h1>Day93 - 项目四：回答 Prompt 与来源引用</h1>
+</ul></article><article id="093-项目四回答Prompt与来源引用"><h1>Day93 - 项目四：回答 Prompt 与来源引用</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>把检索结果打包成带引用回答。</p>
@@ -12793,6 +12952,14 @@ print(&quot;run Day93 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：栈维护递增高度索引；遇到更低高度时结算矩形面积。注释写清宽度计算。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 RAG 笔记助手拆成 <code>loader.py</code>、<code>chunker.py</code>、<code>retriever.py</code>、<code>prompt.py</code> 和 <code>evaluator.py</code>。</li>
+<li>每次回答都必须保留引用来源、检索片段和“不足以回答”的分支。</li>
+<li>增加 3 个评估样例：命中资料、资料冲突、资料不存在。</li>
+<li>交付物至少包括：本地索引、样例问题、带引用回答和错误案例复盘。</li>
+<li>进阶目标：能说明 RAG 的质量取决于资料、切分、检索和回答边界。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -12810,7 +12977,7 @@ print(&quot;run Day93 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="94-项目四RAG评估与错误案例"><h1>Day94 - 项目四：RAG 评估与错误案例</h1>
+</ul></article><article id="094-项目四RAG评估与错误案例"><h1>Day94 - 项目四：RAG 评估与错误案例</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>用固定问题检查召回质量。</p>
@@ -12933,6 +13100,14 @@ print(&quot;run Day94 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：在较短数组上二分分割点，使左右两边数量相等且左&lt;=右；Hard 允许先写 O(m+n)。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 RAG 笔记助手拆成 <code>loader.py</code>、<code>chunker.py</code>、<code>retriever.py</code>、<code>prompt.py</code> 和 <code>evaluator.py</code>。</li>
+<li>每次回答都必须保留引用来源、检索片段和“不足以回答”的分支。</li>
+<li>增加 3 个评估样例：命中资料、资料冲突、资料不存在。</li>
+<li>交付物至少包括：本地索引、样例问题、带引用回答和错误案例复盘。</li>
+<li>进阶目标：能说明 RAG 的质量取决于资料、切分、检索和回答边界。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -12950,7 +13125,7 @@ print(&quot;run Day94 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="95-项目四交付与复盘"><h1>Day95 - 项目四：交付与复盘</h1>
+</ul></article><article id="095-项目四交付与复盘"><h1>Day95 - 项目四：交付与复盘</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>完成 RAG 项目公开说明。</p>
@@ -13078,6 +13253,14 @@ print(&quot;run Day95 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：队列保存可能成为最大值的索引；窗口右移时移除过期索引，注释说明队列单调性。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把 RAG 笔记助手拆成 <code>loader.py</code>、<code>chunker.py</code>、<code>retriever.py</code>、<code>prompt.py</code> 和 <code>evaluator.py</code>。</li>
+<li>每次回答都必须保留引用来源、检索片段和“不足以回答”的分支。</li>
+<li>增加 3 个评估样例：命中资料、资料冲突、资料不存在。</li>
+<li>交付物至少包括：本地索引、样例问题、带引用回答和错误案例复盘。</li>
+<li>进阶目标：能说明 RAG 的质量取决于资料、切分、检索和回答边界。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -13095,7 +13278,7 @@ print(&quot;run Day95 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="96-GitHubPages与课程网站维护"><h1>Day96 - GitHub Pages 与课程网站维护</h1>
+</ul></article><article id="096-GitHubPages与课程网站维护"><h1>Day96 - GitHub Pages 与课程网站维护</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>维护课程网页入口。</p>
@@ -13223,6 +13406,14 @@ print(&quot;run Day96 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：用前序遍历把空节点写成 #；反序列化时按顺序消费 token。Hard 可先支持一种格式。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把前面项目整理成作品集入口：项目目标、运行方式、样例输入输出、截图或报告链接。</li>
+<li>每个项目都要有 1 个真实 Debug 案例和 1 个后续改进方向。</li>
+<li>公开内容保持干净，不包含私人身份、账号、密钥、真实交易数据或碎片情绪记录。</li>
+<li>交付物至少包括：作品集 README、课程网站、项目索引和 2 分钟讲解稿。</li>
+<li>进阶目标：能把学习经历讲成“问题 -&gt; 方法 -&gt; 结果 -&gt; 复盘”的项目故事。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -13240,7 +13431,7 @@ print(&quot;run Day96 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="97-作品集README与项目索引"><h1>Day97 - 作品集 README 与项目索引</h1>
+</ul></article><article id="097-作品集README与项目索引"><h1>Day97 - 作品集 README 与项目索引</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>把四个项目整理成作品集。</p>
@@ -13368,6 +13559,14 @@ print(&quot;run Day97 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：dp[i][j] 表示 word1 前 i 个到 word2 前 j 个的最少操作；注释区分增删改。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把前面项目整理成作品集入口：项目目标、运行方式、样例输入输出、截图或报告链接。</li>
+<li>每个项目都要有 1 个真实 Debug 案例和 1 个后续改进方向。</li>
+<li>公开内容保持干净，不包含私人身份、账号、密钥、真实交易数据或碎片情绪记录。</li>
+<li>交付物至少包括：作品集 README、课程网站、项目索引和 2 分钟讲解稿。</li>
+<li>进阶目标：能把学习经历讲成“问题 -&gt; 方法 -&gt; 结果 -&gt; 复盘”的项目故事。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -13385,7 +13584,7 @@ print(&quot;run Day97 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="98-项目讲解脚本与面试故事"><h1>Day98 - 项目讲解脚本与面试故事</h1>
+</ul></article><article id="098-项目讲解脚本与面试故事"><h1>Day98 - 项目讲解脚本与面试故事</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>用问题-方案-结果-限制讲项目。</p>
@@ -13513,6 +13712,14 @@ print(&quot;run Day98 迁移说明&quot;)</code></pre>
 <li>带注释解题提示：DFS 返回从 index 开始的所有句子；用 memo 缓存，注释说明避免重复搜索。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
 </ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把前面项目整理成作品集入口：项目目标、运行方式、样例输入输出、截图或报告链接。</li>
+<li>每个项目都要有 1 个真实 Debug 案例和 1 个后续改进方向。</li>
+<li>公开内容保持干净，不包含私人身份、账号、密钥、真实交易数据或碎片情绪记录。</li>
+<li>交付物至少包括：作品集 README、课程网站、项目索引和 2 分钟讲解稿。</li>
+<li>进阶目标：能把学习经历讲成“问题 -&gt; 方法 -&gt; 结果 -&gt; 复盘”的项目故事。</li>
+</ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -13530,7 +13737,7 @@ print(&quot;run Day98 迁移说明&quot;)</code></pre>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
-</ul></article><article id="99-错误库、片段库与长期维护"><h1>Day99 - 错误库、片段库与长期维护</h1>
+</ul></article><article id="099-错误库、片段库与长期维护"><h1>Day99 - 错误库、片段库与长期维护</h1>
 <p>&gt; 阶段七：项目实战、作品集与长期维护</p>
 <h2>学习定位</h2>
 <p>整理 Debug 和 reusable snippets。</p>
@@ -13657,6 +13864,14 @@ print(&quot;run Day99 迁移说明&quot;)</code></pre>
 <li>为什么放在今天：错误库维护日用正则匹配 Hard，压轴训练边界。</li>
 <li>带注释解题提示：dp[i][j] 表示 s 前 i 个和 p 前 j 个是否匹配；注释重点写清 * 匹配 0 次或多次。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
+</ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把前面项目整理成作品集入口：项目目标、运行方式、样例输入输出、截图或报告链接。</li>
+<li>每个项目都要有 1 个真实 Debug 案例和 1 个后续改进方向。</li>
+<li>公开内容保持干净，不包含私人身份、账号、密钥、真实交易数据或碎片情绪记录。</li>
+<li>交付物至少包括：作品集 README、课程网站、项目索引和 2 分钟讲解稿。</li>
+<li>进阶目标：能把学习经历讲成“问题 -&gt; 方法 -&gt; 结果 -&gt; 复盘”的项目故事。</li>
 </ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
@@ -13802,6 +14017,14 @@ print(&quot;run Day100 迁移说明&quot;)</code></pre>
 <li>为什么放在今天：总 Capstone 用计数 DP 收尾，兼具难度和可复盘价值。</li>
 <li>带注释解题提示：dp[i][j] 表示 s 前 i 个形成 t 前 j 个的方案数；相等时可选用或不用当前字符。</li>
 <li>完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。</li>
+</ul>
+<h2>项目深化方向</h2>
+<ul>
+<li>把前面项目整理成作品集入口：项目目标、运行方式、样例输入输出、截图或报告链接。</li>
+<li>每个项目都要有 1 个真实 Debug 案例和 1 个后续改进方向。</li>
+<li>公开内容保持干净，不包含私人身份、账号、密钥、真实交易数据或碎片情绪记录。</li>
+<li>交付物至少包括：作品集 README、课程网站、项目索引和 2 分钟讲解稿。</li>
+<li>进阶目标：能把学习经历讲成“问题 -&gt; 方法 -&gt; 结果 -&gt; 复盘”的项目故事。</li>
 </ul>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：

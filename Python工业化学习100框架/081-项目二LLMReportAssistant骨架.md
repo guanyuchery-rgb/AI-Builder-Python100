@@ -1,39 +1,39 @@
-# Day99 - 错误库、片段库与长期维护
+# Day81 - 项目二：LLMReportAssistant 骨架
 
 > 阶段七：项目实战、作品集与长期维护
 
 ## 学习定位
 
-整理 Debug 和 reusable snippets。
+搭建正式项目二目录。
 
-今天的目标不是背语法，而是产出：**Debug index**。
+今天的目标不是背语法，而是产出：**项目二骨架**。
 
 ## 前置知识
 
-- 推荐前置：Day98 story
-- 上一站：Day98
-- 下一站：Day100
+- 推荐前置：Day60 LLM capstone
+- 上一站：Day80
+- 下一站：Day82
 
 ## 今日知识地图
 
-- 整理 Debug 和 reusable snippets
-- maintenance
+- 搭建正式项目二目录
+- llm skeleton
 - 输入输出边界
 - 可复盘结果
 
 ## 核心讲解
 
-今天的关键词是 **整理 Debug 和 reusable snippets**。学习时不要只看语法表面，而要始终追问三件事：输入是什么、处理逻辑是什么、输出要给谁使用。这个习惯会贯穿数据分析、Quant、LLM 应用和 Agent tool 设计。
+今天的关键词是 **搭建正式项目二目录**。学习时不要只看语法表面，而要始终追问三件事：输入是什么、处理逻辑是什么、输出要给谁使用。这个习惯会贯穿数据分析、Quant、LLM 应用和 Agent tool 设计。
 
-从工程角度看，今天的能力要服务于 **长期资产**。也就是说，代码不只是“能跑”，还要能被未来的自己复查：文件名清楚、变量名能表达含义、失败时有可读错误、结果能保存。
+从工程角度看，今天的能力要服务于 **LLM 项目作品**。也就是说，代码不只是“能跑”，还要能被未来的自己复查：文件名清楚、变量名能表达含义、失败时有可读错误、结果能保存。
 
-难度承接上，今天依赖 **Day98 story**；完成后会自然进入 **Day100**。如果今天卡住，优先回看 Day98，不要跳到更复杂的库或项目。
+难度承接上，今天依赖 **Day60 LLM capstone**；完成后会自然进入 **Day82**。如果今天卡住，优先回看 Day80，不要跳到更复杂的库或项目。
 
 ## 知识点结构
 
 ### 定义
 
-整理 Debug 和 reusable snippets，是把一个具体问题拆成可运行、可检查、可复用代码的过程。
+搭建正式项目二目录，是把一个具体问题拆成可运行、可检查、可复用代码的过程。
 
 ### 为什么存在
 
@@ -42,18 +42,11 @@
 ### 最小案例
 
 ```python
-from pathlib import Path
+def build_prompt(facts: list[str]) -> str:
+    fact_text = "\n".join(f"- {item}" for item in facts)
+    return f"请只基于事实输出 summary/risk/next_step：\n{fact_text}"
 
-content = """# 错误库、片段库与长期维护
-
-## Purpose
-
-- 说明项目解决什么问题。
-- 说明如何运行。
-- 说明输入、输出和限制。
-"""
-Path("README.md").write_text(content, encoding="utf-8")
-print("README updated")
+print(build_prompt(["样本量 30", "最大回撤 -8%"] ))
 ```
 
 ### 常见错误
@@ -85,12 +78,12 @@ print("README updated")
 ## 简单路线 7 题
 
 1. 读完“学习定位”，用一句话写下今天要解决的问题。
-2. 手打最小案例并运行，确认得到 `Debug index`。
+2. 手打最小案例并运行，确认得到 `项目二骨架`。
 3. 把示例输入改成 2-3 条虚拟数据，不使用真实隐私数据。
 4. 故意制造一个小错误，记录报错、原因和修复方式。
 5. 给输出加一个清晰字段名或标题，避免只看到裸数字。
 6. 把今天代码保存到本地练习文件夹，并写下运行命令。
-7. 用 3 行话说明它如何服务于 `长期资产`。
+7. 用 3 行话说明它如何服务于 `LLM 项目作品`。
 
 ## 5 道基础巩固题
 
@@ -103,11 +96,11 @@ print("README updated")
 参考解法骨架：
 
 ```python
-# Day99 - 复现任务
+# Day81 - 复现任务
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day99 复现任务")
+print("run Day81 复现任务")
 ```
 
 #### 2. 输入替换
@@ -119,11 +112,11 @@ print("run Day99 复现任务")
 参考解法骨架：
 
 ```python
-# Day99 - 输入替换
+# Day81 - 输入替换
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day99 输入替换")
+print("run Day81 输入替换")
 ```
 
 #### 3. 边界检查
@@ -135,11 +128,11 @@ print("run Day99 输入替换")
 参考解法骨架：
 
 ```python
-# Day99 - 边界检查
+# Day81 - 边界检查
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day99 边界检查")
+print("run Day81 边界检查")
 ```
 
 #### 4. 结果保存
@@ -151,39 +144,47 @@ print("run Day99 边界检查")
 参考解法骨架：
 
 ```python
-# Day99 - 结果保存
+# Day81 - 结果保存
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day99 结果保存")
+print("run Day81 结果保存")
 ```
 
 #### 5. 迁移说明
 
-题目：写一段说明：今天能力如何迁移到 长期资产。
+题目：写一段说明：今天能力如何迁移到 LLM 项目作品。
 
 讲解：把语法学习变成项目资产。
 
 参考解法骨架：
 
 ```python
-# Day99 - 迁移说明
+# Day81 - 迁移说明
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day99 迁移说明")
+print("run Day81 迁移说明")
 ```
 
 ## Hot100 / LeetCode 挑战（基础完成后）
 
 > 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
 
-- 关联题：[Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/)
-- 难度：Hard
-- 题型：动态规划 / 状态机
-- 为什么放在今天：错误库维护日用正则匹配 Hard，压轴训练边界。
-- 带注释解题提示：dp[i][j] 表示 s 前 i 个和 p 前 j 个是否匹配；注释重点写清 * 匹配 0 次或多次。
+- 关联题：[Combination Sum](https://leetcode.com/problems/combination-sum/)
+- 难度：Medium
+- 题型：回溯 / 组合
+- 为什么放在今天：LLMReportAssistant 骨架后，算法线进入回溯。
+- 带注释解题提示：DFS 传入 start、path、remaining；注释说明同一个数字可重复使用所以递归仍传 i。
 - 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
+## 项目深化方向
+
+- 把 LLM 报告助手拆成 `context.py`、`prompt.py`、`parser.py`、`review.py` 和 `evals.py`。
+- 每个输出都要有来源、结构化字段和失败原因，不能只保存一段自然语言回答。
+- 增加 3 个评估样例：资料不足、字段缺失、输出格式错误。
+- 交付物至少包括：样例输入、样例输出、错误案例和公开 README。
+- 进阶目标：能说明 LLM 在项目里负责生成，程序负责校验和保存。
 
 ## Debug 记录模板
 

@@ -1,39 +1,39 @@
-# Day92 - 项目四：索引与检索层
+# Day86 - 项目三：AgentToolPrototype 骨架
 
 > 阶段七：项目实战、作品集与长期维护
 
 ## 学习定位
 
-切分笔记并返回 top_k。
+搭建正式项目三目录。
 
-今天的目标不是背语法，而是产出：**retriever.py**。
+今天的目标不是背语法，而是产出：**项目三骨架**。
 
 ## 前置知识
 
-- 推荐前置：Day91 skeleton
-- 上一站：Day91
-- 下一站：Day93
+- 推荐前置：Day58 Agent logging
+- 上一站：Day85
+- 下一站：Day87
 
 ## 今日知识地图
 
-- 切分笔记并返回 top_k
-- index retrieval
+- 搭建正式项目三目录
+- agent skeleton
 - 输入输出边界
 - 可复盘结果
 
 ## 核心讲解
 
-今天的关键词是 **切分笔记并返回 top_k**。学习时不要只看语法表面，而要始终追问三件事：输入是什么、处理逻辑是什么、输出要给谁使用。这个习惯会贯穿数据分析、Quant、LLM 应用和 Agent tool 设计。
+今天的关键词是 **搭建正式项目三目录**。学习时不要只看语法表面，而要始终追问三件事：输入是什么、处理逻辑是什么、输出要给谁使用。这个习惯会贯穿数据分析、Quant、LLM 应用和 Agent tool 设计。
 
-从工程角度看，今天的能力要服务于 **RAG 检索**。也就是说，代码不只是“能跑”，还要能被未来的自己复查：文件名清楚、变量名能表达含义、失败时有可读错误、结果能保存。
+从工程角度看，今天的能力要服务于 **Agent 项目作品**。也就是说，代码不只是“能跑”，还要能被未来的自己复查：文件名清楚、变量名能表达含义、失败时有可读错误、结果能保存。
 
-难度承接上，今天依赖 **Day91 skeleton**；完成后会自然进入 **Day93**。如果今天卡住，优先回看 Day91，不要跳到更复杂的库或项目。
+难度承接上，今天依赖 **Day58 Agent logging**；完成后会自然进入 **Day87**。如果今天卡住，优先回看 Day85，不要跳到更复杂的库或项目。
 
 ## 知识点结构
 
 ### 定义
 
-切分笔记并返回 top_k，是把一个具体问题拆成可运行、可检查、可复用代码的过程。
+搭建正式项目三目录，是把一个具体问题拆成可运行、可检查、可复用代码的过程。
 
 ### 为什么存在
 
@@ -42,13 +42,15 @@
 ### 最小案例
 
 ```python
-notes = [
-    {"id": "n1", "text": "Python 可以读取 CSV 并生成报告"},
-    {"id": "n2", "text": "SQLite 适合保存本地结果"},
-]
-query = "保存结果"
-results = [note for note in notes if "保存" in note["text"]]
-print(results[:3])
+def tool_result(ok: bool, data=None, error: str | None = None) -> dict:
+    return {"ok": ok, "data": data, "error": error}
+
+def run_tool(payload: dict) -> dict:
+    if payload.get("risk") == "high":
+        return tool_result(False, error="human review required")
+    return tool_result(True, data={"status": "done"})
+
+print(run_tool({"task": "summarize", "risk": "low"}))
 ```
 
 ### 常见错误
@@ -80,12 +82,12 @@ print(results[:3])
 ## 简单路线 7 题
 
 1. 读完“学习定位”，用一句话写下今天要解决的问题。
-2. 手打最小案例并运行，确认得到 `retriever.py`。
+2. 手打最小案例并运行，确认得到 `项目三骨架`。
 3. 把示例输入改成 2-3 条虚拟数据，不使用真实隐私数据。
 4. 故意制造一个小错误，记录报错、原因和修复方式。
 5. 给输出加一个清晰字段名或标题，避免只看到裸数字。
 6. 把今天代码保存到本地练习文件夹，并写下运行命令。
-7. 用 3 行话说明它如何服务于 `RAG 检索`。
+7. 用 3 行话说明它如何服务于 `Agent 项目作品`。
 
 ## 5 道基础巩固题
 
@@ -98,11 +100,11 @@ print(results[:3])
 参考解法骨架：
 
 ```python
-# Day92 - 复现任务
+# Day86 - 复现任务
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day92 复现任务")
+print("run Day86 复现任务")
 ```
 
 #### 2. 输入替换
@@ -114,11 +116,11 @@ print("run Day92 复现任务")
 参考解法骨架：
 
 ```python
-# Day92 - 输入替换
+# Day86 - 输入替换
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day92 输入替换")
+print("run Day86 输入替换")
 ```
 
 #### 3. 边界检查
@@ -130,11 +132,11 @@ print("run Day92 输入替换")
 参考解法骨架：
 
 ```python
-# Day92 - 边界检查
+# Day86 - 边界检查
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day92 边界检查")
+print("run Day86 边界检查")
 ```
 
 #### 4. 结果保存
@@ -146,39 +148,47 @@ print("run Day92 边界检查")
 参考解法骨架：
 
 ```python
-# Day92 - 结果保存
+# Day86 - 结果保存
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day92 结果保存")
+print("run Day86 结果保存")
 ```
 
 #### 5. 迁移说明
 
-题目：写一段说明：今天能力如何迁移到 RAG 检索。
+题目：写一段说明：今天能力如何迁移到 Agent 项目作品。
 
 讲解：把语法学习变成项目资产。
 
 参考解法骨架：
 
 ```python
-# Day92 - 迁移说明
+# Day86 - 迁移说明
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day92 迁移说明")
+print("run Day86 迁移说明")
 ```
 
 ## Hot100 / LeetCode 挑战（基础完成后）
 
 > 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
 
-- 关联题：[Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)
-- 难度：Hard
-- 题型：双指针 / 前后最大值
-- 为什么放在今天：索引检索层之后，给一题经典 Hard，训练左右边界。
-- 带注释解题提示：维护 left_max/right_max；移动较低一侧并累计水量，Hard 可画图后再写代码。
+- 关联题：[Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
+- 难度：Medium
+- 题型：贪心 / 区间
+- 为什么放在今天：AgentToolPrototype 骨架后，回到区间贪心，难度稳定。
+- 带注释解题提示：按结束时间排序，尽量保留结束早的区间；注释说明删除数=总数-保留数。
 - 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
+## 项目深化方向
+
+- 把 Agent 原型拆成 `tool_schema.py`、`router.py`、`executor.py`、`state.py` 和 `audit_log.py`。
+- 每个 tool 都要写清输入、输出、失败返回和人工审查条件。
+- 增加 3 个风险测试：参数缺失、工具失败、高风险动作需要确认。
+- 交付物至少包括：端到端 demo、执行日志、状态文件和 README 流程图。
+- 进阶目标：能解释 Agent 不是自动魔法，而是计划、执行、观察、审查的工程系统。
 
 ## Debug 记录模板
 

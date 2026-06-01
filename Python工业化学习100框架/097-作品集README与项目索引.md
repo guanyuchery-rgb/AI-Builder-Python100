@@ -1,39 +1,39 @@
-# Day83 - 项目二：结构化解析与审查规则
+# Day97 - 作品集 README 与项目索引
 
 > 阶段七：项目实战、作品集与长期维护
 
 ## 学习定位
 
-实现 schema 和 risk review。
+把四个项目整理成作品集。
 
-今天的目标不是背语法，而是产出：**review 模块**。
+今天的目标不是背语法，而是产出：**portfolio README**。
 
 ## 前置知识
 
-- 推荐前置：Day82 prompt
-- 上一站：Day82
-- 下一站：Day84
+- 推荐前置：Day96 pages
+- 上一站：Day96
+- 下一站：Day98
 
 ## 今日知识地图
 
-- 实现 schema 和 risk review
-- schema review
+- 把四个项目整理成作品集
+- portfolio
 - 输入输出边界
 - 可复盘结果
 
 ## 核心讲解
 
-今天的关键词是 **实现 schema 和 risk review**。学习时不要只看语法表面，而要始终追问三件事：输入是什么、处理逻辑是什么、输出要给谁使用。这个习惯会贯穿数据分析、Quant、LLM 应用和 Agent tool 设计。
+今天的关键词是 **把四个项目整理成作品集**。学习时不要只看语法表面，而要始终追问三件事：输入是什么、处理逻辑是什么、输出要给谁使用。这个习惯会贯穿数据分析、Quant、LLM 应用和 Agent tool 设计。
 
-从工程角度看，今天的能力要服务于 **LLM 输出可靠性**。也就是说，代码不只是“能跑”，还要能被未来的自己复查：文件名清楚、变量名能表达含义、失败时有可读错误、结果能保存。
+从工程角度看，今天的能力要服务于 **求职/展示入口**。也就是说，代码不只是“能跑”，还要能被未来的自己复查：文件名清楚、变量名能表达含义、失败时有可读错误、结果能保存。
 
-难度承接上，今天依赖 **Day82 prompt**；完成后会自然进入 **Day84**。如果今天卡住，优先回看 Day82，不要跳到更复杂的库或项目。
+难度承接上，今天依赖 **Day96 pages**；完成后会自然进入 **Day98**。如果今天卡住，优先回看 Day96，不要跳到更复杂的库或项目。
 
 ## 知识点结构
 
 ### 定义
 
-实现 schema 和 risk review，是把一个具体问题拆成可运行、可检查、可复用代码的过程。
+把四个项目整理成作品集，是把一个具体问题拆成可运行、可检查、可复用代码的过程。
 
 ### 为什么存在
 
@@ -42,15 +42,18 @@
 ### 最小案例
 
 ```python
-def tool_result(ok: bool, data=None, error: str | None = None) -> dict:
-    return {"ok": ok, "data": data, "error": error}
+from pathlib import Path
 
-def run_tool(payload: dict) -> dict:
-    if payload.get("risk") == "high":
-        return tool_result(False, error="human review required")
-    return tool_result(True, data={"status": "done"})
+content = """# 作品集 README 与项目索引
 
-print(run_tool({"task": "summarize", "risk": "low"}))
+## Purpose
+
+- 说明项目解决什么问题。
+- 说明如何运行。
+- 说明输入、输出和限制。
+"""
+Path("README.md").write_text(content, encoding="utf-8")
+print("README updated")
 ```
 
 ### 常见错误
@@ -82,12 +85,12 @@ print(run_tool({"task": "summarize", "risk": "low"}))
 ## 简单路线 7 题
 
 1. 读完“学习定位”，用一句话写下今天要解决的问题。
-2. 手打最小案例并运行，确认得到 `review 模块`。
+2. 手打最小案例并运行，确认得到 `portfolio README`。
 3. 把示例输入改成 2-3 条虚拟数据，不使用真实隐私数据。
 4. 故意制造一个小错误，记录报错、原因和修复方式。
 5. 给输出加一个清晰字段名或标题，避免只看到裸数字。
 6. 把今天代码保存到本地练习文件夹，并写下运行命令。
-7. 用 3 行话说明它如何服务于 `LLM 输出可靠性`。
+7. 用 3 行话说明它如何服务于 `求职/展示入口`。
 
 ## 5 道基础巩固题
 
@@ -100,11 +103,11 @@ print(run_tool({"task": "summarize", "risk": "low"}))
 参考解法骨架：
 
 ```python
-# Day83 - 复现任务
+# Day97 - 复现任务
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day83 复现任务")
+print("run Day97 复现任务")
 ```
 
 #### 2. 输入替换
@@ -116,11 +119,11 @@ print("run Day83 复现任务")
 参考解法骨架：
 
 ```python
-# Day83 - 输入替换
+# Day97 - 输入替换
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day83 输入替换")
+print("run Day97 输入替换")
 ```
 
 #### 3. 边界检查
@@ -132,11 +135,11 @@ print("run Day83 输入替换")
 参考解法骨架：
 
 ```python
-# Day83 - 边界检查
+# Day97 - 边界检查
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day83 边界检查")
+print("run Day97 边界检查")
 ```
 
 #### 4. 结果保存
@@ -148,39 +151,47 @@ print("run Day83 边界检查")
 参考解法骨架：
 
 ```python
-# Day83 - 结果保存
+# Day97 - 结果保存
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day83 结果保存")
+print("run Day97 结果保存")
 ```
 
 #### 5. 迁移说明
 
-题目：写一段说明：今天能力如何迁移到 LLM 输出可靠性。
+题目：写一段说明：今天能力如何迁移到 求职/展示入口。
 
 讲解：把语法学习变成项目资产。
 
 参考解法骨架：
 
 ```python
-# Day83 - 迁移说明
+# Day97 - 迁移说明
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day83 迁移说明")
+print("run Day97 迁移说明")
 ```
 
 ## Hot100 / LeetCode 挑战（基础完成后）
 
 > 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代项目训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
 
-- 关联题：[Subsets](https://leetcode.com/problems/subsets/)
+- 关联题：[Edit Distance](https://leetcode.com/problems/edit-distance/)
 - 难度：Medium
-- 题型：回溯 / 子集
-- 为什么放在今天：结构化解析日练“选或不选”的完整搜索。
-- 带注释解题提示：每个递归节点都可加入答案；注释说明子集不要求长度固定。
+- 题型：动态规划 / 字符串编辑
+- 为什么放在今天：作品集索引日练经典编辑距离，适合面试表达。
+- 带注释解题提示：dp[i][j] 表示 word1 前 i 个到 word2 前 j 个的最少操作；注释区分增删改。
 - 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
+
+## 项目深化方向
+
+- 把前面项目整理成作品集入口：项目目标、运行方式、样例输入输出、截图或报告链接。
+- 每个项目都要有 1 个真实 Debug 案例和 1 个后续改进方向。
+- 公开内容保持干净，不包含私人身份、账号、密钥、真实交易数据或碎片情绪记录。
+- 交付物至少包括：作品集 README、课程网站、项目索引和 2 分钟讲解稿。
+- 进阶目标：能把学习经历讲成“问题 -> 方法 -> 结果 -> 复盘”的项目故事。
 
 ## Debug 记录模板
 
