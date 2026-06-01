@@ -1,0 +1,173 @@
+# Day10 - 零基础小项目：学习记录 CLI
+
+> 阶段一：Python 零基础与语法地基
+
+## 学习定位
+
+串联输入、函数、文件和异常，完成第一个小工具。
+
+今天的目标不是背语法，而是产出：**一个本地学习记录命令行脚本**。
+
+## 前置知识
+
+- 推荐前置：Day01-Day09
+- 上一站：Day09
+- 下一站：Day11
+
+## 今日知识地图
+
+- 输入输出
+- 函数
+- 文件追加
+- 最小项目
+
+## 核心讲解
+
+今天的关键词是 **串联输入、函数、文件和异常，完成第一个小工具**。学习时不要只看语法表面，而要始终追问三件事：输入是什么、处理逻辑是什么、输出要给谁使用。这个习惯会贯穿数据分析、Quant、LLM 应用和 Agent tool 设计。
+
+从工程角度看，今天的能力要服务于 **所有后续项目的最小闭环**。也就是说，代码不只是“能跑”，还要能被未来的自己复查：文件名清楚、变量名能表达含义、失败时有可读错误、结果能保存。
+
+难度承接上，今天依赖 **Day01-Day09**；完成后会自然进入 **Day11**。如果今天卡住，优先回看 Day09，不要跳到更复杂的库或项目。
+
+## 知识点结构
+
+### 定义
+
+串联输入、函数、文件和异常，完成第一个小工具，是把一个具体问题拆成可运行、可检查、可复用代码的过程。
+
+### 为什么存在
+
+它让学习从临时笔记变成长期资产。公开仓库里的每一天都应该能让读者看到：今天学什么、为什么学、怎么运行、如何检查结果。
+
+### 最小案例
+
+```python
+from pathlib import Path
+
+
+def append_log(topic, minutes):
+    line = f"{topic},{minutes}\n"
+    Path("learning.csv").open("a", encoding="utf-8").write(line)
+
+append_log("Python function", 120)
+print("saved learning.csv")
+```
+
+### 常见错误
+
+- 项目一开始就做太大，导致无法完成闭环。
+- 只打印结果，不保存学习记录。
+- 没有 README 或运行命令，隔天就忘记怎么用。
+
+### 工程应用
+
+- 数据分析脚本
+- Quant 研究模块
+- LLM 报告助手
+- Agent tool / workflow
+- GitHub 开源项目作品集
+
+### 未来扩展
+
+今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。
+
+## 2 小时学习节奏
+
+- 15 分钟：读定位、前置和知识地图。
+- 25 分钟：手打最小案例并运行。
+- 35 分钟：完成 7 道简单路线题。
+- 35 分钟：完成 5 道基础巩固题。
+- 10 分钟：记录 Debug、结果和下一步。
+
+## 简单路线 7 题
+
+1. 新建 `day10_learning_cli.py`。
+2. 写 `append_log(topic, minutes)` 函数。
+3. 把记录追加到 `learning.csv`。
+4. 写入两条虚拟学习记录。
+5. 打开文件确认内容。
+6. 写一个最小 README 说明运行命令。
+7. 记录下一步如何升级成 argparse CLI。
+
+## 5 道基础巩固题
+
+#### 1. 追加学习记录
+
+题目：把主题和分钟数写入 CSV。
+
+讲解：完成最小保存闭环。
+
+```python
+from pathlib import Path
+line = "python,120\n"
+Path("learning.csv").open("a", encoding="utf-8").write(line)
+```
+
+#### 2. 封装追加函数
+
+题目：把写入逻辑放进函数。
+
+讲解：便于复用。
+
+```python
+from pathlib import Path
+def append_log(topic, minutes):
+    Path("learning.csv").open("a", encoding="utf-8").write(f"{topic},{minutes}\n")
+append_log("python", 120)
+```
+
+#### 3. 读取记录
+
+题目：读取 learning.csv 并打印。
+
+讲解：确认输出可复查。
+
+```python
+from pathlib import Path
+print(Path("learning.csv").read_text(encoding="utf-8"))
+```
+
+#### 4. 生成 README
+
+题目：写一个最小运行说明。
+
+讲解：开源项目入口。
+
+```python
+from pathlib import Path
+Path("README.md").write_text("# Learning CLI\n\nRun: python day10_learning_cli.py\n", encoding="utf-8")
+```
+
+#### 5. 项目复盘
+
+题目：用三行文字写项目复盘。
+
+讲解：从第一阶段开始沉淀资产。
+
+```python
+notes = ["输入：topic/minutes", "处理：append", "输出：learning.csv"]
+for note in notes:
+    print(note)
+```
+
+## Debug 记录模板
+
+```text
+错误现象：
+触发输入：
+定位过程：
+修复方式：
+以后如何避免：
+```
+
+## 复习检查
+
+- [ ] 我能解释今天能力的输入、处理和输出。
+- [ ] 我能从零手打最小案例。
+- [ ] 我完成了 7 道简单路线题和 5 道基础巩固题。
+- [ ] 我把结果保存成可复查产物。
+- [ ] 我没有暴露真实身份、账号、密钥或私人数据。
+
+## 参考资料
+
+- [Python 官方文档](https://docs.python.org/3/)

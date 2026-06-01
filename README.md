@@ -1,42 +1,44 @@
-# Python100
+# AI Builder Python100
 
-这是独立的 Python 长期训练栏目。
+一个面向 AI Builder、数据分析、Quant、LLM 和 Agent 项目的开源 Python 100 天学习路径。
 
-目标不是刷语法，而是在 6 月完成一组足够扎实的 Python 工业化基础训练，然后自然进入 Quant、LLM、Agent 项目。
+目标不是堆语法，而是让学习者从零基础逐步走到可以交付小项目：数据工具、LLM 报告助手、Agent tool 原型、Quant research starter 和本地 RAG 笔记助手。
 
-## 手机入口
+## 在线阅读
 
-- [MOBILE.md](MOBILE.md)：GitHub 手机端阅读入口。
-- [GitHub Pages 网页](docs/index.html)：发布后可作为手机网页入口。
+- GitHub Pages: 仓库启用 Pages 后可直接在线阅读课程网页。
+- 课程地图：[COURSE_MAP.md](COURSE_MAP.md)
+- 手机入口：[MOBILE.md](MOBILE.md)
+- 100 天课程目录：[Python工业化学习100框架](Python工业化学习100框架/README.md)
 
-## 当前主线
+## 适合谁
 
-- [Python工业化学习100框架](Python工业化学习100框架/README.md)
-- [6月项目衔接路线](Python工业化学习100框架/21-6月项目衔接路线.md)
+- Python 零基础或基础不稳，希望按项目路线学习的人。
+- 统计、金融、数据分析背景，想进入 AI / Quant / Agent 工程实践的人。
+- 想用 GitHub 公开沉淀学习过程和作品集的人。
 
-## 学习原则
+## 课程结构
 
-- 中文理解为主，必要英文术语保留。
-- 每天约 2 小时，短讲解 + 题目驱动。
-- 每天至少跑一段代码。
-- 前 20 天严格零基础递进，不提前使用后面才学的知识。
-- Day01-Day06 不刷 LeetCode/Hot100，先把运行、变量、分支、循环、列表、函数按顺序打牢。
-- 每天先完成 7 道简单路线题，再完成 5 道基础巩固题；题目贴近工业场景，但不超前。
-- 每题配参考链接、工业意义和带注释解法骨架。
-- 每天记录一个 Debug 或可复用模式。
-- 先形成稳定小工具，再扩展到 Streamlit、FastAPI、Agent。
+1. Day01-Day10：Python 零基础与语法地基
+2. Day11-Day20：Python 工程化基本功
+3. Day21-Day35：数据分析与本地数据系统
+4. Day36-Day45：应用接口、自动化与交付
+5. Day46-Day60：LLM / RAG / Agent 基础
+6. Day61-Day75：Quant 研究与回测基础
+7. Day76-Day100：项目实战、作品集与长期维护
 
-## 当前进度
+## 每天怎么学
 
-- [x] Day01-100 工业化学习资源已生成。
-- [x] 每天配套 7 道简单路线题 + 5 道递进题。
-- [x] 已整理为题目驱动版。
-- [x] Day21-Day100 已改为小步递进项目化最终版。
-- [ ] 6 月按节奏完成 Day01-100。
-- [ ] 完成 Day100 总 Capstone。
-- [ ] 进入 3 个方向项目：Quant / LLM / Agent。
+- 15 分钟：读学习定位和知识地图。
+- 25 分钟：手打最小案例并运行。
+- 35 分钟：完成 7 道简单路线题。
+- 35 分钟：完成 5 道基础巩固题。
+- 10 分钟：记录 Debug、结果和下一步。
 
-## 后续阶段
+## 开源说明
 
-- Day22-Day60：数据工程、应用/API、LLM/Agent 和 Quant 项目化。
-- Day61-Day100：三个项目实战、作品集、复盘和长期维护。
+本仓库是公开学习资源。示例代码和示例数据均应使用虚拟数据；不要提交真实身份、账号、密钥、交易账户、私人文档或不可公开资料。
+
+## License
+
+MIT License. See [LICENSE](LICENSE).

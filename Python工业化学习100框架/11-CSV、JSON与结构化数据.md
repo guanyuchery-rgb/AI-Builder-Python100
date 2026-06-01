@@ -1,39 +1,39 @@
-# Day33 - 配置文件与环境变量
+# Day11 - CSV、JSON 与结构化数据
 
-> 阶段三：数据分析与本地数据系统
+> 阶段二：Python 工程化基本功
 
 ## 学习定位
 
-把路径、参数和模式从代码里拿出来。
+读写 CSV/JSON，理解结构化文件。
 
-今天的目标不是背语法，而是产出：**一个 config.json 和环境变量读取**。
+今天的目标不是背语法，而是产出：**一个能保存并读取结构化记录的脚本**。
 
 ## 前置知识
 
-- 推荐前置：Day32 SQL
-- 上一站：Day32
-- 下一站：Day34
+- 推荐前置：Day10 本地小工具
+- 上一站：Day10
+- 下一站：Day12
 
 ## 今日知识地图
 
-- json config
-- os.environ
-- 默认值
-- 不提交密钥
+- csv
+- json
+- DictWriter
+- 结构化记录
 
 ## 核心讲解
 
-今天的关键词是 **把路径、参数和模式从代码里拿出来**。学习时不要只看语法表面，而要始终追问三件事：输入是什么、处理逻辑是什么、输出要给谁使用。这个习惯会贯穿数据分析、Quant、LLM 应用和 Agent tool 设计。
+今天的关键词是 **读写 CSV/JSON，理解结构化文件**。学习时不要只看语法表面，而要始终追问三件事：输入是什么、处理逻辑是什么、输出要给谁使用。这个习惯会贯穿数据分析、Quant、LLM 应用和 Agent tool 设计。
 
-从工程角度看，今天的能力要服务于 **开源项目的安全配置边界**。也就是说，代码不只是“能跑”，还要能被未来的自己复查：文件名清楚、变量名能表达含义、失败时有可读错误、结果能保存。
+从工程角度看，今天的能力要服务于 **数据分析和 Agent tool 的输入输出**。也就是说，代码不只是“能跑”，还要能被未来的自己复查：文件名清楚、变量名能表达含义、失败时有可读错误、结果能保存。
 
-难度承接上，今天依赖 **Day32 SQL**；完成后会自然进入 **Day34**。如果今天卡住，优先回看 Day32，不要跳到更复杂的库或项目。
+难度承接上，今天依赖 **Day10 本地小工具**；完成后会自然进入 **Day12**。如果今天卡住，优先回看 Day10，不要跳到更复杂的库或项目。
 
 ## 知识点结构
 
 ### 定义
 
-把路径、参数和模式从代码里拿出来，是把一个具体问题拆成可运行、可检查、可复用代码的过程。
+读写 CSV/JSON，理解结构化文件，是把一个具体问题拆成可运行、可检查、可复用代码的过程。
 
 ### 为什么存在
 
@@ -42,13 +42,16 @@
 ### 最小案例
 
 ```python
+import csv
 import json
-import os
 
-config = {"input_path": "data/returns.csv", "min_rows": 10}
-with open("config.json", "w", encoding="utf-8") as f:
-    json.dump(config, f, ensure_ascii=False, indent=2)
-print(os.environ.get("APP_MODE", "local"))
+rows = [{"topic": "python", "minutes": 120}, {"topic": "sql", "minutes": 90}]
+with open("learning.json", "w", encoding="utf-8") as f:
+    json.dump(rows, f, ensure_ascii=False, indent=2)
+with open("learning.csv", "w", encoding="utf-8", newline="") as f:
+    writer = csv.DictWriter(f, fieldnames=["topic", "minutes"])
+    writer.writeheader()
+    writer.writerows(rows)
 ```
 
 ### 常见错误
@@ -80,12 +83,12 @@ print(os.environ.get("APP_MODE", "local"))
 ## 简单路线 7 题
 
 1. 读完“学习定位”，用一句话写下今天要解决的问题。
-2. 手打最小案例并运行，确认得到 `一个 config.json 和环境变量读取`。
+2. 手打最小案例并运行，确认得到 `一个能保存并读取结构化记录的脚本`。
 3. 把示例输入改成 2-3 条虚拟数据，不使用真实隐私数据。
 4. 故意制造一个小错误，记录报错、原因和修复方式。
 5. 给输出加一个清晰字段名或标题，避免只看到裸数字。
 6. 把今天代码保存到本地练习文件夹，并写下运行命令。
-7. 用 3 行话说明它如何服务于 `开源项目的安全配置边界`。
+7. 用 3 行话说明它如何服务于 `数据分析和 Agent tool 的输入输出`。
 
 ## 5 道基础巩固题
 
@@ -98,11 +101,11 @@ print(os.environ.get("APP_MODE", "local"))
 参考解法骨架：
 
 ```python
-# Day33 - 复现任务
+# Day11 - 复现任务
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day33 复现任务")
+print("run Day11 复现任务")
 ```
 
 #### 2. 输入替换
@@ -114,11 +117,11 @@ print("run Day33 复现任务")
 参考解法骨架：
 
 ```python
-# Day33 - 输入替换
+# Day11 - 输入替换
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day33 输入替换")
+print("run Day11 输入替换")
 ```
 
 #### 3. 边界检查
@@ -130,11 +133,11 @@ print("run Day33 输入替换")
 参考解法骨架：
 
 ```python
-# Day33 - 边界检查
+# Day11 - 边界检查
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day33 边界检查")
+print("run Day11 边界检查")
 ```
 
 #### 4. 结果保存
@@ -146,27 +149,27 @@ print("run Day33 边界检查")
 参考解法骨架：
 
 ```python
-# Day33 - 结果保存
+# Day11 - 结果保存
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day33 结果保存")
+print("run Day11 结果保存")
 ```
 
 #### 5. 迁移说明
 
-题目：写一段说明：今天能力如何迁移到 开源项目的安全配置边界。
+题目：写一段说明：今天能力如何迁移到 数据分析和 Agent tool 的输入输出。
 
 讲解：把语法学习变成项目资产。
 
 参考解法骨架：
 
 ```python
-# Day33 - 迁移说明
+# Day11 - 迁移说明
 # 1. 准备输入
 # 2. 调用今天的核心能力
 # 3. 检查输出并记录 Debug
-print("run Day33 迁移说明")
+print("run Day11 迁移说明")
 ```
 
 ## Debug 记录模板
