@@ -102,7 +102,7 @@ def build_mobile_markdown() -> None:
     lines = [
         "# Python100 手机学习入口",
         "",
-        "这是手机端入口。每天打开一个 Day，按 2 小时节奏完成：读目标、跑代码、做 5 道题、记录 Debug。",
+        "这是手机端入口。Day01-Day20 严格零基础递进；每天打开一个 Day，按 2 小时节奏完成：读目标、跑代码、做 7 道简单题 + 5 道基础巩固题、记录 Debug。",
         "",
         "## 学习入口",
         "",
@@ -225,7 +225,7 @@ def build_index_html() -> None:
 <body>
   <header>
     <h1>Python100 手机学习入口</h1>
-    <p class="sub">短讲解 + 5 道递进题 + Quant / LLM / Agent 迁移点</p>
+    <p class="sub">零基础递进 + 7 道简单题 + 5 道基础巩固题 + Quant / LLM / Agent 迁移点</p>
   </header>
   <nav>{''.join(nav)}</nav>
   <main>{''.join(articles)}</main>

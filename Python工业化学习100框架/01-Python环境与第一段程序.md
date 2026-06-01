@@ -1,248 +1,145 @@
 # Day01 - Python 环境与第一段程序
 
-学习定位：不只是“能打印 Hello World”，而是理解 Python 程序如何运行，并从第一天开始建立可复现的学习环境。
+学习定位：只解决一件事：知道 Python 文件怎么运行，并能稳定看到输出。今天不写函数、不写列表、不写判断。
+
+## 今日只允许使用
+
+- print()
+- 注释 #
+- 字符串
+- 简单数字计算
+- 终端运行 python3 文件
 
 ## 今日目标
 
-- 理解解释器、脚本、终端、编辑器、项目文件夹的关系。
-- 能运行第一个 Python 文件。
-- 建立稳定的学习目录，而不是到处散落 `.py` 文件。
-- 学会用 AI 做解释、复盘和 Debug，而不是直接抄答案。
+- 能独立手打当天最小代码。
+- 能说清输入、输出和可能报错的位置。
+- 做题时不使用后面天数才学的知识。
+- 把一个错误记录到 Debug 日志。
 
-
-## 知识点 1：Python 程序如何运行
+## 知识点 1：脚本 Script
 
 ### 定义
 
-Python 程序是文本文件，解释器读取这些文本，并按照 Python 语法执行。
+`.py` 文件就是脚本，解释器会从上到下执行。
 
 ### 为什么存在
 
-文本代码方便阅读、搜索、版本管理和迁移，这是长期工程资产的基础。
+它让当前阶段的代码更容易看懂、运行和复查。
+## 知识点 2：输出 Output
 
-### 最小案例
+### 定义
+
+`print()` 用来把结果显示出来，是最早的反馈方式。
+
+### 为什么存在
+
+它让当前阶段的代码更容易看懂、运行和复查。
+
+## 最小案例
 
 ```python
-print("你好，AI Builder")
+print("你好，Python100")
 print(2 + 3)
 ```
 
-预期输出：
+## 常见错误
 
-```text
-你好，AI Builder
-5
-```
-
-### 常见错误
-
-- `SyntaxError`：引号、括号、冒号写错。
-- `NameError`：用了还没定义的名字。
-- 找不到文件：终端当前目录不是脚本所在目录。
-
-### 工程应用
-
-- 自动化脚本。
-- 数据清洗脚本。
-- Quant 指标计算。
-- Agent 工具函数。
-
-### 未来扩展
-
-- 虚拟环境。
-- `requirements.txt`。
-- `README.md`。
-- 测试和日志。
-
-## 知识点 2：可复现学习环境
-
-### 定义
-
-可复现学习环境，是指半年后重新打开文件夹，还知道运行哪个文件、预期输出是什么、它为什么存在。
-
-### 为什么存在
-
-早期学习最容易产生一堆散文件，后来完全无法复用。稳定目录能把练习变成长期资产。
-
-### 最小案例
-
-```text
-day01/
-├── hello.py
-└── notes.md
-```
-
-```python
-# hello.py
-message = "Python 学习从可复现的小例子开始。"
-print(message)
-```
-
-### 常见错误
-
-- 文件放在随机位置。
-- 永远叫 `test.py`。
-- 没写这个脚本的用途。
-
-### 工程应用
-
-每个未来项目都应该能回答：代码在哪里、数据在哪里、怎么运行、结果是什么。
-
-### 未来扩展
-
-- 项目 README。
-- `.gitignore`。
-- `src/`。
-- `tests/`。
-
-## AI 时代补充
-
-写完代码后，可以这样问 AI：
-
-```text
-请作为 Python 导师审查这段初学者代码。
-请说明：
-1. 它做了什么。
-2. 可能哪里会错。
-3. 一个更简单版本。
-4. 一个更工程化版本。
-不要引入不必要的高级概念。
-```
-
+- 还没学到的写法先不要硬用。
+- 代码能跑但解释不清输入输出。
+- 报错后直接问答案，没有先缩小到最小案例。
 
 ## Debug 日志
 
-- 如果提示 `command not found: python`，尝试 `python3`。
-- 如果找不到文件，用 `pwd` 看当前目录。
-- 如果输出不对，把代码缩小到最小案例再检查。
+- 先记录报错类型。
+- 再记录触发它的最小代码。
+- 最后记录修复方式。
 
-## 面试角度
+## Quant / LLM / Agent 关联
 
-Python 是解释型、高级语言，常用于自动化、后端服务、数据分析、AI 工具和脚本开发。
-
-## Quant 关联
-
-Python 会成为读取价格、计算收益率、清洗数据、测试策略想法的主要工具。
-
-## Agent 关联
-
-Agent 的可靠性取决于工具函数的可靠性。Python 脚本是最小的可靠工具。
+今天只建立最小基础，不提前做复杂项目。Quant、LLM、Agent 的连接点只作为方向提醒，不作为做题要求。
 
 ## 复习检查
 
-- [ ] 我能从终端运行 `.py` 文件。
-- [ ] 我知道文件保存在哪里。
-- [ ] 我能解释解释器和脚本的关系。
-- [ ] 我会让 AI 审查代码，而不是直接抄答案。
+- [ ] 我没有使用后面才学的知识点。
+- [ ] 我能从头手打一遍最小案例。
+- [ ] 我能解释每一行代码。
+- [ ] 我完成了 7 道简单路线题和 5 道基础巩固题。
 
 ## 简单路线 7 题（不超前）
 
 只用今天及之前学过的能力。做不出来时，先回看当天最小案例，不跳到后面知识。
 
-1. 新建 `day01_hello.py`，只写一行 `print`。
-2. 打印一句中文学习目标。
-3. 打印一个数字计算结果，例如 `2 + 3`。
-4. 在文件顶部写一行注释，说明这个文件用途。
-5. 在终端运行这个文件，并记录命令。
-6. 把输出结果复制到当天笔记里。
-7. 故意少写一个引号，观察 `SyntaxError`，再修复。
+1. 新建 `day01_hello.py`。
+2. 写一行 `print("你好，Python")`。
+3. 再写一行 `print(2 + 3)`。
+4. 在第一行写注释：`# Day01 第一个脚本`。
+5. 在终端运行：`python3 day01_hello.py`。
+6. 把终端输出复制到当天笔记。
+7. 故意删掉一个引号，观察错误，再改回来。
+
 ## 题目驱动训练
 
-少读长讲义，直接做题。每题先手写，再对照注释版。
+### 参考资料
 
-### 参考题 / 资料
+- [Python 官方教程](https://docs.python.org/3/tutorial/)
 
-- [LeetCode 2235 - Add Two Integers](https://leetcode.com/problems/add-two-integers/)
-- [LeetCode 2413 - Smallest Even Multiple](https://leetcode.com/problems/smallest-even-multiple/)
-- [Python Tutorial](https://docs.python.org/3/tutorial/)
+### 5 道基础巩固题
 
-### 5 道递进题
+#### 1. 基础巩固 - 打印三行文字
 
-#### 1. Easy - 学习名片输出
+题目：连续打印学习方向、今天目标、完成标准。
 
-题目：打印学习者代号、方向、今日目标。
-
-讲解：先确认脚本能运行，再谈复杂能力。
+讲解：只练习 `print()`，不要用变量。
 
 ```python
-# 输入: 变量 name / track / goal
-# 输出: 一行可读的学习名片
-name = "学习者"
-track = "AI / Data / Quant"
-goal = "用 Python 支撑 LLM、Agent 和量化项目"
-
-print(f"{name} | {track} | {goal}")
+print("学习方向：Python 基础")
+print("今天目标：能运行脚本")
+print("完成标准：看到终端输出")
 ```
 
-#### 2. Easy - Add Two Integers
+#### 2. 基础巩固 - 打印简单计算
 
-关联题：[LeetCode 2235](https://leetcode.com/problems/add-two-integers/)
+题目：打印加法、减法、乘法结果。
 
-题目：写函数返回两个整数之和。
-
-讲解：函数要清楚输入和输出，不要只在函数里 `print`。
+讲解：先确认 Python 能做基本计算。
 
 ```python
-# 输入: 两个 int
-# 输出: 一个 int
-# 边界: 负数、0、大整数都可以直接相加
-def sum_two(a: int, b: int) -> int:
-    return a + b
-
-print(sum_two(2, 3))
+print(10 + 5)
+print(10 - 5)
+print(10 * 5)
 ```
 
-#### 3. Medium - Smallest Even Multiple
+#### 3. 基础巩固 - 区分文字和数字
 
-关联题：[LeetCode 2413](https://leetcode.com/problems/smallest-even-multiple/)
+题目：分别打印 `"2 + 3"` 和 `2 + 3`。
 
-题目：返回同时能被 `n` 和 `2` 整除的最小正整数。
-
-讲解：先写最小规则，不急着套复杂公式。
+讲解：理解引号里的内容只是文字。
 
 ```python
-# 如果 n 是偶数，n 自己就是答案
-# 如果 n 是奇数，2 * n 才能同时被 2 和 n 整除
-def smallest_even_multiple(n: int) -> int:
-    if n % 2 == 0:
-        return n
-    return n * 2
+print("2 + 3")
+print(2 + 3)
 ```
 
-#### 4. Medium - 脚本入口 main
+#### 4. 基础巩固 - 写可读输出
 
-题目：写 `main()`，输出今天要做的三个动作。
+题目：输出时加文字说明。
 
-讲解：`main()` 是以后 CLI、Agent tool、批处理脚本的统一入口。
+讲解：结果要让未来自己看得懂。
 
 ```python
-# main 只负责组织流程，具体逻辑以后再拆函数
-def main() -> None:
-    actions = ["读目标", "手打代码", "记录 Debug"]
-    for action in actions:
-        print(action)
-
-# 只有直接运行这个文件时才执行 main
-if __name__ == "__main__":
-    main()
+print("今日学习分钟数：")
+print(120)
 ```
 
-#### 5. Hard - 学习启动检查器
+#### 5. 基础巩固 - 最小 Debug 记录
 
-题目：给定任务清单，返回还没完成的项目。
+题目：写一段会报错的代码，再写修复版。
 
-讲解：这是最小版 checklist，也像 Agent 执行前的前置条件检查。
+讲解：第一天只认识错误，不要求完全理解。
 
 ```python
-# 输入: dict，key 是任务名，value 表示是否完成
-# 输出: 未完成任务列表
-def find_missing_tasks(tasks: dict[str, bool]) -> list[str]:
-    missing = []
-    for name, done in tasks.items():
-        if not done:
-            missing.append(name)
-    return missing
-
-tasks = {"打开 Obsidian": True, "完成 Day01": False, "记录问题": False}
-print(find_missing_tasks(tasks))
+# 错误示例：print("hello)
+# 修复示例：
+print("hello")
 ```

@@ -1,286 +1,171 @@
 # Day08 - 面向对象基础与 dataclass
 
-学习定位：通过真实领域模型理解类和对象，并使用 `dataclass` 减少样板代码。
+学习定位：在函数和字典之后学习对象。今天只写简单类和 dataclass，不做复杂设计模式。
+
+## 今日只允许使用
+
+- class
+- __init__
+- 属性
+- 方法
+- dataclass
 
 ## 今日目标
 
-- 理解类、对象、属性、方法。
-- 知道什么时候 OOP 有用，什么时候没必要。
-- 使用 `dataclass` 表达简单数据模型。
-- 建模金融或 Agent 场景里的小实体。
+- 能独立手打当天最小代码。
+- 能说清输入、输出和可能报错的位置。
+- 做题时不使用后面天数才学的知识。
+- 把一个错误记录到 Debug 日志。
 
-
-## 知识点 1：类与对象
+## 知识点 1：今日边界
 
 ### 定义
 
-类定义一种对象的结构和行为。对象是类创建出来的具体实例。
+只使用当天及之前出现过的知识。
 
 ### 为什么存在
 
-当一组数据和行为天然属于同一个概念时，类能让代码更清楚。
+它让当前阶段的代码更容易看懂、运行和复查。
+## 知识点 2：工程习惯
 
-### 最小案例
+### 定义
+
+每个小能力都要有输入、输出和可复查结果。
+
+### 为什么存在
+
+它让当前阶段的代码更容易看懂、运行和复查。
+
+## 最小案例
 
 ```python
 class Position:
-    def __init__(self, symbol: str, shares: int, price: float) -> None:
+    def __init__(self, symbol, shares):
         self.symbol = symbol
         self.shares = shares
-        self.price = price
 
-    def market_value(self) -> float:
-        return self.shares * self.price
-
-
-position = Position("AAPL", 10, 102.5)
-print(position.market_value())
+pos = Position("AAPL", 3)
+print(pos.symbol)
 ```
 
-### 常见错误
+## 常见错误
 
-- 忘记 `self`。
-- 把无关行为塞进一个类。
-- 修改对象状态却没有规则。
-
-### 工程应用
-
-- 领域模型。
-- API 请求和响应对象。
-- 策略配置。
-- Agent 任务对象。
-
-### 未来扩展
-
-- `dataclass`。
-- property。
-- 继承与组合。
-- Pydantic model。
-
-## 知识点 2：dataclass
-
-### 定义
-
-`dataclass` 会自动生成常见方法，适合主要用于保存数据的小类。
-
-### 为什么存在
-
-它减少重复样板代码，让简单领域模型更清楚。
-
-### 最小案例
-
-```python
-from dataclasses import dataclass
-
-
-@dataclass
-class Position:
-    symbol: str
-    shares: int
-    price: float
-
-    def market_value(self) -> float:
-        return self.shares * self.price
-
-
-position = Position("MSFT", 5, 210.0)
-print(position)
-print(position.market_value())
-```
-
-### 常见错误
-
-- 明明 dict 足够，却强行写类。
-- 可变默认值使用错误。
-- 一个模型承担太多职责。
-
-### 工程应用
-
-- 清洗后的数据记录。
-- 配置对象。
-- 回测持仓。
-- Agent 任务定义。
-
-### 未来扩展
-
-- `field(default_factory=list)`。
-- frozen dataclass。
-- Pydantic 数据验证。
-
-## 现代代码示例：Agent 任务模型
-
-```python
-from dataclasses import dataclass
-
-
-@dataclass
-class AgentTask:
-    name: str
-    instruction: str
-    verified: bool = False
-
-    def mark_verified(self) -> None:
-        self.verified = True
-
-
-task = AgentTask("clean_prices", "规范化价格 CSV 行")
-task.mark_verified()
-print(task)
-```
-
-## AI 时代补充
-
-```text
-我有一段基于字典的 Python 代码。
-请判断它应该继续用 dict，还是改成 dataclass。
-用初学者能理解的方式说明取舍。
-```
-
+- 还没学到的写法先不要硬用。
+- 代码能跑但解释不清输入输出。
+- 报错后直接问答案，没有先缩小到最小案例。
 
 ## Debug 日志
 
-- `TypeError`：创建对象时缺参数。
-- 值不对：检查对象属性。
-- 设计问题：类名模糊，或做了太多事。
+- 先记录报错类型。
+- 再记录触发它的最小代码。
+- 最后记录修复方式。
 
-## 面试角度
+## Quant / LLM / Agent 关联
 
-OOP 适合把相关数据和行为放在一起，但不代表所有代码都应该写成类。
-
-## Quant 关联
-
-持仓、交易、订单、信号、组合快照都可以建模成小类。
-
-## Agent 关联
-
-Agent 任务、工具调用、验证结果可以显式建模，减少到处传松散 dict。
+今天只建立最小基础，不提前做复杂项目。Quant、LLM、Agent 的连接点只作为方向提醒，不作为做题要求。
 
 ## 复习检查
 
-- [ ] 我能定义简单类。
-- [ ] 我能解释 `self`。
-- [ ] 我能使用 `dataclass`。
-- [ ] 我能判断 class 和 dict 的取舍。
+- [ ] 我没有使用后面才学的知识点。
+- [ ] 我能从头手打一遍最小案例。
+- [ ] 我能解释每一行代码。
+- [ ] 我完成了 7 道简单路线题和 5 道基础巩固题。
 
 ## 简单路线 7 题（不超前）
 
 只用今天及之前学过的能力。做不出来时，先回看当天最小案例，不跳到后面知识。
 
-1. 用 class 或 dataclass 表示一条记录。
-2. 给对象写一个返回金额的小方法。
-3. 创建 2 个对象并打印字段。
-4. 把 dict 改成数据对象。
-5. 写一个列表保存多个对象。
-6. 写一个汇总对象列表的函数。
-7. 记录一次字段名写错的问题。
+1. 写一个只有两个属性的 class。
+2. 创建一个对象并打印属性。
+3. 给 class 加一个方法。
+4. 用 dataclass 表示一条记录。
+5. 把 dict 记录改成 dataclass。
+6. 创建两个对象放进列表。
+7. 记录一次属性名写错的问题。
+
 ## 题目驱动训练
 
-### 参考题 / 资料
+### 参考资料
 
-- [LeetCode 1603 - Design Parking System](https://leetcode.com/problems/design-parking-system/)
-- [LeetCode 705 - Design HashSet](https://leetcode.com/problems/design-hashset/)
-- [Python dataclasses docs](https://docs.python.org/3/library/dataclasses.html)
+- [Python 官方教程](https://docs.python.org/3/tutorial/)
 
-### 5 道递进题
+### 5 道基础巩固题
 
-#### 1. Easy - Parking System
+#### 1. 基础巩固 - 最小类
 
-关联题：[LeetCode 1603](https://leetcode.com/problems/design-parking-system/)
+题目：写一个 Position 类。
 
-题目：设计停车系统，车辆进入时扣减容量。
-
-讲解：类适合管理“有状态”的对象。
+讲解：类先理解属性。
 
 ```python
-class ParkingSystem:
-    def __init__(self, big: int, medium: int, small: int):
-        # 用 dict 保存不同类型剩余车位
-        self.slots = {1: big, 2: medium, 3: small}
+class Position:
+    def __init__(self, symbol, shares):
+        self.symbol = symbol
+        self.shares = shares
 
-    def addCar(self, carType: int) -> bool:
-        if self.slots.get(carType, 0) <= 0:
-            return False
-        self.slots[carType] -= 1
-        return True
+pos = Position("AAPL", 3)
+print(pos.symbol)
 ```
 
-#### 2. Easy - 简化 HashSet
+#### 2. 基础巩固 - 对象方法
 
-关联题：[LeetCode 705](https://leetcode.com/problems/design-hashset/)
+题目：给 Position 加市值计算。
 
-题目：实现 add/remove/contains。
-
-讲解：先用 Python 内置 set 理解接口设计。
+讲解：方法就是对象里的函数。
 
 ```python
-class MyHashSet:
-    def __init__(self):
-        self.data = set()
+class Position:
+    def __init__(self, symbol, shares, price):
+        self.symbol = symbol
+        self.shares = shares
+        self.price = price
 
-    def add(self, key: int) -> None:
-        self.data.add(key)
+    def value(self):
+        return self.shares * self.price
 
-    def remove(self, key: int) -> None:
-        self.data.discard(key)
-
-    def contains(self, key: int) -> bool:
-        return key in self.data
+pos = Position("AAPL", 3, 100)
+print(pos.value())
 ```
 
-#### 3. Medium - Trade dataclass
+#### 3. 基础巩固 - dataclass 记录
 
-题目：用 dataclass 表示一笔交易。
+题目：用 dataclass 表示学习记录。
 
-讲解：数据对象要清楚字段，不要让 dict 到处乱飞。
+讲解：dataclass 适合纯数据。
 
 ```python
 from dataclasses import dataclass
 
 @dataclass
-class Trade:
-    symbol: str
-    side: str
-    quantity: int
-    price: float
+class LearningLog:
+    topic: str
+    minutes: int
 
-    def notional(self) -> float:
-        return self.quantity * self.price
+log = LearningLog("函数", 60)
+print(log.topic)
 ```
 
-#### 4. Medium - Portfolio 汇总
+#### 4. 基础巩固 - 对象列表
 
-题目：Portfolio 能添加交易，并计算总成交金额。
+题目：创建多个学习记录并求总分钟。
 
-讲解：对象组合比全局变量更适合长期维护。
+讲解：对象也可以放进列表。
 
 ```python
-class Portfolio:
-    def __init__(self):
-        self.trades: list[Trade] = []
-
-    def add_trade(self, trade: Trade) -> None:
-        self.trades.append(trade)
-
-    def total_notional(self) -> float:
-        return sum(trade.notional() for trade in self.trades)
+logs = [LearningLog("函数", 60), LearningLog("列表", 45)]
+total = 0
+for log in logs:
+    total = total + log.minutes
+print(total)
 ```
 
-#### 5. Hard - Agent ToolSpec
+#### 5. 基础巩固 - 对象转文字
 
-题目：定义工具名、描述、必填参数，并校验输入。
+题目：给对象生成一句摘要。
 
-讲解：Agent tool 的稳定性从清楚 schema 开始。
+讲解：练习属性读取。
 
 ```python
-from dataclasses import dataclass
-
-@dataclass
-class ToolSpec:
-    name: str
-    description: str
-    required_fields: list[str]
-
-    def validate(self, payload: dict) -> list[str]:
-        # 返回缺失字段，而不是直接抛异常
-        return [field for field in self.required_fields if field not in payload]
+log = LearningLog("Python", 120)
+print(f"学习 {log.topic}，{log.minutes} 分钟")
 ```
