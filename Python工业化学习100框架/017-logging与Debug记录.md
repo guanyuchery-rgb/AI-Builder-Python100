@@ -71,6 +71,56 @@ except ValueError as exc:
 
 ## 基础详细讲解
 
+### 如果你完全看不懂，先只抓这一句话
+
+今天学的是：**日志是程序运行时留下的证据，比临时 print 更适合长期项目。**
+
+```text
+程序开始 -> 记录 input
+处理中 -> 记录关键步骤
+程序结束 -> 记录 output
+失败时 -> 记录错误原因
+```
+
+### print 和 logging 的区别
+
+| 对比 | print | logging |
+| --- | --- | --- |
+| 用途 | 临时看结果 | 长期记录运行过程 |
+| 级别 | 没有级别 | info/error 等级别 |
+| 项目复查 | 不方便 | 更适合保存和定位 |
+
+### 最小 logging
+
+```python
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logging.info("start")
+logging.info("loaded 3 rows")
+```
+
+你先不用学复杂配置，只要知道 `info` 是正常流程记录。
+
+### Debug 记录应该写什么
+
+不要只写“错了”。要写：
+
+```text
+错误现象：average([]) 报错
+触发输入：空列表 []
+原因：直接访问 values[0]
+修复：先判断 if not values
+```
+
+### 常见卡点
+
+| 现象 | 原因 | 怎么改 |
+| --- | --- | --- |
+| 没看到日志 | level 没设置或级别太低 | `basicConfig(level=logging.INFO)` |
+| 日志太多 | 什么都记 | 只记输入规模、关键步骤、输出位置 |
+| 看不出错误原因 | 没记录触发输入 | 失败时记录输入和异常 |
+
 ### logging 与 Debug 记录
 
 `print()` 适合早期观察，`logging` 适合长期维护。日志要回答：程序走到哪里、用了什么输入、关键结果是什么、哪里失败。Debug 不是情绪记录，而是定位证据。

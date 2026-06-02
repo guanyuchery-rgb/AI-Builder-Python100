@@ -70,6 +70,70 @@ print(f"topic={args.topic}, minutes={args.minutes}")
 
 ## 基础详细讲解
 
+### 如果你完全看不懂，先只抓这一句话
+
+今天学的是：**命令行参数让你不用改代码，也能给脚本换输入。**
+
+没有参数：
+
+```python
+input_path = "data.csv"
+```
+
+每次换文件都要改代码。
+
+有参数：
+
+```bash
+python3 app.py --input data.csv
+```
+
+运行时传入路径。
+
+### argparse 怎么读
+
+```python
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--input")
+args = parser.parse_args()
+print(args.input)
+```
+
+执行顺序：
+
+| 代码 | 发生了什么 |
+| --- | --- |
+| `ArgumentParser()` | 创建参数解析器 |
+| `add_argument("--input")` | 声明脚本支持一个 input 参数 |
+| `parse_args()` | 读取命令行传进来的值 |
+| `args.input` | 取出 input 的值 |
+
+### 参数是什么
+
+```bash
+python3 app.py --input data.csv --limit 10
+```
+
+可以理解成：
+
+```text
+input = "data.csv"
+limit = "10"
+```
+
+注意命令行传进来的值通常先是字符串，要计算时再转换。
+
+### Debug 对照表
+
+| 现象 | 常见原因 | 怎么改 |
+| --- | --- | --- |
+| 参数取不到 | 没有 add_argument | 先声明参数 |
+| 参数名不对 | `--input` 和 `args.xxx` 不一致 | 检查名称 |
+| 数字不能计算 | 参数是字符串 | 设置 `type=int` 或手动转换 |
+| 不知道怎么用 | help 没写 | 给参数加 `help=` |
+
 ### argparse 与命令行参数
 
 命令行参数让脚本从“每次改代码”变成“运行时传入不同输入”。这就是工具化的开始。你写的脚本要能被自己、别人或自动化任务重复调用。

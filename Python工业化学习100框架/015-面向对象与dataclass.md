@@ -71,6 +71,58 @@ print(record.topic, record.minutes)
 
 ## 基础详细讲解
 
+### 如果你完全看不懂，先只抓这一句话
+
+今天学的是：**dataclass 是一种更清楚地保存“固定字段记录”的方式。**
+
+字典写法：
+
+```python
+record = {"topic": "python", "minutes": 120}
+```
+
+dataclass 写法：
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class StudyRecord:
+    topic: str
+    minutes: int
+
+record = StudyRecord("python", 120)
+```
+
+### dataclass 解决什么问题
+
+字典很灵活，但 key 容易写错：
+
+```python
+record["minites"]
+```
+
+拼错了才会报错。dataclass 会把字段结构提前写清楚，让记录更像一个稳定的数据模型。
+
+### 怎么读 dataclass
+
+| 代码 | 含义 |
+| --- | --- |
+| `@dataclass` | 告诉 Python 自动生成初始化等基础能力 |
+| `class StudyRecord` | 定义一种记录类型 |
+| `topic: str` | 这个记录有 topic 字段，应该是字符串 |
+| `minutes: int` | 这个记录有 minutes 字段，应该是整数 |
+| `StudyRecord(...)` | 创建一条记录 |
+
+### 什么时候用 dict，什么时候用 dataclass
+
+| 场景 | 推荐 |
+| --- | --- |
+| 临时读取 JSON | dict |
+| 字段经常变化 | dict |
+| 字段固定、要复用 | dataclass |
+| 想让函数输入输出更清楚 | dataclass |
+
 ### 面向对象与 dataclass
 
 对象可以把一组相关数据放在一起。`dataclass` 适合定义轻量数据结构，例如一条交易记录、一条学习日志、一次 API 响应。初学不必追求复杂继承，先学会用类表达结构。

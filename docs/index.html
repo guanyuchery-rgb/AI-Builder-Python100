@@ -1383,6 +1383,31 @@ print(tags)</code></pre>
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是三种“装数据”的方式：<strong>字符串装文本，字典装一条有字段的数据，集合装不重复的数据。</strong></p>
+<pre><code>文本内容 -&gt; 字符串 str
+字段记录 -&gt; 字典 dict
+去重名单 -&gt; 集合 set</code></pre>
+<p>不要一开始就背所有方法。先知道什么时候用谁：</p>
+<ul>
+<li>看到一段话、一行输入、一个标签：先想字符串。</li>
+<li>看到 <code>topic -&gt; python</code>、<code>hours -&gt; 2</code> 这种字段和值：先想字典。</li>
+<li>看到“去重”“是否出现过”：先想集合。</li>
+</ul>
+<h3>三种结构怎么读</h3>
+<pre><code>text = &quot; Python &quot;
+clean = text.strip().lower()</code></pre>
+<p>这段表示：拿到一段文本，先去掉两边空格，再转小写。</p>
+<pre><code>record = {&quot;topic&quot;: &quot;python&quot;, &quot;hours&quot;: 2}
+print(record[&quot;topic&quot;])</code></pre>
+<p>这段表示：一条记录有两个字段，<code>topic</code> 字段的值是 <code>python</code>。</p>
+<pre><code>tags = {&quot;python&quot;, &quot;sql&quot;, &quot;python&quot;}
+print(tags)</code></pre>
+<p>集合会自动去重，所以重复的 <code>python</code> 只保留一份。</p>
+<h3>数据流追踪</h3>
+<table><thead><tr><th>代码</th><th>发生了什么</th></tr></thead><tbody><tr><td><code>text = &quot; Python &quot;</code></td><td>创建一段带空格的字符串</td></tr><tr><td><code>text.strip()</code></td><td>得到 <code>&quot;Python&quot;</code>，原字符串不变</td></tr><tr><td><code>.lower()</code></td><td>得到 <code>&quot;python&quot;</code></td></tr><tr><td><code>record[&quot;topic&quot;]</code></td><td>从字典里按 key 取 value</td></tr><tr><td><code>&quot;python&quot; in tags</code></td><td>判断集合里是否出现过这个值</td></tr></tbody></table>
+<h3>最容易混的点</h3>
+<table><thead><tr><th>卡点</th><th>正确理解</th></tr></thead><tbody><tr><td><code>list</code> 和 <code>dict</code> 都能装多个值</td><td>list 靠位置，dict 靠字段名</td></tr><tr><td><code>record[0]</code> 取不到字典第一个字段</td><td>字典要用 key，例如 <code>record[&quot;topic&quot;]</code></td></tr><tr><td><code>set</code> 不能按顺序取第几个</td><td>set 用来去重和判断出现，不用来保存顺序</td></tr><tr><td><code>strip()</code> 会不会改原字符串</td><td>不会，它返回一个新字符串</td></tr></tbody></table>
 <h3>字符串、字典与集合</h3>
 <p>字符串处理文本，字典处理 key-value 映射，集合处理去重和成员判断。三者是实际项目中最常见的数据结构：文件路径、字段名、配置项、用户输入、模型输出，很多都是文本和映射。</p>
 <h3>基础知识深讲：字符串、字典、集合的角色</h3>
@@ -1534,6 +1559,33 @@ except FileNotFoundError:
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是：<strong>程序不仅能在终端显示结果，还能把结果写进文件，下次再读回来。</strong></p>
+<pre><code>内存里的数据 -&gt; 写入文件 -&gt; 程序结束后仍然存在
+文件里的数据 -&gt; 读取出来 -&gt; 继续处理</code></pre>
+<p>前几天你的数据都在代码里，程序一关就没了。文件读写让代码有了“长期记忆”。</p>
+<h3>文件读写到底发生了什么</h3>
+<pre><code>from pathlib import Path
+
+path = Path(&quot;note.txt&quot;)
+path.write_text(&quot;hello&quot;, encoding=&quot;utf-8&quot;)
+content = path.read_text(encoding=&quot;utf-8&quot;)
+print(content)</code></pre>
+<p>执行顺序：</p>
+<table><thead><tr><th>顺序</th><th>代码</th><th>发生了什么</th></tr></thead><tbody><tr><td>1</td><td><code>Path(&quot;note.txt&quot;)</code></td><td>创建一个指向文件路径的对象</td></tr><tr><td>2</td><td><code>write_text(...)</code></td><td>把文本写入这个文件</td></tr><tr><td>3</td><td><code>read_text(...)</code></td><td>从这个文件读出文本</td></tr><tr><td>4</td><td><code>print(content)</code></td><td>在终端显示读到的内容</td></tr></tbody></table>
+<h3>路径为什么容易错</h3>
+<p>相对路径是相对“你运行命令的目录”，不是永远相对 <code>.py</code> 文件。看不懂路径时，先运行：</p>
+<pre><code>from pathlib import Path
+print(Path.cwd())</code></pre>
+<p>它会告诉你当前工作目录。</p>
+<h3>异常处理先这样理解</h3>
+<pre><code>try:
+    content = path.read_text(encoding=&quot;utf-8&quot;)
+except FileNotFoundError:
+    content = &quot;&quot;</code></pre>
+<p>意思是：先尝试读文件；如果文件不存在，不要让程序直接崩掉，而是给一个可解释的处理方式。</p>
+<h3>Debug 对照表</h3>
+<table><thead><tr><th>现象</th><th>常见原因</th><th>怎么查</th></tr></thead><tbody><tr><td>文件找不到</td><td>当前目录不对或文件名写错</td><td>打印 <code>Path.cwd()</code>，检查文件名和后缀</td></tr><tr><td>中文乱码</td><td>编码不一致</td><td>读写都加 <code>encoding=&quot;utf-8&quot;</code></td></tr><tr><td>写入后没看到文件</td><td>文件写到别的目录了</td><td>搜索文件名，或打印 <code>path.resolve()</code></td></tr><tr><td>读出来是空的</td><td>文件本来为空或写入失败</td><td>先打开文件确认内容</td></tr></tbody></table>
 <h3>文件读写与异常处理</h3>
 <p>程序真正有用，往往从“能读外部文件、能保存结果”开始。文件读写让代码和数据发生连接，异常处理让程序在失败时给出解释，而不是直接中断。</p>
 <h3>基础知识深讲：文件系统、持久化与异常</h3>
@@ -1687,6 +1739,31 @@ if __name__ == &quot;__main__&quot;:
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是：<strong>一个项目不要把所有代码堆在一个文件里，稳定逻辑放到模块里，运行入口放到 main 里。</strong></p>
+<pre><code>utils.py  -&gt; 放可复用函数
+main.py   -&gt; 放运行入口</code></pre>
+<p>模块就是 <code>.py</code> 文件。你从另一个文件里拿函数用，就是 <code>import</code>。</p>
+<h3>import 到底在做什么</h3>
+<p>假设 <code>utils.py</code> 里有：</p>
+<pre><code>def add(a, b):
+    return a + b</code></pre>
+<p><code>main.py</code> 里写：</p>
+<pre><code>from utils import add
+
+result = add(2, 3)
+print(result)</code></pre>
+<p>执行含义：</p>
+<table><thead><tr><th>代码</th><th>发生了什么</th></tr></thead><tbody><tr><td><code>from utils import add</code></td><td>从 <code>utils.py</code> 里拿出 <code>add</code> 函数</td></tr><tr><td><code>add(2, 3)</code></td><td>调用这个函数</td></tr><tr><td><code>print(result)</code></td><td>输出结果</td></tr></tbody></table>
+<h3><code>if __name__ == &quot;__main__&quot;</code> 先这样理解</h3>
+<pre><code>def main():
+    print(&quot;run&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()</code></pre>
+<p>这句话的意思是：<strong>只有直接运行这个文件时，才执行 main；如果这个文件被别人 import，就不要自动执行。</strong></p>
+<h3>最容易错的地方</h3>
+<table><thead><tr><th>现象</th><th>原因</th><th>怎么改</th></tr></thead><tbody><tr><td><code>ModuleNotFoundError</code></td><td>Python 找不到那个 <code>.py</code> 文件</td><td>确认两个文件在同一目录，或从项目根目录运行</td></tr><tr><td>import 时自动打印一堆东西</td><td>被导入文件里有直接执行代码</td><td>把执行代码放进 <code>main()</code> 和入口保护</td></tr><tr><td>文件名和库名冲突</td><td>例如文件叫 <code>json.py</code></td><td>改成更具体的名字</td></tr></tbody></table>
 <h3>模块、包与可复用脚本</h3>
 <p>模块就是一个 <code>.py</code> 文件，包是一组模块。把代码拆成模块，是为了让项目从“一个长脚本”变成“多个职责清楚的小文件”。<code>import</code> 不是炫技，而是复用。</p>
 <h3>基础知识深讲：模块边界与导入机制</h3>
@@ -1846,6 +1923,26 @@ print(&quot;saved learning.csv&quot;)</code></pre>
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是：<strong>把前 9 天的语法连成一个能保存学习记录的小工具。</strong></p>
+<p>小项目不是“大项目缩小版”，而是最小闭环：</p>
+<pre><code>输入一条记录 -&gt; 变成结构化数据 -&gt; 保存到文件 -&gt; 下次读回来</code></pre>
+<h3>学习记录 CLI 的数据流</h3>
+<pre><code>record = {&quot;topic&quot;: &quot;function&quot;, &quot;minutes&quot;: 120}</code></pre>
+<p>这是一条记录。</p>
+<pre><code>records = []
+records.append(record)</code></pre>
+<p>这是把记录放进列表。</p>
+<pre><code>Path(&quot;records.json&quot;).write_text(...)</code></pre>
+<p>这是把记录保存到文件。</p>
+<h3>为什么要做小项目</h3>
+<p>语法单独学容易散。项目会逼你回答四个问题：</p>
+<table><thead><tr><th>问题</th><th>在学习记录 CLI 里是什么</th></tr></thead><tbody><tr><td>输入是什么</td><td>日期、主题、学习分钟数</td></tr><tr><td>处理是什么</td><td>校验、整理成 dict、追加到列表</td></tr><tr><td>输出是什么</td><td>保存后的 JSON 或 Markdown</td></tr><tr><td>失败怎么办</td><td>空主题、分钟数不是数字、文件不存在</td></tr></tbody></table>
+<h3>卡住时缩小范围</h3>
+<p>如果你写 CLI 卡住，不要继续加菜单。退回到这个最小版本：</p>
+<pre><code>record = {&quot;topic&quot;: &quot;python&quot;, &quot;minutes&quot;: 120}
+print(record)</code></pre>
+<p>再一步步加保存、读取、列表、函数。</p>
 <h3>零基础小项目：学习记录 CLI</h3>
 <p>小项目不是把所有知识塞进去，而是把前 9 天能力连成闭环：输入一条学习记录，验证它，保存它，再能重新查看。项目的价值来自可运行和可复查。</p>
 <h3>基础知识深讲：小项目闭环与状态保存</h3>
@@ -2000,6 +2097,30 @@ with open(&quot;learning.csv&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;, n
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是：<strong>CSV 像表格，JSON 像字典和列表的组合。读取后先检查结构，再分析。</strong></p>
+<pre><code>CSV -&gt; 一行一条记录，一列一个字段
+JSON -&gt; dict / list 嵌套结构</code></pre>
+<h3>CSV 怎么想</h3>
+<p>CSV：</p>
+<pre><code>topic,minutes
+python,120
+sql,90</code></pre>
+<p>可以想成：</p>
+<pre><code>[
+    {&quot;topic&quot;: &quot;python&quot;, &quot;minutes&quot;: &quot;120&quot;},
+    {&quot;topic&quot;: &quot;sql&quot;, &quot;minutes&quot;: &quot;90&quot;},
+]</code></pre>
+<p>注意：从文件读出来的 <code>&quot;120&quot;</code> 很可能先是字符串，要计算就要转成数字。</p>
+<h3>JSON 怎么想</h3>
+<pre><code>{&quot;topic&quot;: &quot;python&quot;, &quot;minutes&quot;: 120}</code></pre>
+<p>读进 Python 后很像：</p>
+<pre><code>{&quot;topic&quot;: &quot;python&quot;, &quot;minutes&quot;: 120}</code></pre>
+<p>所以 JSON 和 dict 的关系非常近。</p>
+<h3>读取后先做三件事</h3>
+<table><thead><tr><th>检查</th><th>为什么</th></tr></thead><tbody><tr><td>打印类型</td><td>确认是 list 还是 dict</td></tr><tr><td>打印数量</td><td>确认读到了多少条</td></tr><tr><td>打印第一条</td><td>确认字段名和数据形状</td></tr></tbody></table>
+<h3>Debug 对照表</h3>
+<table><thead><tr><th>现象</th><th>常见原因</th><th>怎么改</th></tr></thead><tbody><tr><td>字段取不到</td><td>字段名拼错或表头不同</td><td>打印所有 key</td></tr><tr><td>数字不能相加</td><td>读出来是字符串</td><td>用 <code>int()</code> 或 <code>float()</code> 转换</td></tr><tr><td>JSON 报错</td><td>格式不是合法 JSON</td><td>检查引号、逗号、括号</td></tr><tr><td>循环层级错</td><td>把 dict 当 list 或把 list 当 dict</td><td>先打印 <code>type(data)</code></td></tr></tbody></table>
 <h3>CSV、JSON 与结构化数据</h3>
 <p>CSV 像表格，JSON 像嵌套字典和列表。学习它们的重点不是记格式，而是知道数据从哪里来、字段是什么意思、读取后变成什么 Python 对象。</p>
 <h3>基础知识深讲：结构化数据和字段意识</h3>
@@ -2164,6 +2285,22 @@ if match:
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是：<strong>正则就是从文本里按规则找东西。</strong></p>
+<pre><code>一大段文本 -&gt; 正则规则 -&gt; 找出数字/日期/标签</code></pre>
+<p>不要一开始写复杂正则。先从“找数字”“找日期”开始。</p>
+<h3>正则不是普通搜索</h3>
+<p>普通搜索：找固定文本 <code>python</code>。</p>
+<p>正则搜索：找“一类东西”，比如所有数字：</p>
+<pre><code>import re
+text = &quot;price=102.5, volume=3000&quot;
+numbers = re.findall(r&quot;\d+&quot;, text)
+print(numbers)</code></pre>
+<p>这里 <code>\d+</code> 表示连续数字，所以会找到数字片段。</p>
+<h3>数据流追踪</h3>
+<table><thead><tr><th>代码</th><th>发生了什么</th></tr></thead><tbody><tr><td><code>text = ...</code></td><td>准备原始文本</td></tr><tr><td><code>r&quot;\d+&quot;</code></td><td>定义匹配规则：连续数字</td></tr><tr><td><code>re.findall(...)</code></td><td>返回所有匹配结果组成的列表</td></tr><tr><td><code>print(numbers)</code></td><td>观察匹配是否合理</td></tr></tbody></table>
+<h3>最容易错的点</h3>
+<table><thead><tr><th>现象</th><th>原因</th><th>怎么改</th></tr></thead><tbody><tr><td>匹配不到</td><td>规则太严格或写错</td><td>先写更简单的规则</td></tr><tr><td>匹配太多</td><td>规则太宽</td><td>增加边界或更具体的模式</td></tr><tr><td>小数被拆开</td><td>只写了整数规则</td><td>改成支持小数的规则</td></tr><tr><td>看不懂反斜杠</td><td>正则有特殊符号</td><td>先用 <code>r&quot;...&quot;</code> 原始字符串</td></tr></tbody></table>
 <h3>正则表达式与文本解析</h3>
 <p>正则是从文本里提取模式的工具。初学只需要掌握少数稳定写法：数字、日期、邮箱样式、关键字段。不要一开始写很长的正则，先用简单模式拿到可验证结果。</p>
 <h3>基础知识深讲：模式匹配与文本边界</h3>
@@ -2333,6 +2470,28 @@ print(positive)</code></pre>
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是：<strong>列表推导式是 for 循环的短写，不是新魔法。</strong></p>
+<p>普通写法：</p>
+<pre><code>result = []
+for x in values:
+    result.append(x * 2)</code></pre>
+<p>推导式：</p>
+<pre><code>result = [x * 2 for x in values]</code></pre>
+<p>它们做的是同一件事。</p>
+<h3>推导式怎么读</h3>
+<pre><code>[x * 2 for x in values]</code></pre>
+<p>按这个顺序读：</p>
+<pre><code>for x in values  -&gt;  每次拿一个 x
+x * 2            -&gt;  对 x 做处理
+[...]            -&gt;  把处理结果收集成列表</code></pre>
+<h3>带 if 的推导式</h3>
+<pre><code>positive = [x for x in values if x &gt; 0]</code></pre>
+<p>读法：</p>
+<pre><code>遍历 values -&gt; 只保留 x &gt; 0 的元素 -&gt; 放进新列表</code></pre>
+<h3>什么时候不要用推导式</h3>
+<p>如果你写出来自己都读不懂，就不要用。</p>
+<table><thead><tr><th>情况</th><th>建议</th></tr></thead><tbody><tr><td>一层简单转换</td><td>可以用推导式</td></tr><tr><td>多个 if、多层循环</td><td>先用普通 for</td></tr><tr><td>需要 Debug 中间变量</td><td>用普通 for</td></tr><tr><td>给初学者看</td><td>普通 for 更清楚</td></tr></tbody></table>
 <h3>列表推导式、迭代器与生成器</h3>
 <p>列表推导式是把“遍历 + 处理 + 收集结果”写得更紧凑。迭代器和生成器强调按需产生数据。零基础阶段先理解等价关系：推导式本质上还是 for 循环。</p>
 <h3>基础知识深讲：推导式背后的数据流</h3>
@@ -2499,6 +2658,23 @@ for item in sorted(dates):
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是：<strong>日期不是普通字符串，时间数据要先解析，再排序、比较、计算。</strong></p>
+<pre><code>&quot;2026-06-01&quot; -&gt; datetime 对象 -&gt; 可以排序/比较/计算间隔</code></pre>
+<h3>为什么不能只当字符串</h3>
+<p>字符串只是文本。日期对象才有时间含义。</p>
+<pre><code>from datetime import datetime
+
+day = datetime.strptime(&quot;2026-06-01&quot;, &quot;%Y-%m-%d&quot;)
+print(day)</code></pre>
+<p><code>strptime</code> 可以理解成：按指定格式把字符串解析成日期。</p>
+<h3>格式必须对上</h3>
+<table><thead><tr><th>字符串</th><th>格式</th></tr></thead><tbody><tr><td><code>2026-06-01</code></td><td><code>%Y-%m-%d</code></td></tr><tr><td><code>2026/06/01</code></td><td><code>%Y/%m/%d</code></td></tr><tr><td><code>06-01-2026</code></td><td><code>%m-%d-%Y</code></td></tr></tbody></table>
+<p>格式不匹配就会报错。</p>
+<h3>时间序列最重要的三件事</h3>
+<table><thead><tr><th>检查</th><th>为什么</th></tr></thead><tbody><tr><td>是否解析成日期</td><td>否则排序可能错</td></tr><tr><td>是否按时间排序</td><td>否则收益率和窗口计算会错</td></tr><tr><td>区间边界是否清楚</td><td>否则实验不可复现</td></tr></tbody></table>
+<h3>Debug 对照表</h3>
+<table><thead><tr><th>现象</th><th>常见原因</th><th>怎么改</th></tr></thead><tbody><tr><td><code>ValueError</code></td><td>日期格式和模板不匹配</td><td>检查 <code>%Y-%m-%d</code> 等格式</td></tr><tr><td>排序奇怪</td><td>还在按字符串排序</td><td>先解析成 datetime</td></tr><tr><td>少一天/多一天</td><td>边界是否包含没写清楚</td><td>明确 start/end 是否包含</td></tr></tbody></table>
 <h3>日期时间与时间序列意识</h3>
 <p>时间不是普通字符串。日期需要解析、比较、排序和对齐。统计和 Quant 尤其依赖时间边界：今天、昨天、滚动窗口、交易日、样本区间，都必须清楚。</p>
 <h3>基础知识深讲：时间对象与样本区间</h3>
@@ -2667,6 +2843,27 @@ print(record.topic, record.minutes)</code></pre>
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是：<strong>dataclass 是一种更清楚地保存“固定字段记录”的方式。</strong></p>
+<p>字典写法：</p>
+<pre><code>record = {&quot;topic&quot;: &quot;python&quot;, &quot;minutes&quot;: 120}</code></pre>
+<p>dataclass 写法：</p>
+<pre><code>from dataclasses import dataclass
+
+@dataclass
+class StudyRecord:
+    topic: str
+    minutes: int
+
+record = StudyRecord(&quot;python&quot;, 120)</code></pre>
+<h3>dataclass 解决什么问题</h3>
+<p>字典很灵活，但 key 容易写错：</p>
+<pre><code>record[&quot;minites&quot;]</code></pre>
+<p>拼错了才会报错。dataclass 会把字段结构提前写清楚，让记录更像一个稳定的数据模型。</p>
+<h3>怎么读 dataclass</h3>
+<table><thead><tr><th>代码</th><th>含义</th></tr></thead><tbody><tr><td><code>@dataclass</code></td><td>告诉 Python 自动生成初始化等基础能力</td></tr><tr><td><code>class StudyRecord</code></td><td>定义一种记录类型</td></tr><tr><td><code>topic: str</code></td><td>这个记录有 topic 字段，应该是字符串</td></tr><tr><td><code>minutes: int</code></td><td>这个记录有 minutes 字段，应该是整数</td></tr><tr><td><code>StudyRecord(...)</code></td><td>创建一条记录</td></tr></tbody></table>
+<h3>什么时候用 dict，什么时候用 dataclass</h3>
+<table><thead><tr><th>场景</th><th>推荐</th></tr></thead><tbody><tr><td>临时读取 JSON</td><td>dict</td></tr><tr><td>字段经常变化</td><td>dict</td></tr><tr><td>字段固定、要复用</td><td>dataclass</td></tr><tr><td>想让函数输入输出更清楚</td><td>dataclass</td></tr></tbody></table>
 <h3>面向对象与 dataclass</h3>
 <p>对象可以把一组相关数据放在一起。<code>dataclass</code> 适合定义轻量数据结构，例如一条交易记录、一条学习日志、一次 API 响应。初学不必追求复杂继承，先学会用类表达结构。</p>
 <h3>基础知识深讲：对象、字段与数据模型</h3>
@@ -2834,6 +3031,31 @@ print(f&quot;topic={args.topic}, minutes={args.minutes}&quot;)</code></pre>
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是：<strong>命令行参数让你不用改代码，也能给脚本换输入。</strong></p>
+<p>没有参数：</p>
+<pre><code>input_path = &quot;data.csv&quot;</code></pre>
+<p>每次换文件都要改代码。</p>
+<p>有参数：</p>
+<pre><code>python3 app.py --input data.csv</code></pre>
+<p>运行时传入路径。</p>
+<h3>argparse 怎么读</h3>
+<pre><code>import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument(&quot;--input&quot;)
+args = parser.parse_args()
+print(args.input)</code></pre>
+<p>执行顺序：</p>
+<table><thead><tr><th>代码</th><th>发生了什么</th></tr></thead><tbody><tr><td><code>ArgumentParser()</code></td><td>创建参数解析器</td></tr><tr><td><code>add_argument(&quot;--input&quot;)</code></td><td>声明脚本支持一个 input 参数</td></tr><tr><td><code>parse_args()</code></td><td>读取命令行传进来的值</td></tr><tr><td><code>args.input</code></td><td>取出 input 的值</td></tr></tbody></table>
+<h3>参数是什么</h3>
+<pre><code>python3 app.py --input data.csv --limit 10</code></pre>
+<p>可以理解成：</p>
+<pre><code>input = &quot;data.csv&quot;
+limit = &quot;10&quot;</code></pre>
+<p>注意命令行传进来的值通常先是字符串，要计算时再转换。</p>
+<h3>Debug 对照表</h3>
+<table><thead><tr><th>现象</th><th>常见原因</th><th>怎么改</th></tr></thead><tbody><tr><td>参数取不到</td><td>没有 add_argument</td><td>先声明参数</td></tr><tr><td>参数名不对</td><td><code>--input</code> 和 <code>args.xxx</code> 不一致</td><td>检查名称</td></tr><tr><td>数字不能计算</td><td>参数是字符串</td><td>设置 <code>type=int</code> 或手动转换</td></tr><tr><td>不知道怎么用</td><td>help 没写</td><td>给参数加 <code>help=</code></td></tr></tbody></table>
 <h3>argparse 与命令行参数</h3>
 <p>命令行参数让脚本从“每次改代码”变成“运行时传入不同输入”。这就是工具化的开始。你写的脚本要能被自己、别人或自动化任务重复调用。</p>
 <h3>基础知识深讲：CLI 参数和工具化思维</h3>
@@ -3002,6 +3224,29 @@ except ValueError as exc:
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是：<strong>日志是程序运行时留下的证据，比临时 print 更适合长期项目。</strong></p>
+<pre><code>程序开始 -&gt; 记录 input
+处理中 -&gt; 记录关键步骤
+程序结束 -&gt; 记录 output
+失败时 -&gt; 记录错误原因</code></pre>
+<h3>print 和 logging 的区别</h3>
+<table><thead><tr><th>对比</th><th>print</th><th>logging</th></tr></thead><tbody><tr><td>用途</td><td>临时看结果</td><td>长期记录运行过程</td></tr><tr><td>级别</td><td>没有级别</td><td>info/error 等级别</td></tr><tr><td>项目复查</td><td>不方便</td><td>更适合保存和定位</td></tr></tbody></table>
+<h3>最小 logging</h3>
+<pre><code>import logging
+
+logging.basicConfig(level=logging.INFO)
+logging.info(&quot;start&quot;)
+logging.info(&quot;loaded 3 rows&quot;)</code></pre>
+<p>你先不用学复杂配置，只要知道 <code>info</code> 是正常流程记录。</p>
+<h3>Debug 记录应该写什么</h3>
+<p>不要只写“错了”。要写：</p>
+<pre><code>错误现象：average([]) 报错
+触发输入：空列表 []
+原因：直接访问 values[0]
+修复：先判断 if not values</code></pre>
+<h3>常见卡点</h3>
+<table><thead><tr><th>现象</th><th>原因</th><th>怎么改</th></tr></thead><tbody><tr><td>没看到日志</td><td>level 没设置或级别太低</td><td><code>basicConfig(level=logging.INFO)</code></td></tr><tr><td>日志太多</td><td>什么都记</td><td>只记输入规模、关键步骤、输出位置</td></tr><tr><td>看不出错误原因</td><td>没记录触发输入</td><td>失败时记录输入和异常</td></tr></tbody></table>
 <h3>logging 与 Debug 记录</h3>
 <p><code>print()</code> 适合早期观察，<code>logging</code> 适合长期维护。日志要回答：程序走到哪里、用了什么输入、关键结果是什么、哪里失败。Debug 不是情绪记录，而是定位证据。</p>
 <h3>基础知识深讲：日志、可观测性与调试证据</h3>
@@ -3170,6 +3415,36 @@ def test_average_empty():
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是：<strong>测试就是把“我期望函数返回什么”写成代码。</strong></p>
+<pre><code>给函数一个输入 -&gt; 得到实际输出 -&gt; 和期望输出比较</code></pre>
+<h3>assert 怎么读</h3>
+<pre><code>def add(a, b):
+    return a + b
+
+assert add(2, 3) == 5</code></pre>
+<p>这句话意思是：我期望 <code>add(2, 3)</code> 的结果等于 5。如果不是 5，测试失败。</p>
+<h3>为什么先测函数</h3>
+<p>函数最适合测试，因为它通常是：</p>
+<pre><code>输入 -&gt; 处理 -&gt; 返回值</code></pre>
+<p>比如：</p>
+<pre><code>def average(values):
+    if not values:
+        return 0
+    return sum(values) / len(values)</code></pre>
+<p>可以测试：</p>
+<pre><code>assert average([1, 2, 3]) == 2
+assert average([]) == 0</code></pre>
+<h3>测试失败怎么看</h3>
+<p>测试失败不是坏事。它告诉你：实际结果和期望结果不一样。</p>
+<table><thead><tr><th>你要看</th><th>说明</th></tr></thead><tbody><tr><td>输入是什么</td><td>哪个样例触发失败</td></tr><tr><td>期望是什么</td><td>assert 右边写的值</td></tr><tr><td>实际是什么</td><td>函数真实返回值</td></tr><tr><td>谁错了</td><td>可能是函数错，也可能是期望写错</td></tr></tbody></table>
+<h3>最小测试习惯</h3>
+<p>每个重要函数至少写三类：</p>
+<ul>
+<li>正常输入。</li>
+<li>空值或边界输入。</li>
+<li>容易写错的输入。</li>
+</ul>
 <h3>pytest 与最小测试</h3>
 <p>测试是把你的预期写成代码。它不是大公司才需要的东西，而是让你确认函数在修改后仍然可靠。最小测试只需要给定输入、调用函数、断言输出。</p>
 <h3>基础知识深讲：测试是可执行预期</h3>
@@ -3337,6 +3612,30 @@ print(load_limit({&quot;top_k&quot;: 5}, &quot;top_k&quot;))</code></pre>
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是：<strong>类型标注让函数输入输出更清楚，配置让变化的参数集中管理。</strong></p>
+<pre><code>def average(values: list[float]) -&gt; float:
+    return sum(values) / len(values)</code></pre>
+<p>这句话不是让 Python 自动变聪明，而是告诉读者：<code>values</code> 应该是一组浮点数，返回值应该是浮点数。</p>
+<h3>类型标注怎么读</h3>
+<table><thead><tr><th>写法</th><th>含义</th></tr></thead><tbody><tr><td><code>x: int</code></td><td>x 应该是整数</td></tr><tr><td><code>name: str</code></td><td>name 应该是字符串</td></tr><tr><td><code>values: list[float]</code></td><td>values 应该是浮点数列表</td></tr><tr><td><code>-&gt; float</code></td><td>函数返回浮点数</td></tr></tbody></table>
+<h3>配置是什么</h3>
+<p>不要把经常变化的参数散落在代码里：</p>
+<pre><code>threshold = 0.05
+input_path = &quot;data.csv&quot;</code></pre>
+<p>更好的做法是集中：</p>
+<pre><code>config = {
+    &quot;threshold&quot;: 0.05,
+    &quot;input_path&quot;: &quot;data.csv&quot;,
+}</code></pre>
+<p>以后要改，就知道去哪里找。</p>
+<h3>边界设计怎么想</h3>
+<p>函数入口先问：</p>
+<pre><code>这个输入允许为空吗？
+类型对吗？
+范围合理吗？
+缺字段怎么办？</code></pre>
+<p>这就是后面 API、Agent tool、Quant 参数实验的基础。</p>
 <h3>类型标注、配置与输入边界</h3>
 <p>类型标注不是给机器看的装饰，而是给未来读代码的人看的契约。配置把经常变化的参数从代码里拿出来，输入边界则说明什么数据可以进入系统。</p>
 <h3>基础知识深讲：类型标注、配置和边界设计</h3>
@@ -3503,6 +3802,33 @@ print(summarize_minutes(rows))</code></pre>
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>今天学的是：<strong>把前面学过的语法装成一个别人能运行的小工具。</strong></p>
+<p>不是做大项目，而是做清楚这个闭环：</p>
+<pre><code>样例输入 -&gt; 核心函数 -&gt; 输出结果 -&gt; README 说明怎么运行 -&gt; 测试确认没坏</code></pre>
+<h3>一个可交付小工具至少有什么</h3>
+<table><thead><tr><th>部分</th><th>作用</th></tr></thead><tbody><tr><td><code>README.md</code></td><td>告诉别人怎么运行</td></tr><tr><td><code>src/</code> 或 <code>.py</code> 文件</td><td>放核心代码</td></tr><tr><td><code>data/</code></td><td>放样例输入</td></tr><tr><td><code>tests/</code></td><td>放测试</td></tr><tr><td>输出文件</td><td>保存结果，方便复查</td></tr></tbody></table>
+<h3>为什么 README 先写</h3>
+<p>README 先写，不是形式主义。它会逼你说清：</p>
+<pre><code>这个工具解决什么问题？
+输入文件是什么？
+运行命令是什么？
+输出在哪里？
+失败时看哪里？</code></pre>
+<p>如果这些说不清，代码通常也会写乱。</p>
+<h3>最小 DataCLI 数据流</h3>
+<pre><code>读取 records.json
+-&gt; 解析成 list[dict]
+-&gt; 计算总学习分钟数
+-&gt; 输出 summary
+-&gt; 保存 report.md</code></pre>
+<h3>项目卡住怎么退回最小闭环</h3>
+<p>只保留四件事：</p>
+<p>1. 一份样例输入。</p>
+<p>2. 一个核心函数。</p>
+<p>3. 一个运行命令。</p>
+<p>4. 一个可检查输出。</p>
+<p>其他功能都先不要加。</p>
 <h3>工程化小项目 DataCLI</h3>
 <p>Day20 是第一阶段收束：把文件、函数、参数、日志、测试和 README 合成一个可运行小工具。完成标准不是功能多，而是别人能看懂怎么运行，出错后你能定位。</p>
 <h3>基础知识深讲：从语法到可交付小工具</h3>

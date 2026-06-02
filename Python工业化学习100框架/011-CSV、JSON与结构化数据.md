@@ -73,6 +73,67 @@ with open("learning.csv", "w", encoding="utf-8", newline="") as f:
 
 ## 基础详细讲解
 
+### 如果你完全看不懂，先只抓这一句话
+
+今天学的是：**CSV 像表格，JSON 像字典和列表的组合。读取后先检查结构，再分析。**
+
+```text
+CSV -> 一行一条记录，一列一个字段
+JSON -> dict / list 嵌套结构
+```
+
+### CSV 怎么想
+
+CSV：
+
+```text
+topic,minutes
+python,120
+sql,90
+```
+
+可以想成：
+
+```python
+[
+    {"topic": "python", "minutes": "120"},
+    {"topic": "sql", "minutes": "90"},
+]
+```
+
+注意：从文件读出来的 `"120"` 很可能先是字符串，要计算就要转成数字。
+
+### JSON 怎么想
+
+```json
+{"topic": "python", "minutes": 120}
+```
+
+读进 Python 后很像：
+
+```python
+{"topic": "python", "minutes": 120}
+```
+
+所以 JSON 和 dict 的关系非常近。
+
+### 读取后先做三件事
+
+| 检查 | 为什么 |
+| --- | --- |
+| 打印类型 | 确认是 list 还是 dict |
+| 打印数量 | 确认读到了多少条 |
+| 打印第一条 | 确认字段名和数据形状 |
+
+### Debug 对照表
+
+| 现象 | 常见原因 | 怎么改 |
+| --- | --- | --- |
+| 字段取不到 | 字段名拼错或表头不同 | 打印所有 key |
+| 数字不能相加 | 读出来是字符串 | 用 `int()` 或 `float()` 转换 |
+| JSON 报错 | 格式不是合法 JSON | 检查引号、逗号、括号 |
+| 循环层级错 | 把 dict 当 list 或把 list 当 dict | 先打印 `type(data)` |
+
 ### CSV、JSON 与结构化数据
 
 CSV 像表格，JSON 像嵌套字典和列表。学习它们的重点不是记格式，而是知道数据从哪里来、字段是什么意思、读取后变成什么 Python 对象。
