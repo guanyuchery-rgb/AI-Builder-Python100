@@ -879,26 +879,68 @@ print(count)</code></pre>
 <li>边界输入</li>
 </ul>
 <h2>核心讲解</h2>
-<p>今天的关键词是 <strong>把重复逻辑封装成可复用函数</strong>。学习时不要只看语法表面，而要始终追问三件事：输入是什么、处理逻辑是什么、输出要给谁使用。这个习惯会贯穿数据分析、Quant、LLM 应用和 Agent tool 设计。</p>
-<p>从工程角度看，今天的能力要服务于 <strong>所有工程项目的基本模块</strong>。也就是说，代码不只是“能跑”，还要能被未来的自己复查：文件名清楚、变量名能表达含义、失败时有可读错误、结果能保存。</p>
-<p>难度承接上，今天依赖 <strong>Day05 列表和循环</strong>；完成后会自然进入 <strong>Day07</strong>。如果今天卡住，优先回看 Day05，不要跳到更复杂的库或项目。</p>
-<h2>知识点结构</h2>
-<h3>定义</h3>
-<p>把重复逻辑封装成可复用函数，是把一个具体问题拆成可运行、可检查、可复用代码的过程。</p>
-<h3>为什么存在</h3>
-<p>它让学习从临时笔记变成长期资产。公开仓库里的每一天都应该能让读者看到：今天学什么、为什么学、怎么运行、如何检查结果。</p>
-<h3>最小案例</h3>
+<p>今天的关键词是 <strong>把重复逻辑封装成可复用函数</strong>。函数不是一开始就为了“高级工程”，而是为了解决一个很朴素的问题：同一段逻辑反复写，很容易写错、改漏、看不懂。</p>
+<p>先看一个不用函数的例子：</p>
+<pre><code>prices1 = [100, 102, 105]
+avg1 = sum(prices1) / len(prices1)
+print(avg1)
+
+prices2 = [98, 99, 101]
+avg2 = sum(prices2) / len(prices2)
+print(avg2)</code></pre>
+<p>这里平均值逻辑写了两次。如果以后你想处理空列表，就要改两处；如果有十组价格，就要写十次。函数就是把这段稳定逻辑收起来，给它一个名字，以后需要时直接调用。</p>
 <pre><code>def average(values):
     if not values:
         return 0
     return sum(values) / len(values)
 
-print(average([1, 2, 3]))
-print(average([]))</code></pre>
+print(average([100, 102, 105]))
+print(average([98, 99, 101]))</code></pre>
+<p>今天最重要的不是背 <code>def</code>，而是看懂这四件事：</p>
+<ul>
+<li><strong>定义函数</strong>：告诉 Python “以后有一个叫 average 的工具”。</li>
+<li><strong>调用函数</strong>：真正让这个工具开始执行。</li>
+<li><strong>参数</strong>：调用时交给函数的数据。</li>
+<li><strong>返回值</strong>：函数处理完后交回来的结果。</li>
+</ul>
+<p>从工程角度看，函数是所有项目的基本模块。数据清洗函数、收益率函数、Agent tool、API handler、测试用例，都是围绕“输入 -&gt; 处理 -&gt; 输出”组织的。</p>
+<p>难度承接上，今天依赖 <strong>Day05 列表和循环</strong>；完成后会自然进入 <strong>Day07</strong>。如果今天卡住，优先回看 Day05，不要跳到更复杂的库或项目。</p>
+<h2>知识点结构</h2>
+<h3>定义</h3>
+<p>函数是一个有名字的小工具。它把一段逻辑包装起来，等你调用它时再执行。</p>
+<pre><code>def 函数名(参数):
+    函数体
+    return 结果</code></pre>
+<p>这四个部分要分清：</p>
+<ul>
+<li><code>def</code>：告诉 Python 下面要定义函数。</li>
+<li><code>函数名</code>：以后调用这个工具时用的名字。</li>
+<li><code>参数</code>：函数需要的输入。</li>
+<li><code>return</code>：函数交回来的输出。</li>
+</ul>
+<h3>为什么存在</h3>
+<p>函数存在，是为了减少重复、降低错误、提高复用。</p>
+<p>不用函数时，你经常会把同一段逻辑复制很多遍。复制越多，未来修改越危险。用函数后，逻辑只写一次，其他地方只负责调用。以后要修边界、改公式、加日志，只改函数内部即可。</p>
+<h3>最小案例</h3>
+<pre><code>def add(a, b):
+    result = a + b
+    return result
+
+answer = add(2, 3)
+print(answer)</code></pre>
+<p>执行顺序不是从函数里面开始，而是：</p>
+<p>1. Python 看到 <code>def add(a, b):</code>，记住有一个叫 <code>add</code> 的函数，但暂时不执行函数体。</p>
+<p>2. Python 执行 <code>answer = add(2, 3)</code>，这才开始调用函数。</p>
+<p>3. 调用时，<code>a</code> 绑定到 <code>2</code>，<code>b</code> 绑定到 <code>3</code>。</p>
+<p>4. 函数内部计算 <code>result = a + b</code>。</p>
+<p>5. <code>return result</code> 把 <code>5</code> 交回调用位置。</p>
+<p>6. <code>answer</code> 得到 <code>5</code>，最后 <code>print(answer)</code> 输出。</p>
 <h3>常见错误</h3>
 <ul>
 <li>函数里只 <code>print</code> 不 <code>return</code>，导致结果不能复用。</li>
+<li>只定义函数，没有调用函数，以为函数会自动执行。</li>
 <li>参数名含义不清楚。</li>
+<li>调用时传入的参数数量不对。</li>
 <li>把所有代码都塞进一个巨大函数。</li>
 </ul>
 <h3>工程应用</h3>
@@ -912,42 +954,280 @@ print(average([]))</code></pre>
 <h3>未来扩展</h3>
 <p>今天只做最小闭环。后续可以逐步加入测试、日志、配置、页面、API 或项目文档，但不要牺牲可解释性。</p>
 <h2>基础详细讲解</h2>
+<h3>如果你完全看不懂，先只抓这一句话</h3>
+<p>函数就是：<strong>把一段代码起个名字，等需要时把数据交给它，让它算完后把结果还回来。</strong></p>
+<p>先不要背“封装”“抽象”“模块化”这些词。Day06 只抓住一条线：</p>
+<pre><code>我给函数数据 -&gt; 函数内部计算 -&gt; 函数把结果还给我</code></pre>
+<p>比如：</p>
+<pre><code>def add(a, b):
+    return a + b
+
+answer = add(2, 3)
+print(answer)</code></pre>
+<p>这段代码只做一件事：</p>
+<pre><code>我给 add 两个数 2 和 3 -&gt; add 内部做加法 -&gt; add 还给我 5</code></pre>
+<p>你读函数时永远按这个顺序看：</p>
+<p>1. 先找函数名：这个工具叫什么。</p>
+<p>2. 再看参数：这个工具需要什么输入。</p>
+<p>3. 再看函数体：这个工具内部做什么。</p>
+<p>4. 最后看 return：这个工具把什么结果还回来。</p>
+<h3>函数不是数学里的“高深函数”</h3>
+<p>很多人卡在“函数”这个词，是因为它听起来像数学。Python 里的函数更像一个小机器：</p>
+<pre><code>          输入
+           |
+           v
+    +---------------+
+    |   函数内部     |
+    |   处理逻辑     |
+    +---------------+
+           |
+           v
+          输出</code></pre>
+<p>比如榨汁机：</p>
+<pre><code>苹果 -&gt; 榨汁机 -&gt; 苹果汁</code></pre>
+<p>Python 函数：</p>
+<pre><code>[1, 2, 3] -&gt; average -&gt; 2</code></pre>
+<p>函数名就是机器名，参数就是放进去的原料，<code>return</code> 就是吐出来的结果。</p>
 <h3>函数、参数与返回值</h3>
 <p>函数是把一段可重复使用的逻辑装进一个名字。参数是输入，<code>return</code> 是输出。初学时不要追求复杂函数，先保证一个函数只解决一个小问题，并且名字能说明它做什么。</p>
+<p>你可以先把函数理解成一个“处理器”：</p>
+<pre><code>输入数据 -&gt; 函数内部处理 -&gt; 返回结果</code></pre>
+<p>比如平均值函数：</p>
+<pre><code>[1, 2, 3] -&gt; average -&gt; 2</code></pre>
+<p>如果你不能用这条线解释一个函数，说明这个函数还没有想清楚。</p>
+<h3>逐行执行追踪：一定要按这个表读</h3>
+<p>代码：</p>
+<pre><code>def add(a, b):
+    result = a + b
+    return result
+
+answer = add(2, 3)
+print(answer)</code></pre>
+<p>执行追踪：</p>
+<table><thead><tr><th>顺序</th><th>Python 看到的代码</th><th>真正发生的事</th></tr></thead><tbody><tr><td>1</td><td><code>def add(a, b):</code></td><td>Python 记住一个叫 <code>add</code> 的函数，函数体暂时不执行</td></tr><tr><td>2</td><td><code>answer = add(2, 3)</code></td><td>这里出现了 <code>add(...)</code>，函数开始被调用</td></tr><tr><td>3</td><td><code>a = 2, b = 3</code></td><td>调用时，参数 <code>a</code> 得到 2，参数 <code>b</code> 得到 3</td></tr><tr><td>4</td><td><code>result = a + b</code></td><td>函数内部计算，<code>result</code> 变成 5</td></tr><tr><td>5</td><td><code>return result</code></td><td>函数把 5 还给调用位置</td></tr><tr><td>6</td><td><code>answer = add(2, 3)</code></td><td><code>add(2, 3)</code> 整体变成 5，所以 <code>answer = 5</code></td></tr><tr><td>7</td><td><code>print(answer)</code></td><td>输出 5</td></tr></tbody></table>
+<p>最关键的一句是：<strong><code>add(2, 3)</code> 调用结束后，会被返回值替换掉。</strong></p>
+<p>你可以把这行：</p>
+<pre><code>answer = add(2, 3)</code></pre>
+<p>在脑子里替换成：</p>
+<pre><code>answer = 5</code></pre>
+<p>如果能理解这一步，函数就通了一半。</p>
+<h3>参数绑定图：a 和 b 什么时候有值</h3>
+<p>定义函数时：</p>
+<pre><code>def add(a, b):
+    return a + b</code></pre>
+<p>这时 <code>a</code> 和 <code>b</code> 还没有具体值。它们只是两个“入口名字”。</p>
+<p>调用函数时：</p>
+<pre><code>add(2, 3)</code></pre>
+<p>才发生绑定：</p>
+<pre><code>a &lt;- 2
+b &lt;- 3</code></pre>
+<p>再调用：</p>
+<pre><code>add(10, 20)</code></pre>
+<p>这次绑定变成：</p>
+<pre><code>a &lt;- 10
+b &lt;- 20</code></pre>
+<p>所以 <code>a</code>、<code>b</code> 不是固定数字。它们像临时标签，每次调用函数时贴到新的输入数据上。</p>
+<h3>return 回填图：结果回到哪里</h3>
+<p>看这段：</p>
+<pre><code>def double(x):
+    return x * 2
+
+value = double(5)
+print(value + 1)</code></pre>
+<p>执行时可以这样想：</p>
+<pre><code>double(5)
+=&gt; return 5 * 2
+=&gt; return 10</code></pre>
+<p>所以：</p>
+<pre><code>value = double(5)</code></pre>
+<p>等价于：</p>
+<pre><code>value = 10</code></pre>
+<p>最后：</p>
+<pre><code>print(value + 1)</code></pre>
+<p>就是：</p>
+<pre><code>print(10 + 1)</code></pre>
+<p>输出 <code>11</code>。</p>
+<h3>为什么你会觉得函数难</h3>
+<p>函数难，不是因为语法长，而是因为它会让代码“跳来跳去”：</p>
+<pre><code>先看到 def，但不执行
+看到调用，跳进函数
+遇到 return，跳回调用位置
+继续执行后面的代码</code></pre>
+<p>所以读函数不能像读普通脚本那样只从上到下硬读。正确读法是：</p>
+<pre><code>先跳过函数体 -&gt; 找调用位置 -&gt; 带着参数进入函数 -&gt; 遇到 return 回来</code></pre>
+<p>这也是今天最重要的阅读能力。</p>
 <h3>基础知识深讲：函数契约与复用</h3>
-<p>函数的本质是一份契约：调用者提供什么输入，函数承诺返回什么输出。<code>def average(values):</code> 这行代码定义了函数名和输入入口；<code>return</code> 定义输出出口。只要契约清楚，函数就可以被脚本、测试、CLI、API 或 Agent tool 反复调用。</p>
-<p><code>print()</code> 和 <code>return</code> 的差别必须吃透。<code>print()</code> 是把信息显示给人看，返回值则是把结果交给程序继续使用。一个只打印不返回的函数，很难参与后续计算；一个有返回值的函数，可以被测试、组合和复用。工程里核心逻辑通常应该 return，入口层再负责 print 或保存文件。</p>
-<p>函数参数应该尽量减少对外部变量的依赖。比如 <code>average(values)</code> 比直接使用全局 <code>prices</code> 更稳，因为它只依赖传入的 values。这样你可以用不同列表测试它，也可以把它放进别的项目。这个习惯会直接影响后面的 pytest、API 参数、Agent tool schema。</p>
-<p>边界输入是函数深度理解的一部分。空列表、负数、None、字符串数字，都可能进入函数。初学不需要一次处理所有情况，但必须养成习惯：每写一个函数，都问一句“最小正常输入是什么，最危险的边界输入是什么”。</p>
-<h3>手写顺序</h3>
+<h4>1. 函数先解决重复代码</h4>
+<p>先不要急着写 <code>def</code>。先看没有函数时为什么麻烦。</p>
+<pre><code>values = [1, 2, 3]
+total = sum(values)
+count = len(values)
+average_value = total / count
+print(average_value)</code></pre>
+<p>这段代码只会算 <code>values</code> 这一组数据。如果你换成另一组数据，要重新写一遍。函数就是把“计算平均值”这件事抽出来：</p>
+<pre><code>def average(values):
+    total = sum(values)
+    count = len(values)
+    average_value = total / count
+    return average_value</code></pre>
+<p>现在你可以给它不同输入：</p>
+<pre><code>print(average([1, 2, 3]))
+print(average([10, 20, 30]))</code></pre>
+<p>所以函数不是凭空出现的语法，而是从重复代码里抽出来的稳定逻辑。</p>
+<h4>2. 定义函数不等于执行函数</h4>
+<p>这是 Day06 最容易卡住的地方。</p>
+<pre><code>def say_hello():
+    print(&quot;hello&quot;)</code></pre>
+<p>这段代码运行后不会输出 <code>hello</code>。原因是：<code>def</code> 只是定义函数，Python 只是记住“有一个叫 <code>say_hello</code> 的函数”。真正执行要靠调用：</p>
+<pre><code>say_hello()</code></pre>
+<p>带括号才是调用。你可以把它理解成：</p>
+<pre><code>def say_hello():  准备工具
+say_hello()       使用工具</code></pre>
+<h4>3. 参数是函数入口，不是固定值</h4>
+<p>看这个函数：</p>
+<pre><code>def add(a, b):
+    return a + b</code></pre>
+<p><code>a</code> 和 <code>b</code> 在定义函数时还没有具体值，它们只是占位名。调用时才会拿到值：</p>
+<pre><code>add(2, 3)</code></pre>
+<p>这一刻发生的是：</p>
+<pre><code>a = 2
+b = 3
+return a + b</code></pre>
+<p>再调用一次：</p>
+<pre><code>add(10, 20)</code></pre>
+<p>这一刻又变成：</p>
+<pre><code>a = 10
+b = 20
+return a + b</code></pre>
+<p>所以参数让同一个函数可以处理不同数据。</p>
+<h4>4. return 是把结果带回调用位置</h4>
+<p><code>return</code> 做两件事：</p>
+<p>1. 结束函数执行。</p>
+<p>2. 把结果交回函数被调用的地方。</p>
+<pre><code>def add(a, b):
+    return a + b
+
+answer = add(2, 3)</code></pre>
+<p>这里 <code>add(2, 3)</code> 最后会变成 <code>5</code>，所以可以理解成：</p>
+<pre><code>answer = 5</code></pre>
+<p>如果函数没有 <code>return</code>，Python 默认返回 <code>None</code>。</p>
+<pre><code>def add_and_print(a, b):
+    print(a + b)
+
+answer = add_and_print(2, 3)
+print(answer)</code></pre>
+<p>第一行输出 <code>5</code>，第二行输出 <code>None</code>。这就是为什么只会 <code>print</code> 不会 <code>return</code>，后面写项目会卡住。</p>
+<h4>5. print 和 return 的区别</h4>
+<table><thead><tr><th>对比</th><th>print</th><th>return</th></tr></thead><tbody><tr><td>作用</td><td>给人看</td><td>给程序继续用</td></tr><tr><td>出现位置</td><td>函数内外都可以</td><td>只能在函数里有意义</td></tr><tr><td>后续能不能继续计算</td><td>不能直接用</td><td>可以赋值、判断、保存、测试</td></tr><tr><td>工程习惯</td><td>放在入口层、调试层</td><td>放在核心逻辑层</td></tr></tbody></table>
+<p>初学阶段可以这样记：</p>
+<pre><code>想看结果：print
+想把结果交给下一步：return</code></pre>
+<h4>6. 函数内部变量只在函数内部工作</h4>
+<pre><code>def add(a, b):
+    result = a + b
+    return result
+
+print(result)</code></pre>
+<p>这段代码会报错，因为 <code>result</code> 是函数内部变量。它只在函数执行时临时存在，函数结束后外面不能直接访问它。</p>
+<p>正确做法是接住返回值：</p>
+<pre><code>answer = add(2, 3)
+print(answer)</code></pre>
+<p>这也是为什么 <code>return</code> 很重要：它把函数内部结果带到函数外部。</p>
+<h4>7. 今天暂时不要学太多函数高级语法</h4>
+<p>原版 Python100 的函数章节会继续讲默认参数、关键字参数、不定长参数、匿名函数、变量作用域和模块。那些都重要，但你现在 Day06 最先要吃透的是：</p>
 <ul>
-<li>先写不用函数的版本，确认逻辑跑通；再把稳定逻辑提取成函数。</li>
-<li>函数内部少用外部变量，尽量通过参数传入数据。</li>
-<li>区分 <code>print()</code> 和 <code>return</code>：前者给人看，后者把结果交给后续代码。</li>
+<li>会定义一个函数。</li>
+<li>会调用一个函数。</li>
+<li>知道参数什么时候有值。</li>
+<li>知道 <code>return</code> 把值带回哪里。</li>
+<li>会用返回值继续计算。</li>
 </ul>
+<p>这些理解稳了，再学默认参数、模块和测试才不会混。</p>
+<h3>手写顺序</h3>
+<p>1. 先写不用函数的版本，确认逻辑能跑。</p>
+<p>2. 找出重复逻辑，给它起一个清楚的名字。</p>
+<p>3. 把会变化的数据放进参数。</p>
+<p>4. 在函数内部完成计算。</p>
+<p>5. 用 <code>return</code> 返回结果。</p>
+<p>6. 在函数外调用函数，并用变量接住返回值。</p>
+<p>7. 最后再 <code>print()</code> 这个变量，确认结果。</p>
 <h3>今天必须真正弄懂</h3>
 <ul>
-<li><strong>输入</strong>：今天这段代码从哪里拿到数据，是手写值、终端输入、文件，还是函数参数。</li>
-<li><strong>处理</strong>：每一行代码改变了什么状态，例如变量变了、列表多了一个元素、判断走了某个分支。</li>
-<li><strong>输出</strong>：结果给谁看，是终端输出、返回值、文件，还是后面函数继续使用。</li>
+<li><strong>定义函数时不会执行函数体</strong>：只有调用时才执行。</li>
+<li><strong>参数是入口</strong>：调用时传入的数据会绑定到参数名。</li>
+<li><strong>return 是出口</strong>：函数的结果从这里回到调用位置。</li>
+<li><strong>print 不是 return</strong>：看到结果不等于程序拿到了结果。</li>
 </ul>
 <h3>和后面项目的关系</h3>
-<p>Agent tool、数据清洗步骤、Quant 指标函数，都要求输入输出清楚。今天开始从脚本思维进入模块思维。</p>
+<p>后面所有项目都会反复使用函数：</p>
+<ul>
+<li>数据分析：<code>clean_price(value)</code>、<code>calculate_mean(values)</code>。</li>
+<li>Quant：<code>simple_return(start, end)</code>、<code>max_drawdown(equity)</code>。</li>
+<li>Agent：<code>search_notes(query)</code>、<code>validate_tool_args(args)</code>。</li>
+<li>测试：给函数输入，检查返回值是否正确。</li>
+</ul>
+<p>函数写不清楚，后面的项目就会变成一堆无法复用的脚本。函数写清楚，代码会自然变成模块。</p>
 <h3>零基础拆解：函数输入输出契约</h3>
 <h4>这一天到底在练什么</h4>
-<p>函数把一段逻辑变成可复用工具。参数是输入，return 是输出。你写函数时先不要想高级语法，只问：这个函数要什么数据，返回什么结果。</p>
+<p>今天只练一个能力：把“能跑的一段代码”变成“可以反复调用的小工具”。你写函数时先不要想高级语法，只问：这个函数要什么数据，内部做什么，返回什么结果。</p>
 <h4>手写时按这个顺序</h4>
-<ul>
-<li>先写不用函数的平均值计算。</li>
-<li>把输入变成参数 <code>values</code>。</li>
-<li>把最终结果从 <code>print()</code> 改成 <code>return</code>，再在外面打印函数调用结果。</li>
-</ul>
+<pre><code># 第一步：不用函数，先把逻辑跑通
+values = [1, 2, 3]
+total = sum(values)
+count = len(values)
+answer = total / count
+print(answer)</code></pre>
+<pre><code># 第二步：把会变化的数据变成参数
+def average(values):
+    total = sum(values)
+    count = len(values)
+    answer = total / count
+    return answer</code></pre>
+<pre><code># 第三步：调用函数，并接住返回值
+result = average([1, 2, 3])
+print(result)</code></pre>
+<pre><code># 第四步：处理边界输入
+def average(values):
+    if not values:
+        return 0
+    return sum(values) / len(values)</code></pre>
 <h4>最常见卡点</h4>
-<p>函数里只 <code>print</code> 会导致后面拿不到结果；忘记调用函数时，程序不会自动执行函数体。</p>
+<ul>
+<li>只写了 <code>def</code>，没有调用，所以没有任何输出。</li>
+<li>函数里写了 <code>print()</code>，但没有 <code>return</code>，所以外面接到的是 <code>None</code>。</li>
+<li>参数个数不一致，例如 <code>add(a, b)</code> 需要两个输入，但只传了一个。</li>
+<li>把函数内部变量拿到外面直接用，导致 <code>NameError</code>。</li>
+<li>函数名太模糊，例如 <code>do()</code>、<code>calc()</code>，以后复习不知道它算什么。</li>
+</ul>
+<h4>函数 Debug 对照表</h4>
+<table><thead><tr><th>现象</th><th>常见原因</th><th>怎么改</th></tr></thead><tbody><tr><td>运行后没有任何输出</td><td>只定义了函数，没有调用</td><td>在函数外写 <code>函数名()</code></td></tr><tr><td>输出了 <code>None</code></td><td>函数内部只有 <code>print</code>，没有 <code>return</code></td><td>把结果 <code>return</code> 出来，再在外面 <code>print</code></td></tr><tr><td><code>TypeError: missing ... argument</code></td><td>调用时参数少了</td><td>检查 <code>def</code> 里需要几个参数，调用时传几个值</td></tr><tr><td><code>TypeError: takes 2 positional arguments but 3 were given</code></td><td>调用时参数多了</td><td>删除多余参数，或修改函数定义</td></tr><tr><td><code>NameError: result is not defined</code></td><td>在函数外访问函数内部变量</td><td>用 <code>answer = 函数名(...)</code> 接住返回值</td></tr><tr><td>结果不变</td><td>参数写死在函数内部，没有使用传入值</td><td>检查函数体是否真的用了参数</td></tr></tbody></table>
+<h4>三个必须亲手观察的实验</h4>
+<p>实验 1：只定义，不调用。</p>
+<pre><code>def hello():
+    print(&quot;hello&quot;)</code></pre>
+<p>运行后没有输出，这是正常的。因为函数还没被调用。</p>
+<p>实验 2：调用函数。</p>
+<pre><code>def hello():
+    print(&quot;hello&quot;)
+
+hello()</code></pre>
+<p>这次会输出 <code>hello</code>。</p>
+<p>实验 3：print 不等于 return。</p>
+<pre><code>def add(a, b):
+    print(a + b)
+
+answer = add(2, 3)
+print(answer)</code></pre>
+<p>输出是：</p>
+<pre><code>5
+None</code></pre>
+<p>你要亲眼看到这个 <code>None</code>，才会真正记住：<code>print</code> 只是显示，<code>return</code> 才是交回结果。</p>
 <h4>自查问题</h4>
 <ul>
 <li>我能区分定义函数和调用函数。</li>
-<li>我能解释参数名的含义。</li>
+<li>我能解释 <code>a</code>、<code>b</code> 在调用时分别绑定到什么值。</li>
+<li>我能说出 <code>return</code> 的结果回到了哪一行。</li>
+<li>我能把一个只会 <code>print</code> 的函数改成有返回值的函数。</li>
 <li>我能给空列表返回一个合理结果。</li>
 </ul>
 <h2>2 小时学习节奏</h2>
@@ -955,56 +1235,85 @@ print(average([]))</code></pre>
 <li>15 分钟：读定位、前置和知识地图。</li>
 <li>25 分钟：手打最小案例并运行。</li>
 <li>35 分钟：完成 7 道简单路线题。</li>
-<li>35 分钟：完成 5 道基础巩固题。</li>
+<li>35 分钟：完成 7 道函数巩固题。</li>
 <li>10 分钟：记录 Debug、结果和下一步。</li>
 </ul>
 <h2>简单路线 7 题</h2>
 <p>1. 新建 <code>day06_function.py</code>。</p>
-<p>2. 写 <code>add(a, b)</code> 并返回结果。</p>
-<p>3. 写 <code>average(values)</code> 并处理空列表。</p>
-<p>4. 调用函数并打印结果。</p>
-<p>5. 改变输入，确认函数可复用。</p>
-<p>6. 给函数加一行简短注释。</p>
-<p>7. 写下函数的输入和输出。</p>
-<h2>5 道基础巩固题</h2>
+<p>2. 先不写函数，直接计算 <code>[1, 2, 3]</code> 的平均值。</p>
+<p>3. 把平均值逻辑改成 <code>average(values)</code>。</p>
+<p>4. 用 <code>result = average([1, 2, 3])</code> 接住返回值，再打印 <code>result</code>。</p>
+<p>5. 再调用一次 <code>average([10, 20, 30])</code>，确认同一个函数能处理新数据。</p>
+<p>6. 故意把 <code>return</code> 改成 <code>print</code>，观察外面接到什么。</p>
+<p>7. 写下函数的输入、处理、输出各是什么。</p>
+<h2>7 道函数巩固题（从易到难）</h2>
 <h4>1. 加法函数</h4>
 <p>题目：写一个返回两数之和的函数。</p>
-<p>讲解：函数要 return。</p>
+<p>讲解：先用最简单的 <code>add</code> 看懂参数和返回值。<code>a</code>、<code>b</code> 是参数名，调用时才会获得具体值。</p>
 <pre><code>def add(a, b):
-    return a + b
+    result = a + b
+    return result
 
-print(add(2, 3))</code></pre>
+answer = add(2, 3)
+print(answer)</code></pre>
 <h4>2. 平均值函数</h4>
 <p>题目：封装平均值计算。</p>
-<p>讲解：处理空列表。</p>
+<p>讲解：先判断空列表，再计算平均值。<code>return</code> 后面的值会回到调用位置。</p>
 <pre><code>def average(values):
     if not values:
         return 0
-    return sum(values) / len(values)
+    total = sum(values)
+    count = len(values)
+    return total / count
 
-print(average([1, 2, 3]))</code></pre>
+result = average([1, 2, 3])
+print(result)</code></pre>
 <h4>3. 收益率函数</h4>
 <p>题目：计算开始价格到结束价格的收益率。</p>
-<p>讲解：Quant 常用函数。</p>
+<p>讲解：这是 Quant 里最小的函数模型。输入是开始价格和结束价格，输出是收益率。</p>
 <pre><code>def simple_return(start, end):
+    if start &lt;= 0:
+        return 0
     return end / start - 1
 
-print(simple_return(100, 105))</code></pre>
+ret = simple_return(100, 105)
+print(ret)</code></pre>
 <h4>4. 价格校验函数</h4>
 <p>题目：判断价格是否大于 0。</p>
-<p>讲解：为数据校验做准备。</p>
+<p>讲解：函数也可以返回 True / False。这样的函数常用于输入验证。</p>
 <pre><code>def is_valid_price(price):
     return price &gt; 0
 
-print(is_valid_price(100))</code></pre>
-<h4>5. main 入口</h4>
+ok = is_valid_price(100)
+print(ok)</code></pre>
+<h4>5. print 和 return 对比</h4>
+<p>题目：观察只 print 不 return 的函数会发生什么。</p>
+<p>讲解：这个题非常关键。你会看到函数内部打印了结果，但外部变量拿到的是 <code>None</code>。</p>
+<pre><code>def add_and_print(a, b):
+    print(a + b)
+
+answer = add_and_print(2, 3)
+print(answer)</code></pre>
+<h4>6. main 入口</h4>
 <p>题目：用 main 管理脚本入口。</p>
-<p>讲解：后面 CLI 会用到。</p>
+<p>讲解：<code>main()</code> 是项目入口函数。以后 CLI、脚本、测试都会更清楚。</p>
 <pre><code>def main():
-    print(&quot;run&quot;)
+    result = add(2, 3)
+    print(result)
+
+def add(a, b):
+    return a + b
 
 if __name__ == &quot;__main__&quot;:
     main()</code></pre>
+<h4>7. 函数阅读题</h4>
+<p>题目：读下面代码，写出执行顺序和最终输出。</p>
+<p>讲解：读函数时，先跳过函数体，看哪里调用；调用时再进入函数。</p>
+<pre><code>def double(x):
+    return x * 2
+
+value = double(5)
+print(value + 1)</code></pre>
 <h2>Debug 记录模板</h2>
 <pre><code>错误现象：
 触发输入：
@@ -1015,12 +1324,13 @@ if __name__ == &quot;__main__&quot;:
 <ul>
 <li>[ ] 我能解释今天能力的输入、处理和输出。</li>
 <li>[ ] 我能从零手打最小案例。</li>
-<li>[ ] 我完成了 7 道简单路线题和 5 道基础巩固题。</li>
+<li>[ ] 我完成了 7 道简单路线题和 7 道函数巩固题。</li>
 <li>[ ] 我把结果保存成可复查产物。</li>
 </ul>
 <h2>参考资料</h2>
 <ul>
 <li><a href="https://docs.python.org/3/">Python 官方文档</a></li>
+<li><a href="https://github.com/jackfrued/Python-100-Days">Python-100-Days 函数和模块章节</a></li>
 </ul></article><article id="007-字符串、字典与集合"><h1>Day07 - 字符串、字典与集合</h1>
 <p>&gt; 阶段一：Python 零基础与语法地基</p>
 <h2>学习定位</h2>
