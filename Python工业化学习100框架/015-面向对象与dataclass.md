@@ -91,6 +91,28 @@ print(record.topic, record.minutes)
 
 Agent tool 参数、Quant signal、数据记录对象，都可以用 dataclass 让结构更清楚。
 
+### 零基础拆解：dataclass 表达数据结构
+
+#### 这一天到底在练什么
+
+dataclass 适合表达一条结构化记录。它让字段固定下来，减少字典 key 写错的问题。
+
+#### 手写时按这个顺序
+
+- 先列出记录字段，例如 topic、minutes、score。
+- 用 dataclass 定义这些字段和类型。
+- 创建一个对象并打印，确认字段值正确。
+
+#### 最常见卡点
+
+dataclass 不是用来写复杂行为的。初学先把它当成“带字段名的数据盒子”。
+
+#### 自查问题
+
+- 我能解释对象里的每个字段。
+- 我能创建一个 dataclass 实例。
+- 我能决定什么时候用 dict，什么时候用 dataclass。
+
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。
