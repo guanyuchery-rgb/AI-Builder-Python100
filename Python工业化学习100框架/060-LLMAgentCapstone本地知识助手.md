@@ -117,6 +117,32 @@ print(tool_contract("demo question"))
 3. 它解决什么问题？
 4. 它在未来 Quant / LLM / Agent 项目中怎么使用？
 
+### 基础优化补充：问题、场景与代码
+
+**阶段定位**：LLM / RAG / Agent 基础。
+
+**解决什么问题（Problem）**：LLM/Agent Capstone：本地知识助手 的核心不是背概念，而是把模型调用从“聊天感觉”变成可验证、可评估、可记录的工程流程。
+
+**真实科研场景**：用结构化上下文、引用、评估集和错误案例管理科研阅读与报告生成。
+
+**数据分析场景**：把文本、指标和报告材料整理成可检索、可引用、可评估的数据流程。
+
+**Quant 场景**：让 Quant 报告生成、解释和审查过程保留来源、事实边界和错误记录。
+
+**LLM/Agent 场景**：定义 Prompt、Schema、工具契约、日志和人工审查点，让 Agent 行为更可控。
+
+```python
+def build_day060_note(input_name, output_name, risk):
+    return {
+        "day": "Day60",
+        "topic": "LLM/Agent Capstone：本地知识助手",
+        "input": input_name,
+        "output": output_name,
+        "risk": risk,
+        "next_check": "确认输入、处理步骤、输出和失败点是否清楚",
+    }
+```
+
 ## 工程工作流补充
 
 ### 如果你完全看不懂，先只抓这一句话

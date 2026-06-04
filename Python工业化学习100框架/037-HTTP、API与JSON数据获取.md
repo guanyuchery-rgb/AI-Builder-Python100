@@ -115,6 +115,32 @@ print(run_job({"input": "demo"}))
 3. 它解决什么问题？
 4. 它在未来 Quant / LLM / Agent 项目中怎么使用？
 
+### 基础优化补充：问题、场景与代码
+
+**阶段定位**：应用交付与轻量工程。
+
+**解决什么问题（Problem）**：HTTP、API 与 JSON 数据获取 的核心不是背概念，而是把本地脚本整理成别人也能运行、检查和维护的小工具。
+
+**真实科研场景**：把实验流程包装成批处理、API、看板或轻量容器，方便重复运行和分享。
+
+**数据分析场景**：把数据处理流程交付成 CLI、FastAPI、Streamlit、README 或最小 CI。
+
+**Quant 场景**：把策略研究工具封装成可运行应用，方便复盘参数、图表和结果。
+
+**LLM/Agent 场景**：为 Agent 或数据助手提供 API、看板、文档和可部署的最小运行方式。
+
+```python
+def build_day037_note(input_name, output_name, risk):
+    return {
+        "day": "Day37",
+        "topic": "HTTP、API 与 JSON 数据获取",
+        "input": input_name,
+        "output": output_name,
+        "risk": risk,
+        "next_check": "确认输入、处理步骤、输出和失败点是否清楚",
+    }
+```
+
 ## 工程工作流补充
 
 ### 如果你完全看不懂，先只抓这一句话

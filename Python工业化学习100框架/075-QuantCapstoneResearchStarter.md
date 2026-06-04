@@ -116,6 +116,32 @@ print({"returns": returns, "max_return": max(returns)})
 3. 它解决什么问题？
 4. 它在未来 Quant / LLM / Agent 项目中怎么使用？
 
+### 基础优化补充：问题、场景与代码
+
+**阶段定位**：Quant 研究基础。
+
+**解决什么问题（Problem）**：Quant Capstone：Research Starter 的核心不是背概念，而是把策略想法拆成数据、指标、信号、回测、成本、风险和报告。
+
+**真实科研场景**：把研究假设变成可追踪实验，记录样本区间、参数、指标和失败案例。
+
+**数据分析场景**：用数据分析方法清洗行情、计算指标、输出图表和保存实验结果。
+
+**Quant 场景**：建立从数据适配、收益计算、信号生成到回测报告的最小闭环。
+
+**LLM/Agent 场景**：让 LLM/Agent 只辅助解释、记录和检查，不替代回测逻辑和风险判断。
+
+```python
+def build_day075_note(input_name, output_name, risk):
+    return {
+        "day": "Day75",
+        "topic": "Quant Capstone：Research Starter",
+        "input": input_name,
+        "output": output_name,
+        "risk": risk,
+        "next_check": "确认输入、处理步骤、输出和失败点是否清楚",
+    }
+```
+
 ## 工程工作流补充
 
 ### 如果你完全看不懂，先只抓这一句话
