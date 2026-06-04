@@ -38,7 +38,7 @@
 
 ## Hot100 / LeetCode 挑战线
 
-Day01-Day20 只打 Python 和工程基础，不强行刷难题。Day21 之后，每天在主线练习后追加 1 道 Hot100 / LeetCode 关联题；Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步加入 Hard 题，用来衔接工业面试、数据结构、LLM/Agent 工具实现和 Quant 项目里的算法思维。
+Day01-Day20 只打 Python 和工程基础，不强行刷难题。Day09-Day100 增加工程化详细讲解，把每天的知识点放进真实工作流、文件结构、Debug 和项目交付里。Day21 之后，每天在主线练习后追加 1 道 Hot100 / LeetCode 关联题；Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步加入 Hard 题，用来衔接工业面试、数据结构、LLM/Agent 工具实现和 Quant 项目里的算法思维。
 
 ## 开源说明
 
