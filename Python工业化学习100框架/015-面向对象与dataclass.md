@@ -125,6 +125,30 @@ if __name__ == "__main__":
 3. 它解决什么问题？
 4. 它在未来 Quant / LLM / Agent 项目中怎么使用？
 
+### 基础优化补充：问题、场景与代码
+
+**解决什么问题（Problem）**：`dataclass` 解决的是“数据结构如何变得清楚稳定”的问题。字段不再散落在很多字典字符串里，一条记录应该包含什么也更容易看出来。
+
+**真实科研场景**：表达一次实验的名称、日期、参数、指标和备注，方便长期复查和复现实验。
+
+**Quant 场景**：表达价格记录、交易信号、回测结果和策略配置。它不替代 pandas，但适合表达核心业务对象和函数边界。
+
+**LLM/Agent 场景**：表达 tool 输入输出、审查结果和错误记录，未来可以平滑迁移到 JSON schema、Pydantic 或 FastAPI。
+
+```python
+from dataclasses import dataclass
+
+
+@dataclass
+class PriceRecord:
+    date: str
+    close: float
+
+
+def calc_return(start, end):
+    return (end.close - start.close) / start.close
+```
+
 ## 基础详细讲解
 
 ### 如果你完全看不懂，先只抓这一句话

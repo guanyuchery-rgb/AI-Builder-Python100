@@ -125,6 +125,35 @@ if __name__ == "__main__":
 3. 它解决什么问题？
 4. 它在未来 Quant / LLM / Agent 项目中怎么使用？
 
+### 基础优化补充：问题、场景与代码
+
+**解决什么问题（Problem）**：CSV/JSON 解决的是“数据如何从一次性输出变成可复用资产”的问题。结果不能只停留在 `print()`，字段要有名字，文件要能保存、读取、复查，并交给下一段程序继续处理。
+
+**真实科研场景**：保存实验编号、参数、指标、备注和失败原因。CSV 适合保存多次实验结果，JSON 适合保存一次实验的完整配置。
+
+**Quant 场景**：保存行情样例、收益率、交易信号、策略参数和回测摘要。CSV 更适合指标表，JSON 更适合配置和运行结果摘要。
+
+**LLM/Agent 场景**：保存 tool call 参数、模型输出、错误信息和人工审查记录。JSON 适合表达结构化输入输出，CSV 适合做评估集和批量对比。
+
+```python
+import csv
+from pathlib import Path
+
+LOG_FILE = Path("learning_log.csv")
+
+
+def save_records(records):
+    with LOG_FILE.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=["day", "topic", "minutes"])
+        writer.writeheader()
+        writer.writerows(records)
+
+
+def load_records():
+    with LOG_FILE.open("r", newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+```
+
 ## 基础详细讲解
 
 ### 如果你完全看不懂，先只抓这一句话
