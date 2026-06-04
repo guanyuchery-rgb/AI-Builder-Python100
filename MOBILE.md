@@ -6,6 +6,7 @@
 
 - [成长路线图 GROWTH_ROADMAP](GROWTH_ROADMAP.md)
 - [课程地图 COURSE_MAP](COURSE_MAP.md)
+- [课程设计原则 COURSE_DESIGN_PRINCIPLES](COURSE_DESIGN_PRINCIPLES.md)
 - [Python工业化学习100框架 README](Python工业化学习100框架/README.md)
 - [001-Python环境与第一段程序](Python工业化学习100框架/001-Python环境与第一段程序.md)
 - [002-变量、类型与输入输出](Python工业化学习100框架/002-变量、类型与输入输出.md)

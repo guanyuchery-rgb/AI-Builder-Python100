@@ -145,6 +145,7 @@ def build_mobile_markdown() -> None:
         "",
         "- [成长路线图 GROWTH_ROADMAP](GROWTH_ROADMAP.md)",
         "- [课程地图 COURSE_MAP](COURSE_MAP.md)",
+        "- [课程设计原则 COURSE_DESIGN_PRINCIPLES](COURSE_DESIGN_PRINCIPLES.md)",
         "- [Python工业化学习100框架 README](Python工业化学习100框架/README.md)",
     ]
     for path in course_files():
