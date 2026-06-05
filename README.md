@@ -12,6 +12,7 @@
 - 成长路线图：[GROWTH_ROADMAP.md](GROWTH_ROADMAP.md)
 - 课程地图：[COURSE_MAP.md](COURSE_MAP.md)
 - 课程设计原则：[COURSE_DESIGN_PRINCIPLES.md](COURSE_DESIGN_PRINCIPLES.md)
+- 知识广度索引：[KNOWLEDGE_EXPANSION_INDEX.md](KNOWLEDGE_EXPANSION_INDEX.md)
 - 手机入口：[MOBILE.md](MOBILE.md)
 - 100 天课程目录：[Python工业化学习100框架](Python工业化学习100框架/README.md)
 
