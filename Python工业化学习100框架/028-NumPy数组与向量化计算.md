@@ -317,48 +317,70 @@ def day028_engineering_note(input_data):
 
 ## Hot100 / LeetCode 题组（多题 + 多解法）
 
-1. [Best Time to Buy and Sell Stock - 买卖股票的最佳时机](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
-   - 题型：数组 / 一次遍历 / Quant
-   - 多解法：暴力枚举买卖日；维护历史最低价；转成最大子数组收益
+1. [Reverse Words in a String - 反转字符串中的单词](https://leetcode.com/problems/reverse-words-in-a-string/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：字符串 / 清洗
+   - 多解法：split+reverse；双指针原地；栈
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把价格看成时间序列，答案来自“当前卖出价 - 历史最低买入价”。一次遍历维护 min_price 和 best_profit。不要回头买未来低点，这是量化里防止未来函数的训练。
+   - 解析：先去掉多余空格并切分单词，再反转单词顺序。训练文本清洗和边界处理。
    - 解题步骤：先用暴力解法确认输入输出，再找可以复用的状态变量进行优化。
    - 易错点：最容易错的是没有先定义清楚状态变量、边界和返回值。
-2. [House Robber - 打家劫舍](https://leetcode.com/problems/house-robber/)
-   - 题型：动态规划
-   - 多解法：递归；DP 数组；滚动变量
+2. [Meeting Rooms - 会议室](https://leetcode.com/problems/meeting-rooms/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：区间 / 排序
+   - 多解法：两两比较；排序检查相邻；扫描线
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每个房子有偷或不偷两种选择。状态转移是 max(偷当前+前前，跳过当前)。训练相邻约束下的最优决策。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-3. [House Robber II - 打家劫舍 II](https://leetcode.com/problems/house-robber-ii/)
-   - 题型：动态规划 / 环形约束
-   - 多解法：拆成两段；递归；滚动 DP
+   - 解析：按开始时间排序后，只要相邻会议不重叠就能参加全部。训练区间冲突检测。
+   - 解题步骤：先按起点或终点排序，再维护当前区间或结果末尾区间。
+   - 易错点：最容易错的是重叠判断、边界等号和插入前后顺序。
+3. [Kth Largest Element in an Array - 数组中的第 K 个最大元素](https://leetcode.com/problems/kth-largest-element-in-an-array/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：堆 / 快速选择
+   - 多解法：排序；小顶堆；快速选择
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：首尾相邻不能同时选，所以拆成不选首或不选尾两个线性问题。训练把环形约束转成普通 DP。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-4. [Longest Increasing Subsequence - 最长递增子序列](https://leetcode.com/problems/longest-increasing-subsequence/)
-   - 题型：动态规划 / 二分
-   - 多解法：O(n^2) DP；贪心+二分；路径恢复
+   - 解析：排序最简单，堆适合流式维护前 k，快速选择平均 O(n)。训练 TopK 问题在不同数据规模下的取舍。
+   - 解题步骤：先明确数据结构里保存什么，再规定入队/入栈和弹出的条件。
+   - 易错点：最容易错的是空结构访问、保存值还是下标、过期判断和弹出顺序。
+4. [Linked List Cycle - 环形链表](https://leetcode.com/problems/linked-list-cycle/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：链表 / 快慢指针
+   - 多解法：set 记录节点；快慢指针；修改标记
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：DP 容易理解；贪心维护每个长度下最小结尾，用二分更新。训练把最优结构压缩成更小状态。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-5. [Unique Paths - 不同路径](https://leetcode.com/problems/unique-paths/)
-   - 题型：动态规划 / 组合
-   - 多解法：递归；二维 DP；一维滚动数组
+   - 解析：快指针每次走两步，慢指针走一步，如果有环一定会相遇。训练用速度差发现循环状态。
+   - 解题步骤：先画出节点关系，再维护 prev/cur/next 或快慢指针，最后处理头节点和尾节点。
+   - 易错点：最容易错的是链断掉、头节点特判、空链表和指针前进顺序。
+5. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
+   - 难度安排：选做（能做就提交，卡住先看解析）
+   - 题型：图 / DFS / BFS
+   - 多解法：DFS 沉岛；BFS 队列；并查集
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：到每个格子的路径数来自上方和左方。训练网格 DP 和空间压缩。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-6. [Decode Ways - 解码方法](https://leetcode.com/problems/decode-ways/)
-   - 题型：动态规划 / 字符串
-   - 多解法：递归；DP；滚动变量
+   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记。
+   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS/并查集/最短路，并记录 visited 或距离。
+   - 易错点：最容易错的是越界、重复访问、起点选择、环和层数/距离统计。
+6. [Course Schedule - 课程表](https://leetcode.com/problems/course-schedule/)
+   - 难度安排：选做（能做就提交，卡住先看解析）
+   - 题型：图 / 拓扑排序
+   - 多解法：DFS 检环；BFS 入度；邻接表建图
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每个位置可能单独解码，也可能和前一位组合解码。关键是 0 的合法性。训练字符串上的状态转移。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
+   - 解析：课程依赖可以看成有向图，能完成课程等价于没有环。训练依赖关系建模，和任务编排、包依赖很像。
+   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS/并查集/最短路，并记录 visited 或距离。
+   - 易错点：最容易错的是越界、重复访问、起点选择、环和层数/距离统计。
+7. [Evaluate Reverse Polish Notation - 逆波兰表达式求值](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
+   - 难度安排：挑战（先写思路，再决定是否提交）
+   - 题型：栈 / 表达式解析
+   - 多解法：递归解析；栈求值；操作函数字典
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：数字入栈，遇到运算符弹出两个数计算再入栈。训练表达式解析和工具调用参数栈。
+   - 解题步骤：先明确数据结构里保存什么，再规定入队/入栈和弹出的条件。
+   - 易错点：最容易错的是空结构访问、保存值还是下标、过期判断和弹出顺序。
+8. [Binary Tree Level Order Traversal - 二叉树层序遍历](https://leetcode.com/problems/binary-tree-level-order-traversal/)
+   - 难度安排：挑战（先写思路，再决定是否提交）
+   - 题型：树 / BFS
+   - 多解法：队列 BFS；递归按层收集；双队列
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：用队列按层弹出节点，每层生成一个列表。训练批次处理和层级结构输出。
+   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
+   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
 
 ### 一题多解法拆解：Best Time to Buy and Sell Stock
 

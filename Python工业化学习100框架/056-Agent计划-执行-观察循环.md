@@ -310,48 +310,70 @@ def day056_engineering_note(input_data):
 
 ## Hot100 / LeetCode 题组（多题 + 多解法）
 
-1. [Binary Search - 二分查找](https://leetcode.com/problems/binary-search/)
-   - 题型：二分 / 有序数组
-   - 多解法：闭区间二分；半开区间二分；bisect 标准库
+1. [Design Add and Search Words Data Structure - 设计添加与搜索单词的数据结构](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：Trie / DFS
+   - 多解法：列表匹配；Trie；通配符 DFS
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：二分是在有序空间里不断缩小答案区间。每轮必须明确 left、right、mid 的含义，以及区间是闭区间还是半开区间。最容易错的是边界更新和循环条件。
-   - 解题步骤：先定义搜索区间和 mid 含义，再判断答案在哪一半，最后收缩边界。
-   - 易错点：最容易错的是 while 条件、left/right 更新、闭区间和半开区间混用。
-2. [Lowest Common Ancestor of a Binary Tree - 二叉树的最近公共祖先](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
-   - 题型：树 / 递归
-   - 多解法：路径记录；递归返回命中；父指针集合
+   - 解析：普通字符沿 Trie 走，点号通配符需要尝试所有子节点。训练数据结构和搜索结合。
+   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
+   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
+2. [Group Anagrams - 字母异位词分组](https://leetcode.com/problems/group-anagrams/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：哈希表 / 字符串分组
+   - 多解法：排序签名分组；字符计数元组；Counter 转 tuple
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：如果左右子树分别找到目标，当前节点就是祖先。训练递归返回值承载信息，而不是只遍历。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-3. [Course Schedule - 课程表](https://leetcode.com/problems/course-schedule/)
-   - 题型：图 / 拓扑排序
-   - 多解法：DFS 检环；BFS 入度；邻接表建图
+   - 解析：把每个字符串映射成稳定签名，再按签名分组。训练的是“为对象设计可比较 key”的能力，可迁移到日志聚类、标签归并和文本特征分桶。
+   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
+   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
+3. [Product of Array Except Self - 除自身以外数组的乘积](https://leetcode.com/problems/product-of-array-except-self/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：数组 / 前后缀
+   - 多解法：左右乘积数组；两次扫描常数空间；处理零的特判
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：课程依赖可以看成有向图，能完成课程等价于没有环。训练依赖关系建模，和任务编排、包依赖很像。
-   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS，并记录 visited 防止重复访问。
-   - 易错点：最容易错的是越界、重复访问、起点选择和多源搜索的层数统计。
-4. [Clone Graph - 克隆图](https://leetcode.com/problems/clone-graph/)
+   - 解析：不能用除法时，用左侧乘积和右侧乘积组合答案。关键是分清当前位置不参与自己的结果，工程里常迁移到前后文特征构造。
+   - 解题步骤：先用暴力解法确认输入输出，再找可以复用的状态变量进行优化。
+   - 易错点：最容易错的是没有先定义清楚状态变量、边界和返回值。
+4. [Maximum Subarray - 最大子数组和](https://leetcode.com/problems/maximum-subarray/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：动态规划 / 贪心
+   - 多解法：暴力区间；Kadane；前缀和最小值
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：每一步决定“接着前面的区间”还是“从当前重新开始”。它训练局部最优状态更新，量化里可迁移到连续收益段和回撤分析。
+   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
+   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
+5. [Unique Paths - 不同路径](https://leetcode.com/problems/unique-paths/)
+   - 难度安排：选做（能做就提交，卡住先看解析）
+   - 题型：动态规划 / 组合
+   - 多解法：递归；二维 DP；一维滚动数组
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：到每个格子的路径数来自上方和左方。训练网格 DP 和空间压缩。
+   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
+   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
+6. [Decode Ways - 解码方法](https://leetcode.com/problems/decode-ways/)
+   - 难度安排：选做（能做就提交，卡住先看解析）
+   - 题型：动态规划 / 字符串
+   - 多解法：递归；DP；滚动变量
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：每个位置可能单独解码，也可能和前一位组合解码。关键是 0 的合法性。训练字符串上的状态转移。
+   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
+   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
+7. [Clone Graph - 克隆图](https://leetcode.com/problems/clone-graph/)
+   - 难度安排：挑战（先写思路，再决定是否提交）
    - 题型：图 / DFS / 哈希表
    - 多解法：DFS 克隆；BFS 克隆；递归+映射表
    - 迁移：写清输入、状态变量、输出和失败边界。
    - 解析：图里有环，不能简单递归复制。需要用映射表记录原节点到新节点，避免重复创建和死循环。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 保存已经见过的状态。
+   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
    - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-5. [Pacific Atlantic Water Flow - 太平洋大西洋水流问题](https://leetcode.com/problems/pacific-atlantic-water-flow/)
-   - 题型：矩阵 / 反向 DFS
-   - 多解法：从每格出发；从海岸反向搜索；BFS 多源搜索
+8. [Redundant Connection - 冗余连接](https://leetcode.com/problems/redundant-connection/)
+   - 难度安排：挑战（先写思路，再决定是否提交）
+   - 题型：并查集 / 图
+   - 多解法：逐边 DFS；并查集；建树检查
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：从每个点出发会重复太多。反过来从海岸向高处搜索，两个可达集合求交集。训练反向思考和多源搜索。
-   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS，并记录 visited 防止重复访问。
-   - 易错点：最容易错的是越界、重复访问、起点选择和多源搜索的层数统计。
-6. [Rotting Oranges - 腐烂的橘子](https://leetcode.com/problems/rotting-oranges/)
-   - 题型：BFS / 多源扩散
-   - 多解法：逐轮扫描；多源 BFS；时间戳 BFS
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：所有腐烂橘子同时扩散，所以用多源 BFS 按层计时。训练传播过程、队列和时间步模拟。
-   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS，并记录 visited 防止重复访问。
-   - 易错点：最容易错的是越界、重复访问、起点选择和多源搜索的层数统计。
+   - 解析：逐条加边，如果两个点已经连通，再加就形成环。训练并查集检测连通性。
+   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS/并查集/最短路，并记录 visited 或距离。
+   - 易错点：最容易错的是越界、重复访问、起点选择、环和层数/距离统计。
 
 ### 一题多解法拆解：Binary Search
 

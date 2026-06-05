@@ -310,48 +310,70 @@ def day046_engineering_note(input_data):
 
 ## Hot100 / LeetCode 题组（多题 + 多解法）
 
-1. [Maximum Depth of Binary Tree - 二叉树的最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
-   - 题型：树 / DFS / BFS
-   - 多解法：递归 DFS；队列 BFS；显式栈 DFS
+1. [Merge Intervals - 合并区间](https://leetcode.com/problems/merge-intervals/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：排序 / 区间
+   - 多解法：排序后扫描；栈保存结果；原地维护末尾区间
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：树的深度等于左右子树最大深度加一。递归把大问题拆成同结构小问题；BFS 按层遍历能显式数层数；DFS 栈能避免递归深度限制。空节点返回 0。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-2. [Lowest Common Ancestor of a Binary Tree - 二叉树的最近公共祖先](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
-   - 题型：树 / 递归
-   - 多解法：路径记录；递归返回命中；父指针集合
+   - 解析：先按起点排序，再判断当前区间是否和结果末尾重叠。核心是把无序冲突整理成有序扫描，适合迁移到时间段合并、事件窗口处理。
+   - 解题步骤：先按起点或终点排序，再维护当前区间或结果末尾区间。
+   - 易错点：最容易错的是重叠判断、边界等号和插入前后顺序。
+2. [Insert Interval - 插入区间](https://leetcode.com/problems/insert-interval/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：区间 / 模拟
+   - 多解法：三段扫描；合并后排序；一次遍历状态机
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：如果左右子树分别找到目标，当前节点就是祖先。训练递归返回值承载信息，而不是只遍历。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-3. [Course Schedule - 课程表](https://leetcode.com/problems/course-schedule/)
-   - 题型：图 / 拓扑排序
-   - 多解法：DFS 检环；BFS 入度；邻接表建图
+   - 解析：把区间分成插入前、重叠合并、插入后三类。训练的是边界分类能力，适合会议时间、事件窗口、数据有效期处理。
+   - 解题步骤：先按起点或终点排序，再维护当前区间或结果末尾区间。
+   - 易错点：最容易错的是重叠判断、边界等号和插入前后顺序。
+3. [Top K Frequent Elements - 前 K 个高频元素](https://leetcode.com/problems/top-k-frequent-elements/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：哈希表 / 堆 / 桶排序
+   - 多解法：Counter+排序；小顶堆；桶排序
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：课程依赖可以看成有向图，能完成课程等价于没有环。训练依赖关系建模，和任务编排、包依赖很像。
-   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS，并记录 visited 防止重复访问。
-   - 易错点：最容易错的是越界、重复访问、起点选择和多源搜索的层数统计。
-4. [Clone Graph - 克隆图](https://leetcode.com/problems/clone-graph/)
-   - 题型：图 / DFS / 哈希表
-   - 多解法：DFS 克隆；BFS 克隆；递归+映射表
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：图里有环，不能简单递归复制。需要用映射表记录原节点到新节点，避免重复创建和死循环。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 保存已经见过的状态。
+   - 解析：先统计频次，再选出频次最高的 k 个元素。排序法最容易写；堆适合只要前 k；桶排序利用频次最大不超过 n。工程里对应日志 TopN、热门用户、异常模式统计。
+   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
    - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-5. [Pacific Atlantic Water Flow - 太平洋大西洋水流问题](https://leetcode.com/problems/pacific-atlantic-water-flow/)
-   - 题型：矩阵 / 反向 DFS
-   - 多解法：从每格出发；从海岸反向搜索；BFS 多源搜索
+4. [Subarray Sum Equals K - 和为 K 的子数组](https://leetcode.com/problems/subarray-sum-equals-k/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：前缀和 / 哈希表
+   - 多解法：暴力枚举区间；前缀和数组；前缀和+计数字典
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：从每个点出发会重复太多。反过来从海岸向高处搜索，两个可达集合求交集。训练反向思考和多源搜索。
-   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS，并记录 visited 防止重复访问。
-   - 易错点：最容易错的是越界、重复访问、起点选择和多源搜索的层数统计。
-6. [Rotting Oranges - 腐烂的橘子](https://leetcode.com/problems/rotting-oranges/)
-   - 题型：BFS / 多源扩散
-   - 多解法：逐轮扫描；多源 BFS；时间戳 BFS
+   - 解析：暴力枚举所有区间会超时；前缀和把区间和转成 prefix[j] - prefix[i]。哈希表记录前缀和出现次数，看到 prefix-k 就能知道有多少旧位置可组成答案。重点是先放入 0:1。
+   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
+   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
+5. [Target Sum - 目标和](https://leetcode.com/problems/target-sum/)
+   - 难度安排：选做（能做就提交，卡住先看解析）
+   - 题型：动态规划 / 背包
+   - 多解法：回溯；记忆化；转子集和
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：所有腐烂橘子同时扩散，所以用多源 BFS 按层计时。训练传播过程、队列和时间步模拟。
-   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS，并记录 visited 防止重复访问。
-   - 易错点：最容易错的是越界、重复访问、起点选择和多源搜索的层数统计。
+   - 解析：给每个数加正负号可转成子集和问题。训练把符号选择转成背包。
+   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
+   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
+6. [Longest Increasing Subsequence - 最长递增子序列](https://leetcode.com/problems/longest-increasing-subsequence/)
+   - 难度安排：选做（能做就提交，卡住先看解析）
+   - 题型：动态规划 / 二分
+   - 多解法：O(n^2) DP；贪心+二分；路径恢复
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：DP 容易理解；贪心维护每个长度下最小结尾，用二分更新。训练把最优结构压缩成更小状态。
+   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
+   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
+7. [Network Delay Time - 网络延迟时间](https://leetcode.com/problems/network-delay-time/)
+   - 难度安排：挑战（先写思路，再决定是否提交）
+   - 题型：图 / 最短路
+   - 多解法：DFS 枚举；Dijkstra；Bellman-Ford
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：带权图从起点到所有点的最短时间。训练优先队列和最短路。
+   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS/并查集/最短路，并记录 visited 或距离。
+   - 易错点：最容易错的是越界、重复访问、起点选择、环和层数/距离统计。
+8. [Cheapest Flights Within K Stops - K 站中转内最便宜的航班](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
+   - 难度安排：挑战（先写思路，再决定是否提交）
+   - 题型：图 / 动态规划
+   - 多解法：DFS；Bellman-Ford K 轮；优先队列状态
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：限制中转次数时，状态不仅有城市，还有已用步数。训练带约束最短路。
+   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
+   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
 
 ### 一题多解法拆解：Maximum Depth of Binary Tree
 

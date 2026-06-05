@@ -310,42 +310,64 @@ def day097_engineering_note(input_data):
 
 ## Hot100 / LeetCode 题组（多题 + 多解法）
 
-1. [Valid Parentheses - 有效的括号](https://leetcode.com/problems/valid-parentheses/)
-   - 题型：栈 / 状态匹配
-   - 多解法：栈保存左括号；映射表匹配；提前失败剪枝
+1. [Clone Graph - 克隆图](https://leetcode.com/problems/clone-graph/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：图 / DFS / 哈希表
+   - 多解法：DFS 克隆；BFS 克隆；递归+映射表
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：遇到左括号就入栈，遇到右括号就检查栈顶是否匹配。栈保存的是“还没被关闭的期待”。边界是右括号先出现、类型不匹配、最后栈里还有残留。
-   - 解题步骤：先明确栈里保存什么，再规定入栈和出栈条件，最后检查栈是否清空。
-   - 易错点：最容易错的是空栈弹出、匹配方向、剩余元素和操作顺序。
-2. [Word Ladder - 单词接龙](https://leetcode.com/problems/word-ladder/)
-   - 题型：BFS / 最短路径
-   - 多解法：暴力换词；通配符建图；双向 BFS
+   - 解析：图里有环，不能简单递归复制。需要用映射表记录原节点到新节点，避免重复创建和死循环。
+   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
+   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
+2. [Redundant Connection - 冗余连接](https://leetcode.com/problems/redundant-connection/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：并查集 / 图
+   - 多解法：逐边 DFS；并查集；建树检查
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每个单词是一点，一次变一个字母是一条边。求最短转换序列用 BFS。关键是快速找到相邻单词。
-   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS，并记录 visited 防止重复访问。
-   - 易错点：最容易错的是越界、重复访问、起点选择和多源搜索的层数统计。
-3. [Combination Sum - 组合总和](https://leetcode.com/problems/combination-sum/)
-   - 题型：回溯 / 剪枝
-   - 多解法：暴力搜索；排序剪枝；回溯复用当前数
+   - 解析：逐条加边，如果两个点已经连通，再加就形成环。训练并查集检测连通性。
+   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS/并查集/最短路，并记录 visited 或距离。
+   - 易错点：最容易错的是越界、重复访问、起点选择、环和层数/距离统计。
+3. [Network Delay Time - 网络延迟时间](https://leetcode.com/problems/network-delay-time/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：图 / 最短路
+   - 多解法：DFS 枚举；Dijkstra；Bellman-Ford
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每一步选择一个候选数，剩余目标变小。允许重复选择，所以递归继续从当前下标开始。训练搜索树和剪枝。
-   - 解题步骤：先定义路径 path 和选择列表，再递归选择、进入下一层、撤销选择。
-   - 易错点：最容易错的是忘记撤销、重复选择、剪枝条件和结果拷贝。
-4. [Permutations - 全排列](https://leetcode.com/problems/permutations/)
-   - 题型：回溯
-   - 多解法：递归交换；used 数组；路径列表
+   - 解析：带权图从起点到所有点的最短时间。训练优先队列和最短路。
+   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS/并查集/最短路，并记录 visited 或距离。
+   - 易错点：最容易错的是越界、重复访问、起点选择、环和层数/距离统计。
+4. [Cheapest Flights Within K Stops - K 站中转内最便宜的航班](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：图 / 动态规划
+   - 多解法：DFS；Bellman-Ford K 轮；优先队列状态
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每层选择一个还没用过的元素放入路径。训练回溯三件事：选择、递归、撤销选择。
-   - 解题步骤：先定义路径 path 和选择列表，再递归选择、进入下一层、撤销选择。
-   - 易错点：最容易错的是忘记撤销、重复选择、剪枝条件和结果拷贝。
-5. [Subsets - 子集](https://leetcode.com/problems/subsets/)
+   - 解析：限制中转次数时，状态不仅有城市，还有已用步数。训练带约束最短路。
+   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
+   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
+5. [Best Time to Buy and Sell Stock with Cooldown - 买卖股票的最佳时机含冷冻期](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/)
+   - 难度安排：选做（能做就提交，卡住先看解析）
+   - 题型：动态规划 / Quant
+   - 多解法：递归；三状态 DP；滚动状态
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：维护持仓、空仓可买、冷冻三种状态。训练交易约束下的状态机。
+   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
+   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
+6. [House Robber - 打家劫舍](https://leetcode.com/problems/house-robber/)
+   - 难度安排：选做（能做就提交，卡住先看解析）
+   - 题型：动态规划
+   - 多解法：递归；DP 数组；滚动变量
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：每个房子有偷或不偷两种选择。状态转移是 max(偷当前+前前，跳过当前)。训练相邻约束下的最优决策。
+   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
+   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
+7. [Subsets - 子集](https://leetcode.com/problems/subsets/)
+   - 难度安排：挑战（先写思路，再决定是否提交）
    - 题型：回溯 / 位运算
    - 多解法：回溯选或不选；迭代扩展；二进制枚举
    - 迁移：写清输入、状态变量、输出和失败边界。
    - 解析：每个元素只有选和不选两种状态。训练枚举空间的系统展开。
    - 解题步骤：先定义路径 path 和选择列表，再递归选择、进入下一层、撤销选择。
    - 易错点：最容易错的是忘记撤销、重复选择、剪枝条件和结果拷贝。
-6. [Word Search - 单词搜索](https://leetcode.com/problems/word-search/)
+8. [Word Search - 单词搜索](https://leetcode.com/problems/word-search/)
+   - 难度安排：挑战（先写思路，再决定是否提交）
    - 题型：回溯 / 矩阵
    - 多解法：每格 DFS；原地标记访问；visited 集合
    - 迁移：写清输入、状态变量、输出和失败边界。

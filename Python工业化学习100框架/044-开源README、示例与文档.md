@@ -307,48 +307,70 @@ def day044_engineering_note(input_data):
 
 ## Hot100 / LeetCode 题组（多题 + 多解法）
 
-1. [Top K Frequent Elements - 前 K 个高频元素](https://leetcode.com/problems/top-k-frequent-elements/)
-   - 题型：哈希表 / 堆 / 桶排序
-   - 多解法：Counter+排序；小顶堆；桶排序
+1. [Time Based Key-Value Store - 基于时间的键值存储](https://leetcode.com/problems/time-based-key-value-store/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：哈希表 / 二分
+   - 多解法：线性查找；每 key 时间数组；二分查找
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先统计频次，再选出频次最高的 k 个元素。排序法最容易写；堆适合只要前 k；桶排序利用频次最大不超过 n。工程里对应日志 TopN、热门用户、异常模式统计。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 保存已经见过的状态。
+   - 解析：每个 key 保存按时间递增的值列表，查询时二分找不超过 timestamp 的最后一个值。
+   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
    - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-2. [Linked List Cycle - 环形链表](https://leetcode.com/problems/linked-list-cycle/)
-   - 题型：链表 / 快慢指针
-   - 多解法：set 记录节点；快慢指针；修改标记
+2. [Implement Trie Prefix Tree - 实现 Trie 前缀树](https://leetcode.com/problems/implement-trie-prefix-tree/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：Trie / 字符串
+   - 多解法：哈希集合；嵌套字典；节点类
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：快指针每次走两步，慢指针走一步，如果有环一定会相遇。训练用速度差发现循环状态。
-   - 解题步骤：先画出节点关系，再维护 prev/cur/next 或快慢指针，最后处理头节点和尾节点。
-   - 易错点：最容易错的是链断掉、头节点特判、空链表和指针前进顺序。
-3. [Add Two Numbers - 两数相加](https://leetcode.com/problems/add-two-numbers/)
-   - 题型：链表 / 进位
-   - 多解法：转整数相加；逐位模拟；递归处理进位
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：按位相加并维护 carry。难点是两个链表长度不同，以及最后还有进位。训练低层模拟和状态延续。
-   - 解题步骤：先画出节点关系，再维护 prev/cur/next 或快慢指针，最后处理头节点和尾节点。
-   - 易错点：最容易错的是链断掉、头节点特判、空链表和指针前进顺序。
-4. [Remove Nth Node From End of List - 删除链表的倒数第 N 个结点](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
-   - 题型：链表 / 双指针
-   - 多解法：两次遍历；快慢指针；哑节点处理头删
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：快指针先走 n 步，再和慢指针一起走，慢指针停在要删除节点前。哑节点让删除头节点也统一处理。
-   - 解题步骤：先确定左右指针各自含义，再决定每一步移动哪一边，最后处理相遇或越界。
-   - 易错点：最容易错的是指针移动条件、去重、边界字符和漏掉最后一次比较。
-5. [LRU Cache - LRU 缓存](https://leetcode.com/problems/lru-cache/)
-   - 题型：哈希表 / 双向链表
-   - 多解法：列表模拟；OrderedDict；哈希表+双向链表
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：哈希表负责 O(1) 查找，双向链表负责 O(1) 移动最近使用节点。训练数据结构组合，和缓存系统直接相关。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 保存已经见过的状态。
+   - 解析：每个节点代表一个前缀，children 保存下一字符，is_end 标记完整单词。
+   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
    - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-6. [Min Stack - 最小栈](https://leetcode.com/problems/min-stack/)
-   - 题型：栈 / 辅助状态
-   - 多解法：每次求 min；辅助栈；栈内存二元组
+3. [Design Add and Search Words Data Structure - 设计添加与搜索单词的数据结构](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：Trie / DFS
+   - 多解法：列表匹配；Trie；通配符 DFS
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：普通栈保存值，辅助栈保存当前位置的最小值。训练在数据结构操作中同步维护额外状态。
-   - 解题步骤：先明确栈里保存什么，再规定入栈和出栈条件，最后检查栈是否清空。
-   - 易错点：最容易错的是空栈弹出、匹配方向、剩余元素和操作顺序。
+   - 解析：普通字符沿 Trie 走，点号通配符需要尝试所有子节点。训练数据结构和搜索结合。
+   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
+   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
+4. [Group Anagrams - 字母异位词分组](https://leetcode.com/problems/group-anagrams/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：哈希表 / 字符串分组
+   - 多解法：排序签名分组；字符计数元组；Counter 转 tuple
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：把每个字符串映射成稳定签名，再按签名分组。训练的是“为对象设计可比较 key”的能力，可迁移到日志聚类、标签归并和文本特征分桶。
+   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
+   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
+5. [Construct Binary Tree from Preorder and Inorder Traversal - 从前序与中序遍历序列构造二叉树](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+   - 难度安排：选做（能做就提交，卡住先看解析）
+   - 题型：树 / 递归
+   - 多解法：切片递归；索引递归；哈希表定位
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：前序第一个是根，中序根左边是左子树。用哈希表快速定位根位置。
+   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
+   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
+6. [Subtree of Another Tree - 另一棵树的子树](https://leetcode.com/problems/subtree-of-another-tree/)
+   - 难度安排：选做（能做就提交，卡住先看解析）
+   - 题型：树 / 匹配
+   - 多解法：每点匹配；序列化；哈希
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：在主树每个节点尝试匹配子树。训练嵌套递归和结构匹配。
+   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
+   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
+7. [Combination Sum - 组合总和](https://leetcode.com/problems/combination-sum/)
+   - 难度安排：挑战（先写思路，再决定是否提交）
+   - 题型：回溯 / 剪枝
+   - 多解法：暴力搜索；排序剪枝；回溯复用当前数
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：每一步选择一个候选数，剩余目标变小。允许重复选择，所以递归继续从当前下标开始。训练搜索树和剪枝。
+   - 解题步骤：先定义路径 path 和选择列表，再递归选择、进入下一层、撤销选择。
+   - 易错点：最容易错的是忘记撤销、重复选择、剪枝条件和结果拷贝。
+8. [Permutations - 全排列](https://leetcode.com/problems/permutations/)
+   - 难度安排：挑战（先写思路，再决定是否提交）
+   - 题型：回溯
+   - 多解法：递归交换；used 数组；路径列表
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：每层选择一个还没用过的元素放入路径。训练回溯三件事：选择、递归、撤销选择。
+   - 解题步骤：先定义路径 path 和选择列表，再递归选择、进入下一层、撤销选择。
+   - 易错点：最容易错的是忘记撤销、重复选择、剪枝条件和结果拷贝。
 
 ### 一题多解法拆解：Top K Frequent Elements
 

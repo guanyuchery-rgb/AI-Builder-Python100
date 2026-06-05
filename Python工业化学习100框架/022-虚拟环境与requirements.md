@@ -315,48 +315,70 @@ def day022_engineering_note(input_data):
 
 ## Hot100 / LeetCode 题组（多题 + 多解法）
 
-1. [Climbing Stairs - 爬楼梯](https://leetcode.com/problems/climbing-stairs/)
-   - 题型：动态规划
-   - 多解法：递归；DP 数组；两个变量滚动更新
+1. [Binary Search - 二分查找](https://leetcode.com/problems/binary-search/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：二分 / 有序数组
+   - 多解法：闭区间二分；半开区间二分；bisect 标准库
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：到第 n 阶只能从 n-1 或 n-2 来，所以状态转移是 f(n)=f(n-1)+f(n-2)。递归看懂关系；DP 保存中间结果；滚动变量最省空间。重点是 base case。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-2. [3Sum - 三数之和](https://leetcode.com/problems/3sum/)
-   - 题型：排序 / 双指针
-   - 多解法：三重循环；排序+双指针；去重剪枝
+   - 解析：二分是在有序空间里不断缩小答案区间。每轮必须明确 left、right、mid 的含义，以及区间是闭区间还是半开区间。最容易错的是边界更新和循环条件。
+   - 解题步骤：先定义搜索区间和 mid 含义，再判断答案在哪一半，最后收缩边界。
+   - 易错点：最容易错的是 while 条件、left/right 更新、闭区间和半开区间混用。
+2. [Move Zeroes - 移动零](https://leetcode.com/problems/move-zeroes/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：双指针 / 原地数组
+   - 多解法：新数组；快慢指针；交换法
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：固定一个数，把剩余问题变成 Two Sum。难点不是双指针，而是去重和边界控制，适合训练复杂枚举的降维思路。
+   - 解析：快指针扫描非零元素，慢指针指向下一个非零应该放的位置。训练稳定原地压缩。
    - 解题步骤：先确定左右指针各自含义，再决定每一步移动哪一边，最后处理相遇或越界。
    - 易错点：最容易错的是指针移动条件、去重、边界字符和漏掉最后一次比较。
-3. [Container With Most Water - 盛最多水的容器](https://leetcode.com/problems/container-with-most-water/)
-   - 题型：双指针 / 贪心
-   - 多解法：暴力枚举；双指针移动短板；面积上界剪枝
+3. [Merge Two Sorted Lists - 合并两个有序链表](https://leetcode.com/problems/merge-two-sorted-lists/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：链表 / 双指针
+   - 多解法：递归；哑节点迭代；原地拼接
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：面积由宽度和较短高度决定。双指针每次移动短板，因为移动长板不可能提升当前短板限制。训练贪心理由表达。
+   - 解析：用两个指针比较当前节点，把较小节点接到结果后面。哑节点能减少头节点特判。训练指针移动和边界收尾。
    - 解题步骤：先确定左右指针各自含义，再决定每一步移动哪一边，最后处理相遇或越界。
    - 易错点：最容易错的是指针移动条件、去重、边界字符和漏掉最后一次比较。
-4. [Longest Substring Without Repeating Characters - 无重复字符的最长子串](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
-   - 题型：滑动窗口 / 哈希表
-   - 多解法：暴力枚举；set 窗口；字典记录最新下标
+4. [Reverse Linked List - 反转链表](https://leetcode.com/problems/reverse-linked-list/)
+   - 难度安排：必做（当前阶段主线，建议提交 AC）
+   - 题型：链表 / 指针
+   - 多解法：迭代三指针；递归；头插法
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：窗口维护当前不重复子串。遇到重复字符时移动左边界，而不是重新开始。适合迁移到日志连续片段、会话窗口和去重扫描。
-   - 解题步骤：先明确窗口里维护什么，再移动右指针扩张，条件满足后移动左指针收缩。
-   - 易错点：最容易错的是窗口收缩条件、重复元素处理和答案更新时机。
-5. [Minimum Window Substring - 最小覆盖子串](https://leetcode.com/problems/minimum-window-substring/)
-   - 题型：滑动窗口 / 计数
-   - 多解法：暴力检查；滑动窗口；need/have 计数
+   - 解析：每次把当前节点指向前一个节点，同时保存下一个节点防止链断掉。核心是 prev、cur、next 三个状态。
+   - 解题步骤：先画出节点关系，再维护 prev/cur/next 或快慢指针，最后处理头节点和尾节点。
+   - 易错点：最容易错的是链断掉、头节点特判、空链表和指针前进顺序。
+5. [Implement Trie Prefix Tree - 实现 Trie 前缀树](https://leetcode.com/problems/implement-trie-prefix-tree/)
+   - 难度安排：选做（能做就提交，卡住先看解析）
+   - 题型：Trie / 字符串
+   - 多解法：哈希集合；嵌套字典；节点类
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：右指针扩张直到满足条件，左指针收缩寻找最短答案。难点是判断“满足条件”的状态，适合训练复杂窗口约束。
-   - 解题步骤：先明确窗口里维护什么，再移动右指针扩张，条件满足后移动左指针收缩。
-   - 易错点：最容易错的是窗口收缩条件、重复元素处理和答案更新时机。
-6. [Sliding Window Maximum - 滑动窗口最大值](https://leetcode.com/problems/sliding-window-maximum/)
-   - 题型：单调队列 / 滑动窗口
-   - 多解法：暴力每窗求最大；堆；单调队列
+   - 解析：每个节点代表一个前缀，children 保存下一字符，is_end 标记完整单词。
+   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
+   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
+6. [Design Add and Search Words Data Structure - 设计添加与搜索单词的数据结构](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
+   - 难度安排：选做（能做就提交，卡住先看解析）
+   - 题型：Trie / DFS
+   - 多解法：列表匹配；Trie；通配符 DFS
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：单调队列保存可能成为最大值的下标，过期下标出队，新元素挤掉更小元素。适合迁移到滚动指标、风控监控。
-   - 解题步骤：先明确窗口里维护什么，再移动右指针扩张，条件满足后移动左指针收缩。
-   - 易错点：最容易错的是窗口收缩条件、重复元素处理和答案更新时机。
+   - 解析：普通字符沿 Trie 走，点号通配符需要尝试所有子节点。训练数据结构和搜索结合。
+   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
+   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
+7. [Kth Smallest Element in a BST - 二叉搜索树中第 K 小的元素](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
+   - 难度安排：挑战（先写思路，再决定是否提交）
+   - 题型：树 / 中序遍历
+   - 多解法：中序列表；迭代中序；计数剪枝
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：BST 中序遍历是升序。训练利用数据结构性质避免全量排序。
+   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
+   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
+8. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
+   - 难度安排：挑战（先写思路，再决定是否提交）
+   - 题型：图 / DFS / BFS
+   - 多解法：DFS 沉岛；BFS 队列；并查集
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记。
+   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS/并查集/最短路，并记录 visited 或距离。
+   - 易错点：最容易错的是越界、重复访问、起点选择、环和层数/距离统计。
 
 ### 一题多解法拆解：Climbing Stairs
 
