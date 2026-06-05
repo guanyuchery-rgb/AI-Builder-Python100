@@ -2,7 +2,11 @@
 
 一个面向 AI Builder、数据分析、Quant、LLM 和 Agent 项目的开源 Python 100 天学习路径。
 
-目标不是堆语法，而是让学习者从零基础逐步走到可以交付小项目：数据工具、LLM 报告助手、Agent tool 原型、Quant research starter 和本地 RAG 笔记助手。
+目标不是堆语法，也不是承诺某几个预设项目一定有用。
+
+更真实的目标是：训练学习者如何把一个模糊想法，拆成输入、输出、最小版本、边界处理、调试、交付和复盘。
+
+数据工具、LLM 报告助手、Agent tool 原型、Quant research starter 和本地 RAG 笔记助手，都只是训练场景，不是最终承诺。
 
 课程从 Day10 开始采用“工程问题解决路线”：先看真实任务和场景，再解释为什么需要这个知识点，最后才进入语法实现。
 
@@ -12,6 +16,7 @@
 - 成长路线图：[GROWTH_ROADMAP.md](GROWTH_ROADMAP.md)
 - 课程地图：[COURSE_MAP.md](COURSE_MAP.md)
 - 课程设计原则：[COURSE_DESIGN_PRINCIPLES.md](COURSE_DESIGN_PRINCIPLES.md)
+- 项目过程与聊天式风格：[PROJECT_PROCESS_STYLE_GUIDE.md](PROJECT_PROCESS_STYLE_GUIDE.md)
 - 知识广度索引：[KNOWLEDGE_EXPANSION_INDEX.md](KNOWLEDGE_EXPANSION_INDEX.md)
 - 手机入口：[MOBILE.md](MOBILE.md)
 - 100 天课程目录：[Python工业化学习100框架](Python工业化学习100框架/README.md)
@@ -31,7 +36,19 @@
 5. Day36-Day45：应用接口、自动化与交付
 6. Day46-Day60：LLM / RAG / Agent 基础
 7. Day61-Day75：Quant 研究与回测基础
-8. Day76-Day100：项目实战、作品集与长期维护
+8. Day76-Day100：如何做项目、作品集与长期维护
+
+## 新学习风格
+
+后续内容会逐步改成更接近 GPT 对话的学习体验：
+
+- 单段更短。
+- 每次只讲一个小问题。
+- 总体内容不减少。
+- 项目名降级为例子。
+- 重点放在“如何做项目的过程”。
+
+也就是说，不是让你相信某个项目一定有用，而是让你掌握做项目时可迁移的判断方法。
 
 ## 每天怎么学
 

@@ -10,7 +10,7 @@ Python100 的公开课程路线图。
 
 ## 阶段一：Python 零基础与语法地基
 
-| Day | Topic | Output | Project Link |
+| Day | Topic | 过程产物 | 练习的项目过程 |
 | --- | --- | --- | --- |
 | Day01 | [Python 环境与第一段程序](Python工业化学习100框架/001-Python环境与第一段程序.md) | 能在终端运行一个 Python 文件 | 所有项目的最小运行入口 |
 | Day02 | [变量、类型与输入输出](Python工业化学习100框架/002-变量、类型与输入输出.md) | 一个能接收输入并输出格式化结果的小脚本 | 后续 CLI、数据清洗和参数输入 |
@@ -25,7 +25,7 @@ Python100 的公开课程路线图。
 
 ## 阶段二：Python 工程化基本功
 
-| Day | Topic | Output | Project Link |
+| Day | Topic | 过程产物 | 练习的项目过程 |
 | --- | --- | --- | --- |
 | Day11 | [CSV、JSON 与结构化数据](Python工业化学习100框架/011-CSV、JSON与结构化数据.md) | 一个能保存并读取结构化记录的脚本 | 数据分析和 Agent tool 的输入输出 |
 | Day12 | [正则表达式与文本解析](Python工业化学习100框架/012-正则表达式与文本解析.md) | 一个能提取邮箱/数字/标签的解析函数 | 日志清洗、资料整理和隐私脱敏 |
@@ -40,7 +40,7 @@ Python100 的公开课程路线图。
 
 ## 阶段三：数据分析与本地数据系统
 
-| Day | Topic | Output | Project Link |
+| Day | Topic | 过程产物 | 练习的项目过程 |
 | --- | --- | --- | --- |
 | Day21 | [项目骨架、README 与 Git 工作流](Python工业化学习100框架/021-项目骨架、README与Git工作流.md) | 一个有 README、src、tests、data 的项目骨架 | GitHub 开源项目入口 |
 | Day22 | [虚拟环境与 requirements](Python工业化学习100框架/022-虚拟环境与requirements.md) | 一个 requirements.txt 和运行说明 | 开源协作和本地复现 |
@@ -60,7 +60,7 @@ Python100 的公开课程路线图。
 
 ## 阶段四：应用接口、自动化与交付
 
-| Day | Topic | Output | Project Link |
+| Day | Topic | 过程产物 | 练习的项目过程 |
 | --- | --- | --- | --- |
 | Day36 | [自动化文件整理与批处理](Python工业化学习100框架/036-自动化文件整理与批处理.md) | 一个文件清单 CSV | 办公自动化和数据入库前处理 |
 | Day37 | [HTTP、API 与 JSON 数据获取](Python工业化学习100框架/037-HTTP、API与JSON数据获取.md) | 一个安全的 API client 雏形 | 行情、LLM、内部服务调用 |
@@ -75,7 +75,7 @@ Python100 的公开课程路线图。
 
 ## 阶段五：LLM / RAG / Agent 基础
 
-| Day | Topic | Output | Project Link |
+| Day | Topic | 过程产物 | 练习的项目过程 |
 | --- | --- | --- | --- |
 | Day46 | [Prompt 模板与事实边界](Python工业化学习100框架/046-Prompt模板与事实边界.md) | 一个 build_prompt() 函数 | LLM 报告助手 |
 | Day47 | [结构化输出与 Schema 校验](Python工业化学习100框架/047-结构化输出与Schema校验.md) | 一个 validate_output() 函数 | LLM 到程序的边界 |
@@ -90,12 +90,12 @@ Python100 的公开课程路线图。
 | Day56 | [Agent 计划-执行-观察循环](Python工业化学习100框架/056-Agent计划-执行-观察循环.md) | 一个最小 agent loop | Agent 编排 |
 | Day57 | [Human-in-the-Loop 审查点](Python工业化学习100框架/057-Human-in-the-Loop审查点.md) | 一个 risk gate | 安全 Agent |
 | Day58 | [Agent 日志与可观测性](Python工业化学习100框架/058-Agent日志与可观测性.md) | 一个 run log | Agent Debug 和评估 |
-| Day59 | [LLM Report Assistant 小项目](Python工业化学习100框架/059-LLMReportAssistant小项目.md) | 一个报告助手原型 | LLM 项目作品 |
+| Day59 | [LLM Report Assistant 小项目](Python工业化学习100框架/059-LLMReportAssistant小项目.md) | 一个报告助手原型 | 练习把 LLM 想法拆成项目过程 |
 | Day60 | [LLM/Agent Capstone：本地知识助手](Python工业化学习100框架/060-LLMAgentCapstone本地知识助手.md) | 一个本地知识助手最小闭环 | RAG/Agent 项目地基 |
 
 ## 阶段六：Quant 研究与回测基础
 
-| Day | Topic | Output | Project Link |
+| Day | Topic | 过程产物 | 练习的项目过程 |
 | --- | --- | --- | --- |
 | Day61 | [行情数据适配器](Python工业化学习100框架/061-行情数据适配器.md) | 一个 load_prices() 适配器 | 量化研究数据层 |
 | Day62 | [收益率、波动率与最大回撤](Python工业化学习100框架/062-收益率、波动率与最大回撤.md) | 一个 metrics dict | 策略研究指标层 |
@@ -113,32 +113,32 @@ Python100 的公开课程路线图。
 | Day74 | [Streamlit 策略看板](Python工业化学习100框架/074-Streamlit策略看板.md) | 一个 strategy dashboard | 作品展示 |
 | Day75 | [Quant Capstone：Research Starter](Python工业化学习100框架/075-QuantCapstoneResearchStarter.md) | 一个可开源 Quant 小项目 | 量化作品集 |
 
-## 阶段七：项目实战、作品集与长期维护
+## 阶段七：如何做项目、作品集与长期维护
 
-| Day | Topic | Output | Project Link |
+| Day | Topic | 过程产物 | 练习的项目过程 |
 | --- | --- | --- | --- |
-| Day76 | [项目一：QuantResearchStarter 骨架](Python工业化学习100框架/076-项目一QuantResearchStarter骨架.md) | 项目一骨架 | 作品集项目一 |
+| Day76 | [项目一：QuantResearchStarter 骨架](Python工业化学习100框架/076-项目一QuantResearchStarter骨架.md) | 项目过程一：定义目标和骨架 | 练习把 Quant 想法拆成项目过程 |
 | Day77 | [项目一：数据层实现](Python工业化学习100框架/077-项目一数据层实现.md) | data_layer.py | Quant 项目数据层 |
 | Day78 | [项目一：指标与回测层](Python工业化学习100框架/078-项目一指标与回测层.md) | metrics.py/backtest.py | Quant 项目核心 |
 | Day79 | [项目一：报告、测试与 CLI](Python工业化学习100框架/079-项目一报告、测试与CLI.md) | CLI + tests + report | Quant 项目交付 |
-| Day80 | [项目一：复盘与 README 打磨](Python工业化学习100框架/080-项目一复盘与README打磨.md) | 项目一 README | 开源作品展示 |
-| Day81 | [项目二：LLMReportAssistant 骨架](Python工业化学习100框架/081-项目二LLMReportAssistant骨架.md) | 项目二骨架 | LLM 项目作品 |
+| Day80 | [项目一：复盘与 README 打磨](Python工业化学习100框架/080-项目一复盘与README打磨.md) | 项目过程一复盘 README | 开源作品展示 |
+| Day81 | [项目二：LLMReportAssistant 骨架](Python工业化学习100框架/081-项目二LLMReportAssistant骨架.md) | 项目过程二：定义目标和骨架 | 练习把 LLM 想法拆成项目过程 |
 | Day82 | [项目二：上下文打包与 Prompt](Python工业化学习100框架/082-项目二上下文打包与Prompt.md) | prompt 模块 | LLM 报告助手 |
 | Day83 | [项目二：结构化解析与审查规则](Python工业化学习100框架/083-项目二结构化解析与审查规则.md) | review 模块 | LLM 输出可靠性 |
 | Day84 | [项目二：评估集与样例报告](Python工业化学习100框架/084-项目二评估集与样例报告.md) | eval 结果 | LLM 项目质量 |
-| Day85 | [项目二：交付、复盘与公开说明](Python工业化学习100框架/085-项目二交付、复盘与公开说明.md) | 项目二交付 | LLM 作品展示 |
-| Day86 | [项目三：AgentToolPrototype 骨架](Python工业化学习100框架/086-项目三AgentToolPrototype骨架.md) | 项目三骨架 | Agent 项目作品 |
+| Day85 | [项目二：交付、复盘与公开说明](Python工业化学习100框架/085-项目过程二交付复盘、复盘与公开说明.md) | 项目过程二交付复盘 | LLM 作品展示 |
+| Day86 | [项目三：AgentToolPrototype 骨架](Python工业化学习100框架/086-项目三AgentToolPrototype骨架.md) | 项目过程三：定义目标和骨架 | 练习把 Agent 想法拆成项目过程 |
 | Day87 | [项目三：工具 Schema 与校验](Python工业化学习100框架/087-项目三工具Schema与校验.md) | tool_schema.py | Agent 工具安全 |
 | Day88 | [项目三：执行、错误恢复与日志](Python工业化学习100框架/088-项目三执行、错误恢复与日志.md) | executor.py | Agent 可观测性 |
 | Day89 | [项目三：状态存储与人工审查](Python工业化学习100框架/089-项目三状态存储与人工审查.md) | state + review | Agent 安全边界 |
-| Day90 | [项目三：端到端演示与 README](Python工业化学习100框架/090-项目三端到端演示与README.md) | Agent demo | Agent 作品交付 |
-| Day91 | [项目四：本地 RAG 笔记助手骨架](Python工业化学习100框架/091-项目四本地RAG笔记助手骨架.md) | RAG 项目骨架 | 知识库项目 |
+| Day90 | [项目三：端到端演示与 README](Python工业化学习100框架/090-项目三端到端演示与README.md) | Agent demo | Agent 项目过程交付复盘 |
+| Day91 | [项目四：本地 RAG 笔记助手骨架](Python工业化学习100框架/091-项目四本地RAG笔记助手骨架.md) | 项目过程四：定义目标和骨架 | 练习把知识库想法拆成项目过程 |
 | Day92 | [项目四：索引与检索层](Python工业化学习100框架/092-项目四索引与检索层.md) | retriever.py | RAG 检索 |
 | Day93 | [项目四：回答 Prompt 与来源引用](Python工业化学习100框架/093-项目四回答Prompt与来源引用.md) | answer prompt | 可信回答 |
 | Day94 | [项目四：RAG 评估与错误案例](Python工业化学习100框架/094-项目四RAG评估与错误案例.md) | eval report | RAG 质量控制 |
-| Day95 | [项目四：交付与复盘](Python工业化学习100框架/095-项目四交付与复盘.md) | 项目四交付 | 知识库作品 |
+| Day95 | [项目四：交付与复盘](Python工业化学习100框架/095-RAG 项目过程交付复盘与复盘.md) | RAG 项目过程交付复盘 | 知识库作品 |
 | Day96 | [GitHub Pages 与课程网站维护](Python工业化学习100框架/096-GitHubPages与课程网站维护.md) | 公开课程网站 | 开源学习资源 |
 | Day97 | [作品集 README 与项目索引](Python工业化学习100框架/097-作品集README与项目索引.md) | portfolio README | 求职/展示入口 |
 | Day98 | [项目讲解脚本与面试故事](Python工业化学习100框架/098-项目讲解脚本与面试故事.md) | 2 分钟讲稿 | 面试表达 |
 | Day99 | [错误库、片段库与长期维护](Python工业化学习100框架/099-错误库、片段库与长期维护.md) | Debug index | 长期资产 |
-| Day100 | [总 Capstone：AI Builder Python Roadmap](Python工业化学习100框架/100-总CapstoneAIBuilderPythonRoadmap.md) | 最终复盘和下一步路线 | 长期学习系统 |
+| Day100 | [总 Capstone：AI Builder Python Roadmap](Python工业化学习100框架/100-总CapstoneAIBuilderPythonRoadmap.md) | 最终复盘：如何继续做项目 | 长期学习系统 |
