@@ -18,6 +18,7 @@
 - 课程设计原则：[COURSE_DESIGN_PRINCIPLES.md](COURSE_DESIGN_PRINCIPLES.md)
 - 项目过程与聊天式风格：[PROJECT_PROCESS_STYLE_GUIDE.md](PROJECT_PROCESS_STYLE_GUIDE.md)
 - 知识广度索引：[KNOWLEDGE_EXPANSION_INDEX.md](KNOWLEDGE_EXPANSION_INDEX.md)
+- LeetCode 求职刷题记录：[LEETCODE_JOB_TRACKER.md](LEETCODE_JOB_TRACKER.md)
 - 手机入口：[MOBILE.md](MOBILE.md)
 - 100 天课程目录：[Python工业化学习100框架](Python工业化学习100框架/README.md)
 
@@ -58,9 +59,26 @@
 - 35 分钟：完成 5 道基础巩固题。
 - 10 分钟：记录 Debug、结果和下一步。
 
-## Hot100 / LeetCode 挑战线
+## 100 天后能到什么水平
 
-Day01-Day20 只打 Python 和工程基础，不强行刷难题。Day10-Day100 增加工程问题解决结构，把每天的知识点放进真实任务、场景、设计原因和未来项目位置里。Day21 之后，每天在主线练习后追加 1 道 Hot100 / LeetCode 关联题；Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步加入 Hard 题，用来衔接工业面试、数据结构、LLM/Agent 工具实现和 Quant 项目里的算法思维。
+如果你已经学完前 10 天，并且有统计、金融或数据背景，学完这 100 天后可以形成比较强的 Python 实战能力。
+
+这里的“比较强”不是指背完所有语法，而是指你能独立完成这些事：
+
+- 用 Python 处理 CSV、JSON、SQLite 和基础 API 数据。
+- 把一个模糊任务拆成输入、输出、函数、测试、日志和 README。
+- 写出能复现、能解释、能交付的小工具。
+- 用 pandas、SQL、Streamlit、FastAPI 做轻量数据应用。
+- 看懂并实现常见 Hot100 / LeetCode 题目的核心解法。
+- 把算法题迁移到数据清洗、Quant 回测、RAG 检索和 Agent tool 设计里。
+
+前提是每天要手打代码、跑通结果、提交 LeetCode 官方记录，并写下复盘。只读完文本不会自动变强。
+
+## Hot100 / LeetCode 求职线
+
+Day01-Day10 先打 Python 和工程基础，不强行刷难题。Day11-Day100 每节补充 Hot100 / LeetCode 官方题目链接、题型、多解法、解析和复盘模板。
+
+做题时优先登录自己的 LeetCode 账号并在官方题目页提交代码，这样会留下提交记录、Accepted 记录、日历和题目进度。仓库里的 [LeetCode 求职刷题记录](LEETCODE_JOB_TRACKER.md) 用来沉淀复盘、项目迁移点和面试表达，帮助以后找工作时整理材料。
 
 ## 开源说明
 
