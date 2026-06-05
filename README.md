@@ -17,6 +17,7 @@
 - 课程地图：[COURSE_MAP.md](COURSE_MAP.md)
 - 课程设计原则：[COURSE_DESIGN_PRINCIPLES.md](COURSE_DESIGN_PRINCIPLES.md)
 - 项目过程与聊天式风格：[PROJECT_PROCESS_STYLE_GUIDE.md](PROJECT_PROCESS_STYLE_GUIDE.md)
+- Python100 能力达标标准：[PYTHON100_ABILITY_RUBRIC.md](PYTHON100_ABILITY_RUBRIC.md)
 - 知识广度索引：[KNOWLEDGE_EXPANSION_INDEX.md](KNOWLEDGE_EXPANSION_INDEX.md)
 - LeetCode 求职刷题记录：[LEETCODE_JOB_TRACKER.md](LEETCODE_JOB_TRACKER.md)
 - 手机入口：[MOBILE.md](MOBILE.md)
@@ -61,7 +62,7 @@
 
 ## 100 天后能到什么水平
 
-如果你已经学完前 10 天，并且有统计、金融或数据背景，学完这 100 天后可以形成比较强的 Python 实战能力。
+如果你已经学完前 10 天，并且有统计、金融或数据背景，学完这 100 天后可以形成比较强的 Python 实战能力。具体达标口径见 [Python100 能力达标标准](PYTHON100_ABILITY_RUBRIC.md)。
 
 这里的“比较强”不是指背完所有语法，而是指你能独立完成这些事：
 

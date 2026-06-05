@@ -428,32 +428,32 @@ def day011_engineering_note(input_data):
    - 题型：数组 / 哈希表
    - 多解法：暴力双循环；哈希表一次遍历；排序+双指针但要保留下标
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先把问题翻译成“当前数还差谁”。暴力法是在所有组合里找答案；哈希表法是一边走一边记住见过的数，把查找从 O(n) 降到接近 O(1)。重点是先查 need，再存 num，避免同一个元素用两次。
-2. [Contains Duplicate - 存在重复元素](https://leetcode.com/problems/contains-duplicate/)
-   - 题型：集合 / 去重
-   - 多解法：排序后看相邻；set 扫描；比较 len(nums) 和 len(set(nums))
+   - 解析：先把问题翻译成“当前数还差谁”。暴力法是在所有组合里找答案；哈希表法一边走一边记住见过的数，把查找从 O(n) 降到接近 O(1)。重点是先查 need，再存 num，避免同一个元素用两次。
+2. [Group Anagrams - 字母异位词分组](https://leetcode.com/problems/group-anagrams/)
+   - 题型：哈希表 / 字符串分组
+   - 多解法：排序签名分组；字符计数元组；Counter 转 tuple
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是在问“是否出现过相同状态”。排序法把相同元素放到相邻位置；set 法用集合记录已经见过的值；长度比较法最短，但不展示扫描过程。工程里常迁移到去重、幂等检查、重复任务检测。
-3. [Valid Anagram - 有效的字母异位词](https://leetcode.com/problems/valid-anagram/)
-   - 题型：字符串 / 计数
-   - 多解法：排序比较；手写字典计数；collections.Counter
+   - 解析：把每个字符串映射成稳定签名，再按签名分组。训练的是“为对象设计可比较 key”的能力，可迁移到日志聚类、标签归并和文本特征分桶。
+3. [Product of Array Except Self - 除自身以外数组的乘积](https://leetcode.com/problems/product-of-array-except-self/)
+   - 题型：数组 / 前后缀
+   - 多解法：左右乘积数组；两次扫描常数空间；处理零的特判
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是比较两个字符串的字符频次是否完全一致。排序法简单但会改变观察方式；字典计数能练习状态更新；Counter 是工业代码里最直接的表达。边界是长度不同、空字符串、大小写和字符集。
-4. [Valid Palindrome - 验证回文串](https://leetcode.com/problems/valid-palindrome/)
-   - 题型：双指针 / 字符过滤
-   - 多解法：先清洗再反转；双指针边走边跳过；生成器过滤字符
+   - 解析：不能用除法时，用左侧乘积和右侧乘积组合答案。关键是分清当前位置不参与自己的结果，工程里常迁移到前后文特征构造。
+4. [Maximum Subarray - 最大子数组和](https://leetcode.com/problems/maximum-subarray/)
+   - 题型：动态规划 / 贪心
+   - 多解法：暴力区间；Kadane；前缀和最小值
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：核心是只比较有效字符，并且左右两端一起向中间收缩。先清洗再反转最直观；双指针更省空间，也更接近面试要求。关键坑是跳过非字母数字字符时不要漏移动指针。
-5. [Best Time to Buy and Sell Stock - 买卖股票的最佳时机](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
-   - 题型：数组 / 一次遍历 / Quant
-   - 多解法：暴力枚举买卖日；维护历史最低价；转成最大子数组收益
+   - 解析：每一步决定“接着前面的区间”还是“从当前重新开始”。它训练局部最优状态更新，量化里可迁移到连续收益段和回撤分析。
+5. [Merge Intervals - 合并区间](https://leetcode.com/problems/merge-intervals/)
+   - 题型：排序 / 区间
+   - 多解法：排序后扫描；栈保存结果；原地维护末尾区间
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把每天价格看成时间序列，答案来自“当前卖出价 - 历史最低买入价”。一次遍历时维护 min_price 和 best_profit。不要回头买未来的低点，这是量化里防止未来函数的第一层训练。
-6. [Subarray Sum Equals K - 和为 K 的子数组](https://leetcode.com/problems/subarray-sum-equals-k/)
-   - 题型：前缀和 / 哈希表
-   - 多解法：暴力枚举区间；前缀和数组；前缀和+计数字典
+   - 解析：先按起点排序，再判断当前区间是否和结果末尾重叠。核心是把无序冲突整理成有序扫描，适合迁移到时间段合并、事件窗口处理。
+6. [Insert Interval - 插入区间](https://leetcode.com/problems/insert-interval/)
+   - 题型：区间 / 模拟
+   - 多解法：三段扫描；合并后排序；一次遍历状态机
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：暴力枚举所有区间会超时；前缀和把区间和转成 prefix[j] - prefix[i]。哈希表记录某个前缀和出现过几次，看到 prefix-k 就知道有多少旧位置能组成答案。重点是先放入 0:1。
+   - 解析：把区间分成插入前、重叠合并、插入后三类。训练的是边界分类能力，适合会议时间、事件窗口、数据有效期处理。
 
 ### 一题多解法拆解：Two Sum
 

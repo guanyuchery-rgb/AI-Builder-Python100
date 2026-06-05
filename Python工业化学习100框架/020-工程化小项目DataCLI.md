@@ -419,36 +419,36 @@ def day020_engineering_note(input_data):
 
 ## Hot100 / LeetCode 题组（多题 + 多解法）
 
-1. [Maximum Depth of Binary Tree - 二叉树最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
-   - 题型：树 / DFS
-   - 多解法：递归 DFS；队列 BFS；栈模拟 DFS
+1. [Maximum Depth of Binary Tree - 二叉树的最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
+   - 题型：树 / DFS / BFS
+   - 多解法：递归 DFS；队列 BFS；显式栈 DFS
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：树的深度等于左右子树最大深度加一。递归法把大问题拆成同结构小问题；BFS 按层遍历能显式数层数；DFS 栈能避免递归深度限制。重点是空节点返回 0。
-2. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
-   - 题型：图 / DFS / BFS
-   - 多解法：DFS 沉岛；BFS 队列；并查集
+   - 解析：树的深度等于左右子树最大深度加一。递归把大问题拆成同结构小问题；BFS 按层遍历能显式数层数；DFS 栈能避免递归深度限制。空节点返回 0。
+2. [Set Matrix Zeroes - 矩阵置零](https://leetcode.com/problems/set-matrix-zeroes/)
+   - 题型：矩阵 / 原地标记
+   - 多解法：额外集合；首行首列标记；两遍扫描
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 都是在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记，工程里可迁移到区域聚类、连通组件。
-3. [Climbing Stairs - 爬楼梯](https://leetcode.com/problems/climbing-stairs/)
-   - 题型：动态规划
-   - 多解法：递归；DP 数组；两个变量滚动更新
+   - 解析：先记录哪些行列需要清零，再统一修改，避免边扫描边污染。训练延迟更新和原地状态压缩。
+3. [Search a 2D Matrix - 搜索二维矩阵](https://leetcode.com/problems/search-a-2d-matrix/)
+   - 题型：二分 / 矩阵
+   - 多解法：逐行二分；展平成一维二分；从角落搜索
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：到第 n 阶只能从 n-1 或 n-2 来，所以状态转移是 f(n)=f(n-1)+f(n-2)。递归能看懂关系但会重复计算；DP 数组保存中间结果；滚动变量最省空间。重点是 base case。
-4. [Coin Change - 零钱兑换](https://leetcode.com/problems/coin-change/)
-   - 题型：动态规划
-   - 多解法：暴力搜索；记忆化递归；自底向上 DP
+   - 解析：矩阵每行有序且行间有序时，可把坐标映射成一维下标做二分。训练结构映射。
+4. [Median of Two Sorted Arrays - 寻找两个正序数组的中位数](https://leetcode.com/problems/median-of-two-sorted-arrays/)
+   - 题型：二分 / Hard
+   - 多解法：合并后取中位数；递归找第 k 小；二分分割
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：目标是用最少硬币凑出金额，本质是“在多个选择里取最优”。暴力搜索会重复探索；记忆化缓存子问题；自底向上 DP 从小金额推到大金额。关键是 unreachable 状态要用无穷大表示。
-5. [Two Sum - 两数之和](https://leetcode.com/problems/two-sum/)
-   - 题型：数组 / 哈希表
-   - 多解法：暴力双循环；哈希表一次遍历；排序+双指针但要保留下标
+   - 解析：目标是找到左右两半数量相同且左侧都不大于右侧的分割。Hard 题重点是理解边界，不要求一遍写对。
+5. [Trapping Rain Water - 接雨水](https://leetcode.com/problems/trapping-rain-water/)
+   - 题型：双指针 / 单调栈
+   - 多解法：左右最大数组；双指针；单调栈
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先把问题翻译成“当前数还差谁”。暴力法是在所有组合里找答案；哈希表法是一边走一边记住见过的数，把查找从 O(n) 降到接近 O(1)。重点是先查 need，再存 num，避免同一个元素用两次。
-6. [Contains Duplicate - 存在重复元素](https://leetcode.com/problems/contains-duplicate/)
-   - 题型：集合 / 去重
-   - 多解法：排序后看相邻；set 扫描；比较 len(nums) 和 len(set(nums))
+   - 解析：每个位置能接多少水由左右最高墙的较小者决定。双指针用较短一侧决定当前水量。训练全局约束的局部计算。
+6. [Edit Distance - 编辑距离](https://leetcode.com/problems/edit-distance/)
+   - 题型：动态规划 / Hard
+   - 多解法：递归；二维 DP；滚动数组
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是在问“是否出现过相同状态”。排序法把相同元素放到相邻位置；set 法用集合记录已经见过的值；长度比较法最短，但不展示扫描过程。工程里常迁移到去重、幂等检查、重复任务检测。
+   - 解析：dp[i][j] 表示两个前缀的最小编辑次数。插入、删除、替换三种操作取最小。训练二维状态设计。
 
 ### 一题多解法拆解：Maximum Depth of Binary Tree
 

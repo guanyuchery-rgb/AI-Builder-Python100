@@ -311,35 +311,35 @@ def day096_engineering_note(input_data):
 ## Hot100 / LeetCode 题组（多题 + 多解法）
 
 1. [Top K Frequent Elements - 前 K 个高频元素](https://leetcode.com/problems/top-k-frequent-elements/)
-   - 题型：计数 / TopK
-   - 多解法：计数后排序；最小堆；桶排序
+   - 题型：哈希表 / 堆 / 桶排序
+   - 多解法：Counter+排序；小顶堆；桶排序
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先统计频次，再选出频次最高的 k 个元素。排序法最容易写；堆适合数据量大但只要前 k；桶排序利用频次最大不超过 n 的特点。工程里对应日志 TopN、热门用户、异常模式统计。
-2. [Valid Parentheses - 有效的括号](https://leetcode.com/problems/valid-parentheses/)
-   - 题型：栈 / 结构匹配
-   - 多解法：栈；替换消除法；递归匹配但不推荐
+   - 解析：先统计频次，再选出频次最高的 k 个元素。排序法最容易写；堆适合只要前 k；桶排序利用频次最大不超过 n。工程里对应日志 TopN、热门用户、异常模式统计。
+2. [Lowest Common Ancestor of a Binary Tree - 二叉树的最近公共祖先](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
+   - 题型：树 / 递归
+   - 多解法：路径记录；递归返回命中；父指针集合
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：遇到左括号就入栈，遇到右括号就检查栈顶是否匹配。栈保存的是“还没被关闭的期待”。边界是右括号先出现、类型不匹配、最后栈里还有残留。这个题是解析器和状态机的入门。
-3. [Maximum Depth of Binary Tree - 二叉树最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
-   - 题型：树 / DFS
-   - 多解法：递归 DFS；队列 BFS；栈模拟 DFS
+   - 解析：如果左右子树分别找到目标，当前节点就是祖先。训练递归返回值承载信息，而不是只遍历。
+3. [Course Schedule - 课程表](https://leetcode.com/problems/course-schedule/)
+   - 题型：图 / 拓扑排序
+   - 多解法：DFS 检环；BFS 入度；邻接表建图
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：树的深度等于左右子树最大深度加一。递归法把大问题拆成同结构小问题；BFS 按层遍历能显式数层数；DFS 栈能避免递归深度限制。重点是空节点返回 0。
-4. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
-   - 题型：图 / DFS / BFS
-   - 多解法：DFS 沉岛；BFS 队列；并查集
+   - 解析：课程依赖可以看成有向图，能完成课程等价于没有环。训练依赖关系建模，和任务编排、包依赖很像。
+4. [Clone Graph - 克隆图](https://leetcode.com/problems/clone-graph/)
+   - 题型：图 / DFS / 哈希表
+   - 多解法：DFS 克隆；BFS 克隆；递归+映射表
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 都是在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记，工程里可迁移到区域聚类、连通组件。
-5. [Climbing Stairs - 爬楼梯](https://leetcode.com/problems/climbing-stairs/)
-   - 题型：动态规划
-   - 多解法：递归；DP 数组；两个变量滚动更新
+   - 解析：图里有环，不能简单递归复制。需要用映射表记录原节点到新节点，避免重复创建和死循环。
+5. [Pacific Atlantic Water Flow - 太平洋大西洋水流问题](https://leetcode.com/problems/pacific-atlantic-water-flow/)
+   - 题型：矩阵 / 反向 DFS
+   - 多解法：从每格出发；从海岸反向搜索；BFS 多源搜索
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：到第 n 阶只能从 n-1 或 n-2 来，所以状态转移是 f(n)=f(n-1)+f(n-2)。递归能看懂关系但会重复计算；DP 数组保存中间结果；滚动变量最省空间。重点是 base case。
-6. [Coin Change - 零钱兑换](https://leetcode.com/problems/coin-change/)
-   - 题型：动态规划
-   - 多解法：暴力搜索；记忆化递归；自底向上 DP
+   - 解析：从每个点出发会重复太多。反过来从海岸向高处搜索，两个可达集合求交集。训练反向思考和多源搜索。
+6. [Rotting Oranges - 腐烂的橘子](https://leetcode.com/problems/rotting-oranges/)
+   - 题型：BFS / 多源扩散
+   - 多解法：逐轮扫描；多源 BFS；时间戳 BFS
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：目标是用最少硬币凑出金额，本质是“在多个选择里取最优”。暴力搜索会重复探索；记忆化缓存子问题；自底向上 DP 从小金额推到大金额。关键是 unreachable 状态要用无穷大表示。
+   - 解析：所有腐烂橘子同时扩散，所以用多源 BFS 按层计时。训练传播过程、队列和时间步模拟。
 
 ### 一题多解法拆解：Top K Frequent Elements
 

@@ -322,32 +322,32 @@ def day023_engineering_note(input_data):
    - 题型：动态规划
    - 多解法：暴力搜索；记忆化递归；自底向上 DP
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：目标是用最少硬币凑出金额，本质是“在多个选择里取最优”。暴力搜索会重复探索；记忆化缓存子问题；自底向上 DP 从小金额推到大金额。关键是 unreachable 状态要用无穷大表示。
-2. [Two Sum - 两数之和](https://leetcode.com/problems/two-sum/)
-   - 题型：数组 / 哈希表
-   - 多解法：暴力双循环；哈希表一次遍历；排序+双指针但要保留下标
+   - 解析：目标是用最少硬币凑出金额，本质是在多个选择里取最优。暴力会重复探索；记忆化缓存子问题；自底向上 DP 从小金额推到大金额。不可达状态用无穷大表示。
+2. [Search in Rotated Sorted Array - 搜索旋转排序数组](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+   - 题型：二分 / 分段有序
+   - 多解法：线性扫描；判断有序半边；先找旋转点再二分
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先把问题翻译成“当前数还差谁”。暴力法是在所有组合里找答案；哈希表法是一边走一边记住见过的数，把查找从 O(n) 降到接近 O(1)。重点是先查 need，再存 num，避免同一个元素用两次。
-3. [Contains Duplicate - 存在重复元素](https://leetcode.com/problems/contains-duplicate/)
-   - 题型：集合 / 去重
-   - 多解法：排序后看相邻；set 扫描；比较 len(nums) 和 len(set(nums))
+   - 解析：每次至少有一半是有序的，先判断哪半边有序，再决定目标是否在其中。训练在非标准有序结构里继续使用二分。
+3. [Find Minimum in Rotated Sorted Array - 寻找旋转排序数组中的最小值](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+   - 题型：二分 / 边界
+   - 多解法：线性扫描；和右端点比较；递归二分
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是在问“是否出现过相同状态”。排序法把相同元素放到相邻位置；set 法用集合记录已经见过的值；长度比较法最短，但不展示扫描过程。工程里常迁移到去重、幂等检查、重复任务检测。
-4. [Valid Anagram - 有效的字母异位词](https://leetcode.com/problems/valid-anagram/)
-   - 题型：字符串 / 计数
-   - 多解法：排序比较；手写字典计数；collections.Counter
+   - 解析：最小值在旋转断点。通过 nums[mid] 和 nums[right] 比较判断最小值在哪边。重点是收缩边界不丢答案。
+4. [Kth Largest Element in an Array - 数组中的第 K 个最大元素](https://leetcode.com/problems/kth-largest-element-in-an-array/)
+   - 题型：堆 / 快速选择
+   - 多解法：排序；小顶堆；快速选择
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是比较两个字符串的字符频次是否完全一致。排序法简单但会改变观察方式；字典计数能练习状态更新；Counter 是工业代码里最直接的表达。边界是长度不同、空字符串、大小写和字符集。
-5. [Valid Palindrome - 验证回文串](https://leetcode.com/problems/valid-palindrome/)
-   - 题型：双指针 / 字符过滤
-   - 多解法：先清洗再反转；双指针边走边跳过；生成器过滤字符
+   - 解析：排序最简单，堆适合流式维护前 k，快速选择平均 O(n)。训练 TopK 问题在不同数据规模下的取舍。
+5. [Merge Two Sorted Lists - 合并两个有序链表](https://leetcode.com/problems/merge-two-sorted-lists/)
+   - 题型：链表 / 双指针
+   - 多解法：递归；哑节点迭代；原地拼接
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：核心是只比较有效字符，并且左右两端一起向中间收缩。先清洗再反转最直观；双指针更省空间，也更接近面试要求。关键坑是跳过非字母数字字符时不要漏移动指针。
-6. [Best Time to Buy and Sell Stock - 买卖股票的最佳时机](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
-   - 题型：数组 / 一次遍历 / Quant
-   - 多解法：暴力枚举买卖日；维护历史最低价；转成最大子数组收益
+   - 解析：用两个指针比较当前节点，把较小节点接到结果后面。哑节点能减少头节点特判。训练指针移动和边界收尾。
+6. [Reverse Linked List - 反转链表](https://leetcode.com/problems/reverse-linked-list/)
+   - 题型：链表 / 指针
+   - 多解法：迭代三指针；递归；头插法
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把每天价格看成时间序列，答案来自“当前卖出价 - 历史最低买入价”。一次遍历时维护 min_price 和 best_profit。不要回头买未来的低点，这是量化里防止未来函数的第一层训练。
+   - 解析：每次把当前节点指向前一个节点，同时保存下一个节点防止链断掉。核心是 prev、cur、next 三个状态。
 
 ### 一题多解法拆解：Coin Change
 

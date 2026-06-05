@@ -311,32 +311,32 @@ def day041_engineering_note(input_data):
    - 题型：数组 / 一次遍历 / Quant
    - 多解法：暴力枚举买卖日；维护历史最低价；转成最大子数组收益
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把每天价格看成时间序列，答案来自“当前卖出价 - 历史最低买入价”。一次遍历时维护 min_price 和 best_profit。不要回头买未来的低点，这是量化里防止未来函数的第一层训练。
-2. [Subarray Sum Equals K - 和为 K 的子数组](https://leetcode.com/problems/subarray-sum-equals-k/)
-   - 题型：前缀和 / 哈希表
-   - 多解法：暴力枚举区间；前缀和数组；前缀和+计数字典
+   - 解析：把价格看成时间序列，答案来自“当前卖出价 - 历史最低买入价”。一次遍历维护 min_price 和 best_profit。不要回头买未来低点，这是量化里防止未来函数的训练。
+2. [Group Anagrams - 字母异位词分组](https://leetcode.com/problems/group-anagrams/)
+   - 题型：哈希表 / 字符串分组
+   - 多解法：排序签名分组；字符计数元组；Counter 转 tuple
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：暴力枚举所有区间会超时；前缀和把区间和转成 prefix[j] - prefix[i]。哈希表记录某个前缀和出现过几次，看到 prefix-k 就知道有多少旧位置能组成答案。重点是先放入 0:1。
-3. [Binary Search - 二分查找](https://leetcode.com/problems/binary-search/)
-   - 题型：二分 / 边界
-   - 多解法：闭区间；左闭右开；递归二分
+   - 解析：把每个字符串映射成稳定签名，再按签名分组。训练的是“为对象设计可比较 key”的能力，可迁移到日志聚类、标签归并和文本特征分桶。
+3. [Product of Array Except Self - 除自身以外数组的乘积](https://leetcode.com/problems/product-of-array-except-self/)
+   - 题型：数组 / 前后缀
+   - 多解法：左右乘积数组；两次扫描常数空间；处理零的特判
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：它不是“找中间”这么简单，而是在有序空间里不断缩小答案区间。每轮必须明确 left、right、mid 的含义，以及区间是闭区间还是半开区间。最容易错的是边界更新和循环条件。
-4. [Top K Frequent Elements - 前 K 个高频元素](https://leetcode.com/problems/top-k-frequent-elements/)
-   - 题型：计数 / TopK
-   - 多解法：计数后排序；最小堆；桶排序
+   - 解析：不能用除法时，用左侧乘积和右侧乘积组合答案。关键是分清当前位置不参与自己的结果，工程里常迁移到前后文特征构造。
+4. [Maximum Subarray - 最大子数组和](https://leetcode.com/problems/maximum-subarray/)
+   - 题型：动态规划 / 贪心
+   - 多解法：暴力区间；Kadane；前缀和最小值
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先统计频次，再选出频次最高的 k 个元素。排序法最容易写；堆适合数据量大但只要前 k；桶排序利用频次最大不超过 n 的特点。工程里对应日志 TopN、热门用户、异常模式统计。
-5. [Valid Parentheses - 有效的括号](https://leetcode.com/problems/valid-parentheses/)
-   - 题型：栈 / 结构匹配
-   - 多解法：栈；替换消除法；递归匹配但不推荐
+   - 解析：每一步决定“接着前面的区间”还是“从当前重新开始”。它训练局部最优状态更新，量化里可迁移到连续收益段和回撤分析。
+5. [Merge Intervals - 合并区间](https://leetcode.com/problems/merge-intervals/)
+   - 题型：排序 / 区间
+   - 多解法：排序后扫描；栈保存结果；原地维护末尾区间
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：遇到左括号就入栈，遇到右括号就检查栈顶是否匹配。栈保存的是“还没被关闭的期待”。边界是右括号先出现、类型不匹配、最后栈里还有残留。这个题是解析器和状态机的入门。
-6. [Maximum Depth of Binary Tree - 二叉树最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
-   - 题型：树 / DFS
-   - 多解法：递归 DFS；队列 BFS；栈模拟 DFS
+   - 解析：先按起点排序，再判断当前区间是否和结果末尾重叠。核心是把无序冲突整理成有序扫描，适合迁移到时间段合并、事件窗口处理。
+6. [Insert Interval - 插入区间](https://leetcode.com/problems/insert-interval/)
+   - 题型：区间 / 模拟
+   - 多解法：三段扫描；合并后排序；一次遍历状态机
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：树的深度等于左右子树最大深度加一。递归法把大问题拆成同结构小问题；BFS 按层遍历能显式数层数；DFS 栈能避免递归深度限制。重点是空节点返回 0。
+   - 解析：把区间分成插入前、重叠合并、插入后三类。训练的是边界分类能力，适合会议时间、事件窗口、数据有效期处理。
 
 ### 一题多解法拆解：Best Time to Buy and Sell Stock
 

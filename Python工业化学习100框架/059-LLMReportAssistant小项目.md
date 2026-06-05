@@ -310,36 +310,36 @@ def day059_engineering_note(input_data):
 
 ## Hot100 / LeetCode 题组（多题 + 多解法）
 
-1. [Maximum Depth of Binary Tree - 二叉树最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
-   - 题型：树 / DFS
-   - 多解法：递归 DFS；队列 BFS；栈模拟 DFS
+1. [Maximum Depth of Binary Tree - 二叉树的最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
+   - 题型：树 / DFS / BFS
+   - 多解法：递归 DFS；队列 BFS；显式栈 DFS
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：树的深度等于左右子树最大深度加一。递归法把大问题拆成同结构小问题；BFS 按层遍历能显式数层数；DFS 栈能避免递归深度限制。重点是空节点返回 0。
-2. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
-   - 题型：图 / DFS / BFS
-   - 多解法：DFS 沉岛；BFS 队列；并查集
+   - 解析：树的深度等于左右子树最大深度加一。递归把大问题拆成同结构小问题；BFS 按层遍历能显式数层数；DFS 栈能避免递归深度限制。空节点返回 0。
+2. [Jump Game - 跳跃游戏](https://leetcode.com/problems/jump-game/)
+   - 题型：贪心 / DP
+   - 多解法：DP 可达；维护最远可达；反向贪心
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 都是在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记，工程里可迁移到区域聚类、连通组件。
-3. [Climbing Stairs - 爬楼梯](https://leetcode.com/problems/climbing-stairs/)
-   - 题型：动态规划
-   - 多解法：递归；DP 数组；两个变量滚动更新
+   - 解析：维护当前能到达的最远位置，只要遍历过程没有超过它即可。训练可达性问题的贪心表达。
+3. [Gas Station - 加油站](https://leetcode.com/problems/gas-station/)
+   - 题型：贪心
+   - 多解法：暴力每站尝试；总量判断；亏空后重置起点
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：到第 n 阶只能从 n-1 或 n-2 来，所以状态转移是 f(n)=f(n-1)+f(n-2)。递归能看懂关系但会重复计算；DP 数组保存中间结果；滚动变量最省空间。重点是 base case。
-4. [Coin Change - 零钱兑换](https://leetcode.com/problems/coin-change/)
-   - 题型：动态规划
-   - 多解法：暴力搜索；记忆化递归；自底向上 DP
+   - 解析：总油量不足必然无解；从某点走到中途亏空，则这段里的点都不能做起点。训练全局条件和局部重置。
+4. [Sort Colors - 颜色分类](https://leetcode.com/problems/sort-colors/)
+   - 题型：双指针 / 原地排序
+   - 多解法：计数排序；三指针；两次 partition
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：目标是用最少硬币凑出金额，本质是“在多个选择里取最优”。暴力搜索会重复探索；记忆化缓存子问题；自底向上 DP 从小金额推到大金额。关键是 unreachable 状态要用无穷大表示。
-5. [Two Sum - 两数之和](https://leetcode.com/problems/two-sum/)
-   - 题型：数组 / 哈希表
-   - 多解法：暴力双循环；哈希表一次遍历；排序+双指针但要保留下标
+   - 解析：用 low、mid、high 三个指针把 0、1、2 分区。训练原地数组重排和循环不变量。
+5. [Move Zeroes - 移动零](https://leetcode.com/problems/move-zeroes/)
+   - 题型：双指针 / 原地数组
+   - 多解法：新数组；快慢指针；交换法
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先把问题翻译成“当前数还差谁”。暴力法是在所有组合里找答案；哈希表法是一边走一边记住见过的数，把查找从 O(n) 降到接近 O(1)。重点是先查 need，再存 num，避免同一个元素用两次。
-6. [Contains Duplicate - 存在重复元素](https://leetcode.com/problems/contains-duplicate/)
-   - 题型：集合 / 去重
-   - 多解法：排序后看相邻；set 扫描；比较 len(nums) 和 len(set(nums))
+   - 解析：快指针扫描非零元素，慢指针指向下一个非零应该放的位置。训练稳定原地压缩。
+6. [Spiral Matrix - 螺旋矩阵](https://leetcode.com/problems/spiral-matrix/)
+   - 题型：矩阵 / 边界模拟
+   - 多解法：方向数组；四边界收缩；访问标记
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是在问“是否出现过相同状态”。排序法把相同元素放到相邻位置；set 法用集合记录已经见过的值；长度比较法最短，但不展示扫描过程。工程里常迁移到去重、幂等检查、重复任务检测。
+   - 解析：维护上下左右四个边界，每走完一边就收缩对应边界。训练复杂边界条件的清晰表达。
 
 ### 一题多解法拆解：Maximum Depth of Binary Tree
 

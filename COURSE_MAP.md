@@ -4,6 +4,8 @@ Python100 的公开课程路线图。
 
 完整成长视图见：[GROWTH_ROADMAP.md](GROWTH_ROADMAP.md)。
 
+能力验收口径见：[PYTHON100_ABILITY_RUBRIC.md](PYTHON100_ABILITY_RUBRIC.md)。
+
 ## 算法挑战线
 
 Day01-Day10 专注零基础语法、工程化小项目和可运行习惯，不提前塞 Hot100 难题。Day11-Day100 每节在主线内容之后追加 Hot100 / LeetCode 官方题目链接、题型、多解法、解析和复盘模板。做题记录优先留在 LeetCode 官方账号里，仓库内的 [LeetCode 求职刷题记录](LEETCODE_JOB_TRACKER.md) 用来沉淀复盘、项目迁移点和面试表达。

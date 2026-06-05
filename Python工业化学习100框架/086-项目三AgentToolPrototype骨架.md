@@ -315,32 +315,32 @@ def day086_engineering_note(input_data):
    - 题型：图 / DFS / BFS
    - 多解法：DFS 沉岛；BFS 队列；并查集
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 都是在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记，工程里可迁移到区域聚类、连通组件。
-2. [Climbing Stairs - 爬楼梯](https://leetcode.com/problems/climbing-stairs/)
-   - 题型：动态规划
-   - 多解法：递归；DP 数组；两个变量滚动更新
+   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记。
+2. [Lowest Common Ancestor of a Binary Tree - 二叉树的最近公共祖先](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
+   - 题型：树 / 递归
+   - 多解法：路径记录；递归返回命中；父指针集合
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：到第 n 阶只能从 n-1 或 n-2 来，所以状态转移是 f(n)=f(n-1)+f(n-2)。递归能看懂关系但会重复计算；DP 数组保存中间结果；滚动变量最省空间。重点是 base case。
-3. [Coin Change - 零钱兑换](https://leetcode.com/problems/coin-change/)
-   - 题型：动态规划
-   - 多解法：暴力搜索；记忆化递归；自底向上 DP
+   - 解析：如果左右子树分别找到目标，当前节点就是祖先。训练递归返回值承载信息，而不是只遍历。
+3. [Course Schedule - 课程表](https://leetcode.com/problems/course-schedule/)
+   - 题型：图 / 拓扑排序
+   - 多解法：DFS 检环；BFS 入度；邻接表建图
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：目标是用最少硬币凑出金额，本质是“在多个选择里取最优”。暴力搜索会重复探索；记忆化缓存子问题；自底向上 DP 从小金额推到大金额。关键是 unreachable 状态要用无穷大表示。
-4. [Two Sum - 两数之和](https://leetcode.com/problems/two-sum/)
-   - 题型：数组 / 哈希表
-   - 多解法：暴力双循环；哈希表一次遍历；排序+双指针但要保留下标
+   - 解析：课程依赖可以看成有向图，能完成课程等价于没有环。训练依赖关系建模，和任务编排、包依赖很像。
+4. [Clone Graph - 克隆图](https://leetcode.com/problems/clone-graph/)
+   - 题型：图 / DFS / 哈希表
+   - 多解法：DFS 克隆；BFS 克隆；递归+映射表
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先把问题翻译成“当前数还差谁”。暴力法是在所有组合里找答案；哈希表法是一边走一边记住见过的数，把查找从 O(n) 降到接近 O(1)。重点是先查 need，再存 num，避免同一个元素用两次。
-5. [Contains Duplicate - 存在重复元素](https://leetcode.com/problems/contains-duplicate/)
-   - 题型：集合 / 去重
-   - 多解法：排序后看相邻；set 扫描；比较 len(nums) 和 len(set(nums))
+   - 解析：图里有环，不能简单递归复制。需要用映射表记录原节点到新节点，避免重复创建和死循环。
+5. [Pacific Atlantic Water Flow - 太平洋大西洋水流问题](https://leetcode.com/problems/pacific-atlantic-water-flow/)
+   - 题型：矩阵 / 反向 DFS
+   - 多解法：从每格出发；从海岸反向搜索；BFS 多源搜索
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是在问“是否出现过相同状态”。排序法把相同元素放到相邻位置；set 法用集合记录已经见过的值；长度比较法最短，但不展示扫描过程。工程里常迁移到去重、幂等检查、重复任务检测。
-6. [Valid Anagram - 有效的字母异位词](https://leetcode.com/problems/valid-anagram/)
-   - 题型：字符串 / 计数
-   - 多解法：排序比较；手写字典计数；collections.Counter
+   - 解析：从每个点出发会重复太多。反过来从海岸向高处搜索，两个可达集合求交集。训练反向思考和多源搜索。
+6. [Rotting Oranges - 腐烂的橘子](https://leetcode.com/problems/rotting-oranges/)
+   - 题型：BFS / 多源扩散
+   - 多解法：逐轮扫描；多源 BFS；时间戳 BFS
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是比较两个字符串的字符频次是否完全一致。排序法简单但会改变观察方式；字典计数能练习状态更新；Counter 是工业代码里最直接的表达。边界是长度不同、空字符串、大小写和字符集。
+   - 解析：所有腐烂橘子同时扩散，所以用多源 BFS 按层计时。训练传播过程、队列和时间步模拟。
 
 ### 一题多解法拆解：Number of Islands
 

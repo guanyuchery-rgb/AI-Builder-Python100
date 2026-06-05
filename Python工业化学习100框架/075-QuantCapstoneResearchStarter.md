@@ -314,32 +314,32 @@ def day075_engineering_note(input_data):
    - 题型：动态规划
    - 多解法：暴力搜索；记忆化递归；自底向上 DP
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：目标是用最少硬币凑出金额，本质是“在多个选择里取最优”。暴力搜索会重复探索；记忆化缓存子问题；自底向上 DP 从小金额推到大金额。关键是 unreachable 状态要用无穷大表示。
-2. [Two Sum - 两数之和](https://leetcode.com/problems/two-sum/)
-   - 题型：数组 / 哈希表
-   - 多解法：暴力双循环；哈希表一次遍历；排序+双指针但要保留下标
+   - 解析：目标是用最少硬币凑出金额，本质是在多个选择里取最优。暴力会重复探索；记忆化缓存子问题；自底向上 DP 从小金额推到大金额。不可达状态用无穷大表示。
+2. [Daily Temperatures - 每日温度](https://leetcode.com/problems/daily-temperatures/)
+   - 题型：单调栈
+   - 多解法：暴力向后找；单调递减栈；从右向左跳表
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先把问题翻译成“当前数还差谁”。暴力法是在所有组合里找答案；哈希表法是一边走一边记住见过的数，把查找从 O(n) 降到接近 O(1)。重点是先查 need，再存 num，避免同一个元素用两次。
-3. [Contains Duplicate - 存在重复元素](https://leetcode.com/problems/contains-duplicate/)
-   - 题型：集合 / 去重
-   - 多解法：排序后看相邻；set 扫描；比较 len(nums) 和 len(set(nums))
+   - 解析：栈里保存还没找到更高温度的下标。当前温度更高时弹出并计算等待天数。适合时间序列下一个更大值问题。
+3. [Evaluate Reverse Polish Notation - 逆波兰表达式求值](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
+   - 题型：栈 / 表达式解析
+   - 多解法：递归解析；栈求值；操作函数字典
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是在问“是否出现过相同状态”。排序法把相同元素放到相邻位置；set 法用集合记录已经见过的值；长度比较法最短，但不展示扫描过程。工程里常迁移到去重、幂等检查、重复任务检测。
-4. [Valid Anagram - 有效的字母异位词](https://leetcode.com/problems/valid-anagram/)
-   - 题型：字符串 / 计数
-   - 多解法：排序比较；手写字典计数；collections.Counter
+   - 解析：数字入栈，遇到运算符弹出两个数计算再入栈。训练表达式解析和工具调用参数栈。
+4. [Binary Tree Level Order Traversal - 二叉树层序遍历](https://leetcode.com/problems/binary-tree-level-order-traversal/)
+   - 题型：树 / BFS
+   - 多解法：队列 BFS；递归按层收集；双队列
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是比较两个字符串的字符频次是否完全一致。排序法简单但会改变观察方式；字典计数能练习状态更新；Counter 是工业代码里最直接的表达。边界是长度不同、空字符串、大小写和字符集。
-5. [Valid Palindrome - 验证回文串](https://leetcode.com/problems/valid-palindrome/)
-   - 题型：双指针 / 字符过滤
-   - 多解法：先清洗再反转；双指针边走边跳过；生成器过滤字符
+   - 解析：用队列按层弹出节点，每层生成一个列表。训练批次处理和层级结构输出。
+5. [Validate Binary Search Tree - 验证二叉搜索树](https://leetcode.com/problems/validate-binary-search-tree/)
+   - 题型：树 / DFS / 边界
+   - 多解法：中序遍历；递归上下界；迭代栈
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：核心是只比较有效字符，并且左右两端一起向中间收缩。先清洗再反转最直观；双指针更省空间，也更接近面试要求。关键坑是跳过非字母数字字符时不要漏移动指针。
-6. [Best Time to Buy and Sell Stock - 买卖股票的最佳时机](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
-   - 题型：数组 / 一次遍历 / Quant
-   - 多解法：暴力枚举买卖日；维护历史最低价；转成最大子数组收益
+   - 解析：BST 不是只看父子大小，而是整个左子树都小于当前、右子树都大于当前。上下界递归最能表达这个约束。
+6. [Invert Binary Tree - 翻转二叉树](https://leetcode.com/problems/invert-binary-tree/)
+   - 题型：树 / 递归
+   - 多解法：递归交换；BFS 队列；DFS 栈
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把每天价格看成时间序列，答案来自“当前卖出价 - 历史最低买入价”。一次遍历时维护 min_price 和 best_profit。不要回头买未来的低点，这是量化里防止未来函数的第一层训练。
+   - 解析：每个节点都交换左右子树。递归写法最短，BFS/DFS 适合避免递归限制。训练树结构的局部操作扩散到全局。
 
 ### 一题多解法拆解：Coin Change
 

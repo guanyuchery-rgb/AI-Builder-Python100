@@ -312,32 +312,32 @@ def day039_engineering_note(input_data):
    - 题型：字符串 / 计数
    - 多解法：排序比较；手写字典计数；collections.Counter
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是比较两个字符串的字符频次是否完全一致。排序法简单但会改变观察方式；字典计数能练习状态更新；Counter 是工业代码里最直接的表达。边界是长度不同、空字符串、大小写和字符集。
-2. [Valid Palindrome - 验证回文串](https://leetcode.com/problems/valid-palindrome/)
-   - 题型：双指针 / 字符过滤
-   - 多解法：先清洗再反转；双指针边走边跳过；生成器过滤字符
+   - 解析：本质是比较两个字符串的字符频次是否完全一致。排序法简单；字典计数能练状态更新；Counter 是工业代码里最直接的表达。边界是长度不同、空字符串、大小写和字符集。
+2. [Jump Game - 跳跃游戏](https://leetcode.com/problems/jump-game/)
+   - 题型：贪心 / DP
+   - 多解法：DP 可达；维护最远可达；反向贪心
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：核心是只比较有效字符，并且左右两端一起向中间收缩。先清洗再反转最直观；双指针更省空间，也更接近面试要求。关键坑是跳过非字母数字字符时不要漏移动指针。
-3. [Best Time to Buy and Sell Stock - 买卖股票的最佳时机](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
-   - 题型：数组 / 一次遍历 / Quant
-   - 多解法：暴力枚举买卖日；维护历史最低价；转成最大子数组收益
+   - 解析：维护当前能到达的最远位置，只要遍历过程没有超过它即可。训练可达性问题的贪心表达。
+3. [Gas Station - 加油站](https://leetcode.com/problems/gas-station/)
+   - 题型：贪心
+   - 多解法：暴力每站尝试；总量判断；亏空后重置起点
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把每天价格看成时间序列，答案来自“当前卖出价 - 历史最低买入价”。一次遍历时维护 min_price 和 best_profit。不要回头买未来的低点，这是量化里防止未来函数的第一层训练。
-4. [Subarray Sum Equals K - 和为 K 的子数组](https://leetcode.com/problems/subarray-sum-equals-k/)
-   - 题型：前缀和 / 哈希表
-   - 多解法：暴力枚举区间；前缀和数组；前缀和+计数字典
+   - 解析：总油量不足必然无解；从某点走到中途亏空，则这段里的点都不能做起点。训练全局条件和局部重置。
+4. [Sort Colors - 颜色分类](https://leetcode.com/problems/sort-colors/)
+   - 题型：双指针 / 原地排序
+   - 多解法：计数排序；三指针；两次 partition
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：暴力枚举所有区间会超时；前缀和把区间和转成 prefix[j] - prefix[i]。哈希表记录某个前缀和出现过几次，看到 prefix-k 就知道有多少旧位置能组成答案。重点是先放入 0:1。
-5. [Binary Search - 二分查找](https://leetcode.com/problems/binary-search/)
-   - 题型：二分 / 边界
-   - 多解法：闭区间；左闭右开；递归二分
+   - 解析：用 low、mid、high 三个指针把 0、1、2 分区。训练原地数组重排和循环不变量。
+5. [Move Zeroes - 移动零](https://leetcode.com/problems/move-zeroes/)
+   - 题型：双指针 / 原地数组
+   - 多解法：新数组；快慢指针；交换法
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：它不是“找中间”这么简单，而是在有序空间里不断缩小答案区间。每轮必须明确 left、right、mid 的含义，以及区间是闭区间还是半开区间。最容易错的是边界更新和循环条件。
-6. [Top K Frequent Elements - 前 K 个高频元素](https://leetcode.com/problems/top-k-frequent-elements/)
-   - 题型：计数 / TopK
-   - 多解法：计数后排序；最小堆；桶排序
+   - 解析：快指针扫描非零元素，慢指针指向下一个非零应该放的位置。训练稳定原地压缩。
+6. [Spiral Matrix - 螺旋矩阵](https://leetcode.com/problems/spiral-matrix/)
+   - 题型：矩阵 / 边界模拟
+   - 多解法：方向数组；四边界收缩；访问标记
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先统计频次，再选出频次最高的 k 个元素。排序法最容易写；堆适合数据量大但只要前 k；桶排序利用频次最大不超过 n 的特点。工程里对应日志 TopN、热门用户、异常模式统计。
+   - 解析：维护上下左右四个边界，每走完一边就收缩对应边界。训练复杂边界条件的清晰表达。
 
 ### 一题多解法拆解：Valid Anagram
 

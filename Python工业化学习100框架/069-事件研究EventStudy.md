@@ -311,35 +311,35 @@ def day069_engineering_note(input_data):
 ## Hot100 / LeetCode 题组（多题 + 多解法）
 
 1. [Binary Search - 二分查找](https://leetcode.com/problems/binary-search/)
-   - 题型：二分 / 边界
-   - 多解法：闭区间；左闭右开；递归二分
+   - 题型：二分 / 有序数组
+   - 多解法：闭区间二分；半开区间二分；bisect 标准库
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：它不是“找中间”这么简单，而是在有序空间里不断缩小答案区间。每轮必须明确 left、right、mid 的含义，以及区间是闭区间还是半开区间。最容易错的是边界更新和循环条件。
-2. [Top K Frequent Elements - 前 K 个高频元素](https://leetcode.com/problems/top-k-frequent-elements/)
-   - 题型：计数 / TopK
-   - 多解法：计数后排序；最小堆；桶排序
+   - 解析：二分是在有序空间里不断缩小答案区间。每轮必须明确 left、right、mid 的含义，以及区间是闭区间还是半开区间。最容易错的是边界更新和循环条件。
+2. [Jump Game - 跳跃游戏](https://leetcode.com/problems/jump-game/)
+   - 题型：贪心 / DP
+   - 多解法：DP 可达；维护最远可达；反向贪心
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先统计频次，再选出频次最高的 k 个元素。排序法最容易写；堆适合数据量大但只要前 k；桶排序利用频次最大不超过 n 的特点。工程里对应日志 TopN、热门用户、异常模式统计。
-3. [Valid Parentheses - 有效的括号](https://leetcode.com/problems/valid-parentheses/)
-   - 题型：栈 / 结构匹配
-   - 多解法：栈；替换消除法；递归匹配但不推荐
+   - 解析：维护当前能到达的最远位置，只要遍历过程没有超过它即可。训练可达性问题的贪心表达。
+3. [Gas Station - 加油站](https://leetcode.com/problems/gas-station/)
+   - 题型：贪心
+   - 多解法：暴力每站尝试；总量判断；亏空后重置起点
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：遇到左括号就入栈，遇到右括号就检查栈顶是否匹配。栈保存的是“还没被关闭的期待”。边界是右括号先出现、类型不匹配、最后栈里还有残留。这个题是解析器和状态机的入门。
-4. [Maximum Depth of Binary Tree - 二叉树最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
-   - 题型：树 / DFS
-   - 多解法：递归 DFS；队列 BFS；栈模拟 DFS
+   - 解析：总油量不足必然无解；从某点走到中途亏空，则这段里的点都不能做起点。训练全局条件和局部重置。
+4. [Sort Colors - 颜色分类](https://leetcode.com/problems/sort-colors/)
+   - 题型：双指针 / 原地排序
+   - 多解法：计数排序；三指针；两次 partition
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：树的深度等于左右子树最大深度加一。递归法把大问题拆成同结构小问题；BFS 按层遍历能显式数层数；DFS 栈能避免递归深度限制。重点是空节点返回 0。
-5. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
-   - 题型：图 / DFS / BFS
-   - 多解法：DFS 沉岛；BFS 队列；并查集
+   - 解析：用 low、mid、high 三个指针把 0、1、2 分区。训练原地数组重排和循环不变量。
+5. [Move Zeroes - 移动零](https://leetcode.com/problems/move-zeroes/)
+   - 题型：双指针 / 原地数组
+   - 多解法：新数组；快慢指针；交换法
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 都是在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记，工程里可迁移到区域聚类、连通组件。
-6. [Climbing Stairs - 爬楼梯](https://leetcode.com/problems/climbing-stairs/)
-   - 题型：动态规划
-   - 多解法：递归；DP 数组；两个变量滚动更新
+   - 解析：快指针扫描非零元素，慢指针指向下一个非零应该放的位置。训练稳定原地压缩。
+6. [Spiral Matrix - 螺旋矩阵](https://leetcode.com/problems/spiral-matrix/)
+   - 题型：矩阵 / 边界模拟
+   - 多解法：方向数组；四边界收缩；访问标记
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：到第 n 阶只能从 n-1 或 n-2 来，所以状态转移是 f(n)=f(n-1)+f(n-2)。递归能看懂关系但会重复计算；DP 数组保存中间结果；滚动变量最省空间。重点是 base case。
+   - 解析：维护上下左右四个边界，每走完一边就收缩对应边界。训练复杂边界条件的清晰表达。
 
 ### 一题多解法拆解：Binary Search
 

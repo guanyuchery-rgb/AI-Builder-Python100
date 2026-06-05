@@ -318,35 +318,35 @@ def day032_engineering_note(input_data):
 ## Hot100 / LeetCode 题组（多题 + 多解法）
 
 1. [Valid Parentheses - 有效的括号](https://leetcode.com/problems/valid-parentheses/)
-   - 题型：栈 / 结构匹配
-   - 多解法：栈；替换消除法；递归匹配但不推荐
+   - 题型：栈 / 状态匹配
+   - 多解法：栈保存左括号；映射表匹配；提前失败剪枝
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：遇到左括号就入栈，遇到右括号就检查栈顶是否匹配。栈保存的是“还没被关闭的期待”。边界是右括号先出现、类型不匹配、最后栈里还有残留。这个题是解析器和状态机的入门。
-2. [Maximum Depth of Binary Tree - 二叉树最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
-   - 题型：树 / DFS
-   - 多解法：递归 DFS；队列 BFS；栈模拟 DFS
+   - 解析：遇到左括号就入栈，遇到右括号就检查栈顶是否匹配。栈保存的是“还没被关闭的期待”。边界是右括号先出现、类型不匹配、最后栈里还有残留。
+2. [3Sum - 三数之和](https://leetcode.com/problems/3sum/)
+   - 题型：排序 / 双指针
+   - 多解法：三重循环；排序+双指针；去重剪枝
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：树的深度等于左右子树最大深度加一。递归法把大问题拆成同结构小问题；BFS 按层遍历能显式数层数；DFS 栈能避免递归深度限制。重点是空节点返回 0。
-3. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
-   - 题型：图 / DFS / BFS
-   - 多解法：DFS 沉岛；BFS 队列；并查集
+   - 解析：固定一个数，把剩余问题变成 Two Sum。难点不是双指针，而是去重和边界控制，适合训练复杂枚举的降维思路。
+3. [Container With Most Water - 盛最多水的容器](https://leetcode.com/problems/container-with-most-water/)
+   - 题型：双指针 / 贪心
+   - 多解法：暴力枚举；双指针移动短板；面积上界剪枝
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 都是在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记，工程里可迁移到区域聚类、连通组件。
-4. [Climbing Stairs - 爬楼梯](https://leetcode.com/problems/climbing-stairs/)
-   - 题型：动态规划
-   - 多解法：递归；DP 数组；两个变量滚动更新
+   - 解析：面积由宽度和较短高度决定。双指针每次移动短板，因为移动长板不可能提升当前短板限制。训练贪心理由表达。
+4. [Longest Substring Without Repeating Characters - 无重复字符的最长子串](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+   - 题型：滑动窗口 / 哈希表
+   - 多解法：暴力枚举；set 窗口；字典记录最新下标
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：到第 n 阶只能从 n-1 或 n-2 来，所以状态转移是 f(n)=f(n-1)+f(n-2)。递归能看懂关系但会重复计算；DP 数组保存中间结果；滚动变量最省空间。重点是 base case。
-5. [Coin Change - 零钱兑换](https://leetcode.com/problems/coin-change/)
-   - 题型：动态规划
-   - 多解法：暴力搜索；记忆化递归；自底向上 DP
+   - 解析：窗口维护当前不重复子串。遇到重复字符时移动左边界，而不是重新开始。适合迁移到日志连续片段、会话窗口和去重扫描。
+5. [Minimum Window Substring - 最小覆盖子串](https://leetcode.com/problems/minimum-window-substring/)
+   - 题型：滑动窗口 / 计数
+   - 多解法：暴力检查；滑动窗口；need/have 计数
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：目标是用最少硬币凑出金额，本质是“在多个选择里取最优”。暴力搜索会重复探索；记忆化缓存子问题；自底向上 DP 从小金额推到大金额。关键是 unreachable 状态要用无穷大表示。
-6. [Two Sum - 两数之和](https://leetcode.com/problems/two-sum/)
-   - 题型：数组 / 哈希表
-   - 多解法：暴力双循环；哈希表一次遍历；排序+双指针但要保留下标
+   - 解析：右指针扩张直到满足条件，左指针收缩寻找最短答案。难点是判断“满足条件”的状态，适合训练复杂窗口约束。
+6. [Sliding Window Maximum - 滑动窗口最大值](https://leetcode.com/problems/sliding-window-maximum/)
+   - 题型：单调队列 / 滑动窗口
+   - 多解法：暴力每窗求最大；堆；单调队列
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先把问题翻译成“当前数还差谁”。暴力法是在所有组合里找答案；哈希表法是一边走一边记住见过的数，把查找从 O(n) 降到接近 O(1)。重点是先查 need，再存 num，避免同一个元素用两次。
+   - 解析：单调队列保存可能成为最大值的下标，过期下标出队，新元素挤掉更小元素。适合迁移到滚动指标、风控监控。
 
 ### 一题多解法拆解：Valid Parentheses
 

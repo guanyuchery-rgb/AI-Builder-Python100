@@ -308,35 +308,35 @@ def day045_engineering_note(input_data):
 ## Hot100 / LeetCode 题组（多题 + 多解法）
 
 1. [Valid Parentheses - 有效的括号](https://leetcode.com/problems/valid-parentheses/)
-   - 题型：栈 / 结构匹配
-   - 多解法：栈；替换消除法；递归匹配但不推荐
+   - 题型：栈 / 状态匹配
+   - 多解法：栈保存左括号；映射表匹配；提前失败剪枝
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：遇到左括号就入栈，遇到右括号就检查栈顶是否匹配。栈保存的是“还没被关闭的期待”。边界是右括号先出现、类型不匹配、最后栈里还有残留。这个题是解析器和状态机的入门。
-2. [Maximum Depth of Binary Tree - 二叉树最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
-   - 题型：树 / DFS
-   - 多解法：递归 DFS；队列 BFS；栈模拟 DFS
+   - 解析：遇到左括号就入栈，遇到右括号就检查栈顶是否匹配。栈保存的是“还没被关闭的期待”。边界是右括号先出现、类型不匹配、最后栈里还有残留。
+2. [Daily Temperatures - 每日温度](https://leetcode.com/problems/daily-temperatures/)
+   - 题型：单调栈
+   - 多解法：暴力向后找；单调递减栈；从右向左跳表
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：树的深度等于左右子树最大深度加一。递归法把大问题拆成同结构小问题；BFS 按层遍历能显式数层数；DFS 栈能避免递归深度限制。重点是空节点返回 0。
-3. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
-   - 题型：图 / DFS / BFS
-   - 多解法：DFS 沉岛；BFS 队列；并查集
+   - 解析：栈里保存还没找到更高温度的下标。当前温度更高时弹出并计算等待天数。适合时间序列下一个更大值问题。
+3. [Evaluate Reverse Polish Notation - 逆波兰表达式求值](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
+   - 题型：栈 / 表达式解析
+   - 多解法：递归解析；栈求值；操作函数字典
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 都是在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记，工程里可迁移到区域聚类、连通组件。
-4. [Climbing Stairs - 爬楼梯](https://leetcode.com/problems/climbing-stairs/)
-   - 题型：动态规划
-   - 多解法：递归；DP 数组；两个变量滚动更新
+   - 解析：数字入栈，遇到运算符弹出两个数计算再入栈。训练表达式解析和工具调用参数栈。
+4. [Binary Tree Level Order Traversal - 二叉树层序遍历](https://leetcode.com/problems/binary-tree-level-order-traversal/)
+   - 题型：树 / BFS
+   - 多解法：队列 BFS；递归按层收集；双队列
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：到第 n 阶只能从 n-1 或 n-2 来，所以状态转移是 f(n)=f(n-1)+f(n-2)。递归能看懂关系但会重复计算；DP 数组保存中间结果；滚动变量最省空间。重点是 base case。
-5. [Coin Change - 零钱兑换](https://leetcode.com/problems/coin-change/)
-   - 题型：动态规划
-   - 多解法：暴力搜索；记忆化递归；自底向上 DP
+   - 解析：用队列按层弹出节点，每层生成一个列表。训练批次处理和层级结构输出。
+5. [Validate Binary Search Tree - 验证二叉搜索树](https://leetcode.com/problems/validate-binary-search-tree/)
+   - 题型：树 / DFS / 边界
+   - 多解法：中序遍历；递归上下界；迭代栈
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：目标是用最少硬币凑出金额，本质是“在多个选择里取最优”。暴力搜索会重复探索；记忆化缓存子问题；自底向上 DP 从小金额推到大金额。关键是 unreachable 状态要用无穷大表示。
-6. [Two Sum - 两数之和](https://leetcode.com/problems/two-sum/)
-   - 题型：数组 / 哈希表
-   - 多解法：暴力双循环；哈希表一次遍历；排序+双指针但要保留下标
+   - 解析：BST 不是只看父子大小，而是整个左子树都小于当前、右子树都大于当前。上下界递归最能表达这个约束。
+6. [Invert Binary Tree - 翻转二叉树](https://leetcode.com/problems/invert-binary-tree/)
+   - 题型：树 / 递归
+   - 多解法：递归交换；BFS 队列；DFS 栈
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先把问题翻译成“当前数还差谁”。暴力法是在所有组合里找答案；哈希表法是一边走一边记住见过的数，把查找从 O(n) 降到接近 O(1)。重点是先查 need，再存 num，避免同一个元素用两次。
+   - 解析：每个节点都交换左右子树。递归写法最短，BFS/DFS 适合避免递归限制。训练树结构的局部操作扩散到全局。
 
 ### 一题多解法拆解：Valid Parentheses
 

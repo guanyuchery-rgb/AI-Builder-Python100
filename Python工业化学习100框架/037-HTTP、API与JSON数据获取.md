@@ -311,32 +311,32 @@ def day037_engineering_note(input_data):
    - 题型：数组 / 哈希表
    - 多解法：暴力双循环；哈希表一次遍历；排序+双指针但要保留下标
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先把问题翻译成“当前数还差谁”。暴力法是在所有组合里找答案；哈希表法是一边走一边记住见过的数，把查找从 O(n) 降到接近 O(1)。重点是先查 need，再存 num，避免同一个元素用两次。
-2. [Contains Duplicate - 存在重复元素](https://leetcode.com/problems/contains-duplicate/)
-   - 题型：集合 / 去重
-   - 多解法：排序后看相邻；set 扫描；比较 len(nums) 和 len(set(nums))
+   - 解析：先把问题翻译成“当前数还差谁”。暴力法是在所有组合里找答案；哈希表法一边走一边记住见过的数，把查找从 O(n) 降到接近 O(1)。重点是先查 need，再存 num，避免同一个元素用两次。
+2. [Word Ladder - 单词接龙](https://leetcode.com/problems/word-ladder/)
+   - 题型：BFS / 最短路径
+   - 多解法：暴力换词；通配符建图；双向 BFS
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是在问“是否出现过相同状态”。排序法把相同元素放到相邻位置；set 法用集合记录已经见过的值；长度比较法最短，但不展示扫描过程。工程里常迁移到去重、幂等检查、重复任务检测。
-3. [Valid Anagram - 有效的字母异位词](https://leetcode.com/problems/valid-anagram/)
-   - 题型：字符串 / 计数
-   - 多解法：排序比较；手写字典计数；collections.Counter
+   - 解析：每个单词是一点，一次变一个字母是一条边。求最短转换序列用 BFS。关键是快速找到相邻单词。
+3. [Combination Sum - 组合总和](https://leetcode.com/problems/combination-sum/)
+   - 题型：回溯 / 剪枝
+   - 多解法：暴力搜索；排序剪枝；回溯复用当前数
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是比较两个字符串的字符频次是否完全一致。排序法简单但会改变观察方式；字典计数能练习状态更新；Counter 是工业代码里最直接的表达。边界是长度不同、空字符串、大小写和字符集。
-4. [Valid Palindrome - 验证回文串](https://leetcode.com/problems/valid-palindrome/)
-   - 题型：双指针 / 字符过滤
-   - 多解法：先清洗再反转；双指针边走边跳过；生成器过滤字符
+   - 解析：每一步选择一个候选数，剩余目标变小。允许重复选择，所以递归继续从当前下标开始。训练搜索树和剪枝。
+4. [Permutations - 全排列](https://leetcode.com/problems/permutations/)
+   - 题型：回溯
+   - 多解法：递归交换；used 数组；路径列表
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：核心是只比较有效字符，并且左右两端一起向中间收缩。先清洗再反转最直观；双指针更省空间，也更接近面试要求。关键坑是跳过非字母数字字符时不要漏移动指针。
-5. [Best Time to Buy and Sell Stock - 买卖股票的最佳时机](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
-   - 题型：数组 / 一次遍历 / Quant
-   - 多解法：暴力枚举买卖日；维护历史最低价；转成最大子数组收益
+   - 解析：每层选择一个还没用过的元素放入路径。训练回溯三件事：选择、递归、撤销选择。
+5. [Subsets - 子集](https://leetcode.com/problems/subsets/)
+   - 题型：回溯 / 位运算
+   - 多解法：回溯选或不选；迭代扩展；二进制枚举
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把每天价格看成时间序列，答案来自“当前卖出价 - 历史最低买入价”。一次遍历时维护 min_price 和 best_profit。不要回头买未来的低点，这是量化里防止未来函数的第一层训练。
-6. [Subarray Sum Equals K - 和为 K 的子数组](https://leetcode.com/problems/subarray-sum-equals-k/)
-   - 题型：前缀和 / 哈希表
-   - 多解法：暴力枚举区间；前缀和数组；前缀和+计数字典
+   - 解析：每个元素只有选和不选两种状态。训练枚举空间的系统展开。
+6. [Word Search - 单词搜索](https://leetcode.com/problems/word-search/)
+   - 题型：回溯 / 矩阵
+   - 多解法：每格 DFS；原地标记访问；visited 集合
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：暴力枚举所有区间会超时；前缀和把区间和转成 prefix[j] - prefix[i]。哈希表记录某个前缀和出现过几次，看到 prefix-k 就知道有多少旧位置能组成答案。重点是先放入 0:1。
+   - 解析：从每个起点尝试匹配单词，走过的位置不能重复用。关键是边界、字符匹配和撤销访问。
 
 ### 一题多解法拆解：Two Sum
 

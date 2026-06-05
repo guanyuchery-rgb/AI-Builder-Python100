@@ -434,35 +434,35 @@ def day018_engineering_note(input_data):
 ## Hot100 / LeetCode 题组（多题 + 多解法）
 
 1. [Top K Frequent Elements - 前 K 个高频元素](https://leetcode.com/problems/top-k-frequent-elements/)
-   - 题型：计数 / TopK
-   - 多解法：计数后排序；最小堆；桶排序
+   - 题型：哈希表 / 堆 / 桶排序
+   - 多解法：Counter+排序；小顶堆；桶排序
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先统计频次，再选出频次最高的 k 个元素。排序法最容易写；堆适合数据量大但只要前 k；桶排序利用频次最大不超过 n 的特点。工程里对应日志 TopN、热门用户、异常模式统计。
-2. [Valid Parentheses - 有效的括号](https://leetcode.com/problems/valid-parentheses/)
-   - 题型：栈 / 结构匹配
-   - 多解法：栈；替换消除法；递归匹配但不推荐
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：遇到左括号就入栈，遇到右括号就检查栈顶是否匹配。栈保存的是“还没被关闭的期待”。边界是右括号先出现、类型不匹配、最后栈里还有残留。这个题是解析器和状态机的入门。
-3. [Maximum Depth of Binary Tree - 二叉树最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
-   - 题型：树 / DFS
-   - 多解法：递归 DFS；队列 BFS；栈模拟 DFS
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：树的深度等于左右子树最大深度加一。递归法把大问题拆成同结构小问题；BFS 按层遍历能显式数层数；DFS 栈能避免递归深度限制。重点是空节点返回 0。
-4. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
-   - 题型：图 / DFS / BFS
-   - 多解法：DFS 沉岛；BFS 队列；并查集
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 都是在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记，工程里可迁移到区域聚类、连通组件。
-5. [Climbing Stairs - 爬楼梯](https://leetcode.com/problems/climbing-stairs/)
+   - 解析：先统计频次，再选出频次最高的 k 个元素。排序法最容易写；堆适合只要前 k；桶排序利用频次最大不超过 n。工程里对应日志 TopN、热门用户、异常模式统计。
+2. [House Robber - 打家劫舍](https://leetcode.com/problems/house-robber/)
    - 题型：动态规划
-   - 多解法：递归；DP 数组；两个变量滚动更新
+   - 多解法：递归；DP 数组；滚动变量
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：到第 n 阶只能从 n-1 或 n-2 来，所以状态转移是 f(n)=f(n-1)+f(n-2)。递归能看懂关系但会重复计算；DP 数组保存中间结果；滚动变量最省空间。重点是 base case。
-6. [Coin Change - 零钱兑换](https://leetcode.com/problems/coin-change/)
-   - 题型：动态规划
-   - 多解法：暴力搜索；记忆化递归；自底向上 DP
+   - 解析：每个房子有偷或不偷两种选择。状态转移是 max(偷当前+前前，跳过当前)。训练相邻约束下的最优决策。
+3. [House Robber II - 打家劫舍 II](https://leetcode.com/problems/house-robber-ii/)
+   - 题型：动态规划 / 环形约束
+   - 多解法：拆成两段；递归；滚动 DP
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：目标是用最少硬币凑出金额，本质是“在多个选择里取最优”。暴力搜索会重复探索；记忆化缓存子问题；自底向上 DP 从小金额推到大金额。关键是 unreachable 状态要用无穷大表示。
+   - 解析：首尾相邻不能同时选，所以拆成不选首或不选尾两个线性问题。训练把环形约束转成普通 DP。
+4. [Longest Increasing Subsequence - 最长递增子序列](https://leetcode.com/problems/longest-increasing-subsequence/)
+   - 题型：动态规划 / 二分
+   - 多解法：O(n^2) DP；贪心+二分；路径恢复
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：DP 容易理解；贪心维护每个长度下最小结尾，用二分更新。训练把最优结构压缩成更小状态。
+5. [Unique Paths - 不同路径](https://leetcode.com/problems/unique-paths/)
+   - 题型：动态规划 / 组合
+   - 多解法：递归；二维 DP；一维滚动数组
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：到每个格子的路径数来自上方和左方。训练网格 DP 和空间压缩。
+6. [Decode Ways - 解码方法](https://leetcode.com/problems/decode-ways/)
+   - 题型：动态规划 / 字符串
+   - 多解法：递归；DP；滚动变量
+   - 迁移：写清输入、状态变量、输出和失败边界。
+   - 解析：每个位置可能单独解码，也可能和前一位组合解码。关键是 0 的合法性。训练字符串上的状态转移。
 
 ### 一题多解法拆解：Top K Frequent Elements
 

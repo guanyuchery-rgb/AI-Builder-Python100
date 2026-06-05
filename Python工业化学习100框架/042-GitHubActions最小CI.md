@@ -311,32 +311,32 @@ def day042_engineering_note(input_data):
    - 题型：前缀和 / 哈希表
    - 多解法：暴力枚举区间；前缀和数组；前缀和+计数字典
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：暴力枚举所有区间会超时；前缀和把区间和转成 prefix[j] - prefix[i]。哈希表记录某个前缀和出现过几次，看到 prefix-k 就知道有多少旧位置能组成答案。重点是先放入 0:1。
-2. [Binary Search - 二分查找](https://leetcode.com/problems/binary-search/)
-   - 题型：二分 / 边界
-   - 多解法：闭区间；左闭右开；递归二分
+   - 解析：暴力枚举所有区间会超时；前缀和把区间和转成 prefix[j] - prefix[i]。哈希表记录前缀和出现次数，看到 prefix-k 就能知道有多少旧位置可组成答案。重点是先放入 0:1。
+2. [3Sum - 三数之和](https://leetcode.com/problems/3sum/)
+   - 题型：排序 / 双指针
+   - 多解法：三重循环；排序+双指针；去重剪枝
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：它不是“找中间”这么简单，而是在有序空间里不断缩小答案区间。每轮必须明确 left、right、mid 的含义，以及区间是闭区间还是半开区间。最容易错的是边界更新和循环条件。
-3. [Top K Frequent Elements - 前 K 个高频元素](https://leetcode.com/problems/top-k-frequent-elements/)
-   - 题型：计数 / TopK
-   - 多解法：计数后排序；最小堆；桶排序
+   - 解析：固定一个数，把剩余问题变成 Two Sum。难点不是双指针，而是去重和边界控制，适合训练复杂枚举的降维思路。
+3. [Container With Most Water - 盛最多水的容器](https://leetcode.com/problems/container-with-most-water/)
+   - 题型：双指针 / 贪心
+   - 多解法：暴力枚举；双指针移动短板；面积上界剪枝
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先统计频次，再选出频次最高的 k 个元素。排序法最容易写；堆适合数据量大但只要前 k；桶排序利用频次最大不超过 n 的特点。工程里对应日志 TopN、热门用户、异常模式统计。
-4. [Valid Parentheses - 有效的括号](https://leetcode.com/problems/valid-parentheses/)
-   - 题型：栈 / 结构匹配
-   - 多解法：栈；替换消除法；递归匹配但不推荐
+   - 解析：面积由宽度和较短高度决定。双指针每次移动短板，因为移动长板不可能提升当前短板限制。训练贪心理由表达。
+4. [Longest Substring Without Repeating Characters - 无重复字符的最长子串](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+   - 题型：滑动窗口 / 哈希表
+   - 多解法：暴力枚举；set 窗口；字典记录最新下标
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：遇到左括号就入栈，遇到右括号就检查栈顶是否匹配。栈保存的是“还没被关闭的期待”。边界是右括号先出现、类型不匹配、最后栈里还有残留。这个题是解析器和状态机的入门。
-5. [Maximum Depth of Binary Tree - 二叉树最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
-   - 题型：树 / DFS
-   - 多解法：递归 DFS；队列 BFS；栈模拟 DFS
+   - 解析：窗口维护当前不重复子串。遇到重复字符时移动左边界，而不是重新开始。适合迁移到日志连续片段、会话窗口和去重扫描。
+5. [Minimum Window Substring - 最小覆盖子串](https://leetcode.com/problems/minimum-window-substring/)
+   - 题型：滑动窗口 / 计数
+   - 多解法：暴力检查；滑动窗口；need/have 计数
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：树的深度等于左右子树最大深度加一。递归法把大问题拆成同结构小问题；BFS 按层遍历能显式数层数；DFS 栈能避免递归深度限制。重点是空节点返回 0。
-6. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
-   - 题型：图 / DFS / BFS
-   - 多解法：DFS 沉岛；BFS 队列；并查集
+   - 解析：右指针扩张直到满足条件，左指针收缩寻找最短答案。难点是判断“满足条件”的状态，适合训练复杂窗口约束。
+6. [Sliding Window Maximum - 滑动窗口最大值](https://leetcode.com/problems/sliding-window-maximum/)
+   - 题型：单调队列 / 滑动窗口
+   - 多解法：暴力每窗求最大；堆；单调队列
    - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 都是在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记，工程里可迁移到区域聚类、连通组件。
+   - 解析：单调队列保存可能成为最大值的下标，过期下标出队，新元素挤掉更小元素。适合迁移到滚动指标、风控监控。
 
 ### 一题多解法拆解：Subarray Sum Equals K
 
