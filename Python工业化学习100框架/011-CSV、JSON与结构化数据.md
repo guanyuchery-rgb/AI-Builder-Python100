@@ -411,6 +411,82 @@ def day011_engineering_note(input_data):
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个项目模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
 
+## 多元化操作题（从 Day11 开始）
+
+1. 把 5 条学习记录保存为 CSV。
+2. 读取 JSON 配置并校验字段。
+3. 写一个带 --input/--output 的 CLI。
+4. 跳过空记录并继续处理。
+5. 遇到第一个严重错误就 break。
+6. 把结果追加写入日志文件。
+7. 把核心逻辑拆成函数并测试。
+8. 把输出改成 Agent tool 的 ok/data/error 格式。
+
+## Hot100 / LeetCode 题组（多题 + 多解法）
+
+1. [Two Sum - 两数之和](https://leetcode.com/problems/two-sum/)
+   - 题型：数组 / 哈希表
+   - 多解法：暴力双循环；哈希表一次遍历；排序+双指针但要保留下标
+   - 迁移：写清输入、状态变量、输出和失败边界。
+2. [Contains Duplicate - 存在重复元素](https://leetcode.com/problems/contains-duplicate/)
+   - 题型：集合 / 去重
+   - 多解法：排序后看相邻；set 扫描；比较 len(nums) 和 len(set(nums))
+   - 迁移：写清输入、状态变量、输出和失败边界。
+3. [Valid Anagram - 有效的字母异位词](https://leetcode.com/problems/valid-anagram/)
+   - 题型：字符串 / 计数
+   - 多解法：排序比较；手写字典计数；collections.Counter
+   - 迁移：写清输入、状态变量、输出和失败边界。
+4. [Valid Palindrome - 验证回文串](https://leetcode.com/problems/valid-palindrome/)
+   - 题型：双指针 / 字符过滤
+   - 多解法：先清洗再反转；双指针边走边跳过；生成器过滤字符
+   - 迁移：写清输入、状态变量、输出和失败边界。
+5. [Best Time to Buy and Sell Stock - 买卖股票的最佳时机](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+   - 题型：数组 / 一次遍历 / Quant
+   - 多解法：暴力枚举买卖日；维护历史最低价；转成最大子数组收益
+   - 迁移：写清输入、状态变量、输出和失败边界。
+6. [Subarray Sum Equals K - 和为 K 的子数组](https://leetcode.com/problems/subarray-sum-equals-k/)
+   - 题型：前缀和 / 哈希表
+   - 多解法：暴力枚举区间；前缀和数组；前缀和+计数字典
+   - 迁移：写清输入、状态变量、输出和失败边界。
+
+### 一题多解法拆解：Two Sum
+
+- 解法 1：暴力双循环。
+- 解法 2：哈希表一次遍历。
+- 解法 3：排序+双指针但要保留下标。
+
+推荐先写最容易懂的版本。
+
+再写复杂度更好的版本。
+
+最后写一句：这个解法能迁移到今天哪个操作题。
+
+### 带注释参考代码：Two Sum
+
+```python
+def two_sum(nums, target):
+    seen = {}  # 值 -> 下标
+    for i, num in enumerate(nums):
+        need = target - num
+        if need in seen:
+            return [seen[need], i]
+        seen[num] = i
+    return []
+```
+
+### 做题复盘模板
+
+```text
+题目：
+输入：
+输出：
+暴力解法：
+优化解法：
+关键状态变量：
+最容易错的边界：
+能迁移到今天哪个操作题：
+```
+
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。

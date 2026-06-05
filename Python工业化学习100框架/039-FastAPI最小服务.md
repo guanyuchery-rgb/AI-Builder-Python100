@@ -295,6 +295,87 @@ def day039_engineering_note(input_data):
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个项目模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
 
+## 多元化操作题（从 Day11 开始）
+
+1. 写批处理脚本处理多个文件。
+2. 给 API 请求加 timeout。
+3. 给失败请求加最多 3 次重试。
+4. 写 FastAPI /health 路由。
+5. 写 Streamlit 上传 CSV 并预览。
+6. 写 Docker 运行说明。
+7. 写 GitHub Actions 跑测试。
+8. 写 README 的运行命令和样例输出。
+
+## Hot100 / LeetCode 题组（多题 + 多解法）
+
+1. [Valid Anagram - 有效的字母异位词](https://leetcode.com/problems/valid-anagram/)
+   - 题型：字符串 / 计数
+   - 多解法：排序比较；手写字典计数；collections.Counter
+   - 迁移：写清输入、状态变量、输出和失败边界。
+2. [Valid Palindrome - 验证回文串](https://leetcode.com/problems/valid-palindrome/)
+   - 题型：双指针 / 字符过滤
+   - 多解法：先清洗再反转；双指针边走边跳过；生成器过滤字符
+   - 迁移：写清输入、状态变量、输出和失败边界。
+3. [Best Time to Buy and Sell Stock - 买卖股票的最佳时机](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+   - 题型：数组 / 一次遍历 / Quant
+   - 多解法：暴力枚举买卖日；维护历史最低价；转成最大子数组收益
+   - 迁移：写清输入、状态变量、输出和失败边界。
+4. [Subarray Sum Equals K - 和为 K 的子数组](https://leetcode.com/problems/subarray-sum-equals-k/)
+   - 题型：前缀和 / 哈希表
+   - 多解法：暴力枚举区间；前缀和数组；前缀和+计数字典
+   - 迁移：写清输入、状态变量、输出和失败边界。
+5. [Binary Search - 二分查找](https://leetcode.com/problems/binary-search/)
+   - 题型：二分 / 边界
+   - 多解法：闭区间；左闭右开；递归二分
+   - 迁移：写清输入、状态变量、输出和失败边界。
+6. [Top K Frequent Elements - 前 K 个高频元素](https://leetcode.com/problems/top-k-frequent-elements/)
+   - 题型：计数 / TopK
+   - 多解法：计数后排序；最小堆；桶排序
+   - 迁移：写清输入、状态变量、输出和失败边界。
+
+### 一题多解法拆解：Valid Anagram
+
+- 解法 1：排序比较。
+- 解法 2：手写字典计数。
+- 解法 3：collections.Counter。
+
+推荐先写最容易懂的版本。
+
+再写复杂度更好的版本。
+
+最后写一句：这个解法能迁移到今天哪个操作题。
+
+### 带注释参考代码：Valid Anagram
+
+```python
+def is_anagram(s, t):
+    if len(s) != len(t):
+        return False
+    counts = {}
+    for ch in s:
+        counts[ch] = counts.get(ch, 0) + 1
+    for ch in t:
+        if ch not in counts:
+            return False
+        counts[ch] -= 1
+        if counts[ch] < 0:
+            return False
+    return True
+```
+
+### 做题复盘模板
+
+```text
+题目：
+输入：
+输出：
+暴力解法：
+优化解法：
+关键状态变量：
+最容易错的边界：
+能迁移到今天哪个操作题：
+```
+
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。

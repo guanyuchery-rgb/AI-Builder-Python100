@@ -302,6 +302,95 @@ def day021_engineering_note(input_data):
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个项目模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
 
+## 多元化操作题（从 Day11 开始）
+
+1. 读取 CSV 后输出 shape 和 columns。
+2. 统计缺失值并生成错误报告。
+3. 按字段 groupby 生成 summary。
+4. 用 merge 连接一张维表。
+5. 计算 3 日移动平均。
+6. 把结果写入 SQLite。
+7. 输出一份 Markdown 报告。
+8. 把一段 pandas 逻辑改成可测试函数。
+
+## Hot100 / LeetCode 题组（多题 + 多解法）
+
+1. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
+   - 题型：图 / DFS / BFS
+   - 多解法：DFS 沉岛；BFS 队列；并查集
+   - 迁移：写清输入、状态变量、输出和失败边界。
+2. [Climbing Stairs - 爬楼梯](https://leetcode.com/problems/climbing-stairs/)
+   - 题型：动态规划
+   - 多解法：递归；DP 数组；两个变量滚动更新
+   - 迁移：写清输入、状态变量、输出和失败边界。
+3. [Coin Change - 零钱兑换](https://leetcode.com/problems/coin-change/)
+   - 题型：动态规划
+   - 多解法：暴力搜索；记忆化递归；自底向上 DP
+   - 迁移：写清输入、状态变量、输出和失败边界。
+4. [Two Sum - 两数之和](https://leetcode.com/problems/two-sum/)
+   - 题型：数组 / 哈希表
+   - 多解法：暴力双循环；哈希表一次遍历；排序+双指针但要保留下标
+   - 迁移：写清输入、状态变量、输出和失败边界。
+5. [Contains Duplicate - 存在重复元素](https://leetcode.com/problems/contains-duplicate/)
+   - 题型：集合 / 去重
+   - 多解法：排序后看相邻；set 扫描；比较 len(nums) 和 len(set(nums))
+   - 迁移：写清输入、状态变量、输出和失败边界。
+6. [Valid Anagram - 有效的字母异位词](https://leetcode.com/problems/valid-anagram/)
+   - 题型：字符串 / 计数
+   - 多解法：排序比较；手写字典计数；collections.Counter
+   - 迁移：写清输入、状态变量、输出和失败边界。
+
+### 一题多解法拆解：Number of Islands
+
+- 解法 1：DFS 沉岛。
+- 解法 2：BFS 队列。
+- 解法 3：并查集。
+
+推荐先写最容易懂的版本。
+
+再写复杂度更好的版本。
+
+最后写一句：这个解法能迁移到今天哪个操作题。
+
+### 带注释参考代码：Number of Islands
+
+```python
+def num_islands(grid):
+    rows, cols = len(grid), len(grid[0])
+
+    def dfs(r, c):
+        if r < 0 or r >= rows or c < 0 or c >= cols:
+            return
+        if grid[r][c] != "1":
+            return
+        grid[r][c] = "0"
+        dfs(r + 1, c)
+        dfs(r - 1, c)
+        dfs(r, c + 1)
+        dfs(r, c - 1)
+
+    count = 0
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] == "1":
+                count += 1
+                dfs(r, c)
+    return count
+```
+
+### 做题复盘模板
+
+```text
+题目：
+输入：
+输出：
+暴力解法：
+优化解法：
+关键状态变量：
+最容易错的边界：
+能迁移到今天哪个操作题：
+```
+
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。

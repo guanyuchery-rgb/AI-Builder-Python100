@@ -298,6 +298,82 @@ def day100_engineering_note(input_data):
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个项目模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
 
+## 多元化操作题（从 Day11 开始）
+
+1. 写项目一句话目标。
+2. 写用户/输入/输出三行定义。
+3. 画最小模块边界。
+4. 准备 sample input/output。
+5. 写一条演示命令。
+6. 写一个核心函数测试。
+7. 写 README 的 Quickstart。
+8. 写复盘：继续、暂停、缩小还是迁移。
+
+## Hot100 / LeetCode 题组（多题 + 多解法）
+
+1. [Climbing Stairs - 爬楼梯](https://leetcode.com/problems/climbing-stairs/)
+   - 题型：动态规划
+   - 多解法：递归；DP 数组；两个变量滚动更新
+   - 迁移：写清输入、状态变量、输出和失败边界。
+2. [Coin Change - 零钱兑换](https://leetcode.com/problems/coin-change/)
+   - 题型：动态规划
+   - 多解法：暴力搜索；记忆化递归；自底向上 DP
+   - 迁移：写清输入、状态变量、输出和失败边界。
+3. [Two Sum - 两数之和](https://leetcode.com/problems/two-sum/)
+   - 题型：数组 / 哈希表
+   - 多解法：暴力双循环；哈希表一次遍历；排序+双指针但要保留下标
+   - 迁移：写清输入、状态变量、输出和失败边界。
+4. [Contains Duplicate - 存在重复元素](https://leetcode.com/problems/contains-duplicate/)
+   - 题型：集合 / 去重
+   - 多解法：排序后看相邻；set 扫描；比较 len(nums) 和 len(set(nums))
+   - 迁移：写清输入、状态变量、输出和失败边界。
+5. [Valid Anagram - 有效的字母异位词](https://leetcode.com/problems/valid-anagram/)
+   - 题型：字符串 / 计数
+   - 多解法：排序比较；手写字典计数；collections.Counter
+   - 迁移：写清输入、状态变量、输出和失败边界。
+6. [Valid Palindrome - 验证回文串](https://leetcode.com/problems/valid-palindrome/)
+   - 题型：双指针 / 字符过滤
+   - 多解法：先清洗再反转；双指针边走边跳过；生成器过滤字符
+   - 迁移：写清输入、状态变量、输出和失败边界。
+
+### 一题多解法拆解：Climbing Stairs
+
+- 解法 1：递归。
+- 解法 2：DP 数组。
+- 解法 3：两个变量滚动更新。
+
+推荐先写最容易懂的版本。
+
+再写复杂度更好的版本。
+
+最后写一句：这个解法能迁移到今天哪个操作题。
+
+### 带注释参考代码：Climbing Stairs
+
+```python
+def climb_stairs(n):
+    if n <= 2:
+        return n
+    prev2, prev1 = 1, 2
+    for step in range(3, n + 1):
+        current = prev1 + prev2
+        prev2, prev1 = prev1, current
+    return prev1
+```
+
+### 做题复盘模板
+
+```text
+题目：
+输入：
+输出：
+暴力解法：
+优化解法：
+关键状态变量：
+最容易错的边界：
+能迁移到今天哪个操作题：
+```
+
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。

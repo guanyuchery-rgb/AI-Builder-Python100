@@ -303,6 +303,80 @@ def day031_engineering_note(input_data):
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个项目模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
 
+## 多元化操作题（从 Day11 开始）
+
+1. 读取 CSV 后输出 shape 和 columns。
+2. 统计缺失值并生成错误报告。
+3. 按字段 groupby 生成 summary。
+4. 用 merge 连接一张维表。
+5. 计算 3 日移动平均。
+6. 把结果写入 SQLite。
+7. 输出一份 Markdown 报告。
+8. 把一段 pandas 逻辑改成可测试函数。
+
+## Hot100 / LeetCode 题组（多题 + 多解法）
+
+1. [Top K Frequent Elements - 前 K 个高频元素](https://leetcode.com/problems/top-k-frequent-elements/)
+   - 题型：计数 / TopK
+   - 多解法：计数后排序；最小堆；桶排序
+   - 迁移：写清输入、状态变量、输出和失败边界。
+2. [Valid Parentheses - 有效的括号](https://leetcode.com/problems/valid-parentheses/)
+   - 题型：栈 / 结构匹配
+   - 多解法：栈；替换消除法；递归匹配但不推荐
+   - 迁移：写清输入、状态变量、输出和失败边界。
+3. [Maximum Depth of Binary Tree - 二叉树最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
+   - 题型：树 / DFS
+   - 多解法：递归 DFS；队列 BFS；栈模拟 DFS
+   - 迁移：写清输入、状态变量、输出和失败边界。
+4. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
+   - 题型：图 / DFS / BFS
+   - 多解法：DFS 沉岛；BFS 队列；并查集
+   - 迁移：写清输入、状态变量、输出和失败边界。
+5. [Climbing Stairs - 爬楼梯](https://leetcode.com/problems/climbing-stairs/)
+   - 题型：动态规划
+   - 多解法：递归；DP 数组；两个变量滚动更新
+   - 迁移：写清输入、状态变量、输出和失败边界。
+6. [Coin Change - 零钱兑换](https://leetcode.com/problems/coin-change/)
+   - 题型：动态规划
+   - 多解法：暴力搜索；记忆化递归；自底向上 DP
+   - 迁移：写清输入、状态变量、输出和失败边界。
+
+### 一题多解法拆解：Top K Frequent Elements
+
+- 解法 1：计数后排序。
+- 解法 2：最小堆。
+- 解法 3：桶排序。
+
+推荐先写最容易懂的版本。
+
+再写复杂度更好的版本。
+
+最后写一句：这个解法能迁移到今天哪个操作题。
+
+### 带注释参考代码：Top K Frequent Elements
+
+```python
+def top_k_frequent(nums, k):
+    counts = {}
+    for num in nums:
+        counts[num] = counts.get(num, 0) + 1
+    items = sorted(counts.items(), key=lambda item: item[1], reverse=True)
+    return [num for num, count in items[:k]]
+```
+
+### 做题复盘模板
+
+```text
+题目：
+输入：
+输出：
+暴力解法：
+优化解法：
+关键状态变量：
+最容易错的边界：
+能迁移到今天哪个操作题：
+```
+
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。
