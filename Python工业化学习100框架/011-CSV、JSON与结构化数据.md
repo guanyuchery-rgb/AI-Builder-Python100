@@ -16,10 +16,78 @@
 
 ## 今日知识地图
 
-- csv
-- json
-- DictWriter
-- 结构化记录
+今天先不背 API。
+
+先建立一张地图：
+
+```text
+Day10：f.write() 手工把文字写进文件
+  ↓
+Day11：csv / json 自动把“结构化数据”写进文件
+```
+
+也就是说，今天的新知识不是突然冒出来的。
+
+它是 Day10 文件写入能力的升级版：
+
+```text
+昨天：我自己拼字符串，再 f.write()
+今天：让 csv/json 帮我按固定格式读写
+```
+
+### csv 库认知地图
+
+`csv` 是 Python 自带的标准库。
+
+它专门处理 CSV 文件。
+
+CSV 可以先理解成“用逗号分隔的表格文件”。
+
+| 工具 | 输入 | 输出 | 适合什么时候用 |
+| --- | --- | --- | --- |
+| `csv.reader` | CSV 文件 | 一行行 list | 只关心位置，不太关心字段名 |
+| `csv.writer` | list / tuple | CSV 文件 | 把列表数据写成表格 |
+| `csv.DictReader` | CSV 文件 | 一行行 dict | 想用字段名读取，比如 `row["topic"]` |
+| `csv.DictWriter` | dict | CSV 文件 | 想用字段名写入，比如 `{"topic": "csv"}` |
+
+先记这个关系：
+
+```text
+reader      : CSV  -> list
+writer      : list -> CSV
+DictReader  : CSV  -> dict
+DictWriter  : dict -> CSV
+```
+
+### json 库认知地图
+
+`json` 也是 Python 自带的标准库。
+
+它负责在 Python 对象和 JSON 文本之间转换。
+
+| 工具 | 输入 | 输出 | 适合什么时候用 |
+| --- | --- | --- | --- |
+| `json.load(f)` | JSON 文件 | dict / list | 从文件读取配置或结构化结果 |
+| `json.dump(data, f)` | dict / list | JSON 文件 | 把 Python 数据保存成 JSON |
+| `json.loads(text)` | JSON 字符串 | dict / list | 处理 API / LLM 返回的文本 |
+| `json.dumps(data)` | dict / list | JSON 字符串 | 把 Python 数据转成 JSON 字符串 |
+
+先记这个关系：
+
+```text
+load   : JSON 文件 -> Python dict/list
+dump   : Python dict/list -> JSON 文件
+loads  : JSON 字符串 -> Python dict/list
+dumps  : Python dict/list -> JSON 字符串
+```
+
+### 今天真正要建立的结构
+
+- 文件不是只有“文字”，还可以有“字段”。
+- 字段不是随便写的名字，它决定后面怎么读取、分析和复查。
+- CSV 更像二维表。
+- JSON 更像 Python 里的 dict/list 组合。
+- 以后 pandas、SQL、Agent tool、Quant 回测，都在吃这种结构化数据。
 
 ## 真实任务入口
 
@@ -51,11 +119,49 @@
 
 ### 1. 是什么（What）
 
-CSV、JSON 与结构化数据 是用 Python 解决工程任务时的一组小工具。最简定义：它帮助你把「csv、json、DictWriter」放进可运行流程里。先把它当成解决问题的方法，不要先背术语。
+CSV、JSON 与结构化数据，是把“随手输出的文字”升级成“有字段、可读取、可复查的数据”。
+
+最简定义：
+
+```text
+CSV 负责表格型数据。
+JSON 负责字典/列表型数据。
+csv/json 库负责帮 Python 自动读写这些格式。
+```
+
+今天不要先背术语。
+
+先抓住一个问题：
+
+```text
+我怎么把 Day10 的学习记录，从 print/f.write，升级成以后还能读取和分析的数据？
+```
 
 ### 2. 为什么存在（Why）
 
-如果没有 CSV、JSON 与结构化数据，代码通常会变成一次性脚本：逻辑散、结果难复查、报错难定位、以后项目里也难复用。它存在的意义是把真实任务拆成更清楚的步骤，让你知道哪里输入、哪里处理、哪里输出。
+如果没有 CSV、JSON 与结构化数据，Day10 的记录大概率会变成这样：
+
+```text
+Day11 csv 60分钟
+Day12 regex 80分钟
+```
+
+人能看懂。
+
+但程序不容易稳定读取。
+
+因为程序会问：
+
+```text
+哪一段是 day？
+哪一段是 topic？
+哪一段是 minutes？
+minutes 是字符串还是数字？
+```
+
+CSV/JSON 存在的原因，就是把这些信息固定下来。
+
+不用它，后面做数据分析、Quant、Agent 日志时，你会反复卡在“数据到底长什么样”。
 
 ### 3. 真实工程场景（Real Scenario）
 
@@ -66,40 +172,131 @@ CSV、JSON 与结构化数据 是用 Python 解决工程任务时的一组小工
 
 ### 4. 怎么做（How）
 
-先看场景流程，再看代码：
+先看场景流程，再看代码。
+
+这一步故意慢一点。
+
+因为你卡住的不是 CSV 本身，而是“库里有哪些工具、它们各自把什么变成什么”。
 
 ```text
-真实小任务
+Day10 学习记录
   ↓
-明确输入
+手工写文件：f.write()
   ↓
-拆成 1-3 个步骤
+发现问题：字符串不好稳定读取
   ↓
-写最小代码
+引入 csv 库
   ↓
-打印/保存结果
+选择 DictWriter / DictReader
   ↓
-记录 Debug
+保存记录
+  ↓
+重新读取检查
 ```
 
 ```python
-# Day11 - CSV、JSON 与结构化数据
+# Day11 - CSV、JSON 与结构化数据：先跑一个最小 CSV 例子
 
-def solve_task(sample_input):
-    """把今天的真实任务压缩成一个最小可运行函数。"""
-    result = f"处理完成: {sample_input}"
-    return result
+import csv
+from pathlib import Path
 
+LOG_FILE = Path("learning_log.csv")
 
-def main():
-    sample = "虚拟样例输入"
-    output = solve_task(sample)
-    print(output)
+records = [
+    {"day": "Day11", "topic": "CSV", "minutes": 60},
+    {"day": "Day12", "topic": "Regex", "minutes": 80},
+]
 
+# 写入 CSV：dict -> CSV
+with LOG_FILE.open("w", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(f, fieldnames=["day", "topic", "minutes"])
+    writer.writeheader()
+    writer.writerows(records)
 
-if __name__ == "__main__":
-    main()
+# 读取 CSV：CSV -> dict
+with LOG_FILE.open("r", newline="", encoding="utf-8") as f:
+    rows = list(csv.DictReader(f))
+
+print(rows)
 ```
+
+### 第一次看到 `csv.DictWriter(...)`，逐项拆开
+
+这行代码先不要整体背：
+
+```python
+writer = csv.DictWriter(
+    f,
+    fieldnames=["day", "topic", "minutes"],
+)
+```
+
+逐项看：
+
+| 部分 | 它是什么 | 你可以怎么理解 |
+| --- | --- | --- |
+| `csv` | Python 自带的 CSV 标准库 | 一个专门处理 CSV 表格文件的工具箱 |
+| `DictWriter` | `csv` 工具箱里的写入器 | 把 dict 写进 CSV |
+| `f` | 已经打开的文件对象 | Day10 学过的文件通道 |
+| `fieldnames` | CSV 表头字段列表 | 告诉 CSV 这一张表有哪些列 |
+| `writer` | 返回的写入器对象 | 后面可以调用 `writeheader()` 和 `writerows()` |
+
+再看两个方法：
+
+| 方法 | 做什么 |
+| --- | --- |
+| `writer.writeheader()` | 先写入表头：`day,topic,minutes` |
+| `writer.writerows(records)` | 把多条 dict 记录写成多行 CSV |
+
+### 第一次看到 `csv.DictReader(...)`，逐项拆开
+
+```python
+rows = list(csv.DictReader(f))
+```
+
+逐项看：
+
+| 部分 | 它是什么 | 你可以怎么理解 |
+| --- | --- | --- |
+| `csv` | CSV 工具箱 | 和上面同一个库 |
+| `DictReader` | 字典读取器 | 按表头字段把每行变成 dict |
+| `f` | 已经打开的 CSV 文件对象 | 读取通道 |
+| `list(...)` | 把可迭代结果一次性变成列表 | 方便打印、检查、后续循环 |
+| `rows` | 读取出来的数据 | 大致是 `list[dict]` |
+
+如果 CSV 长这样：
+
+```text
+day,topic,minutes
+Day11,CSV,60
+```
+
+`DictReader` 读出来大致是：
+
+```python
+[{"day": "Day11", "topic": "CSV", "minutes": "60"}]
+```
+
+注意：`"60"` 通常会先是字符串。
+
+要计算总学习时间时，再用 `int()` 或 `float()` 转成数字。
+
+### `reader/writer` 和 `DictReader/DictWriter` 的区别
+
+| 对比 | 普通版 | Dict 版 |
+| --- | --- | --- |
+| 读取 | `csv.reader(f)` | `csv.DictReader(f)` |
+| 读出一行 | `["Day11", "CSV", "60"]` | `{"day": "Day11", "topic": "CSV", "minutes": "60"}` |
+| 写入 | `csv.writer(f)` | `csv.DictWriter(f, fieldnames=[...])` |
+| 写入一行 | `["Day11", "CSV", 60]` | `{"day": "Day11", "topic": "CSV", "minutes": 60}` |
+| 优点 | 短，适合临时表格 | 字段清楚，适合长期项目 |
+| 缺点 | 容易忘记第 0 列是什么 | 要先定义字段名 |
+
+你现在优先学 Dict 版。
+
+因为你后面要做数据分析、Agent、Quant。
+
+这些场景都需要字段意识。
 
 ### 5. 工程设计思维（Design）
 
@@ -152,6 +349,17 @@ def save_records(records):
 def load_records():
     with LOG_FILE.open("r", newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
+```
+
+这段函数版只是把上面的最小例子包起来。
+
+你可以这样连接旧知识：
+
+```text
+Day06：函数把重复逻辑包起来
+Day08：with open 负责安全读写文件
+Day10：学习记录 CLI 有真实记录
+Day11：csv.DictWriter / DictReader 让记录带字段保存
 ```
 
 ## 基础详细讲解
