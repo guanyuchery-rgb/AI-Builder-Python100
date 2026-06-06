@@ -19,6 +19,8 @@ Day01-Day100 负责知识学习；工业化挑战负责项目能力验证。
 
 ## 使用原则
 
+- [LeetCode 热题结构](LEETCODE_HOT_LIST.md)：370 题，Easy 90 / Medium 240 / Hard 40。
+
 - 不占 Day 数。
 - Project01-Project08 是平级关系，每个项目都可以独立成为 GitHub 作品。
 - 不要求 Day 学完 100 才开始；Day15 后可以从 Project01 慢慢做。

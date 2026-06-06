@@ -9,50 +9,60 @@
 这个挑战不是为了追求模型复杂度，而是训练你把现代 AI 能力拆成稳定工程步骤。
 你要始终回答四个问题：输入是什么，输出是什么，失败在哪里，如何复现。
 
-## Part A - LeetCode 结构化训练
+## 3. Part A - LeetCode 热题训练（5 题，不重复）
 
-这些题用于训练数据结构、状态转移、图搜索、窗口、堆、动态规划和边界处理。
-每题都要写：题意、输入输出、核心思路、易错点、复杂度。
+本 IC 固定 5 道官方 LeetCode。题目经过重新整理，整体结构是：Easy 90 道、Medium 240 道、Hard 40 道。
+优先选择高频面试题、经典数据结构题和能迁移到工程项目的题。
 
-### A1. verbal arithmetic puzzle
+### A1. Clone Graph
 
-- 官方链接：https://leetcode.com/problems/verbal-arithmetic-puzzle/
-- 训练目标：把题目抽象成状态、转移、边界和可测试函数。
-- 解题步骤：先写暴力想法，再找重复计算或可维护的数据结构。
-- 易错点：不要只追求通过样例，要构造空输入、极端输入、重复值和顺序变化。
-- 复盘要求：写出为什么这个结构能迁移到本 IC 的工程任务。
+- 官方链接：https://leetcode.com/problems/clone-graph/
+- 难度：Medium
+- 题型：图 / BFS / DFS
+- 训练目标：先写清输入输出，再写核心状态或数据结构。
+- 解题步骤：暴力想法 -> 优化思路 -> 边界用例 -> 复杂度。
+- 易错点：空输入、重复值、越界、顺序变化、状态初始化。
+- 复盘要求：写出这个题型如何迁移到本 IC 的工程任务。
 
-### A2. number of ways to stay in the same place after some steps
+### A2. Gas Station
 
-- 官方链接：https://leetcode.com/problems/number-of-ways-to-stay-in-the-same-place-after-some-steps/
-- 训练目标：把题目抽象成状态、转移、边界和可测试函数。
-- 解题步骤：先写暴力想法，再找重复计算或可维护的数据结构。
-- 易错点：不要只追求通过样例，要构造空输入、极端输入、重复值和顺序变化。
-- 复盘要求：写出为什么这个结构能迁移到本 IC 的工程任务。
+- 官方链接：https://leetcode.com/problems/gas-station/
+- 难度：Medium
+- 题型：数组 / 哈希 / 模拟
+- 训练目标：先写清输入输出，再写核心状态或数据结构。
+- 解题步骤：暴力想法 -> 优化思路 -> 边界用例 -> 复杂度。
+- 易错点：空输入、重复值、越界、顺序变化、状态初始化。
+- 复盘要求：写出这个题型如何迁移到本 IC 的工程任务。
 
-### A3. minimum insertion steps to make a string palindrome
+### A3. Copy List With Random Pointer
 
-- 官方链接：https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
-- 训练目标：把题目抽象成状态、转移、边界和可测试函数。
-- 解题步骤：先写暴力想法，再找重复计算或可维护的数据结构。
-- 易错点：不要只追求通过样例，要构造空输入、极端输入、重复值和顺序变化。
-- 复盘要求：写出为什么这个结构能迁移到本 IC 的工程任务。
+- 官方链接：https://leetcode.com/problems/copy-list-with-random-pointer/
+- 难度：Medium
+- 题型：链表
+- 训练目标：先写清输入输出，再写核心状态或数据结构。
+- 解题步骤：暴力想法 -> 优化思路 -> 边界用例 -> 复杂度。
+- 易错点：空输入、重复值、越界、顺序变化、状态初始化。
+- 复盘要求：写出这个题型如何迁移到本 IC 的工程任务。
 
-### A4. number of ways to paint n 3 grid
+### A4. Word Break
 
-- 官方链接：https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/
-- 训练目标：把题目抽象成状态、转移、边界和可测试函数。
-- 解题步骤：先写暴力想法，再找重复计算或可维护的数据结构。
-- 易错点：不要只追求通过样例，要构造空输入、极端输入、重复值和顺序变化。
-- 复盘要求：写出为什么这个结构能迁移到本 IC 的工程任务。
+- 官方链接：https://leetcode.com/problems/word-break/
+- 难度：Medium
+- 题型：数组 / 哈希 / 模拟
+- 训练目标：先写清输入输出，再写核心状态或数据结构。
+- 解题步骤：暴力想法 -> 优化思路 -> 边界用例 -> 复杂度。
+- 易错点：空输入、重复值、越界、顺序变化、状态初始化。
+- 复盘要求：写出这个题型如何迁移到本 IC 的工程任务。
 
-### A5. maximum students taking exam
+### A5. Linked List Cycle Ii
 
-- 官方链接：https://leetcode.com/problems/maximum-students-taking-exam/
-- 训练目标：把题目抽象成状态、转移、边界和可测试函数。
-- 解题步骤：先写暴力想法，再找重复计算或可维护的数据结构。
-- 易错点：不要只追求通过样例，要构造空输入、极端输入、重复值和顺序变化。
-- 复盘要求：写出为什么这个结构能迁移到本 IC 的工程任务。
+- 官方链接：https://leetcode.com/problems/linked-list-cycle-ii/
+- 难度：Medium
+- 题型：链表
+- 训练目标：先写清输入输出，再写核心状态或数据结构。
+- 解题步骤：暴力想法 -> 优化思路 -> 边界用例 -> 复杂度。
+- 易错点：空输入、重复值、越界、顺序变化、状态初始化。
+- 复盘要求：写出这个题型如何迁移到本 IC 的工程任务。
 
 ## Part B - 项目任务
 
@@ -527,4 +537,3 @@
 - 检查复现：换一台机器或新终端能不能按 README 跑通。
 - 检查解释：能不能向非技术同学说明这个结果为什么可信。
 - 检查边界：模型失败时有没有 fallback 或人工审查。
-
