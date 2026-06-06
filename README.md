@@ -63,7 +63,7 @@ Agent / LLM / Quant 的通识知识继续保留在 Day100 主线里，例如 Too
 
 课程基础部分会持续强调“库的学习”：遇到 `csv`、`json`、`pandas`、`numpy`、`sklearn`、`torch`、`transformers`、`pydantic` 等库时，先建立认知地图，再拆函数和参数。机器学习、深度学习、Transformer 和 PyTorch 作为 LLM / Agent 的基础知识进入 Day 主线，但只讲概念、输入输出和最小示例，不提前做完整大模型工程。
 
-完整 RAG、Agent、Quant 回测、多 Agent 协作和 Dashboard 工程，统一放到 [工业化挑战](工业化挑战/README.md) 做能力验证。
+完整 RAG、Agent、Quant 回测、多 Agent 协作和 Dashboard 工程，统一放到 [工业化挑战](工业化挑战/README.md) 做能力验证。IC 项目之间是平级作品方向。
 
 ## 新学习风格
 
@@ -115,7 +115,7 @@ IC 是额外能力验证，不强行塞进同一天。
 
 Day01-Day100 不承担大型工程交付职责，只保留知识、原理、API、小型示例和 Debug。Day76-Day95 的旧工程化内容已经迁移到 IC。
 
-IC01-IC50 用来验证工程能力：
+IC01-IC74 用来验证工程能力，按平级项目分组：
 
 - 每个 IC 有 5 个知识自测问题。
 - 每个 IC 有 1 个工程挑战。
