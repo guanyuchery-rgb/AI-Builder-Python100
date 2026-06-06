@@ -21,14 +21,15 @@
 - 后续学习路径优化：[PERSONALIZED_LEARNING_PATH.md](PERSONALIZED_LEARNING_PATH.md)
 - 知识广度索引：[KNOWLEDGE_EXPANSION_INDEX.md](KNOWLEDGE_EXPANSION_INDEX.md)
 - LeetCode 求职刷题记录：[LEETCODE_JOB_TRACKER.md](LEETCODE_JOB_TRACKER.md)
+- Industrial Challenge 能力验证：[Industrial-Challenge](Industrial-Challenge/README.md)
 - 手机入口：[MOBILE.md](MOBILE.md)
 - 100 天课程目录：[Python工业化学习100框架](Python工业化学习100框架/README.md)
 
 ## 适合谁
 
-- Python 零基础或基础不稳，希望按项目路线学习的人。
+- Python 零基础或基础不稳，希望按知识主线 + IC 验证学习的人。
 - 统计、金融、数据分析背景，想进入 AI / Quant / Agent 工程实践的人。
-- 想用 GitHub 公开沉淀学习过程和作品集的人。
+- 想用 GitHub 公开沉淀学习过程和 IC 作品集的人。
 
 ## 课程结构
 
@@ -39,7 +40,30 @@
 5. Day36-Day45：应用接口、自动化与交付
 6. Day46-Day60：LLM / RAG / Agent 基础
 7. Day61-Day75：Quant 研究与回测基础
-8. Day76-Day100：如何做项目、作品集与长期维护
+8. Day76-Day100：知识整合、复盘与长期维护
+
+## Day 和 IC 的边界
+
+Day01-Day100 保留，不减少，不删除已有内容。
+
+当前主线解释为：
+
+- Day：知识学习、原理理解、API 使用、小型示例、Debug 能力。
+- IC：能力验证、LeetCode 记录、工程挑战、GitHub 提交、作品集沉淀。
+
+Day 的统一学习模板是：
+
+```text
+What
+Why
+How
+Common Errors
+Future Usage
+```
+
+Agent / LLM / Quant 的通识知识继续保留在 Day100 主线里，例如 Tool、Memory、Workflow、Planning、Prompt、Context、Embedding、RAG 原理、Return、Volatility、Sharpe、Drawdown 和 Backtest 原理。
+
+完整 RAG 系统、Agent 系统、Quant 回测框架、多 Agent 协作和 Dashboard 项目，统一放到 [Industrial Challenge](Industrial-Challenge/README.md) 做能力验证。
 
 ## 新学习风格
 
@@ -55,11 +79,21 @@
 
 ## 每天怎么学
 
+Day 主线每天最多按 4 小时设计。
+
+推荐学习量是 2 小时左右。
+
+如果当天内容超过 4 小时，优先砍掉大型工程任务、额外刷题和作品集整理，把它们移动到 IC。
+
 - 15 分钟：读学习定位和知识地图。
 - 25 分钟：手打最小案例并运行。Day06-Day20 先读「完全看不懂版」和「基础知识深讲」，确认概念、执行过程和常见边界。
 - 35 分钟：完成 7 道简单路线题。
 - 35 分钟：完成 5 道基础巩固题。
 - 10 分钟：记录 Debug、结果和下一步。
+
+上面是 Day 主线节奏，不包含 IC。
+
+IC 是额外能力验证，不强行塞进同一天。
 
 ## 100 天后能到什么水平
 
@@ -76,11 +110,17 @@
 
 前提是每天要手打代码、跑通结果、提交 LeetCode 官方记录，并写下复盘。只读完文本不会自动变强。
 
-## Hot100 / LeetCode 求职线
+## LeetCode / IC 求职线
 
-Day01-Day10 先打 Python 和工程基础，不强行刷难题。Day11-Day100 每节补充 8 个 Hot100 / LeetCode 训练位，包含官方题目链接、难度安排、题型、多解法、解析、解题步骤、易错点和复盘模板。
+Day01-Day100 不再承担主要刷题职责。
 
-题目按阶段分层：前期以必做基础题为主，中期加入选做题，后期加入挑战题。挑战题不要求一开始全部 AC，优先理解思路和边界。
+刷题主线移动到 IC01-IC50：
+
+- 每个 IC 5 道 LeetCode。
+- 总计 250 道。
+- 不重复。
+- 使用官方题目链接。
+- 每题保留思路、步骤、易错点和复盘句。
 
 做题时优先登录自己的 LeetCode 账号并在官方题目页提交代码，这样会留下提交记录、Accepted 记录、日历和题目进度。仓库里的 [LeetCode 求职刷题记录](LEETCODE_JOB_TRACKER.md) 用来沉淀复盘、项目迁移点和面试表达，帮助以后找工作时整理材料。
 

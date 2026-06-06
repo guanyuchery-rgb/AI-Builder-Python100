@@ -9,10 +9,24 @@
 完整成长路线图见：[../GROWTH_ROADMAP.md](../GROWTH_ROADMAP.md)。
 课程设计原则见：[../COURSE_DESIGN_PRINCIPLES.md](../COURSE_DESIGN_PRINCIPLES.md)。
 后续学习路径优化见：[000 - 后续学习路径优化](000-后续学习路径优化.md)。
+Industrial Challenge 能力验证见：[../Industrial-Challenge](../Industrial-Challenge/README.md)。
 
 ## 当前推荐学习方式
 
 如果你已经学到 Day10 左右，后面不要急着跳大项目。
+
+Day 主线每天最多 4 小时。
+
+更推荐按 2 小时左右完成。
+
+超过 4 小时的内容，不应该继续塞在当天 Day 里。
+
+处理规则：
+
+- 大型工程任务移到 IC。
+- LeetCode 集中训练移到 IC。
+- 作品集整理移到 IC。
+- Day 只保留知识、原理、API、小型示例和 Debug。
 
 先把这四件事练稳：
 
@@ -71,6 +85,31 @@ errors.md
 
 要先知道 `csv` 是工具箱，`DictWriter` 是“把 dict 写成 CSV 的工具”，`f` 是文件对象，`fieldnames` 是表头字段，返回的 `writer` 才能继续 `writeheader()` 和 `writerows()`。
 
+## Day 和 IC 的职责边界
+
+Day01-Day100 不减少。
+
+已有内容不删除。
+
+但当前课程使用时，Day 只承担知识主线：
+
+```text
+What -> Why -> How -> Common Errors -> Future Usage
+```
+
+Day 里如果出现较大的项目名，把它当成知识场景、原理示例或旧版训练说明。
+
+真正的能力验证、LeetCode、工程任务、GitHub 提交和作品集沉淀，统一进入 [Industrial Challenge](../Industrial-Challenge/README.md)。
+
+IC01-IC50 不占 Day 数。
+
+每个 IC 包含：
+
+- 5 道 LeetCode。
+- 1 个工程挑战。
+- GitHub 提交要求。
+- Challenge Review。
+
 统计/数学直觉要保留。比如假设检验、吸附壁/阈值、示性函数，都可以翻译成 Python 里的判断条件、权重函数、风险边界和工具路由。
 
 ## 阶段路线
@@ -85,7 +124,7 @@ errors.md
 - [Day07 - 字符串、字典与集合](007-字符串、字典与集合.md)
 - [Day08 - 文件读写与异常处理](008-文件读写与异常处理.md)
 - [Day09 - 模块、包与可复用脚本](009-模块、包与可复用脚本.md)
-- [Day10 - 零基础小项目：学习记录 CLI](010-零基础小项目学习记录CLI.md)
+- [Day10 - 学习记录 CLI 基础](010-零基础小项目学习记录CLI.md)
 
 ### 阶段二：Python 工程化基本功
 - [Day11 - CSV、JSON 与结构化数据](011-CSV、JSON与结构化数据.md)
@@ -97,10 +136,10 @@ errors.md
 - [Day17 - logging 与 Debug 记录](017-logging与Debug记录.md)
 - [Day18 - pytest 与最小测试](018-pytest与最小测试.md)
 - [Day19 - 类型标注、配置与输入边界](019-类型标注、配置与输入边界.md)
-- [Day20 - 工程化小项目：Data CLI](020-工程化小项目DataCLI.md)
+- [Day20 - CLI、日志与测试整合](020-工程化小项目DataCLI.md)
 
 ### 阶段三：数据分析与本地数据系统
-- [Day21 - 项目骨架、README 与 Git 工作流](021-项目骨架、README与Git工作流.md)
+- [Day21 - 目录结构、说明文档 与 Git 基础](021-项目骨架、README与Git工作流.md)
 - [Day22 - 虚拟环境与 requirements](022-虚拟环境与requirements.md)
 - [Day23 - pandas 读取与数据体检](023-pandas读取与数据体检.md)
 - [Day24 - 缺失值、类型转换与清洗](024-缺失值、类型转换与清洗.md)
@@ -114,7 +153,7 @@ errors.md
 - [Day32 - SQL 查询、Join 与窗口意识](032-SQL查询、Join与窗口意识.md)
 - [Day33 - 配置文件与环境变量](033-配置文件与环境变量.md)
 - [Day34 - 数据校验与错误报告](034-数据校验与错误报告.md)
-- [Day35 - 数据分析 Capstone：本地指标管道](035-数据分析Capstone本地指标管道.md)
+- [Day35 - 本地指标管道原理](035-数据分析Capstone本地指标管道.md)
 
 ### 阶段四：应用接口、自动化与交付
 - [Day36 - 自动化文件整理与批处理](036-自动化文件整理与批处理.md)
@@ -123,10 +162,10 @@ errors.md
 - [Day39 - FastAPI 最小服务](039-FastAPI最小服务.md)
 - [Day40 - Streamlit 数据看板](040-Streamlit数据看板.md)
 - [Day41 - Docker 轻量运行说明](041-Docker轻量运行说明.md)
-- [Day42 - GitHub Actions 最小 CI](042-GitHubActions最小CI.md)
+- [Day42 - 本地记录 Actions 最小 CI](042-GitHubActions最小CI.md)
 - [Day43 - 模块打包与 src 布局](043-模块打包与src布局.md)
-- [Day44 - 开源 README、示例与文档](044-开源README、示例与文档.md)
-- [Day45 - 应用交付 Capstone：Data Tool](045-应用交付CapstoneDataTool.md)
+- [Day44 - 开源 说明文档、示例与文档](044-开源README、示例与文档.md)
+- [Day45 - CLI、API、页面与 CI 整合原理](045-应用交付CapstoneDataTool.md)
 
 ### 阶段五：LLM / RAG / Agent 基础
 - [Day46 - Prompt 模板与事实边界](046-Prompt模板与事实边界.md)
@@ -142,8 +181,8 @@ errors.md
 - [Day56 - Agent 计划-执行-观察循环](056-Agent计划-执行-观察循环.md)
 - [Day57 - Human-in-the-Loop 审查点](057-Human-in-the-Loop审查点.md)
 - [Day58 - Agent 日志与可观测性](058-Agent日志与可观测性.md)
-- [Day59 - LLM Report Assistant 小项目](059-LLMReportAssistant小项目.md)
-- [Day60 - LLM/Agent Capstone：本地知识助手](060-LLMAgentCapstone本地知识助手.md)
+- [Day59 - LLM Report Assistant 小练习](059-LLMReportAssistant小项目.md)
+- [Day60 - LLM/Agent 本地知识助手原理](060-LLMAgentCapstone本地知识助手.md)
 
 ### 阶段六：Quant 研究与回测基础
 - [Day61 - 行情数据适配器](061-行情数据适配器.md)
@@ -160,41 +199,42 @@ errors.md
 - [Day72 - 量化函数测试与样例数据](072-量化函数测试与样例数据.md)
 - [Day73 - SQLite 保存回测结果](073-SQLite保存回测结果.md)
 - [Day74 - Streamlit 策略看板](074-Streamlit策略看板.md)
-- [Day75 - Quant Capstone：Research Starter](075-QuantCapstoneResearchStarter.md)
+- [Day75 - Quant Research Starter 原理](075-QuantCapstoneResearchStarter.md)
 
-### 阶段七：项目实战、作品集与长期维护
-- [Day76 - 项目一：QuantResearchStarter 骨架](076-项目一QuantResearchStarter骨架.md)
-- [Day77 - 项目一：数据层实现](077-项目一数据层实现.md)
-- [Day78 - 项目一：指标与回测层](078-项目一指标与回测层.md)
-- [Day79 - 项目一：报告、测试与 CLI](079-项目一报告、测试与CLI.md)
-- [Day80 - 项目一：复盘与 README 打磨](080-项目一复盘与README打磨.md)
-- [Day81 - 项目二：LLMReportAssistant 骨架](081-项目二LLMReportAssistant骨架.md)
-- [Day82 - 项目二：上下文打包与 Prompt](082-项目二上下文打包与Prompt.md)
-- [Day83 - 项目二：结构化解析与审查规则](083-项目二结构化解析与审查规则.md)
-- [Day84 - 项目二：评估集与样例报告](084-项目二评估集与样例报告.md)
-- [Day85 - 项目二：交付、复盘与公开说明](085-项目二交付、复盘与公开说明.md)
-- [Day86 - 项目三：AgentToolPrototype 骨架](086-项目三AgentToolPrototype骨架.md)
-- [Day87 - 项目三：工具 Schema 与校验](087-项目三工具Schema与校验.md)
-- [Day88 - 项目三：执行、错误恢复与日志](088-项目三执行、错误恢复与日志.md)
-- [Day89 - 项目三：状态存储与人工审查](089-项目三状态存储与人工审查.md)
-- [Day90 - 项目三：端到端演示与 README](090-项目三端到端演示与README.md)
-- [Day91 - 项目四：本地 RAG 笔记助手骨架](091-项目四本地RAG笔记助手骨架.md)
-- [Day92 - 项目四：索引与检索层](092-项目四索引与检索层.md)
-- [Day93 - 项目四：回答 Prompt 与来源引用](093-项目四回答Prompt与来源引用.md)
-- [Day94 - 项目四：RAG 评估与错误案例](094-项目四RAG评估与错误案例.md)
-- [Day95 - 项目四：交付与复盘](095-项目四交付与复盘.md)
-- [Day96 - GitHub Pages 与课程网站维护](096-GitHubPages与课程网站维护.md)
-- [Day97 - 作品集 README 与项目索引](097-作品集README与项目索引.md)
-- [Day98 - 项目讲解脚本与面试故事](098-项目讲解脚本与面试故事.md)
+### 阶段七：知识整合、复盘与长期维护
+- [Day76 - Quant 研究目录与模块边界](076-项目一QuantResearchStarter骨架.md)
+- [Day77 - Quant 数据层原理](077-项目一数据层实现.md)
+- [Day78 - Quant 指标与回测层原理](078-项目一指标与回测层.md)
+- [Day79 - Quant 报告、测试与 CLI 原理](079-项目一报告、测试与CLI.md)
+- [Day80 - Quant 实验复盘与说明](080-项目一复盘与README打磨.md)
+- [Day81 - LLM 报告助手模块边界](081-项目二LLMReportAssistant骨架.md)
+- [Day82 - LLM 上下文打包与 Prompt](082-项目二上下文打包与Prompt.md)
+- [Day83 - 结构化解析与审查规则](083-项目二结构化解析与审查规则.md)
+- [Day84 - 评估集与样例报告](084-项目二评估集与样例报告.md)
+- [Day85 - LLM 输出限制、复盘与公开说明](085-项目二交付、复盘与公开说明.md)
+- [Day86 - Agent Tool 模块边界](086-项目三AgentToolPrototype骨架.md)
+- [Day87 - Agent 工具 Schema 与校验](087-项目三工具Schema与校验.md)
+- [Day88 - Agent 执行、错误恢复与日志](088-项目三执行、错误恢复与日志.md)
+- [Day89 - Agent 状态存储与人工审查](089-项目三状态存储与人工审查.md)
+- [Day90 - Agent 工作流端到端原理](090-项目三端到端演示与README.md)
+- [Day91 - RAG 笔记助手模块边界](091-项目四本地RAG笔记助手骨架.md)
+- [Day92 - RAG 索引与检索层](092-项目四索引与检索层.md)
+- [Day93 - RAG 回答 Prompt 与来源引用](093-项目四回答Prompt与来源引用.md)
+- [Day94 - RAG 评估与错误案例](094-项目四RAG评估与错误案例.md)
+- [Day95 - RAG 限制、复盘与公开说明](095-项目四交付与复盘.md)
+- [Day96 - 本地记录 Pages 与课程网站维护](096-GitHubPages与课程网站维护.md)
+- [Day97 - 知识索引与能力清单](097-作品集README与项目索引.md)
+- [Day98 - 技术讲解脚本与面试表达](098-项目讲解脚本与面试故事.md)
 - [Day99 - 错误库、片段库与长期维护](099-错误库、片段库与长期维护.md)
-- [Day100 - 总 Capstone：AI Builder Python Roadmap](100-总CapstoneAIBuilderPythonRoadmap.md)
+- [Day100 - AI Builder Python Roadmap 总复盘](100-总CapstoneAIBuilderPythonRoadmap.md)
 
 ## 使用方式
 
-- 每天按 2 小时节奏学习。
+- 每天按 2 小时节奏学习，最多不超过 4 小时。
 - 先跑通最小案例，再做 7 道简单路线题和 5 道基础巩固题；Day06-Day20 先读「完全看不懂版」和「基础知识深讲」。
-- Day01-Day20 不安排 Hot100 难题；Day21 之后每天追加 1 道 Hot100 / LeetCode 挑战，完成主线后再做。
-- Day10-Day100 增加工程问题解决结构，优先理解真实任务、场景、设计原因和未来项目位置。
+- Day 学知识，IC 验能力；不要在 Day 主线里硬塞大型工程任务。
+- Day10-Day100 增加工程问题解决结构，优先理解真实任务、场景、设计原因和未来使用位置。
 - Day11 之后所有新库/API 默认先给认知地图和输入输出表，禁止直接抛复杂代码。
+- LeetCode 主线进入 IC01-IC50，每个 IC 5 题，总计 250 题。
 - 所有示例使用虚拟样例，保持可复现、可公开、可长期维护。
-- 学完一个阶段，至少整理一次 README 或项目复盘。
+- 学完一个阶段，至少整理一次 notes 或阶段复盘；完整作品集整理放到 IC。

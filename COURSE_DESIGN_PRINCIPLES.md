@@ -97,6 +97,38 @@ writer = csv.DictWriter(
 
 ## 每个知识点统一结构
 
+Day01-Day100 的主线职责是知识学习，不承担大型工程任务。
+
+每个 Day 的学习量上限是 **4 小时以内**。
+
+推荐节奏是 2 小时左右。
+
+如果某一天的内容需要超过 4 小时才能完成，说明它已经不是 Day 主线内容，必须拆出去：
+
+- 大型工程任务放到 `Industrial-Challenge/`。
+- 刷题集中训练放到 IC。
+- 作品集沉淀放到 IC。
+- Day 只保留知识、原理、API、小型示例和 Debug。
+
+统一模板：
+
+```text
+What
+Why
+How
+Common Errors
+Future Usage
+```
+
+大项目、刷题记录、GitHub 提交和作品集沉淀放入 `Industrial-Challenge/`。
+
+这不是删除已有 Day 内容，而是调整使用方式：
+
+- Day 保留为知识主线。
+- IC 作为能力验证体系。
+- 已有 Day 中的项目名保留为场景或旧版说明。
+- 后续新增内容优先遵守 Day / IC 解耦。
+
 ### 1. 是什么（What）
 
 用不超过 3 句话解释概念，避免复杂术语，并给出一句最简定义。
@@ -140,6 +172,29 @@ writer = csv.DictWriter(
 - CLI 工具
 - 数据处理脚本
 - GitHub 开源作品集
+
+## Agent / LLM / Quant 边界
+
+以下内容保留在 Day100 主线中，作为通识知识：
+
+- Agent：Tool、Memory、Workflow、Planning。
+- LLM：Prompt、Context、Embedding、RAG 原理。
+- Quant：Return、Volatility、Sharpe、Drawdown、Backtest 原理。
+
+以下内容移动到 IC，作为能力验证和作品集项目：
+
+- 完整 RAG 系统。
+- 完整 Agent 系统。
+- Quant 回测框架。
+- 多 Agent 协作。
+- Dashboard 项目。
+
+原则：
+
+```text
+Day 讲清楚原理和最小 API。
+IC 验证能不能做成项目。
+```
 
 ## 课程重构原则
 
