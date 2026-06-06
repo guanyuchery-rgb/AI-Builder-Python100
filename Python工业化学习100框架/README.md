@@ -8,8 +8,7 @@
 
 完整成长路线图见：[../GROWTH_ROADMAP.md](../GROWTH_ROADMAP.md)。
 课程设计原则见：[../COURSE_DESIGN_PRINCIPLES.md](../COURSE_DESIGN_PRINCIPLES.md)。
-后续学习路径优化见：[000 - 后续学习路径优化](000-后续学习路径优化.md)。
-Industrial Challenge 能力验证见：[../Industrial-Challenge](../Industrial-Challenge/README.md)。
+工业化挑战 能力验证见：[../工业化挑战](../工业化挑战/README.md)。
 
 ## 当前推荐学习方式
 
@@ -99,7 +98,7 @@ What -> Why -> How -> Common Errors -> Future Usage
 
 Day 主线不保留完整工程；完整工程实践统一进入 IC。
 
-真正的能力验证、工程任务、GitHub 提交和作品沉淀，统一进入 [Industrial Challenge](../Industrial-Challenge/README.md)。
+真正的能力验证、工程任务、GitHub 提交和作品沉淀，统一进入 [工业化挑战](../工业化挑战/README.md)。
 
 IC01-IC50 不占 Day 数。
 
@@ -131,8 +130,8 @@ LLM 和 Agent 需要的基础不是一上来写复杂系统，而是先理解：
 - [Day10 - 学习记录 CLI 基础](010-学习记录CLI基础.md)
 
 ### 阶段二：Python 工程化基本功
-- [Day11 - CSV、JSON 与结构化数据](011-CSV、JSON与结构化数据.md)
-- [Day12 - 正则表达式与文本解析](012-正则表达式与文本解析.md)
+- [Day11 - CSV 基础 reader / writer](011-CSV基础readerwriter.md)
+- [Day12 - CSV 进阶 DictReader / DictWriter](012-CSV进阶DictReaderDictWriter.md)
 - [Day13 - 列表推导式、迭代器与生成器](013-列表推导式、迭代器与生成器.md)
 - [Day14 - 日期时间与时间序列意识](014-日期时间与时间序列意识.md)
 - [Day15 - 面向对象与 dataclass](015-面向对象与dataclass.md)

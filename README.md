@@ -19,7 +19,7 @@
 - 后续学习路径优化：[PERSONALIZED_LEARNING_PATH.md](PERSONALIZED_LEARNING_PATH.md)
 - 知识广度索引：[KNOWLEDGE_EXPANSION_INDEX.md](KNOWLEDGE_EXPANSION_INDEX.md)
 - 库学习地图：[LIBRARY_LEARNING_MAP.md](LIBRARY_LEARNING_MAP.md)
-- Industrial Challenge 能力验证：[Industrial-Challenge](Industrial-Challenge/README.md)
+- 工业化挑战 能力验证：[工业化挑战](工业化挑战/README.md)
 - 手机入口：[MOBILE.md](MOBILE.md)
 - 100 天课程目录：[Python工业化学习100框架](Python工业化学习100框架/README.md)
 
@@ -63,7 +63,7 @@ Agent / LLM / Quant 的通识知识继续保留在 Day100 主线里，例如 Too
 
 课程基础部分会持续强调“库的学习”：遇到 `csv`、`json`、`pandas`、`numpy`、`sklearn`、`torch`、`transformers`、`pydantic` 等库时，先建立认知地图，再拆函数和参数。机器学习、深度学习、Transformer 和 PyTorch 作为 LLM / Agent 的基础知识进入 Day 主线，但只讲概念、输入输出和最小示例，不提前做完整大模型工程。
 
-完整 RAG、Agent、Quant 回测、多 Agent 协作和 Dashboard 工程，统一放到 [Industrial Challenge](Industrial-Challenge/README.md) 做能力验证。
+完整 RAG、Agent、Quant 回测、多 Agent 协作和 Dashboard 工程，统一放到 [工业化挑战](工业化挑战/README.md) 做能力验证。
 
 ## 新学习风格
 
