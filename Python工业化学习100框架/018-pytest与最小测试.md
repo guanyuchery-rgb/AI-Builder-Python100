@@ -90,12 +90,10 @@ def solve_task(sample_input):
     result = f"处理完成: {sample_input}"
     return result
 
-
 def main():
     sample = "虚拟样例输入"
     output = solve_task(sample)
     print(output)
-
 
 if __name__ == "__main__":
     main()
@@ -318,10 +316,8 @@ def divide(a, b):
         raise ValueError("b cannot be zero")
     return a / b
 
-
 def test_divide_normal():
     assert divide(4, 2) == 2
-
 
 def test_divide_zero():
     import pytest
@@ -407,114 +403,6 @@ def day018_engineering_note(input_data):
 - 写一段 Debug 记录，说明错误现象、定位过程和修复方式。
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个主题模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
-
-## Hot100 / LeetCode 题组（多题 + 多解法）
-
-1. [Reverse Linked List - 反转链表](https://leetcode.com/problems/reverse-linked-list/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：链表 / 指针
-   - 多解法：迭代三指针；递归；头插法
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每次把当前节点指向前一个节点，同时保存下一个节点防止链断掉。核心是 prev、cur、next 三个状态。
-   - 解题步骤：先画出节点关系，再维护 prev/cur/next 或快慢指针，最后处理头节点和尾节点。
-   - 易错点：最容易错的是链断掉、头节点特判、空链表和指针前进顺序。
-2. [Valid Parentheses - 有效的括号](https://leetcode.com/problems/valid-parentheses/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：栈 / 状态匹配
-   - 多解法：栈保存左括号；映射表匹配；提前失败剪枝
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：遇到左括号就入栈，遇到右括号就检查栈顶是否匹配。栈保存的是“还没被关闭的期待”。边界是右括号先出现、类型不匹配、最后栈里还有残留。
-   - 解题步骤：先明确数据结构里保存什么，再规定入队/入栈和弹出的条件。
-   - 易错点：最容易错的是空结构访问、保存值还是下标、过期判断和弹出顺序。
-3. [Climbing Stairs - 爬楼梯](https://leetcode.com/problems/climbing-stairs/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：动态规划
-   - 多解法：递归；DP 数组；两个变量滚动更新
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：到第 n 阶只能从 n-1 或 n-2 来，所以状态转移是 f(n)=f(n-1)+f(n-2)。递归看懂关系；DP 保存中间结果；滚动变量最省空间。重点是 base case。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-4. [Maximum Depth of Binary Tree - 二叉树的最大深度](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：树 / DFS / BFS
-   - 多解法：递归 DFS；队列 BFS；显式栈 DFS
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：树的深度等于左右子树最大深度加一。递归把大问题拆成同结构小问题；BFS 按层遍历能显式数层数；DFS 栈能避免递归深度限制。空节点返回 0。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-5. [Top K Frequent Elements - 前 K 个高频元素](https://leetcode.com/problems/top-k-frequent-elements/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：哈希表 / 堆 / 桶排序
-   - 多解法：Counter+排序；小顶堆；桶排序
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先统计频次，再选出频次最高的 k 个元素。排序法最容易写；堆适合只要前 k；桶排序利用频次最大不超过 n。工程里对应日志 TopN、热门用户、异常模式统计。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
-   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-6. [Subarray Sum Equals K - 和为 K 的子数组](https://leetcode.com/problems/subarray-sum-equals-k/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：前缀和 / 哈希表
-   - 多解法：暴力枚举区间；前缀和数组；前缀和+计数字典
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：暴力枚举所有区间会超时；前缀和把区间和转成 prefix[j] - prefix[i]。哈希表记录前缀和出现次数，看到 prefix-k 就能知道有多少旧位置可组成答案。重点是先放入 0:1。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
-   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-7. [Sort Colors - 颜色分类](https://leetcode.com/problems/sort-colors/)
-   - 难度安排：只读挑战（先理解思路，不要求 AC）
-   - 题型：双指针 / 原地排序
-   - 多解法：计数排序；三指针；两次 partition
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：用 low、mid、high 三个指针把 0、1、2 分区。训练原地数组重排和循环不变量。
-   - 解题步骤：先确定左右指针各自含义，再决定每一步移动哪一边，最后处理相遇或越界。
-   - 易错点：最容易错的是指针移动条件、去重、边界字符和漏掉最后一次比较。
-8. [Search a 2D Matrix - 搜索二维矩阵](https://leetcode.com/problems/search-a-2d-matrix/)
-   - 难度安排：只读挑战（先理解思路，不要求 AC）
-   - 题型：二分 / 矩阵
-   - 多解法：逐行二分；展平成一维二分；从角落搜索
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：矩阵每行有序且行间有序时，可把坐标映射成一维下标做二分。训练结构映射。
-   - 解题步骤：先定义搜索区间和 mid 含义，再判断答案在哪一半，最后收缩边界。
-   - 易错点：最容易错的是 while 条件、left/right 更新、闭区间和半开区间混用。
-
-### 一题多解法拆解：Top K Frequent Elements
-
-- 解法 1：计数后排序。
-- 解法 2：最小堆。
-- 解法 3：桶排序。
-
-推荐先写最容易懂的版本。
-
-再写复杂度更好的版本。
-
-最后写一句：这个解法能迁移到今天哪个操作题。
-
-### 带注释参考代码：Top K Frequent Elements
-
-```python
-def top_k_frequent(nums, k):
-    counts = {}
-    for num in nums:
-        counts[num] = counts.get(num, 0) + 1
-    items = sorted(counts.items(), key=lambda item: item[1], reverse=True)
-    return [num for num, count in items[:k]]
-```
-
-### 做题复盘模板
-
-```text
-题目：
-LeetCode 官方链接：
-提交日期：
-提交结果：未做 / 已尝试 / Accepted
-输入：
-输出：
-暴力解法：
-优化解法：
-关键状态变量：
-最容易错的边界：
-一题多解法对比：
-能迁移到今天哪个操作题：
-可写进简历/面试的表达：
-```
 
 ## 2 小时学习节奏
 

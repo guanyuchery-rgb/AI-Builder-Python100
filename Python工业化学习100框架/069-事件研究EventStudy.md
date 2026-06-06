@@ -280,119 +280,6 @@ def day069_engineering_note(input_data):
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个主题模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
 
-## Hot100 / LeetCode 题组（多题 + 多解法）
-
-1. [Subarray Sum Equals K - 和为 K 的子数组](https://leetcode.com/problems/subarray-sum-equals-k/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：前缀和 / 哈希表
-   - 多解法：暴力枚举区间；前缀和数组；前缀和+计数字典
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：暴力枚举所有区间会超时；前缀和把区间和转成 prefix[j] - prefix[i]。哈希表记录前缀和出现次数，看到 prefix-k 就能知道有多少旧位置可组成答案。重点是先放入 0:1。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
-   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-2. [Sort Colors - 颜色分类](https://leetcode.com/problems/sort-colors/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：双指针 / 原地排序
-   - 多解法：计数排序；三指针；两次 partition
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：用 low、mid、high 三个指针把 0、1、2 分区。训练原地数组重排和循环不变量。
-   - 解题步骤：先确定左右指针各自含义，再决定每一步移动哪一边，最后处理相遇或越界。
-   - 易错点：最容易错的是指针移动条件、去重、边界字符和漏掉最后一次比较。
-3. [Best Time to Buy and Sell Stock II - 买卖股票的最佳时机 II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：贪心 / Quant
-   - 多解法：DP 持仓；累加正收益；峰谷法
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：允许多次交易时，每段上涨都可以吃到。训练把收益序列拆成可累加局部收益。
-   - 解题步骤：先找每一步能安全做的局部选择，再说明这个选择为什么不会破坏全局答案。
-   - 易错点：最容易错的是只凭直觉贪心，没有证明局部选择的安全性。
-4. [Best Time to Buy and Sell Stock with Cooldown - 买卖股票的最佳时机含冷冻期](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：动态规划 / Quant
-   - 多解法：递归；三状态 DP；滚动状态
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：维护持仓、空仓可买、冷冻三种状态。训练交易约束下的状态机。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-5. [Network Delay Time - 网络延迟时间](https://leetcode.com/problems/network-delay-time/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：图 / 最短路
-   - 多解法：DFS 枚举；Dijkstra；Bellman-Ford
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：带权图从起点到所有点的最短时间。训练优先队列和最短路。
-   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS/并查集/最短路，并记录 visited 或距离。
-   - 易错点：最容易错的是越界、重复访问、起点选择、环和层数/距离统计。
-6. [Cheapest Flights Within K Stops - K 站中转内最便宜的航班](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：图 / 动态规划
-   - 多解法：DFS；Bellman-Ford K 轮；优先队列状态
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：限制中转次数时，状态不仅有城市，还有已用步数。训练带约束最短路。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-7. [Letter Combinations of a Phone Number - 电话号码的字母组合](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：回溯 / 映射
-   - 多解法：递归组合；队列迭代；笛卡尔积
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把数字映射成字符列表，每层选择一个字符。训练映射表和组合搜索。
-   - 解题步骤：先定义路径 path 和选择列表，再递归选择、进入下一层、撤销选择。
-   - 易错点：最容易错的是忘记撤销、重复选择、剪枝条件和结果拷贝。
-8. [Car Fleet - 车队](https://leetcode.com/problems/car-fleet/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：栈 / 排序
-   - 多解法：模拟；按位置排序；单调栈
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：从终点近的车往回看，到达时间更短的车会追上前车形成车队。训练排序后的单调状态。
-   - 解题步骤：先明确数据结构里保存什么，再规定入队/入栈和弹出的条件。
-   - 易错点：最容易错的是空结构访问、保存值还是下标、过期判断和弹出顺序。
-
-### 一题多解法拆解：Binary Search
-
-- 解法 1：闭区间。
-- 解法 2：左闭右开。
-- 解法 3：递归二分。
-
-推荐先写最容易懂的版本。
-
-再写复杂度更好的版本。
-
-最后写一句：这个解法能迁移到今天哪个操作题。
-
-### 带注释参考代码：Binary Search
-
-```python
-def binary_search(nums, target):
-    left, right = 0, len(nums) - 1
-    while left <= right:
-        mid = (left + right) // 2
-        if nums[mid] == target:
-            return mid
-        if nums[mid] < target:
-            left = mid + 1
-        else:
-            right = mid - 1
-    return -1
-```
-
-### 做题复盘模板
-
-```text
-题目：
-LeetCode 官方链接：
-提交日期：
-提交结果：未做 / 已尝试 / Accepted
-输入：
-输出：
-暴力解法：
-优化解法：
-关键状态变量：
-最容易错的边界：
-一题多解法对比：
-能迁移到今天哪个操作题：
-可写进简历/面试的表达：
-```
-
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。
@@ -493,17 +380,6 @@ print("run Day69 结果保存")
 print("run Day69 迁移说明")
 ```
 
-## Hot100 / LeetCode 挑战（基础完成后）
-
-> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代主题训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
-
-- 关联题：[Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
-- 难度：Medium
-- 题型：Trie / 字典树
-- 为什么放在今天：事件研究后进入前缀索引，和检索/RAG 有天然关联。
-- 带注释解题提示：每个节点保存 children 和 is_end；注释说明 insert/search/startsWith 的终止条件不同。
-- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
-
 ## 强化练习与工程使用
 
 > 所属阶段：Quant 研究与回测基础。目标是：把行情样例变成可复查的研究实验。
@@ -519,7 +395,6 @@ print("run Day69 迁移说明")
 3. **数据题**：准备 5-10 条虚拟样例数据，覆盖正常值、空值、重复值和极端值。
 4. **函数题**：把核心逻辑封装成 1 个函数，函数名、参数名和返回值必须能读懂。
 5. **测试题**：写 2 个正常测试和 1 个边界测试，确认修改后行为不变。
-6. **算法题**：完成 [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)，题型：双指针。提示：从两端收缩，训练边界移动和字符过滤。
 
 ### 难度控制
 

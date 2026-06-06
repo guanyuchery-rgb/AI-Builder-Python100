@@ -24,7 +24,7 @@ Day 主线每天最多 4 小时。
 处理规则：
 
 - 大型工程任务移到 IC。
-- LeetCode 集中训练移到 IC。
+- 大型工程验证和作品集沉淀移到 IC。
 - 作品集整理移到 IC。
 - Day 只保留知识、原理、API、小型示例和 Debug。
 
@@ -99,16 +99,20 @@ What -> Why -> How -> Common Errors -> Future Usage
 
 Day 里如果出现较大的项目名，把它当成知识场景、原理示例或旧版训练说明。
 
-真正的能力验证、LeetCode、工程任务、GitHub 提交和作品集沉淀，统一进入 [Industrial Challenge](../Industrial-Challenge/README.md)。
+真正的能力验证、工程任务、GitHub 提交和作品集沉淀，统一进入 [Industrial Challenge](../Industrial-Challenge/README.md)。
 
 IC01-IC50 不占 Day 数。
 
 每个 IC 包含：
 
-- 5 道 LeetCode。
+- 5 个知识自测问题。
 - 1 个工程挑战。
 - GitHub 提交要求。
 - Challenge Review。
+
+库学习是 Day 主线的重要基础。遇到 `csv`、`json`、`pandas`、`numpy`、`sklearn`、`torch`、`transformers`、`pydantic` 等库时，先看 [库学习地图](../LIBRARY_LEARNING_MAP.md)，再进入代码。
+
+LLM 和 Agent 需要的基础不是一上来写复杂系统，而是先理解：数据结构、API、向量、Embedding、Transformer、PyTorch Tensor、模型输入输出、结构化校验、日志和可观测性。
 
 统计/数学直觉要保留。比如假设检验、吸附壁/阈值、示性函数，都可以翻译成 Python 里的判断条件、权重函数、风险边界和工具路由。
 
@@ -235,6 +239,6 @@ IC01-IC50 不占 Day 数。
 - Day 学知识，IC 验能力；不要在 Day 主线里硬塞大型工程任务。
 - Day10-Day100 增加工程问题解决结构，优先理解真实任务、场景、设计原因和未来使用位置。
 - Day11 之后所有新库/API 默认先给认知地图和输入输出表，禁止直接抛复杂代码。
-- LeetCode 主线进入 IC01-IC50，每个 IC 5 题，总计 250 题。
+- IC01-IC50 负责知识自测、工程挑战、GitHub 提交和作品集沉淀。
 - 所有示例使用虚拟样例，保持可复现、可公开、可长期维护。
 - 学完一个阶段，至少整理一次 notes 或阶段复盘；完整作品集整理放到 IC。

@@ -16,14 +16,14 @@ IC 不挤占 Day 的 4 小时上限。
 
 每个 IC 固定三部分：
 
-- Part A：5 道 LeetCode，总计 250 道，不重复，使用官方题目链接。
+- Part A：5 个知识自测问题，检查 What、Why、How、Common Errors 和 Future Usage。
 - Part B：一个工程挑战，只使用最近 Day 学到的知识。
 - Part C：Challenge Review，记录学到什么、遇到什么错误、如何 Debug、如何改进。
 
 ## Day 和 IC 的边界
 
 - Day：知识、原理、API、小型示例、Debug 方法。
-- IC：刷题记录、工程挑战、GitHub 提交、作品集沉淀。
+- IC：工程挑战、GitHub 提交、作品集沉淀。
 
 已有 Day 内容不删除；如果某个 Day 里出现项目名，把它视为知识场景或旧版训练说明。真正的项目交付统一放到 IC。
 

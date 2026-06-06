@@ -90,12 +90,10 @@ def solve_task(sample_input):
     result = f"处理完成: {sample_input}"
     return result
 
-
 def main():
     sample = "虚拟样例输入"
     output = solve_task(sample)
     print(output)
-
 
 if __name__ == "__main__":
     main()
@@ -137,12 +135,10 @@ if __name__ == "__main__":
 ```python
 from dataclasses import dataclass
 
-
 @dataclass
 class PriceRecord:
     date: str
     close: float
-
 
 def calc_return(start, end):
     return (end.close - start.close) / start.close
@@ -392,115 +388,6 @@ def day015_engineering_note(input_data):
 - 写一段 Debug 记录，说明错误现象、定位过程和修复方式。
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个主题模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
-
-## Hot100 / LeetCode 题组（多题 + 多解法）
-
-1. [Same Tree - 相同的树](https://leetcode.com/problems/same-tree/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：树 / 递归
-   - 多解法：递归比较；队列 BFS；序列化比较
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：同时比较两个节点是否都空、值是否相同、左右子树是否相同。训练递归同步遍历。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-2. [Two Sum - 两数之和](https://leetcode.com/problems/two-sum/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：数组 / 哈希表
-   - 多解法：暴力双循环；哈希表一次遍历；排序+双指针但要保留下标
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先把问题翻译成“当前数还差谁”。暴力法是在所有组合里找答案；哈希表法一边走一边记住见过的数，把查找从 O(n) 降到接近 O(1)。重点是先查 need，再存 num，避免同一个元素用两次。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
-   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-3. [Contains Duplicate - 存在重复元素](https://leetcode.com/problems/contains-duplicate/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：集合 / 去重
-   - 多解法：排序后看相邻；set 扫描；比较 len(nums) 和 len(set(nums))
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是在问“是否出现过相同状态”。排序法把相同元素放到相邻位置；set 法记录已经见过的值；长度比较法最短。工程里常迁移到去重、幂等检查、重复任务检测。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
-   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-4. [Valid Anagram - 有效的字母异位词](https://leetcode.com/problems/valid-anagram/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：字符串 / 计数
-   - 多解法：排序比较；手写字典计数；collections.Counter
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：本质是比较两个字符串的字符频次是否完全一致。排序法简单；字典计数能练状态更新；Counter 是工业代码里最直接的表达。边界是长度不同、空字符串、大小写和字符集。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
-   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-5. [Top K Frequent Elements - 前 K 个高频元素](https://leetcode.com/problems/top-k-frequent-elements/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：哈希表 / 堆 / 桶排序
-   - 多解法：Counter+排序；小顶堆；桶排序
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先统计频次，再选出频次最高的 k 个元素。排序法最容易写；堆适合只要前 k；桶排序利用频次最大不超过 n。工程里对应日志 TopN、热门用户、异常模式统计。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
-   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-6. [Subarray Sum Equals K - 和为 K 的子数组](https://leetcode.com/problems/subarray-sum-equals-k/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：前缀和 / 哈希表
-   - 多解法：暴力枚举区间；前缀和数组；前缀和+计数字典
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：暴力枚举所有区间会超时；前缀和把区间和转成 prefix[j] - prefix[i]。哈希表记录前缀和出现次数，看到 prefix-k 就能知道有多少旧位置可组成答案。重点是先放入 0:1。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
-   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-7. [Sort Colors - 颜色分类](https://leetcode.com/problems/sort-colors/)
-   - 难度安排：只读挑战（先理解思路，不要求 AC）
-   - 题型：双指针 / 原地排序
-   - 多解法：计数排序；三指针；两次 partition
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：用 low、mid、high 三个指针把 0、1、2 分区。训练原地数组重排和循环不变量。
-   - 解题步骤：先确定左右指针各自含义，再决定每一步移动哪一边，最后处理相遇或越界。
-   - 易错点：最容易错的是指针移动条件、去重、边界字符和漏掉最后一次比较。
-8. [Search a 2D Matrix - 搜索二维矩阵](https://leetcode.com/problems/search-a-2d-matrix/)
-   - 难度安排：只读挑战（先理解思路，不要求 AC）
-   - 题型：二分 / 矩阵
-   - 多解法：逐行二分；展平成一维二分；从角落搜索
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：矩阵每行有序且行间有序时，可把坐标映射成一维下标做二分。训练结构映射。
-   - 解题步骤：先定义搜索区间和 mid 含义，再判断答案在哪一半，最后收缩边界。
-   - 易错点：最容易错的是 while 条件、left/right 更新、闭区间和半开区间混用。
-
-### 一题多解法拆解：Best Time to Buy and Sell Stock
-
-- 解法 1：暴力枚举买卖日。
-- 解法 2：维护历史最低价。
-- 解法 3：转成最大子数组收益。
-
-推荐先写最容易懂的版本。
-
-再写复杂度更好的版本。
-
-最后写一句：这个解法能迁移到今天哪个操作题。
-
-### 带注释参考代码：Best Time to Buy and Sell Stock
-
-```python
-def max_profit(prices):
-    min_price = float("inf")
-    best = 0
-    for price in prices:
-        min_price = min(min_price, price)
-        best = max(best, price - min_price)
-    return best
-```
-
-### 做题复盘模板
-
-```text
-题目：
-LeetCode 官方链接：
-提交日期：
-提交结果：未做 / 已尝试 / Accepted
-输入：
-输出：
-暴力解法：
-优化解法：
-关键状态变量：
-最容易错的边界：
-一题多解法对比：
-能迁移到今天哪个操作题：
-可写进简历/面试的表达：
-```
 
 ## 2 小时学习节奏
 

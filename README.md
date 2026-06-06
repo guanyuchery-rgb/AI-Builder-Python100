@@ -6,8 +6,6 @@
 
 更真实的目标是：训练学习者如何把一个模糊想法，拆成输入、输出、最小版本、边界处理、调试、交付和复盘。
 
-数据工具、LLM 报告助手、Agent tool 原型、Quant research starter 和本地 RAG 笔记助手，都只是训练场景，不是最终承诺。
-
 课程从 Day10 开始采用“工程问题解决路线”：先看真实任务和场景，再解释为什么需要这个知识点，最后才进入语法实现。
 
 ## 在线阅读
@@ -20,7 +18,7 @@
 - Python100 能力达标标准：[PYTHON100_ABILITY_RUBRIC.md](PYTHON100_ABILITY_RUBRIC.md)
 - 后续学习路径优化：[PERSONALIZED_LEARNING_PATH.md](PERSONALIZED_LEARNING_PATH.md)
 - 知识广度索引：[KNOWLEDGE_EXPANSION_INDEX.md](KNOWLEDGE_EXPANSION_INDEX.md)
-- LeetCode 求职刷题记录：[LEETCODE_JOB_TRACKER.md](LEETCODE_JOB_TRACKER.md)
+- 库学习地图：[LIBRARY_LEARNING_MAP.md](LIBRARY_LEARNING_MAP.md)
 - Industrial Challenge 能力验证：[Industrial-Challenge](Industrial-Challenge/README.md)
 - 手机入口：[MOBILE.md](MOBILE.md)
 - 100 天课程目录：[Python工业化学习100框架](Python工业化学习100框架/README.md)
@@ -44,12 +42,12 @@
 
 ## Day 和 IC 的边界
 
-Day01-Day100 保留，不减少，不删除已有内容。
+Day01-Day100 保留，不减少。
 
 当前主线解释为：
 
 - Day：知识学习、原理理解、API 使用、小型示例、Debug 能力。
-- IC：能力验证、LeetCode 记录、工程挑战、GitHub 提交、作品集沉淀。
+- IC：能力验证、工程挑战、GitHub 提交、作品集沉淀。
 
 Day 的统一学习模板是：
 
@@ -62,6 +60,8 @@ Future Usage
 ```
 
 Agent / LLM / Quant 的通识知识继续保留在 Day100 主线里，例如 Tool、Memory、Workflow、Planning、Prompt、Context、Embedding、RAG 原理、Return、Volatility、Sharpe、Drawdown 和 Backtest 原理。
+
+课程基础部分会持续强调“库的学习”：遇到 `csv`、`json`、`pandas`、`numpy`、`sklearn`、`torch`、`transformers`、`pydantic` 等库时，先建立认知地图，再拆函数和参数。机器学习、深度学习、Transformer 和 PyTorch 作为 LLM / Agent 的基础知识进入 Day 主线，但只讲概念、输入输出和最小示例，不提前做完整大模型项目。
 
 完整 RAG 系统、Agent 系统、Quant 回测框架、多 Agent 协作和 Dashboard 项目，统一放到 [Industrial Challenge](Industrial-Challenge/README.md) 做能力验证。
 
@@ -83,10 +83,10 @@ Day 主线每天最多按 4 小时设计。
 
 推荐学习量是 2 小时左右。
 
-如果当天内容超过 4 小时，优先砍掉大型工程任务、额外刷题和作品集整理，把它们移动到 IC。
+如果当天内容超过 4 小时，优先砍掉大型工程任务和作品集整理，把它们移动到 IC。
 
 - 15 分钟：读学习定位和知识地图。
-- 25 分钟：手打最小案例并运行。Day06-Day20 先读「完全看不懂版」和「基础知识深讲」，确认概念、执行过程和常见边界。
+- 25 分钟：手打最小案例并运行。
 - 35 分钟：完成 7 道简单路线题。
 - 35 分钟：完成 5 道基础巩固题。
 - 10 分钟：记录 Debug、结果和下一步。
@@ -105,24 +105,22 @@ IC 是额外能力验证，不强行塞进同一天。
 - 把一个模糊任务拆成输入、输出、函数、测试、日志和 README。
 - 写出能复现、能解释、能交付的小工具。
 - 用 pandas、SQL、Streamlit、FastAPI 做轻量数据应用。
-- 看懂并实现常见 Hot100 / LeetCode 题目的核心解法。
-- 把算法题迁移到数据清洗、Quant 回测、RAG 检索和 Agent tool 设计里。
+- 看懂机器学习、深度学习、Transformer 和 PyTorch 的基础库地图。
+- 理解 Prompt、Context、Embedding、RAG、Tool、Memory 和 Workflow 的基本原理。
+- 理解 Return、Volatility、Sharpe、Drawdown 和 Backtest 的基本工程边界。
 
-前提是每天要手打代码、跑通结果、提交 LeetCode 官方记录，并写下复盘。只读完文本不会自动变强。
+前提是每天要手打代码、跑通结果，并写下复盘。只读完文本不会自动变强。
 
-## LeetCode / IC 求职线
+## IC 能力验证线
 
-Day01-Day100 不再承担主要刷题职责。
+Day01-Day100 不承担大型工程交付职责。
 
-刷题主线移动到 IC01-IC50：
+IC01-IC50 用来验证工程能力：
 
-- 每个 IC 5 道 LeetCode。
-- 总计 250 道。
-- 不重复。
-- 使用官方题目链接。
-- 每题保留思路、步骤、易错点和复盘句。
-
-做题时优先登录自己的 LeetCode 账号并在官方题目页提交代码，这样会留下提交记录、Accepted 记录、日历和题目进度。仓库里的 [LeetCode 求职刷题记录](LEETCODE_JOB_TRACKER.md) 用来沉淀复盘、项目迁移点和面试表达，帮助以后找工作时整理材料。
+- 每个 IC 有 5 个知识自测问题。
+- 每个 IC 有 1 个工程挑战。
+- 每个 IC 要留下运行结果、Debug 记录和 GitHub 提交。
+- IC 最终沉淀为 4 个作品集项目：数据分析、Quant、LLM、Agent。
 
 ## 开源说明
 

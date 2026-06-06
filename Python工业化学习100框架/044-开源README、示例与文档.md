@@ -277,114 +277,6 @@ def day044_engineering_note(input_data):
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个主题模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
 
-## Hot100 / LeetCode 题组（多题 + 多解法）
-
-1. [Time Based Key-Value Store - 基于时间的键值存储](https://leetcode.com/problems/time-based-key-value-store/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：哈希表 / 二分
-   - 多解法：线性查找；每 key 时间数组；二分查找
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每个 key 保存按时间递增的值列表，查询时二分找不超过 timestamp 的最后一个值。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
-   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-2. [Implement Trie Prefix Tree - 实现 Trie 前缀树](https://leetcode.com/problems/implement-trie-prefix-tree/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：Trie / 字符串
-   - 多解法：哈希集合；嵌套字典；节点类
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每个节点代表一个前缀，children 保存下一字符，is_end 标记完整单词。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
-   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-3. [Design Add and Search Words Data Structure - 设计添加与搜索单词的数据结构](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：Trie / DFS
-   - 多解法：列表匹配；Trie；通配符 DFS
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：普通字符沿 Trie 走，点号通配符需要尝试所有子节点。训练数据结构和搜索结合。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
-   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-4. [Group Anagrams - 字母异位词分组](https://leetcode.com/problems/group-anagrams/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：哈希表 / 字符串分组
-   - 多解法：排序签名分组；字符计数元组；Counter 转 tuple
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把每个字符串映射成稳定签名，再按签名分组。训练的是“为对象设计可比较 key”的能力，可迁移到日志聚类、标签归并和文本特征分桶。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
-   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-5. [Construct Binary Tree from Preorder and Inorder Traversal - 从前序与中序遍历序列构造二叉树](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：树 / 递归
-   - 多解法：切片递归；索引递归；哈希表定位
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：前序第一个是根，中序根左边是左子树。用哈希表快速定位根位置。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-6. [Subtree of Another Tree - 另一棵树的子树](https://leetcode.com/problems/subtree-of-another-tree/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：树 / 匹配
-   - 多解法：每点匹配；序列化；哈希
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：在主树每个节点尝试匹配子树。训练嵌套递归和结构匹配。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-7. [Combination Sum - 组合总和](https://leetcode.com/problems/combination-sum/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：回溯 / 剪枝
-   - 多解法：暴力搜索；排序剪枝；回溯复用当前数
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每一步选择一个候选数，剩余目标变小。允许重复选择，所以递归继续从当前下标开始。训练搜索树和剪枝。
-   - 解题步骤：先定义路径 path 和选择列表，再递归选择、进入下一层、撤销选择。
-   - 易错点：最容易错的是忘记撤销、重复选择、剪枝条件和结果拷贝。
-8. [Permutations - 全排列](https://leetcode.com/problems/permutations/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：回溯
-   - 多解法：递归交换；used 数组；路径列表
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每层选择一个还没用过的元素放入路径。训练回溯三件事：选择、递归、撤销选择。
-   - 解题步骤：先定义路径 path 和选择列表，再递归选择、进入下一层、撤销选择。
-   - 易错点：最容易错的是忘记撤销、重复选择、剪枝条件和结果拷贝。
-
-### 一题多解法拆解：Top K Frequent Elements
-
-- 解法 1：计数后排序。
-- 解法 2：最小堆。
-- 解法 3：桶排序。
-
-推荐先写最容易懂的版本。
-
-再写复杂度更好的版本。
-
-最后写一句：这个解法能迁移到今天哪个操作题。
-
-### 带注释参考代码：Top K Frequent Elements
-
-```python
-def top_k_frequent(nums, k):
-    counts = {}
-    for num in nums:
-        counts[num] = counts.get(num, 0) + 1
-    items = sorted(counts.items(), key=lambda item: item[1], reverse=True)
-    return [num for num, count in items[:k]]
-```
-
-### 做题复盘模板
-
-```text
-题目：
-LeetCode 官方链接：
-提交日期：
-提交结果：未做 / 已尝试 / Accepted
-输入：
-输出：
-暴力解法：
-优化解法：
-关键状态变量：
-最容易错的边界：
-一题多解法对比：
-能迁移到今天哪个操作题：
-可写进简历/面试的表达：
-```
-
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。
@@ -485,17 +377,6 @@ print("run Day44 结果保存")
 print("run Day44 迁移说明")
 ```
 
-## Hot100 / LeetCode 挑战（基础完成后）
-
-> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代主题训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
-
-- 关联题：[Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
-- 难度：Easy
-- 题型：链表 / 指针
-- 为什么放在今天：开源文档日后加一题链表入门，训练变量含义表达。
-- 带注释解题提示：维护 prev 和 cur；每轮暂存 next，注释画清指针改向顺序。
-- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
-
 ## 强化练习与工程使用
 
 > 所属阶段：应用接口、自动化与复盘。目标是：把脚本包装成可复用工具或轻量服务。
@@ -511,7 +392,6 @@ print("run Day44 迁移说明")
 3. **数据题**：准备 5-10 条虚拟样例数据，覆盖正常值、空值、重复值和极端值。
 4. **函数题**：把核心逻辑封装成 1 个函数，函数名、参数名和返回值必须能读懂。
 5. **测试题**：写 2 个正常测试和 1 个边界测试，确认修改后行为不变。
-6. **算法题**：完成 [Binary Search](https://leetcode.com/problems/binary-search/)，题型：二分查找。提示：在有序数据中快速定位，训练边界条件。
 
 ### 难度控制
 

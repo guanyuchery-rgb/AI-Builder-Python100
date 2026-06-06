@@ -277,120 +277,6 @@ def day040_engineering_note(input_data):
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个主题模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
 
-## Hot100 / LeetCode 题组（多题 + 多解法）
-
-1. [Evaluate Reverse Polish Notation - 逆波兰表达式求值](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：栈 / 表达式解析
-   - 多解法：递归解析；栈求值；操作函数字典
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：数字入栈，遇到运算符弹出两个数计算再入栈。训练表达式解析和工具调用参数栈。
-   - 解题步骤：先明确数据结构里保存什么，再规定入队/入栈和弹出的条件。
-   - 易错点：最容易错的是空结构访问、保存值还是下标、过期判断和弹出顺序。
-2. [Binary Tree Level Order Traversal - 二叉树层序遍历](https://leetcode.com/problems/binary-tree-level-order-traversal/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：树 / BFS
-   - 多解法：队列 BFS；递归按层收集；双队列
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：用队列按层弹出节点，每层生成一个列表。训练批次处理和层级结构输出。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-3. [Validate Binary Search Tree - 验证二叉搜索树](https://leetcode.com/problems/validate-binary-search-tree/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：树 / DFS / 边界
-   - 多解法：中序遍历；递归上下界；迭代栈
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：BST 不是只看父子大小，而是整个左子树都小于当前、右子树都大于当前。上下界递归最能表达这个约束。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-4. [Invert Binary Tree - 翻转二叉树](https://leetcode.com/problems/invert-binary-tree/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：树 / 递归
-   - 多解法：递归交换；BFS 队列；DFS 栈
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每个节点都交换左右子树。递归写法最短，BFS/DFS 适合避免递归限制。训练树结构的局部操作扩散到全局。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-5. [Best Time to Buy and Sell Stock with Cooldown - 买卖股票的最佳时机含冷冻期](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：动态规划 / Quant
-   - 多解法：递归；三状态 DP；滚动状态
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：维护持仓、空仓可买、冷冻三种状态。训练交易约束下的状态机。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-6. [House Robber - 打家劫舍](https://leetcode.com/problems/house-robber/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：动态规划
-   - 多解法：递归；DP 数组；滚动变量
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每个房子有偷或不偷两种选择。状态转移是 max(偷当前+前前，跳过当前)。训练相邻约束下的最优决策。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-7. [Lowest Common Ancestor of a Binary Tree - 二叉树的最近公共祖先](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：树 / 递归
-   - 多解法：路径记录；递归返回命中；父指针集合
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：如果左右子树分别找到目标，当前节点就是祖先。训练递归返回值承载信息，而不是只遍历。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-8. [Serialize and Deserialize Binary Tree - 二叉树的序列化与反序列化](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：树 / 编码
-   - 多解法：层序编码；前序带空节点；递归解码
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：必须记录空节点才能唯一还原树。训练结构化编码和解析。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-
-### 一题多解法拆解：Valid Palindrome
-
-- 解法 1：先清洗再反转。
-- 解法 2：双指针边走边跳过。
-- 解法 3：生成器过滤字符。
-
-推荐先写最容易懂的版本。
-
-再写复杂度更好的版本。
-
-最后写一句：这个解法能迁移到今天哪个操作题。
-
-### 带注释参考代码：Valid Palindrome
-
-```python
-def is_palindrome(s):
-    left, right = 0, len(s) - 1
-    while left < right:
-        while left < right and not s[left].isalnum():
-            left += 1
-        while left < right and not s[right].isalnum():
-            right -= 1
-        if s[left].lower() != s[right].lower():
-            return False
-        left += 1
-        right -= 1
-    return True
-```
-
-### 做题复盘模板
-
-```text
-题目：
-LeetCode 官方链接：
-提交日期：
-提交结果：未做 / 已尝试 / Accepted
-输入：
-输出：
-暴力解法：
-优化解法：
-关键状态变量：
-最容易错的边界：
-一题多解法对比：
-能迁移到今天哪个操作题：
-可写进简历/面试的表达：
-```
-
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。
@@ -491,17 +377,6 @@ print("run Day40 结果保存")
 print("run Day40 迁移说明")
 ```
 
-## Hot100 / LeetCode 挑战（基础完成后）
-
-> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代主题训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
-
-- 关联题：[Binary Search](https://leetcode.com/problems/binary-search/)
-- 难度：Easy
-- 题型：二分查找
-- 为什么放在今天：Streamlit 看板阶段需要会在有序数据中定位，二分是基础能力。
-- 带注释解题提示：写清 left/right/mid，循环条件用 left <= right；注释记录每次缩小哪一边。
-- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
-
 ## 强化练习与工程使用
 
 > 所属阶段：应用接口、自动化与复盘。目标是：把脚本包装成可复用工具或轻量服务。
@@ -517,7 +392,6 @@ print("run Day40 迁移说明")
 3. **数据题**：准备 5-10 条虚拟样例数据，覆盖正常值、空值、重复值和极端值。
 4. **函数题**：把核心逻辑封装成 1 个函数，函数名、参数名和返回值必须能读懂。
 5. **测试题**：写 2 个正常测试和 1 个边界测试，确认修改后行为不变。
-6. **算法题**：完成 [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)，题型：滑动窗口。提示：维护历史最低点和当前最好收益，直接连接 Quant 思维。
 
 ### 难度控制
 

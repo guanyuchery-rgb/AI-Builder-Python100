@@ -277,115 +277,6 @@ def day041_engineering_note(input_data):
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个主题模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
 
-## Hot100 / LeetCode 题组（多题 + 多解法）
-
-1. [Invert Binary Tree - 翻转二叉树](https://leetcode.com/problems/invert-binary-tree/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：树 / 递归
-   - 多解法：递归交换；BFS 队列；DFS 栈
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每个节点都交换左右子树。递归写法最短，BFS/DFS 适合避免递归限制。训练树结构的局部操作扩散到全局。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-2. [Kth Smallest Element in a BST - 二叉搜索树中第 K 小的元素](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：树 / 中序遍历
-   - 多解法：中序列表；迭代中序；计数剪枝
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：BST 中序遍历是升序。训练利用数据结构性质避免全量排序。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-3. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：图 / DFS / BFS
-   - 多解法：DFS 沉岛；BFS 队列；并查集
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记。
-   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS/并查集/最短路，并记录 visited 或距离。
-   - 易错点：最容易错的是越界、重复访问、起点选择、环和层数/距离统计。
-4. [Course Schedule - 课程表](https://leetcode.com/problems/course-schedule/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：图 / 拓扑排序
-   - 多解法：DFS 检环；BFS 入度；邻接表建图
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：课程依赖可以看成有向图，能完成课程等价于没有环。训练依赖关系建模，和任务编排、包依赖很像。
-   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS/并查集/最短路，并记录 visited 或距离。
-   - 易错点：最容易错的是越界、重复访问、起点选择、环和层数/距离统计。
-5. [Partition Equal Subset Sum - 分割等和子集](https://leetcode.com/problems/partition-equal-subset-sum/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：动态规划 / 背包
-   - 多解法：暴力子集；二维背包；一维背包
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把问题转成是否存在子集和为总和一半。训练 0/1 背包的状态压缩。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-6. [Target Sum - 目标和](https://leetcode.com/problems/target-sum/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：动态规划 / 背包
-   - 多解法：回溯；记忆化；转子集和
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：给每个数加正负号可转成子集和问题。训练把符号选择转成背包。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-7. [Cheapest Flights Within K Stops - K 站中转内最便宜的航班](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：图 / 动态规划
-   - 多解法：DFS；Bellman-Ford K 轮；优先队列状态
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：限制中转次数时，状态不仅有城市，还有已用步数。训练带约束最短路。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-8. [Pacific Atlantic Water Flow - 太平洋大西洋水流问题](https://leetcode.com/problems/pacific-atlantic-water-flow/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：矩阵 / 反向 DFS
-   - 多解法：从每格出发；从海岸反向搜索；BFS 多源搜索
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：从每个点出发会重复太多。反过来从海岸向高处搜索，两个可达集合求交集。训练反向思考和多源搜索。
-   - 解题步骤：先明确行列边界，再决定遍历方向或坐标映射，最后处理越界。
-   - 易错点：最容易错的是行列写反、边界收缩和重复访问。
-
-### 一题多解法拆解：Best Time to Buy and Sell Stock
-
-- 解法 1：暴力枚举买卖日。
-- 解法 2：维护历史最低价。
-- 解法 3：转成最大子数组收益。
-
-推荐先写最容易懂的版本。
-
-再写复杂度更好的版本。
-
-最后写一句：这个解法能迁移到今天哪个操作题。
-
-### 带注释参考代码：Best Time to Buy and Sell Stock
-
-```python
-def max_profit(prices):
-    min_price = float("inf")
-    best = 0
-    for price in prices:
-        min_price = min(min_price, price)
-        best = max(best, price - min_price)
-    return best
-```
-
-### 做题复盘模板
-
-```text
-题目：
-LeetCode 官方链接：
-提交日期：
-提交结果：未做 / 已尝试 / Accepted
-输入：
-输出：
-暴力解法：
-优化解法：
-关键状态变量：
-最容易错的边界：
-一题多解法对比：
-能迁移到今天哪个操作题：
-可写进简历/面试的表达：
-```
-
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。
@@ -486,17 +377,6 @@ print("run Day41 结果保存")
 print("run Day41 迁移说明")
 ```
 
-## Hot100 / LeetCode 挑战（基础完成后）
-
-> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代主题训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
-
-- 关联题：[Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
-- 难度：Medium
-- 题型：二分 / 有序性判断
-- 为什么放在今天：Docker 之后继续保持算法线稳定，二分开始加入场景变化。
-- 带注释解题提示：每轮先判断左半还是右半有序，再决定丢哪边；注释写清边界包含关系。
-- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
-
 ## 强化练习与工程使用
 
 > 所属阶段：应用接口、自动化与复盘。目标是：把脚本包装成可复用工具或轻量服务。
@@ -512,7 +392,6 @@ print("run Day41 迁移说明")
 3. **数据题**：准备 5-10 条虚拟样例数据，覆盖正常值、空值、重复值和极端值。
 4. **函数题**：把核心逻辑封装成 1 个函数，函数名、参数名和返回值必须能读懂。
 5. **测试题**：写 2 个正常测试和 1 个边界测试，确认修改后行为不变。
-6. **算法题**：完成 [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)，题型：栈。提示：用栈处理成对结构，连接解析器和结构化输出检查。
 
 ### 难度控制
 

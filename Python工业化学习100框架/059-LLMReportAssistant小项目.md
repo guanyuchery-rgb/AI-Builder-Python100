@@ -280,112 +280,6 @@ def day059_engineering_note(input_data):
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个主题模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
 
-## Hot100 / LeetCode 题组（多题 + 多解法）
-
-1. [Search a 2D Matrix - 搜索二维矩阵](https://leetcode.com/problems/search-a-2d-matrix/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：二分 / 矩阵
-   - 多解法：逐行二分；展平成一维二分；从角落搜索
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：矩阵每行有序且行间有序时，可把坐标映射成一维下标做二分。训练结构映射。
-   - 解题步骤：先定义搜索区间和 mid 含义，再判断答案在哪一半，最后收缩边界。
-   - 易错点：最容易错的是 while 条件、left/right 更新、闭区间和半开区间混用。
-2. [Min Stack - 最小栈](https://leetcode.com/problems/min-stack/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：栈 / 辅助状态
-   - 多解法：每次求 min；辅助栈；栈内存二元组
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：普通栈保存值，辅助栈保存当前位置的最小值。训练在数据结构操作中同步维护额外状态。
-   - 解题步骤：先明确数据结构里保存什么，再规定入队/入栈和弹出的条件。
-   - 易错点：最容易错的是空结构访问、保存值还是下标、过期判断和弹出顺序。
-3. [Reverse Words in a String - 反转字符串中的单词](https://leetcode.com/problems/reverse-words-in-a-string/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：字符串 / 清洗
-   - 多解法：split+reverse；双指针原地；栈
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：先去掉多余空格并切分单词，再反转单词顺序。训练文本清洗和边界处理。
-   - 解题步骤：先用暴力解法确认输入输出，再找可以复用的状态变量进行优化。
-   - 易错点：最容易错的是没有先定义清楚状态变量、边界和返回值。
-4. [Meeting Rooms - 会议室](https://leetcode.com/problems/meeting-rooms/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：区间 / 排序
-   - 多解法：两两比较；排序检查相邻；扫描线
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：按开始时间排序后，只要相邻会议不重叠就能参加全部。训练区间冲突检测。
-   - 解题步骤：先按起点或终点排序，再维护当前区间或结果末尾区间。
-   - 易错点：最容易错的是重叠判断、边界等号和插入前后顺序。
-5. [Best Time to Buy and Sell Stock II - 买卖股票的最佳时机 II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：贪心 / Quant
-   - 多解法：DP 持仓；累加正收益；峰谷法
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：允许多次交易时，每段上涨都可以吃到。训练把收益序列拆成可累加局部收益。
-   - 解题步骤：先找每一步能安全做的局部选择，再说明这个选择为什么不会破坏全局答案。
-   - 易错点：最容易错的是只凭直觉贪心，没有证明局部选择的安全性。
-6. [Best Time to Buy and Sell Stock with Cooldown - 买卖股票的最佳时机含冷冻期](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：动态规划 / Quant
-   - 多解法：递归；三状态 DP；滚动状态
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：维护持仓、空仓可买、冷冻三种状态。训练交易约束下的状态机。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-7. [Cheapest Flights Within K Stops - K 站中转内最便宜的航班](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：图 / 动态规划
-   - 多解法：DFS；Bellman-Ford K 轮；优先队列状态
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：限制中转次数时，状态不仅有城市，还有已用步数。训练带约束最短路。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-8. [Pacific Atlantic Water Flow - 太平洋大西洋水流问题](https://leetcode.com/problems/pacific-atlantic-water-flow/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：矩阵 / 反向 DFS
-   - 多解法：从每格出发；从海岸反向搜索；BFS 多源搜索
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：从每个点出发会重复太多。反过来从海岸向高处搜索，两个可达集合求交集。训练反向思考和多源搜索。
-   - 解题步骤：先明确行列边界，再决定遍历方向或坐标映射，最后处理越界。
-   - 易错点：最容易错的是行列写反、边界收缩和重复访问。
-
-### 一题多解法拆解：Maximum Depth of Binary Tree
-
-- 解法 1：递归 DFS。
-- 解法 2：队列 BFS。
-- 解法 3：栈模拟 DFS。
-
-推荐先写最容易懂的版本。
-
-再写复杂度更好的版本。
-
-最后写一句：这个解法能迁移到今天哪个操作题。
-
-### 带注释参考代码：Maximum Depth of Binary Tree
-
-```python
-def max_depth(root):
-    if root is None:
-        return 0
-    return max(max_depth(root.left), max_depth(root.right)) + 1
-```
-
-### 做题复盘模板
-
-```text
-题目：
-LeetCode 官方链接：
-提交日期：
-提交结果：未做 / 已尝试 / Accepted
-输入：
-输出：
-暴力解法：
-优化解法：
-关键状态变量：
-最容易错的边界：
-一题多解法对比：
-能迁移到今天哪个操作题：
-可写进简历/面试的表达：
-```
-
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。
@@ -486,17 +380,6 @@ print("run Day59 结果保存")
 print("run Day59 迁移说明")
 ```
 
-## Hot100 / LeetCode 挑战（基础完成后）
-
-> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代主题训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
-
-- 关联题：[Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
-- 难度：Medium
-- 题型：二叉树 / 递归构造
-- 为什么放在今天：LLM 报告助手主题后，练由两个视角重建结构。
-- 带注释解题提示：前序第一个是根；中序切分左右子树；注释说明索引范围比切片更省空间。
-- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
-
 ## 强化练习与工程使用
 
 > 所属阶段：LLM / RAG / Agent 基础。目标是：把模型调用变成可评估、可回放的工程流程。
@@ -512,7 +395,6 @@ print("run Day59 迁移说明")
 3. **数据题**：准备 5-10 条虚拟样例数据，覆盖正常值、空值、重复值和极端值。
 4. **函数题**：把核心逻辑封装成 1 个函数，函数名、参数名和返回值必须能读懂。
 5. **测试题**：写 2 个正常测试和 1 个边界测试，确认修改后行为不变。
-6. **算法题**：完成 [Binary Search](https://leetcode.com/problems/binary-search/)，题型：二分查找。提示：在有序数据中快速定位，训练边界条件。
 
 ### 难度控制
 

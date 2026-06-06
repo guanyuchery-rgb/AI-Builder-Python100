@@ -8,6 +8,8 @@
 - [课程地图 COURSE_MAP](COURSE_MAP.md)
 - [课程设计原则 COURSE_DESIGN_PRINCIPLES](COURSE_DESIGN_PRINCIPLES.md)
 - [Python工业化学习100框架 README](Python工业化学习100框架/README.md)
+- [000-后续学习路径优化](Python工业化学习100框架/000-后续学习路径优化.md)
+- [000-学习记录核算](Python工业化学习100框架/000-学习记录核算.md)
 - [001-Python环境与第一段程序](Python工业化学习100框架/001-Python环境与第一段程序.md)
 - [002-变量、类型与输入输出](Python工业化学习100框架/002-变量、类型与输入输出.md)
 - [003-分支结构与输入验证](Python工业化学习100框架/003-分支结构与输入验证.md)

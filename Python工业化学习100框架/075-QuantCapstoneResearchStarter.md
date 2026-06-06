@@ -280,116 +280,6 @@ def day075_engineering_note(input_data):
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个主题模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
 
-## Hot100 / LeetCode 题组（多题 + 多解法）
-
-1. [Longest Substring Without Repeating Characters - 无重复字符的最长子串](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：滑动窗口 / 哈希表
-   - 多解法：暴力枚举；set 窗口；字典记录最新下标
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：窗口维护当前不重复子串。遇到重复字符时移动左边界，而不是重新开始。适合迁移到日志连续片段、会话窗口和去重扫描。
-   - 解题步骤：先明确窗口里维护什么，再移动右指针扩张，条件满足后移动左指针收缩。
-   - 易错点：最容易错的是窗口收缩条件、重复元素处理和答案更新时机。
-2. [Daily Temperatures - 每日温度](https://leetcode.com/problems/daily-temperatures/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：单调栈
-   - 多解法：暴力向后找；单调递减栈；从右向左跳表
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：栈里保存还没找到更高温度的下标。当前温度更高时弹出并计算等待天数。适合时间序列下一个更大值问题。
-   - 解题步骤：先明确数据结构里保存什么，再规定入队/入栈和弹出的条件。
-   - 易错点：最容易错的是空结构访问、保存值还是下标、过期判断和弹出顺序。
-3. [Evaluate Reverse Polish Notation - 逆波兰表达式求值](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：栈 / 表达式解析
-   - 多解法：递归解析；栈求值；操作函数字典
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：数字入栈，遇到运算符弹出两个数计算再入栈。训练表达式解析和工具调用参数栈。
-   - 解题步骤：先明确数据结构里保存什么，再规定入队/入栈和弹出的条件。
-   - 易错点：最容易错的是空结构访问、保存值还是下标、过期判断和弹出顺序。
-4. [Binary Tree Level Order Traversal - 二叉树层序遍历](https://leetcode.com/problems/binary-tree-level-order-traversal/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：树 / BFS
-   - 多解法：队列 BFS；递归按层收集；双队列
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：用队列按层弹出节点，每层生成一个列表。训练批次处理和层级结构输出。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-5. [Kth Smallest Element in a BST - 二叉搜索树中第 K 小的元素](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：树 / 中序遍历
-   - 多解法：中序列表；迭代中序；计数剪枝
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：BST 中序遍历是升序。训练利用数据结构性质避免全量排序。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-6. [Number of Islands - 岛屿数量](https://leetcode.com/problems/number-of-islands/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：图 / DFS / BFS
-   - 多解法：DFS 沉岛；BFS 队列；并查集
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：把二维网格当成图，陆地相邻就属于同一个连通块。DFS/BFS 在发现一块陆地后把整座岛标记为已访问，避免重复计数。关键是边界检查和访问标记。
-   - 解题步骤：先把输入建模成节点和边，再选择 DFS/BFS/并查集/最短路，并记录 visited 或距离。
-   - 易错点：最容易错的是越界、重复访问、起点选择、环和层数/距离统计。
-7. [Encode and Decode Strings - 字符串编码与解码](https://leetcode.com/problems/encode-and-decode-strings/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：字符串 / 编码设计
-   - 多解法：分隔符转义；长度前缀；JSON 序列化
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：重点是设计不会歧义的编码格式。长度前缀能避免字符串里包含分隔符时出错。
-   - 解题步骤：先用暴力解法确认输入输出，再找可以复用的状态变量进行优化。
-   - 易错点：最容易错的是没有先定义清楚状态变量、边界和返回值。
-8. [Word Break - 单词拆分](https://leetcode.com/problems/word-break/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：动态规划 / 字符串
-   - 多解法：递归搜索；记忆化；DP 前缀
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：dp[i] 表示前 i 个字符是否可拆分。每次枚举最后一个单词边界。训练字符串 DP。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-
-### 一题多解法拆解：Coin Change
-
-- 解法 1：暴力搜索。
-- 解法 2：记忆化递归。
-- 解法 3：自底向上 DP。
-
-推荐先写最容易懂的版本。
-
-再写复杂度更好的版本。
-
-最后写一句：这个解法能迁移到今天哪个操作题。
-
-### 带注释参考代码：Coin Change
-
-```python
-def coin_change(coins, amount):
-    dp = [float("inf")] * (amount + 1)
-    dp[0] = 0
-    for value in range(1, amount + 1):
-        for coin in coins:
-            if value >= coin:
-                dp[value] = min(dp[value], dp[value - coin] + 1)
-    return -1 if dp[amount] == float("inf") else dp[amount]
-```
-
-### 做题复盘模板
-
-```text
-题目：
-LeetCode 官方链接：
-提交日期：
-提交结果：未做 / 已尝试 / Accepted
-输入：
-输出：
-暴力解法：
-优化解法：
-关键状态变量：
-最容易错的边界：
-一题多解法对比：
-能迁移到今天哪个操作题：
-可写进简历/面试的表达：
-```
-
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。
@@ -490,17 +380,6 @@ print("run Day75 结果保存")
 print("run Day75 迁移说明")
 ```
 
-## Hot100 / LeetCode 挑战（基础完成后）
-
-> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代主题训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
-
-- 关联题：[Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
-- 难度：Medium
-- 题型：字符串 / 中心扩展
-- 为什么放在今天：Quant 阶段复盘 后，用字符串中等题收束阶段。
-- 带注释解题提示：枚举每个中心向两边扩展；注释说明奇数中心和偶数中心都要处理。
-- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
-
 ## 强化练习与工程使用
 
 > 所属阶段：Quant 研究与回测基础。目标是：把行情样例变成可复查的研究实验。
@@ -516,7 +395,6 @@ print("run Day75 迁移说明")
 3. **数据题**：准备 5-10 条虚拟样例数据，覆盖正常值、空值、重复值和极端值。
 4. **函数题**：把核心逻辑封装成 1 个函数，函数名、参数名和返回值必须能读懂。
 5. **测试题**：写 2 个正常测试和 1 个边界测试，确认修改后行为不变。
-6. **算法题**：完成 [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)，题型：链表。提示：理解指针更新顺序，训练状态转移。
 
 ### 难度控制
 

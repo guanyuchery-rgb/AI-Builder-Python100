@@ -280,114 +280,6 @@ def day070_engineering_note(input_data):
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个主题模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
 
-## Hot100 / LeetCode 题组（多题 + 多解法）
-
-1. [Best Time to Buy and Sell Stock with Cooldown - 买卖股票的最佳时机含冷冻期](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：动态规划 / Quant
-   - 多解法：递归；三状态 DP；滚动状态
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：维护持仓、空仓可买、冷冻三种状态。训练交易约束下的状态机。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-2. [House Robber - 打家劫舍](https://leetcode.com/problems/house-robber/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：动态规划
-   - 多解法：递归；DP 数组；滚动变量
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每个房子有偷或不偷两种选择。状态转移是 max(偷当前+前前，跳过当前)。训练相邻约束下的最优决策。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-3. [House Robber II - 打家劫舍 II](https://leetcode.com/problems/house-robber-ii/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：动态规划 / 环形约束
-   - 多解法：拆成两段；递归；滚动 DP
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：首尾相邻不能同时选，所以拆成不选首或不选尾两个线性问题。训练把环形约束转成普通 DP。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-4. [Coin Change - 零钱兑换](https://leetcode.com/problems/coin-change/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：动态规划
-   - 多解法：暴力搜索；记忆化递归；自底向上 DP
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：目标是用最少硬币凑出金额，本质是在多个选择里取最优。暴力会重复探索；记忆化缓存子问题；自底向上 DP 从小金额推到大金额。不可达状态用无穷大表示。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-5. [Permutations - 全排列](https://leetcode.com/problems/permutations/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：回溯
-   - 多解法：递归交换；used 数组；路径列表
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每层选择一个还没用过的元素放入路径。训练回溯三件事：选择、递归、撤销选择。
-   - 解题步骤：先定义路径 path 和选择列表，再递归选择、进入下一层、撤销选择。
-   - 易错点：最容易错的是忘记撤销、重复选择、剪枝条件和结果拷贝。
-6. [Subsets - 子集](https://leetcode.com/problems/subsets/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：回溯 / 位运算
-   - 多解法：回溯选或不选；迭代扩展；二进制枚举
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每个元素只有选和不选两种状态。训练枚举空间的系统展开。
-   - 解题步骤：先定义路径 path 和选择列表，再递归选择、进入下一层、撤销选择。
-   - 易错点：最容易错的是忘记撤销、重复选择、剪枝条件和结果拷贝。
-7. [Encode and Decode Strings - 字符串编码与解码](https://leetcode.com/problems/encode-and-decode-strings/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：字符串 / 编码设计
-   - 多解法：分隔符转义；长度前缀；JSON 序列化
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：重点是设计不会歧义的编码格式。长度前缀能避免字符串里包含分隔符时出错。
-   - 解题步骤：先用暴力解法确认输入输出，再找可以复用的状态变量进行优化。
-   - 易错点：最容易错的是没有先定义清楚状态变量、边界和返回值。
-8. [Word Break - 单词拆分](https://leetcode.com/problems/word-break/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：动态规划 / 字符串
-   - 多解法：递归搜索；记忆化；DP 前缀
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：dp[i] 表示前 i 个字符是否可拆分。每次枚举最后一个单词边界。训练字符串 DP。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-
-### 一题多解法拆解：Top K Frequent Elements
-
-- 解法 1：计数后排序。
-- 解法 2：最小堆。
-- 解法 3：桶排序。
-
-推荐先写最容易懂的版本。
-
-再写复杂度更好的版本。
-
-最后写一句：这个解法能迁移到今天哪个操作题。
-
-### 带注释参考代码：Top K Frequent Elements
-
-```python
-def top_k_frequent(nums, k):
-    counts = {}
-    for num in nums:
-        counts[num] = counts.get(num, 0) + 1
-    items = sorted(counts.items(), key=lambda item: item[1], reverse=True)
-    return [num for num, count in items[:k]]
-```
-
-### 做题复盘模板
-
-```text
-题目：
-LeetCode 官方链接：
-提交日期：
-提交结果：未做 / 已尝试 / Accepted
-输入：
-输出：
-暴力解法：
-优化解法：
-关键状态变量：
-最容易错的边界：
-一题多解法对比：
-能迁移到今天哪个操作题：
-可写进简历/面试的表达：
-```
-
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。
@@ -488,17 +380,6 @@ print("run Day70 结果保存")
 print("run Day70 迁移说明")
 ```
 
-## Hot100 / LeetCode 挑战（基础完成后）
-
-> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代主题训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
-
-- 关联题：[Word Search II](https://leetcode.com/problems/word-search-ii/)
-- 难度：Hard
-- 题型：Trie / 回溯
-- 为什么放在今天：Quant 报告日配一题 Hard，训练索引加搜索的组合能力。
-- 带注释解题提示：先把 words 建 Trie，再在 board 上 DFS；注释说明 visited 和剪枝位置。
-- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
-
 ## 强化练习与工程使用
 
 > 所属阶段：Quant 研究与回测基础。目标是：把行情样例变成可复查的研究实验。
@@ -514,7 +395,6 @@ print("run Day70 迁移说明")
 3. **数据题**：准备 5-10 条虚拟样例数据，覆盖正常值、空值、重复值和极端值。
 4. **函数题**：把核心逻辑封装成 1 个函数，函数名、参数名和返回值必须能读懂。
 5. **测试题**：写 2 个正常测试和 1 个边界测试，确认修改后行为不变。
-6. **算法题**：完成 [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)，题型：滑动窗口。提示：维护历史最低点和当前最好收益，直接连接 Quant 思维。
 
 ### 难度控制
 

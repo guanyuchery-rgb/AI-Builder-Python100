@@ -73,7 +73,17 @@ writer = csv.DictWriter(
 - `fieldnames` 是什么。
 - 返回的 `writer` 能做什么。
 
-这一条同样适用于后续的 `json`、`re`、`datetime`、`pandas`、`sqlite3`、`requests`、`FastAPI`、`Streamlit`、LLM/Agent SDK、Quant 相关库。
+这一条同样适用于后续的 `json`、`re`、`datetime`、`pandas`、`numpy`、`sqlite3`、`requests`、`FastAPI`、`Streamlit`、`sklearn`、`torch`、`transformers`、`pydantic`、LLM/Agent SDK、Quant 相关库。
+
+机器学习、深度学习、Transformer 和 PyTorch 放在 Day 主线里时，只承担基础认知职责：
+
+- 这个库解决什么问题。
+- 核心对象是什么。
+- 输入和输出是什么。
+- 和 LLM / Agent 的关系是什么。
+- 最小代码如何运行。
+
+不在 Day 主线里训练大模型，不把完整 AI 系统塞进单日课程。
 
 教学顺序固定为：
 
@@ -106,7 +116,6 @@ Day01-Day100 的主线职责是知识学习，不承担大型工程任务。
 如果某一天的内容需要超过 4 小时才能完成，说明它已经不是 Day 主线内容，必须拆出去：
 
 - 大型工程任务放到 `Industrial-Challenge/`。
-- 刷题集中训练放到 IC。
 - 作品集沉淀放到 IC。
 - Day 只保留知识、原理、API、小型示例和 Debug。
 
@@ -119,8 +128,6 @@ How
 Common Errors
 Future Usage
 ```
-
-大项目、刷题记录、GitHub 提交和作品集沉淀放入 `Industrial-Challenge/`。
 
 这不是删除已有 Day 内容，而是调整使用方式：
 

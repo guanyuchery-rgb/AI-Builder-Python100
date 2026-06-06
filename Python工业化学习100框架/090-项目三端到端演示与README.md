@@ -27,7 +27,6 @@
 
 今天先不从定义开始，而是先看问题：**如何用「端到端演示与 说明文档」完成 `Agent demo`？**
 
-
 先按这条顺序学习：
 
 ```text
@@ -281,115 +280,6 @@ def day090_engineering_note(input_data):
 - 把今天的代码改造成一个函数，并说明输入和输出。
 - 思考它未来会放进哪个主题模块：`data_io`、`transform`、`analysis`、`api`、`app`、`agent_tool`、`backtest` 或 `report`。
 
-## Hot100 / LeetCode 题组（多题 + 多解法）
-
-1. [House Robber - 打家劫舍](https://leetcode.com/problems/house-robber/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：动态规划
-   - 多解法：递归；DP 数组；滚动变量
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：每个房子有偷或不偷两种选择。状态转移是 max(偷当前+前前，跳过当前)。训练相邻约束下的最优决策。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-2. [House Robber II - 打家劫舍 II](https://leetcode.com/problems/house-robber-ii/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：动态规划 / 环形约束
-   - 多解法：拆成两段；递归；滚动 DP
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：首尾相邻不能同时选，所以拆成不选首或不选尾两个线性问题。训练把环形约束转成普通 DP。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-3. [Coin Change - 零钱兑换](https://leetcode.com/problems/coin-change/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：动态规划
-   - 多解法：暴力搜索；记忆化递归；自底向上 DP
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：目标是用最少硬币凑出金额，本质是在多个选择里取最优。暴力会重复探索；记忆化缓存子问题；自底向上 DP 从小金额推到大金额。不可达状态用无穷大表示。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-4. [Coin Change II - 零钱兑换 II](https://leetcode.com/problems/coin-change-ii/)
-   - 难度安排：必做（当前阶段主线，建议提交 AC）
-   - 题型：动态规划 / 背包
-   - 多解法：递归；二维 DP；一维完全背包
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：统计组合数量，不是最少硬币。外层枚举硬币可以避免不同顺序重复计数。
-   - 解题步骤：先定义 dp 状态，再写 base case，最后写状态转移并用小样例手算一遍。
-   - 易错点：最容易错的是 base case、数组长度、不可达状态和状态转移方向。
-5. [Design Add and Search Words Data Structure - 设计添加与搜索单词的数据结构](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：Trie / DFS
-   - 多解法：列表匹配；Trie；通配符 DFS
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：普通字符沿 Trie 走，点号通配符需要尝试所有子节点。训练数据结构和搜索结合。
-   - 解题步骤：先明确要快速查询什么，再用 dict/set/Counter 或前缀树保存状态。
-   - 易错点：最容易错的是先查再存还是先存再查，以及重复值、空输入和 key 的设计。
-6. [Minimum Window Substring - 最小覆盖子串](https://leetcode.com/problems/minimum-window-substring/)
-   - 难度安排：选做（能做就提交，卡住先看解析）
-   - 题型：滑动窗口 / 计数
-   - 多解法：暴力检查；滑动窗口；need/have 计数
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：右指针扩张直到满足条件，左指针收缩寻找最短答案。难点是判断“满足条件”的状态，适合训练复杂窗口约束。
-   - 解题步骤：先明确窗口里维护什么，再移动右指针扩张，条件满足后移动左指针收缩。
-   - 易错点：最容易错的是窗口收缩条件、重复元素处理和答案更新时机。
-7. [Construct Binary Tree from Preorder and Inorder Traversal - 从前序与中序遍历序列构造二叉树](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：树 / 递归
-   - 多解法：切片递归；索引递归；哈希表定位
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：前序第一个是根，中序根左边是左子树。用哈希表快速定位根位置。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-8. [Subtree of Another Tree - 另一棵树的子树](https://leetcode.com/problems/subtree-of-another-tree/)
-   - 难度安排：挑战（先写思路，再决定是否提交）
-   - 题型：树 / 匹配
-   - 多解法：每点匹配；序列化；哈希
-   - 迁移：写清输入、状态变量、输出和失败边界。
-   - 解析：在主树每个节点尝试匹配子树。训练嵌套递归和结构匹配。
-   - 解题步骤：先判断空节点，再决定递归返回什么，最后合并左右子树结果。
-   - 易错点：最容易错的是递归终止条件、返回值含义和只检查局部不检查整体。
-
-### 一题多解法拆解：Contains Duplicate
-
-- 解法 1：排序后看相邻。
-- 解法 2：set 扫描。
-- 解法 3：比较 len(nums) 和 len(set(nums))。
-
-推荐先写最容易懂的版本。
-
-再写复杂度更好的版本。
-
-最后写一句：这个解法能迁移到今天哪个操作题。
-
-### 带注释参考代码：Contains Duplicate
-
-```python
-def contains_duplicate(nums):
-    seen = set()
-    for num in nums:
-        if num in seen:
-            return True
-        seen.add(num)
-    return False
-```
-
-### 做题复盘模板
-
-```text
-题目：
-LeetCode 官方链接：
-提交日期：
-提交结果：未做 / 已尝试 / Accepted
-输入：
-输出：
-暴力解法：
-优化解法：
-关键状态变量：
-最容易错的边界：
-一题多解法对比：
-能迁移到今天哪个操作题：
-可写进简历/面试的表达：
-```
-
 ## 2 小时学习节奏
 
 - 15 分钟：读定位、前置和知识地图。
@@ -490,17 +380,6 @@ print("run Day90 结果保存")
 print("run Day90 迁移说明")
 ```
 
-## Hot100 / LeetCode 挑战（基础完成后）
-
-> 先完成当天主线的 7 + 5 题，再做这一题；它是面试/工业算法线，不替代主题训练。Day21-Day35 以 Easy/Medium 为主，Day60 开始逐步进入 Medium/Hard。
-
-- 关联题：[Partition Labels](https://leetcode.com/problems/partition-labels/)
-- 难度：Medium
-- 题型：贪心 / 字符串区间
-- 为什么放在今天：Agent 主题演示日练把字符串拆成不互相影响的片段。
-- 带注释解题提示：先记录每个字符最后出现位置；遍历时维护当前片段最远边界。
-- 完成标准：写出暴力思路、优化思路、时间复杂度和 3 个边界用例；Hard 题允许拆成两天，但要保留复盘记录。
-
 ## 主题深化方向
 
 - 把 Agent 原型拆成 `tool_schema.py`、`router.py`、`executor.py`、`state.py` 和 `audit_log.py`。
@@ -510,7 +389,6 @@ print("run Day90 迁移说明")
 - 进阶目标：能解释 Agent 不是自动魔法，而是计划、执行、观察、审查的工程系统。
 
 ## 强化练习与工程使用
-
 
 ### 工程使用场景
 
@@ -523,7 +401,6 @@ print("run Day90 迁移说明")
 3. **数据题**：准备 5-10 条虚拟样例数据，覆盖正常值、空值、重复值和极端值。
 4. **函数题**：把核心逻辑封装成 1 个函数，函数名、参数名和返回值必须能读懂。
 5. **测试题**：写 2 个正常测试和 1 个边界测试，确认修改后行为不变。
-6. **算法题**：完成 [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)，题型：链表。提示：理解指针更新顺序，训练状态转移。
 
 ### 难度控制
 
