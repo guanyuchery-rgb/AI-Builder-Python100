@@ -1,8 +1,8 @@
 # AI Builder Python100
 
-一个面向 AI Builder、数据分析、Quant、LLM 和 Agent 项目的开源 Python 100 天学习路径。
+一个面向 AI Builder、数据分析、Quant、LLM 和 Agent 作品的开源 Python 100 天学习路径。
 
-目标不是堆语法，也不是承诺某几个预设项目一定有用。
+目标不是堆语法，也不是承诺某几个预设主题一定有用。
 
 更真实的目标是：训练学习者如何把一个模糊想法，拆成输入、输出、最小版本、边界处理、调试、交付和复盘。
 
@@ -14,7 +14,7 @@
 - 成长路线图：[GROWTH_ROADMAP.md](GROWTH_ROADMAP.md)
 - 课程地图：[COURSE_MAP.md](COURSE_MAP.md)
 - 课程设计原则：[COURSE_DESIGN_PRINCIPLES.md](COURSE_DESIGN_PRINCIPLES.md)
-- 项目过程与聊天式风格：[PROJECT_PROCESS_STYLE_GUIDE.md](PROJECT_PROCESS_STYLE_GUIDE.md)
+- 实现过程与聊天式风格：[PROJECT_PROCESS_STYLE_GUIDE.md](PROJECT_PROCESS_STYLE_GUIDE.md)
 - Python100 能力达标标准：[PYTHON100_ABILITY_RUBRIC.md](PYTHON100_ABILITY_RUBRIC.md)
 - 后续学习路径优化：[PERSONALIZED_LEARNING_PATH.md](PERSONALIZED_LEARNING_PATH.md)
 - 知识广度索引：[KNOWLEDGE_EXPANSION_INDEX.md](KNOWLEDGE_EXPANSION_INDEX.md)
@@ -27,7 +27,7 @@
 
 - Python 零基础或基础不稳，希望按知识主线 + IC 验证学习的人。
 - 统计、金融、数据分析背景，想进入 AI / Quant / Agent 工程实践的人。
-- 想用 GitHub 公开沉淀学习过程和 IC 作品集的人。
+- 想用 GitHub 公开沉淀学习过程和 IC 作品的人。
 
 ## 课程结构
 
@@ -47,7 +47,7 @@ Day01-Day100 保留，不减少。
 当前主线解释为：
 
 - Day：知识学习、原理理解、API 使用、小型示例、Debug 能力。
-- IC：能力验证、工程挑战、GitHub 提交、作品集沉淀。
+- IC：能力验证、工程挑战、GitHub 提交、作品沉淀。
 
 Day 的统一学习模板是：
 
@@ -61,9 +61,9 @@ Future Usage
 
 Agent / LLM / Quant 的通识知识继续保留在 Day100 主线里，例如 Tool、Memory、Workflow、Planning、Prompt、Context、Embedding、RAG 原理、Return、Volatility、Sharpe、Drawdown 和 Backtest 原理。
 
-课程基础部分会持续强调“库的学习”：遇到 `csv`、`json`、`pandas`、`numpy`、`sklearn`、`torch`、`transformers`、`pydantic` 等库时，先建立认知地图，再拆函数和参数。机器学习、深度学习、Transformer 和 PyTorch 作为 LLM / Agent 的基础知识进入 Day 主线，但只讲概念、输入输出和最小示例，不提前做完整大模型项目。
+课程基础部分会持续强调“库的学习”：遇到 `csv`、`json`、`pandas`、`numpy`、`sklearn`、`torch`、`transformers`、`pydantic` 等库时，先建立认知地图，再拆函数和参数。机器学习、深度学习、Transformer 和 PyTorch 作为 LLM / Agent 的基础知识进入 Day 主线，但只讲概念、输入输出和最小示例，不提前做完整大模型工程。
 
-完整 RAG 系统、Agent 系统、Quant 回测框架、多 Agent 协作和 Dashboard 项目，统一放到 [Industrial Challenge](Industrial-Challenge/README.md) 做能力验证。
+完整 RAG、Agent、Quant 回测、多 Agent 协作和 Dashboard 工程，统一放到 [Industrial Challenge](Industrial-Challenge/README.md) 做能力验证。
 
 ## 新学习风格
 
@@ -72,10 +72,10 @@ Agent / LLM / Quant 的通识知识继续保留在 Day100 主线里，例如 Too
 - 单段更短。
 - 每次只讲一个小问题。
 - 总体内容不减少。
-- 项目名降级为例子。
-- 重点放在“如何做项目的过程”。
+- 工程名降级为例子。
+- 重点放在“如何做工程的过程”。
 
-也就是说，不是让你相信某个项目一定有用，而是让你掌握做项目时可迁移的判断方法。
+也就是说，不是让你相信某个主题一定有用，而是让你掌握做工程时可迁移的判断方法。
 
 ## 每天怎么学
 
@@ -83,7 +83,7 @@ Day 主线每天最多按 4 小时设计。
 
 推荐学习量是 2 小时左右。
 
-如果当天内容超过 4 小时，优先砍掉大型工程任务和作品集整理，把它们移动到 IC。
+如果当天内容超过 4 小时，优先砍掉大型工程任务和作品整理，把它们移动到 IC。
 
 - 15 分钟：读学习定位和知识地图。
 - 25 分钟：手打最小案例并运行。
@@ -113,20 +113,20 @@ IC 是额外能力验证，不强行塞进同一天。
 
 ## IC 能力验证线
 
-Day01-Day100 不承担大型工程交付职责。
+Day01-Day100 不承担大型工程交付职责，只保留知识、原理、API、小型示例和 Debug。Day76-Day95 的旧工程化内容已经迁移到 IC。
 
 IC01-IC50 用来验证工程能力：
 
 - 每个 IC 有 5 个知识自测问题。
 - 每个 IC 有 1 个工程挑战。
 - 每个 IC 要留下运行结果、Debug 记录和 GitHub 提交。
-- IC 最终沉淀为 4 个作品集项目：数据分析、Quant、LLM、Agent。
+- IC 最终沉淀为 4 个作品工程：数据分析、Quant、LLM、Agent。
 
 ## 开源说明
 
-本仓库是公开学习资源。示例代码和示例数据使用虚拟样例，公开内容只保留课程、练习、项目和精选学习资产。
+本仓库是公开学习资源。示例代码和示例数据使用虚拟样例，公开内容只保留课程、练习、工程和精选学习资产。
 
-本地 Obsidian Vault 可以记录更真实的 Debug、学习日志和认知变化；公开 GitHub 仓库只保留适合外部阅读的课程、练习、项目和精选学习资产。
+本地 Obsidian Vault 可以记录更真实的 Debug、学习日志和认知变化；公开 GitHub 仓库只保留适合外部阅读的课程、练习、工程和精选学习资产。
 
 ## License
 

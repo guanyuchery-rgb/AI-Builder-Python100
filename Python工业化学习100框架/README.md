@@ -1,8 +1,8 @@
 # Python 工业化学习 100 天
 
-这是一个面向 AI Builder、数据分析、Quant、LLM 和 Agent 项目的开源 Python 100 天学习路径。
+这是一个面向 AI Builder、数据分析、Quant、LLM 和 Agent 作品的开源 Python 100 天学习路径。
 
-课程设计原则：零基础起步、难度逐步承接、每天都有可运行代码、每个阶段都能沉淀成公开项目资产。
+课程设计原则：零基础起步、难度逐步承接、每天都有可运行代码、每个阶段都能沉淀成可验证能力。
 
 从 Day10 开始，课程不按“定义 -> 语法 -> 例题”展开，而按“真实任务 -> 场景 -> 为什么存在 -> 怎么解决 -> 语法实现”展开。
 
@@ -13,7 +13,7 @@ Industrial Challenge 能力验证见：[../Industrial-Challenge](../Industrial-C
 
 ## 当前推荐学习方式
 
-如果你已经学到 Day10 左右，后面不要急着跳大项目。
+如果你已经学到 Day10 左右，后面不要急着跳大工程。
 
 Day 主线每天最多 4 小时。
 
@@ -24,8 +24,8 @@ Day 主线每天最多 4 小时。
 处理规则：
 
 - 大型工程任务移到 IC。
-- 大型工程验证和作品集沉淀移到 IC。
-- 作品集整理移到 IC。
+- 大型工程验证和作品沉淀移到 IC。
+- 作品整理移到 IC。
 - Day 只保留知识、原理、API、小型示例和 Debug。
 
 先把这四件事练稳：
@@ -97,9 +97,9 @@ Day01-Day100 不减少。
 What -> Why -> How -> Common Errors -> Future Usage
 ```
 
-Day 里如果出现较大的项目名，把它当成知识场景、原理示例或旧版训练说明。
+Day 主线不保留完整工程；完整工程实践统一进入 IC。
 
-真正的能力验证、工程任务、GitHub 提交和作品集沉淀，统一进入 [Industrial Challenge](../Industrial-Challenge/README.md)。
+真正的能力验证、工程任务、GitHub 提交和作品沉淀，统一进入 [Industrial Challenge](../Industrial-Challenge/README.md)。
 
 IC01-IC50 不占 Day 数。
 
@@ -128,7 +128,7 @@ LLM 和 Agent 需要的基础不是一上来写复杂系统，而是先理解：
 - [Day07 - 字符串、字典与集合](007-字符串、字典与集合.md)
 - [Day08 - 文件读写与异常处理](008-文件读写与异常处理.md)
 - [Day09 - 模块、包与可复用脚本](009-模块、包与可复用脚本.md)
-- [Day10 - 学习记录 CLI 基础](010-零基础小项目学习记录CLI.md)
+- [Day10 - 学习记录 CLI 基础](010-学习记录CLI基础.md)
 
 ### 阶段二：Python 工程化基本功
 - [Day11 - CSV、JSON 与结构化数据](011-CSV、JSON与结构化数据.md)
@@ -140,10 +140,10 @@ LLM 和 Agent 需要的基础不是一上来写复杂系统，而是先理解：
 - [Day17 - logging 与 Debug 记录](017-logging与Debug记录.md)
 - [Day18 - pytest 与最小测试](018-pytest与最小测试.md)
 - [Day19 - 类型标注、配置与输入边界](019-类型标注、配置与输入边界.md)
-- [Day20 - CLI、日志与测试整合](020-工程化小项目DataCLI.md)
+- [Day20 - CLI、日志与测试整合](020-CLI日志与测试整合.md)
 
 ### 阶段三：数据分析与本地数据系统
-- [Day21 - 目录结构、说明文档 与 Git 基础](021-项目骨架、README与Git工作流.md)
+- [Day21 - 目录结构、说明文档 与 Git 基础](021-工程骨架、README与Git工作流.md)
 - [Day22 - 虚拟环境与 requirements](022-虚拟环境与requirements.md)
 - [Day23 - pandas 读取与数据体检](023-pandas读取与数据体检.md)
 - [Day24 - 缺失值、类型转换与清洗](024-缺失值、类型转换与清洗.md)
@@ -157,7 +157,7 @@ LLM 和 Agent 需要的基础不是一上来写复杂系统，而是先理解：
 - [Day32 - SQL 查询、Join 与窗口意识](032-SQL查询、Join与窗口意识.md)
 - [Day33 - 配置文件与环境变量](033-配置文件与环境变量.md)
 - [Day34 - 数据校验与错误报告](034-数据校验与错误报告.md)
-- [Day35 - 本地指标管道原理](035-数据分析Capstone本地指标管道.md)
+- [Day35 - 本地指标管道原理](035-本地指标管道原理.md)
 
 ### 阶段四：应用接口、自动化与交付
 - [Day36 - 自动化文件整理与批处理](036-自动化文件整理与批处理.md)
@@ -169,7 +169,7 @@ LLM 和 Agent 需要的基础不是一上来写复杂系统，而是先理解：
 - [Day42 - 本地记录 Actions 最小 CI](042-GitHubActions最小CI.md)
 - [Day43 - 模块打包与 src 布局](043-模块打包与src布局.md)
 - [Day44 - 开源 说明文档、示例与文档](044-开源README、示例与文档.md)
-- [Day45 - CLI、API、页面与 CI 整合原理](045-应用交付CapstoneDataTool.md)
+- [Day45 - CLI、API、页面与 CI 整合原理](045-应用交付边界原理.md)
 
 ### 阶段五：LLM / RAG / Agent 基础
 - [Day46 - Prompt 模板与事实边界](046-Prompt模板与事实边界.md)
@@ -185,8 +185,8 @@ LLM 和 Agent 需要的基础不是一上来写复杂系统，而是先理解：
 - [Day56 - Agent 计划-执行-观察循环](056-Agent计划-执行-观察循环.md)
 - [Day57 - Human-in-the-Loop 审查点](057-Human-in-the-Loop审查点.md)
 - [Day58 - Agent 日志与可观测性](058-Agent日志与可观测性.md)
-- [Day59 - LLM Report Assistant 小练习](059-LLMReportAssistant小项目.md)
-- [Day60 - LLM/Agent 本地知识助手原理](060-LLMAgentCapstone本地知识助手.md)
+- [Day59 - LLM 结构化报告基础](059-LLM结构化报告基础.md)
+- [Day60 - LLM Agent 本地知识助手原理](060-LLMAgent本地知识助手原理.md)
 
 ### 阶段六：Quant 研究与回测基础
 - [Day61 - 行情数据适配器](061-行情数据适配器.md)
@@ -203,34 +203,34 @@ LLM 和 Agent 需要的基础不是一上来写复杂系统，而是先理解：
 - [Day72 - 量化函数测试与样例数据](072-量化函数测试与样例数据.md)
 - [Day73 - SQLite 保存回测结果](073-SQLite保存回测结果.md)
 - [Day74 - Streamlit 策略看板](074-Streamlit策略看板.md)
-- [Day75 - Quant Research Starter 原理](075-QuantCapstoneResearchStarter.md)
+- [Day75 - Quant 研究闭环原理](075-Quant研究闭环原理.md)
 
 ### 阶段七：知识整合、复盘与长期维护
-- [Day76 - Quant 研究目录与模块边界](076-项目一QuantResearchStarter骨架.md)
-- [Day77 - Quant 数据层原理](077-项目一数据层实现.md)
-- [Day78 - Quant 指标与回测层原理](078-项目一指标与回测层.md)
-- [Day79 - Quant 报告、测试与 CLI 原理](079-项目一报告、测试与CLI.md)
-- [Day80 - Quant 实验复盘与说明](080-项目一复盘与README打磨.md)
-- [Day81 - LLM 报告助手模块边界](081-项目二LLMReportAssistant骨架.md)
-- [Day82 - LLM 上下文打包与 Prompt](082-项目二上下文打包与Prompt.md)
-- [Day83 - 结构化解析与审查规则](083-项目二结构化解析与审查规则.md)
-- [Day84 - 评估集与样例报告](084-项目二评估集与样例报告.md)
-- [Day85 - LLM 输出限制、复盘与公开说明](085-项目二交付、复盘与公开说明.md)
-- [Day86 - Agent Tool 模块边界](086-项目三AgentToolPrototype骨架.md)
-- [Day87 - Agent 工具 Schema 与校验](087-项目三工具Schema与校验.md)
-- [Day88 - Agent 执行、错误恢复与日志](088-项目三执行、错误恢复与日志.md)
-- [Day89 - Agent 状态存储与人工审查](089-项目三状态存储与人工审查.md)
-- [Day90 - Agent 工作流端到端原理](090-项目三端到端演示与README.md)
-- [Day91 - RAG 笔记助手模块边界](091-项目四本地RAG笔记助手骨架.md)
-- [Day92 - RAG 索引与检索层](092-项目四索引与检索层.md)
-- [Day93 - RAG 回答 Prompt 与来源引用](093-项目四回答Prompt与来源引用.md)
-- [Day94 - RAG 评估与错误案例](094-项目四RAG评估与错误案例.md)
-- [Day95 - RAG 限制、复盘与公开说明](095-项目四交付与复盘.md)
-- [Day96 - 本地记录 Pages 与课程网站维护](096-GitHubPages与课程网站维护.md)
-- [Day97 - 知识索引与能力清单](097-作品集README与项目索引.md)
-- [Day98 - 技术讲解脚本与面试表达](098-项目讲解脚本与面试故事.md)
+- [Day76 - Quant 研究模块边界](076-Quant研究模块边界.md)
+- [Day77 - Quant 数据层原理](077-Quant数据层原理.md)
+- [Day78 - Quant 指标与回测层原理](078-Quant指标与回测层原理.md)
+- [Day79 - Quant 报告、测试与 CLI 原理](079-Quant报告、测试与CLI原理.md)
+- [Day80 - Quant 实验复盘方法](080-Quant实验复盘方法.md)
+- [Day81 - LLM 报告助手模块边界](081-LLM报告助手模块边界.md)
+- [Day82 - LLM 上下文打包与 Prompt](082-LLM上下文打包与Prompt.md)
+- [Day83 - 结构化解析与审查规则](083-结构化解析与审查规则.md)
+- [Day84 - LLM 评估集与样例报告](084-LLM评估集与样例报告.md)
+- [Day85 - LLM 输出限制与公开说明](085-LLM输出限制与公开说明.md)
+- [Day86 - Agent Tool 模块边界](086-AgentTool模块边界.md)
+- [Day87 - Agent 工具 Schema 与校验](087-Agent工具Schema与校验.md)
+- [Day88 - Agent 执行、错误恢复与日志](088-Agent执行、错误恢复与日志.md)
+- [Day89 - Agent 状态存储与人工审查](089-Agent状态存储与人工审查.md)
+- [Day90 - Agent 工作流端到端原理](090-Agent工作流端到端原理.md)
+- [Day91 - RAG 模块边界](091-RAG模块边界.md)
+- [Day92 - RAG 索引与检索层](092-RAG索引与检索层.md)
+- [Day93 - RAG 回答 Prompt 与来源引用](093-RAG回答Prompt与来源引用.md)
+- [Day94 - RAG 评估与错误案例](094-RAG评估与错误案例.md)
+- [Day95 - RAG 限制、复盘与公开说明](095-RAG限制、复盘与公开说明.md)
+- [Day96 - GitHub Pages 与课程网站维护](096-GitHubPages与课程网站维护.md)
+- [Day97 - 知识索引与能力清单](097-知识索引与能力清单.md)
+- [Day98 - 技术讲解脚本与面试表达](098-技术讲解脚本与面试表达.md)
 - [Day99 - 错误库、片段库与长期维护](099-错误库、片段库与长期维护.md)
-- [Day100 - AI Builder Python Roadmap 总复盘](100-总CapstoneAIBuilderPythonRoadmap.md)
+- [Day100 - AI Builder Python Roadmap 总复盘](100-AIBuilderPythonRoadmap总复盘.md)
 
 ## 使用方式
 
@@ -239,6 +239,6 @@ LLM 和 Agent 需要的基础不是一上来写复杂系统，而是先理解：
 - Day 学知识，IC 验能力；不要在 Day 主线里硬塞大型工程任务。
 - Day10-Day100 增加工程问题解决结构，优先理解真实任务、场景、设计原因和未来使用位置。
 - Day11 之后所有新库/API 默认先给认知地图和输入输出表，禁止直接抛复杂代码。
-- IC01-IC50 负责知识自测、工程挑战、GitHub 提交和作品集沉淀。
+- IC01-IC50 负责知识自测、工程挑战、GitHub 提交和作品沉淀。
 - 所有示例使用虚拟样例，保持可复现、可公开、可长期维护。
-- 学完一个阶段，至少整理一次 notes 或阶段复盘；完整作品集整理放到 IC。
+- 学完一个阶段，至少整理一次 notes 或阶段复盘；完整作品整理放到 IC。

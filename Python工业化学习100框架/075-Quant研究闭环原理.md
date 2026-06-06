@@ -1,0 +1,97 @@
+# Day75 - Quant 研究闭环原理
+
+> 阶段六：Quant 研究与回测基础
+
+## 学习定位
+
+今天只学一个核心概念：行情、指标、信号、风险和报告的知识闭环
+
+Day 主线控制在 4 小时以内。
+
+如果你想看更厚的旧版长讲，已经移到 `Industrial-Challenge/Migrated-Day-Project-Material/Long-Day-Supplements/`。
+
+## 前置知识
+
+- 推荐前置：Day74
+- 上一站：Day74
+- 下一站：Day76
+
+## 今日知识地图
+
+```text
+What：它是什么
+  ↓
+Why：为什么存在
+  ↓
+How：最小写法
+  ↓
+Common Errors：常见错误
+  ↓
+Future Usage：以后在哪里用
+```
+
+## What
+
+Quant 研究闭环原理 是一个基础知识模块。
+
+它的重点不是背语法，而是理解输入、处理过程、输出和错误边界。
+
+## Why
+
+如果不先理解这个模块，后面会卡在：
+
+- 看得懂代码，但不知道为什么这样写。
+- 会复制例子，但换一个输入就不会改。
+- 报错后不知道应该检查变量、路径、类型还是返回值。
+
+## How
+
+先写最小版本，再慢慢加功能。
+
+```python
+# Day75 - Quant 研究闭环原理 最小检查
+
+def explain(value):
+    if value is None:
+        return {"ok": False, "error": "empty value"}
+
+    return {
+        "ok": True,
+        "input_type": type(value).__name__,
+        "value": value,
+    }
+
+print(explain("demo"))
+```
+
+学习时按这个顺序：
+
+1. 先看输入是什么。
+2. 再看中间变量怎么变化。
+3. 再看输出是什么。
+4. 最后看错误时怎么定位。
+
+## Common Errors
+
+| 错误 | 表现 | Debug 方法 |
+| --- | --- | --- |
+| 一次读太多 | 读完感觉懂，写时卡住 | 只保留一个最小例子 |
+| 不看输入类型 | 字符串、数字、list 混用 | 打印 `type(value)` |
+| 不看返回值 | 后续代码接不上 | 打印函数返回结果 |
+| 不记录错误 | 下次重复踩坑 | 写一行 Debug notes |
+
+## Future Usage
+
+这个知识以后会反复用于：
+
+- 数据分析：清洗、转换、聚合。
+- Quant：行情、指标、回测边界。
+- LLM：上下文、结构化输出、评估。
+- Agent：Tool 输入输出、日志和状态。
+
+## 今日练习
+
+1. 用一句话解释 `Quant 研究闭环原理`。
+2. 写一个最小代码例子。
+3. 故意制造一个错误并记录。
+4. 写出这个知识未来会在哪个 IC 里用。
