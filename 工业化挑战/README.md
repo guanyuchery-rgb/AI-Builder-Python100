@@ -23,6 +23,7 @@ Day01-Day100 负责知识学习；工业化挑战负责项目能力验证。
 
 - 不占 Day 数。
 - Project01-Project08 是平级关系，每个项目都可以独立成为 GitHub 作品。
+- 旧 Day 项目材料已经吸收到对应 Project README 和 IC 阶段中，中间迁移目录已删除。
 - 不要求 Day 学完 100 才开始；Day15 后可以从 Project01 慢慢做。
 - 每个 IC 都要有工程任务、GitHub 提交、Review 和 LeetCode 训练。
 - 项目目录优先长期维护，不为了炫技增加复杂 infra。
