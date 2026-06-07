@@ -132,91 +132,115 @@ print(inspect_value("demo"))
 | 45 分钟 | 故意制造错误 | errors.md |
 | 40 分钟 | 写复盘 | README 片段 |
 
-## 今日练习
+## 今日强化题（带具体代码）
 
-### 练习 1
+> 每天正文上限控制在 600 行以内。强化题不是口头描述，必须能落到 `main.py` 运行。
 
-- 任务：围绕 `CSV 进阶 DictReader / DictWriter` 写一个最小输入和最小输出。
-- 要求：先写预期结果，再运行代码。
-- Debug：如果出错，只改一处，并记录原因。
-- 复盘：用一句话说明这个练习未来能迁移到哪里。
+### 强化题 1：复现最小案例
 
-### 练习 2
+任务：把下面参考代码复制到 `main.py`，先不要改，直接运行。
 
-- 任务：围绕 `CSV 进阶 DictReader / DictWriter` 写一个最小输入和最小输出。
-- 要求：先写预期结果，再运行代码。
-- Debug：如果出错，只改一处，并记录原因。
-- 复盘：用一句话说明这个练习未来能迁移到哪里。
+验收：终端能打印 JSON，且本地生成 `outputs/day012/`。
 
-### 练习 3
+### 强化题 2：替换输入
 
-- 任务：围绕 `CSV 进阶 DictReader / DictWriter` 写一个最小输入和最小输出。
-- 要求：先写预期结果，再运行代码。
-- Debug：如果出错，只改一处，并记录原因。
-- 复盘：用一句话说明这个练习未来能迁移到哪里。
+任务：只改输入数据，至少新增 2 条样例。
 
-### 练习 4
+验收：输出数量、均值、跳过记录或检索结果发生合理变化。
 
-- 任务：围绕 `CSV 进阶 DictReader / DictWriter` 写一个最小输入和最小输出。
-- 要求：先写预期结果，再运行代码。
-- Debug：如果出错，只改一处，并记录原因。
-- 复盘：用一句话说明这个练习未来能迁移到哪里。
+### 强化题 3：边界检查
 
-### 练习 5
+任务：制造 1 个坏输入，例如空值、重复值、非法字段或极端价格。
 
-- 任务：围绕 `CSV 进阶 DictReader / DictWriter` 写一个最小输入和最小输出。
-- 要求：先写预期结果，再运行代码。
-- Debug：如果出错，只改一处，并记录原因。
-- 复盘：用一句话说明这个练习未来能迁移到哪里。
+验收：程序不会静默失败；你能在输出或 `errors.md` 里解释原因。
 
-### 练习 6
+### 强化题 4：结果保存
 
-- 任务：围绕 `CSV 进阶 DictReader / DictWriter` 写一个最小输入和最小输出。
-- 要求：先写预期结果，再运行代码。
-- Debug：如果出错，只改一处，并记录原因。
-- 复盘：用一句话说明这个练习未来能迁移到哪里。
+任务：把运行结果保存到 JSON、CSV、Markdown 或 SQLite 中的一种。
 
-### 练习 7
+验收：关闭终端后，仍能从文件复查今天结果。
 
-- 任务：围绕 `CSV 进阶 DictReader / DictWriter` 写一个最小输入和最小输出。
-- 要求：先写预期结果，再运行代码。
-- Debug：如果出错，只改一处，并记录原因。
-- 复盘：用一句话说明这个练习未来能迁移到哪里。
+### 强化题 5：迁移说明
 
-### 练习 8
+任务：写 3 句话说明 `CSV 进阶 DictReader / DictWriter` 会如何迁移到 Data、Quant、LLM 或 Agent。
 
-- 任务：围绕 `CSV 进阶 DictReader / DictWriter` 写一个最小输入和最小输出。
-- 要求：先写预期结果，再运行代码。
-- Debug：如果出错，只改一处，并记录原因。
-- 复盘：用一句话说明这个练习未来能迁移到哪里。
+验收：不是写“以后有用”，而是写清具体场景。
 
-### 练习 9
+### 参考代码：`main.py`
 
-- 任务：围绕 `CSV 进阶 DictReader / DictWriter` 写一个最小输入和最小输出。
-- 要求：先写预期结果，再运行代码。
-- Debug：如果出错，只改一处，并记录原因。
-- 复盘：用一句话说明这个练习未来能迁移到哪里。
+```python
+from pathlib import Path
+import csv
+import json
 
-### 练习 10
+TOPIC = 'CSV 进阶 DictReader / DictWriter'
+DAY = 12
+ROOT = Path(__file__).resolve().parent
+OUT = ROOT / "outputs" / f"day{DAY:03d}"
 
-- 任务：围绕 `CSV 进阶 DictReader / DictWriter` 写一个最小输入和最小输出。
-- 要求：先写预期结果，再运行代码。
-- Debug：如果出错，只改一处，并记录原因。
-- 复盘：用一句话说明这个练习未来能迁移到哪里。
 
-### 练习 11
+def ensure_dirs():
+    OUT.mkdir(parents=True, exist_ok=True)
 
-- 任务：围绕 `CSV 进阶 DictReader / DictWriter` 写一个最小输入和最小输出。
-- 要求：先写预期结果，再运行代码。
-- Debug：如果出错，只改一处，并记录原因。
-- 复盘：用一句话说明这个练习未来能迁移到哪里。
 
-### 练习 12
+def write_sample_csv(path: Path):
+    rows = [
+        {"day": "11", "topic": "csv", "minutes": "35"},
+        {"day": "12", "topic": "dict csv", "minutes": "45"},
+        {"day": "13", "topic": "json", "minutes": "0"},
+    ]
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=["day", "topic", "minutes"])
+        writer.writeheader()
+        writer.writerows(rows)
 
-- 任务：围绕 `CSV 进阶 DictReader / DictWriter` 写一个最小输入和最小输出。
-- 要求：先写预期结果，再运行代码。
-- Debug：如果出错，只改一处，并记录原因。
-- 复盘：用一句话说明这个练习未来能迁移到哪里。
+
+def read_and_summarize(path: Path):
+    valid_rows = []
+    skipped = []
+    with path.open("r", newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            minutes = int(row["minutes"])
+            if minutes <= 0:
+                skipped.append({"row": row, "reason": "minutes <= 0"})
+                continue
+            valid_rows.append({"day": row["day"], "topic": row["topic"], "minutes": minutes})
+    return {
+        "topic": TOPIC,
+        "valid_count": len(valid_rows),
+        "total_minutes": sum(row["minutes"] for row in valid_rows),
+        "skipped": skipped,
+    }
+
+
+def main():
+    ensure_dirs()
+    csv_path = OUT / "study_log.csv"
+    write_sample_csv(csv_path)
+    summary = read_and_summarize(csv_path)
+    (OUT / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+
+
+if __name__ == "__main__":
+    main()
+```
+
+### 运行命令
+
+```bash
+python main.py
+```
+
+### Debug 记录要求
+
+```text
+错误现象：
+触发输入：
+定位过程：
+修复方式：
+以后如何避免：
+```
 
 ## 今日复盘模板
 
