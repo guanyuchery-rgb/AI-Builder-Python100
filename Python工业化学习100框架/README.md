@@ -8,7 +8,9 @@
 
 完整成长路线图见：[../GROWTH_ROADMAP.md](../GROWTH_ROADMAP.md)。
 课程设计原则见：[../COURSE_DESIGN_PRINCIPLES.md](../COURSE_DESIGN_PRINCIPLES.md)。
-工业化挑战 能力验证见：[../工业化挑战](../工业化挑战/README.md)。
+加厚理解执行规则见：[../PYTHON100_THICKENING_GUIDE.md](../PYTHON100_THICKENING_GUIDE.md)。
+IC100 能力体系见：[../IC100-能力体系](../IC100-能力体系/README.md)。
+旧工业化挑战积累见：[../工业化挑战](../工业化挑战/README.md)。
 
 ## 当前推荐学习方式
 
@@ -96,15 +98,15 @@ Day01-Day100 不减少。
 What -> Why -> How -> Common Errors -> Future Usage
 ```
 
-Day 主线不保留完整工程；完整工程实践统一进入 IC。
+Day 主线不保留完整工程；完整工程实践统一进入 IC100。
 
-真正的能力验证、工程任务、GitHub 提交和作品沉淀，统一进入 [工业化挑战](../工业化挑战/README.md)。IC 项目之间是平级作品方向。
+真正的能力验证、工程任务、GitHub 提交和作品沉淀，统一进入 [IC100 能力体系](../IC100-能力体系/README.md)。IC 项目之间是平级作品方向。
 
-IC01-IC74 不占 Day 数。
+IC001-IC100 不占 Day 数。
 
 每个 IC 包含：
 
-- 5 个知识自测问题。
+- 2 道 LeetCode 官方题。
 - 1 个工程挑战。
 - GitHub 提交要求。
 - Challenge Review。
@@ -238,6 +240,6 @@ LLM 和 Agent 需要的基础不是一上来写复杂系统，而是先理解：
 - Day 学知识，IC 验能力；不要在 Day 主线里硬塞大型工程任务。
 - Day10-Day100 增加工程问题解决结构，优先理解真实任务、场景、设计原因和未来使用位置。
 - Day11 之后所有新库/API 默认先给认知地图和输入输出表，禁止直接抛复杂代码。
-- IC01-IC74 负责知识自测、工程挑战、GitHub 提交和作品沉淀。
+- IC001-IC100 负责 LeetCode 200 题、工程挑战、GitHub 提交和四个求职项目沉淀。
 - 所有示例使用虚拟样例，保持可复现、可公开、可长期维护。
 - 学完一个阶段，至少整理一次 notes 或阶段复盘；完整作品整理放到 IC。
