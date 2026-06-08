@@ -75,7 +75,7 @@ import json
 from pathlib import Path
 
 path = Path("config.json")
-config = {"user": "Claire", "settings": {"language": "zh", "daily_hours": 4}}
+config = {"metadata": {"source": "demo"}, "settings": {"language": "zh", "daily_hours": 4}}
 
 with path.open("w", encoding="utf-8") as f:
     json.dump(config, f, ensure_ascii=False, indent=2)
@@ -212,7 +212,7 @@ def ensure_dirs():
 
 def write_config(path: Path):
     config = {
-        "learner": {"name": "Claire", "background": "statistics"},
+        "metadata": {"source": "demo", "schema_version": 1},
         "sessions": [
             {"day": 13, "topic": "json basics", "metrics": {"minutes": 50, "errors": 1}},
             {"day": 14, "topic": "nested json", "metrics": {"minutes": 40, "errors": 0}},
@@ -241,7 +241,7 @@ def load_and_summarize(path: Path):
         })
     return {
         "topic": TOPIC,
-        "learner": data.get("learner", {}).get("name", "unknown"),
+        "source": data.get("metadata", {}).get("source", "unknown"),
         "valid_count": len(valid),
         "total_minutes": sum(item["minutes"] for item in valid),
         "total_errors": sum(item["errors"] for item in valid),

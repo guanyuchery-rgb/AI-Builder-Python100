@@ -44,7 +44,7 @@ JSON 强在“层级清楚”：
 
 ```json
 {
-  "learner": "Claire",
+  "metadata": {"source": "demo"},
   "sessions": [
     {"day": 11, "topic": "csv", "metrics": {"minutes": 35}}
   ]
@@ -65,7 +65,7 @@ JSON 强在“层级清楚”：
 - 数据是二维表，还是嵌套对象？
 - 未来更常做筛选聚合，还是读取配置和状态？
 
-## How：用同一份学习记录做两种保存
+## How：用同一份样例记录做两种保存
 
 数据流是：
 
@@ -94,13 +94,13 @@ records = [
 
 ```python
 payload = {
-    "learner": {"name": "Claire", "background": "statistics"},
+    "metadata": {"source": "demo", "schema_version": 1},
     "records": records,
     "summary": {"total_minutes": 80}
 }
 ```
 
-适合保存成 JSON，因为它除了记录列表，还有 learner 和 summary 这种元信息。
+适合保存成 JSON，因为它除了记录列表，还有 metadata 和 summary 这种元信息。
 
 ## 参数拆解方法
 
@@ -118,7 +118,7 @@ payload = {
 | --- | --- | --- |
 | `payload` | 可以包含 dict/list 嵌套 | 不能包含 set、函数、Path 等不可序列化对象 |
 | `f` | JSON 输出文件 | 用 `encoding="utf-8"` |
-| `indent=2` | 人类可读 | 适合学习记录、配置、Agent trace |
+| `indent=2` | 人类可读 | 适合样例记录、配置、Agent trace |
 
 ## 和旧知识的连接
 
@@ -235,7 +235,7 @@ def main():
         {"day": 13, "topic": "json", "minutes": 50, "tags": ["data", "agent"]},
     ]
     payload = {
-        "learner": {"name": "Claire", "background": "statistics"},
+        "metadata": {"source": "demo", "schema_version": 1},
         "records": records,
         "summary": {"total_minutes": sum(row.get("minutes", 0) for row in records)},
     }

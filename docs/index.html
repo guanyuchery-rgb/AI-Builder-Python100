@@ -2346,11 +2346,11 @@ if __name__ == &quot;__main__&quot;:
 <p>&gt; 阶段二：Python 工程化基本功</p>
 <h2>学习定位</h2>
 <p>今天只学习一个核心主题：<strong>csv.reader / csv.writer：CSV -&gt; list，list -&gt; CSV</strong>。</p>
-<p>你已经会 Day10 的本地学习记录 CLI，也会 <code>open()</code>、<code>f.write()</code>、列表和循环。今天不是突然背一个新库，而是把“手工写文本”升级成“按表格结构读写数据”。</p>
+<p>你已经会 Day10 的本地 CLI，也会 <code>open()</code>、<code>f.write()</code>、列表和循环。今天不是突然背一个新库，而是把“手工写文本”升级成“按表格结构读写数据”。</p>
 <p>Day 主线控制在 4 小时以内：先建立 CSV 库认知地图，再写最小 reader / writer，再做边界实验。</p>
 <h2>前置知识</h2>
 <ul>
-<li>上一站：Day10 学习记录 CLI 基础</li>
+<li>上一站：Day10 CLI 基础</li>
 <li>下一站：Day12 CSV 进阶 DictReader / DictWriter</li>
 <li>必须先会：文件路径、<code>with open(...) as f</code>、列表、循环、<code>int()</code> 类型转换。</li>
 </ul>
@@ -2369,7 +2369,7 @@ sql,90</code></pre>
 writer: list 行 -&gt; CSV 文件</code></pre>
 <p>这比手写 <code>&quot;a,b,c\n&quot;</code> 稳，因为 CSV 里会遇到逗号、换行、空字段、引号等细节。库的价值就是替你处理这些格式细节。</p>
 <h2>Why</h2>
-<p>昨天如果要保存学习记录，你可能会这样写：</p>
+<p>昨天如果要保存一组表格记录，你可能会这样写：</p>
 <pre><code>f.write(&quot;day,topic,minutes\n&quot;)
 f.write(&quot;11,csv,35\n&quot;)</code></pre>
 <p>这能跑，但问题是：</p>
@@ -2386,7 +2386,7 @@ f.write(&quot;11,csv,35\n&quot;)</code></pre>
   ↓
 csv.writer(f).writerows(rows)
   ↓
-study_log.csv
+records.csv
   ↓
 csv.reader(f)
   ↓
@@ -2397,7 +2397,7 @@ csv.reader(f)
 <pre><code>import csv
 from pathlib import Path
 
-path = Path(&quot;study_log.csv&quot;)
+path = Path(&quot;records.csv&quot;)
 rows = [
     [&quot;day&quot;, &quot;topic&quot;, &quot;minutes&quot;],
     [&quot;11&quot;, &quot;csv reader writer&quot;, &quot;35&quot;],
@@ -2428,19 +2428,19 @@ with path.open(&quot;w&quot;, newline=&quot;&quot;, encoding=&quot;utf-8&quot;) 
 <table><thead><tr><th>错误</th><th>表现</th><th>定位方法</th></tr></thead><tbody><tr><td>忘记 <code>newline=&quot;&quot;</code></td><td>CSV 中间出现多余空行</td><td>写文件时固定加上 <code>newline=&quot;&quot;</code></td></tr><tr><td>把 <code>row</code> 当 dict</td><td><code>row[&quot;minutes&quot;]</code> 报错</td><td><code>reader</code> 输出 list，只能用下标</td></tr><tr><td>忘记跳过表头</td><td><code>int(&quot;minutes&quot;)</code> 报错</td><td>先 <code>header = next(reader)</code></td></tr><tr><td>数字没转换</td><td><code>&#x27;35&#x27; + &#x27;45&#x27;</code> 变成字符串拼接</td><td><code>minutes = int(row[2])</code></td></tr><tr><td>路径不清楚</td><td>找不到文件</td><td>打印 <code>Path.cwd()</code> 和 <code>path.resolve()</code></td></tr></tbody></table>
 <h2>Future Usage</h2>
 <ul>
-<li>Data：读取 Kaggle 原始 CSV，先检查表头和前 5 行。</li>
+<li>Data：读取外部原始 CSV，先检查表头和前 5 行。</li>
 <li>Quant：读取行情样例，先把价格、成交量从字符串转成数字。</li>
 <li>LLM：把评估样例保存成 CSV，方便批量对比。</li>
 <li>Agent：把 tool 执行日志先落成表格，后续再分析。</li>
 </ul>
 <h2>4 小时学习节奏</h2>
-<table><thead><tr><th>时间</th><th>做什么</th><th>产物</th></tr></thead><tbody><tr><td>30 分钟</td><td>画 CSV -&gt; list 的数据流</td><td><code>notes.md</code></td></tr><tr><td>60 分钟</td><td>手打 writer 和 reader</td><td><code>main.py</code></td></tr><tr><td>45 分钟</td><td>改 2 行输入样例</td><td><code>study_log.csv</code></td></tr><tr><td>45 分钟</td><td>故意制造表头/类型错误</td><td><code>errors.md</code></td></tr><tr><td>40 分钟</td><td>写迁移说明</td><td>复盘 5 行</td></tr></tbody></table>
+<table><thead><tr><th>时间</th><th>做什么</th><th>产物</th></tr></thead><tbody><tr><td>30 分钟</td><td>画 CSV -&gt; list 的数据流</td><td><code>notes.md</code></td></tr><tr><td>60 分钟</td><td>手打 writer 和 reader</td><td><code>main.py</code></td></tr><tr><td>45 分钟</td><td>改 2 行输入样例</td><td><code>records.csv</code></td></tr><tr><td>45 分钟</td><td>故意制造表头/类型错误</td><td><code>errors.md</code></td></tr><tr><td>40 分钟</td><td>写迁移说明</td><td>复盘 5 行</td></tr></tbody></table>
 <h2>今日强化题（带具体代码）</h2>
 <h3>强化题 1：复现最小案例</h3>
 <p>任务：复制下面代码到 <code>main.py</code> 并运行。</p>
-<p>验收：终端打印 JSON，生成 <code>outputs/day011/study_log.csv</code> 和 <code>summary.json</code>。</p>
+<p>验收：终端打印 JSON，生成 <code>outputs/day011/records.csv</code> 和 <code>summary.json</code>。</p>
 <h3>强化题 2：替换输入</h3>
-<p>任务：新增 2 行学习记录，至少一行 <code>minutes</code> 大于 60。</p>
+<p>任务：新增 2 行样例记录，至少一行数值字段大于当前样例。</p>
 <p>验收：<code>total_minutes</code> 和 <code>long_sessions</code> 会变化。</p>
 <h3>强化题 3：边界检查</h3>
 <p>任务：把一行 minutes 改成空字符串或 <code>abc</code>。</p>
@@ -2495,7 +2495,7 @@ def read_csv(path: Path):
 
 def main():
     ensure_dirs()
-    csv_path = OUT / &quot;study_log.csv&quot;
+    csv_path = OUT / &quot;records.csv&quot;
     write_csv(csv_path)
     header, valid, skipped = read_csv(csv_path)
     summary = {
@@ -2544,7 +2544,7 @@ writer 的输入是什么：
 <pre><code>DictReader: CSV -&gt; dict
 DictWriter: dict -&gt; CSV</code></pre>
 <p>Day11 的 <code>row[2]</code> 依赖列位置；Day12 的 <code>row[&quot;minutes&quot;]</code> 依赖字段名。</p>
-<p>真实数据里，字段名比位置更重要。你以后读 Kaggle、行情、评估集时，通常会关心 <code>date</code>、<code>close</code>、<code>label</code>、<code>question</code> 这些字段，而不是“第 3 列”。</p>
+<p>真实数据里，字段名比位置更重要。你以后读外部数据、行情、评估集时，通常会关心 <code>date</code>、<code>close</code>、<code>label</code>、<code>question</code> 这些字段，而不是“第 3 列”。</p>
 <h2>Why</h2>
 <p>不用 <code>DictReader</code> 也能读 CSV，但代码会变脆：</p>
 <pre><code>minutes = int(row[2])</code></pre>
@@ -2569,7 +2569,7 @@ DictReader
 <pre><code>import csv
 from pathlib import Path
 
-path = Path(&quot;study_log.csv&quot;)
+path = Path(&quot;records.csv&quot;)
 records = [
     {&quot;day&quot;: &quot;11&quot;, &quot;topic&quot;: &quot;csv reader writer&quot;, &quot;minutes&quot;: &quot;35&quot;},
     {&quot;day&quot;: &quot;12&quot;, &quot;topic&quot;: &quot;dict csv&quot;, &quot;minutes&quot;: &quot;45&quot;},
@@ -2607,7 +2607,7 @@ with path.open(&quot;w&quot;, newline=&quot;&quot;, encoding=&quot;utf-8&quot;) 
 <h2>今日强化题（带具体代码）</h2>
 <h3>强化题 1：复现最小案例</h3>
 <p>任务：复制下面代码到 <code>main.py</code> 并运行。</p>
-<p>验收：生成 <code>outputs/day012/study_log.csv</code> 和 <code>summary.json</code>。</p>
+<p>验收：生成 <code>outputs/day012/records.csv</code> 和 <code>summary.json</code>。</p>
 <h3>强化题 2：替换输入</h3>
 <p>任务：新增字段 <code>source</code>，例如 <code>book</code>、<code>video</code>、<code>codex</code>。</p>
 <p>验收：你能说明为什么 <code>fieldnames</code> 也要同步改。</p>
@@ -2665,7 +2665,7 @@ def load_records(path: Path):
 
 def main():
     ensure_dirs()
-    csv_path = OUT / &quot;study_log.csv&quot;
+    csv_path = OUT / &quot;records.csv&quot;
     write_records(csv_path)
     valid, skipped = load_records(csv_path)
     summary = {
@@ -2887,7 +2887,7 @@ Python dict/list
 from pathlib import Path
 
 path = Path(&quot;config.json&quot;)
-config = {&quot;user&quot;: &quot;Claire&quot;, &quot;settings&quot;: {&quot;language&quot;: &quot;zh&quot;, &quot;daily_hours&quot;: 4}}
+config = {&quot;metadata&quot;: {&quot;source&quot;: &quot;demo&quot;}, &quot;settings&quot;: {&quot;language&quot;: &quot;zh&quot;, &quot;daily_hours&quot;: 4}}
 
 with path.open(&quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
     json.dump(config, f, ensure_ascii=False, indent=2)</code></pre>
@@ -2953,7 +2953,7 @@ def ensure_dirs():
 
 def write_config(path: Path):
     config = {
-        &quot;learner&quot;: {&quot;name&quot;: &quot;Claire&quot;, &quot;background&quot;: &quot;statistics&quot;},
+        &quot;metadata&quot;: {&quot;source&quot;: &quot;demo&quot;, &quot;schema_version&quot;: 1},
         &quot;sessions&quot;: [
             {&quot;day&quot;: 13, &quot;topic&quot;: &quot;json basics&quot;, &quot;metrics&quot;: {&quot;minutes&quot;: 50, &quot;errors&quot;: 1}},
             {&quot;day&quot;: 14, &quot;topic&quot;: &quot;nested json&quot;, &quot;metrics&quot;: {&quot;minutes&quot;: 40, &quot;errors&quot;: 0}},
@@ -2982,7 +2982,7 @@ def load_and_summarize(path: Path):
         })
     return {
         &quot;topic&quot;: TOPIC,
-        &quot;learner&quot;: data.get(&quot;learner&quot;, {}).get(&quot;name&quot;, &quot;unknown&quot;),
+        &quot;source&quot;: data.get(&quot;metadata&quot;, {}).get(&quot;source&quot;, &quot;unknown&quot;),
         &quot;valid_count&quot;: len(valid),
         &quot;total_minutes&quot;: sum(item[&quot;minutes&quot;] for item in valid),
         &quot;total_errors&quot;: sum(item[&quot;errors&quot;] for item in valid),
@@ -3033,7 +3033,7 @@ dump 和 dumps 的区别：
 12,dict csv,45</code></pre>
 <p>JSON 强在“层级清楚”：</p>
 <pre><code>{
-  &quot;learner&quot;: &quot;Claire&quot;,
+  &quot;metadata&quot;: {&quot;source&quot;: &quot;demo&quot;},
   &quot;sessions&quot;: [
     {&quot;day&quot;: 11, &quot;topic&quot;: &quot;csv&quot;, &quot;metrics&quot;: {&quot;minutes&quot;: 35}}
   ]
@@ -3048,7 +3048,7 @@ dump 和 dumps 的区别：
 <li>数据是二维表，还是嵌套对象？</li>
 <li>未来更常做筛选聚合，还是读取配置和状态？</li>
 </ul>
-<h2>How：用同一份学习记录做两种保存</h2>
+<h2>How：用同一份样例记录做两种保存</h2>
 <p>数据流是：</p>
 <pre><code>Python records
   ↓
@@ -3065,16 +3065,16 @@ dump 和 dumps 的区别：
 <p>适合保存成 CSV，因为每条记录字段一致。</p>
 <h3>JSON 版本</h3>
 <pre><code>payload = {
-    &quot;learner&quot;: {&quot;name&quot;: &quot;Claire&quot;, &quot;background&quot;: &quot;statistics&quot;},
+    &quot;metadata&quot;: {&quot;source&quot;: &quot;demo&quot;, &quot;schema_version&quot;: 1},
     &quot;records&quot;: records,
     &quot;summary&quot;: {&quot;total_minutes&quot;: 80}
 }</code></pre>
-<p>适合保存成 JSON，因为它除了记录列表，还有 learner 和 summary 这种元信息。</p>
+<p>适合保存成 JSON，因为它除了记录列表，还有 metadata 和 summary 这种元信息。</p>
 <h2>参数拆解方法</h2>
 <h3><code>csv.DictWriter(f, fieldnames=records[0].keys())</code></h3>
 <table><thead><tr><th>部分</th><th>含义</th><th>易错点</th></tr></thead><tbody><tr><td><code>records[0].keys()</code></td><td>从第一条记录取字段名</td><td>如果后面记录字段不一致，会丢字段或报错</td></tr><tr><td><code>fieldnames</code></td><td>CSV 表头和列顺序</td><td>表格结构必须扁平</td></tr><tr><td><code>writerows(records)</code></td><td>批量写入 dict</td><td>每个 dict 最好字段一致</td></tr></tbody></table>
 <h3><code>json.dump(payload, f, ensure_ascii=False, indent=2)</code></h3>
-<table><thead><tr><th>部分</th><th>含义</th><th>易错点</th></tr></thead><tbody><tr><td><code>payload</code></td><td>可以包含 dict/list 嵌套</td><td>不能包含 set、函数、Path 等不可序列化对象</td></tr><tr><td><code>f</code></td><td>JSON 输出文件</td><td>用 <code>encoding=&quot;utf-8&quot;</code></td></tr><tr><td><code>indent=2</code></td><td>人类可读</td><td>适合学习记录、配置、Agent trace</td></tr></tbody></table>
+<table><thead><tr><th>部分</th><th>含义</th><th>易错点</th></tr></thead><tbody><tr><td><code>payload</code></td><td>可以包含 dict/list 嵌套</td><td>不能包含 set、函数、Path 等不可序列化对象</td></tr><tr><td><code>f</code></td><td>JSON 输出文件</td><td>用 <code>encoding=&quot;utf-8&quot;</code></td></tr><tr><td><code>indent=2</code></td><td>人类可读</td><td>适合样例记录、配置、Agent trace</td></tr></tbody></table>
 <h2>和旧知识的连接</h2>
 <table><thead><tr><th>已学内容</th><th>今天怎么选择</th></tr></thead><tbody><tr><td>Day11 reader/writer</td><td>适合最简单的行列读写</td></tr><tr><td>Day12 DictReader/DictWriter</td><td>适合有字段名的二维表</td></tr><tr><td>Day13 loads/dumps</td><td>适合字符串和 Python 对象互转</td></tr><tr><td>Day14 load/dump</td><td>适合长期保存嵌套结构</td></tr><tr><td>Day16 argparse</td><td>以后命令行参数可以读取 JSON 配置或 CSV 输入路径</td></tr></tbody></table>
 <h2>Common Errors</h2>
@@ -3149,7 +3149,7 @@ def main():
         {&quot;day&quot;: 13, &quot;topic&quot;: &quot;json&quot;, &quot;minutes&quot;: 50, &quot;tags&quot;: [&quot;data&quot;, &quot;agent&quot;]},
     ]
     payload = {
-        &quot;learner&quot;: {&quot;name&quot;: &quot;Claire&quot;, &quot;background&quot;: &quot;statistics&quot;},
+        &quot;metadata&quot;: {&quot;source&quot;: &quot;demo&quot;, &quot;schema_version&quot;: 1},
         &quot;records&quot;: records,
         &quot;summary&quot;: {&quot;total_minutes&quot;: sum(row.get(&quot;minutes&quot;, 0) for row in records)},
     }

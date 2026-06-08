@@ -6,13 +6,13 @@
 
 今天只学习一个核心主题：**csv.reader / csv.writer：CSV -> list，list -> CSV**。
 
-你已经会 Day10 的本地学习记录 CLI，也会 `open()`、`f.write()`、列表和循环。今天不是突然背一个新库，而是把“手工写文本”升级成“按表格结构读写数据”。
+你已经会 Day10 的本地 CLI，也会 `open()`、`f.write()`、列表和循环。今天不是突然背一个新库，而是把“手工写文本”升级成“按表格结构读写数据”。
 
 Day 主线控制在 4 小时以内：先建立 CSV 库认知地图，再写最小 reader / writer，再做边界实验。
 
 ## 前置知识
 
-- 上一站：Day10 学习记录 CLI 基础
+- 上一站：Day10 CLI 基础
 - 下一站：Day12 CSV 进阶 DictReader / DictWriter
 - 必须先会：文件路径、`with open(...) as f`、列表、循环、`int()` 类型转换。
 
@@ -52,7 +52,7 @@ writer: list 行 -> CSV 文件
 
 ## Why
 
-昨天如果要保存学习记录，你可能会这样写：
+昨天如果要保存一组表格记录，你可能会这样写：
 
 ```python
 f.write("day,topic,minutes\n")
@@ -77,7 +77,7 @@ list 行数据
   ↓
 csv.writer(f).writerows(rows)
   ↓
-study_log.csv
+records.csv
   ↓
 csv.reader(f)
   ↓
@@ -92,7 +92,7 @@ csv.reader(f)
 import csv
 from pathlib import Path
 
-path = Path("study_log.csv")
+path = Path("records.csv")
 rows = [
     ["day", "topic", "minutes"],
     ["11", "csv reader writer", "35"],
@@ -166,7 +166,7 @@ with path.open("r", newline="", encoding="utf-8") as f:
 
 ## Future Usage
 
-- Data：读取 Kaggle 原始 CSV，先检查表头和前 5 行。
+- Data：读取外部原始 CSV，先检查表头和前 5 行。
 - Quant：读取行情样例，先把价格、成交量从字符串转成数字。
 - LLM：把评估样例保存成 CSV，方便批量对比。
 - Agent：把 tool 执行日志先落成表格，后续再分析。
@@ -177,7 +177,7 @@ with path.open("r", newline="", encoding="utf-8") as f:
 | --- | --- | --- |
 | 30 分钟 | 画 CSV -> list 的数据流 | `notes.md` |
 | 60 分钟 | 手打 writer 和 reader | `main.py` |
-| 45 分钟 | 改 2 行输入样例 | `study_log.csv` |
+| 45 分钟 | 改 2 行输入样例 | `records.csv` |
 | 45 分钟 | 故意制造表头/类型错误 | `errors.md` |
 | 40 分钟 | 写迁移说明 | 复盘 5 行 |
 
@@ -187,11 +187,11 @@ with path.open("r", newline="", encoding="utf-8") as f:
 
 任务：复制下面代码到 `main.py` 并运行。
 
-验收：终端打印 JSON，生成 `outputs/day011/study_log.csv` 和 `summary.json`。
+验收：终端打印 JSON，生成 `outputs/day011/records.csv` 和 `summary.json`。
 
 ### 强化题 2：替换输入
 
-任务：新增 2 行学习记录，至少一行 `minutes` 大于 60。
+任务：新增 2 行样例记录，至少一行数值字段大于当前样例。
 
 验收：`total_minutes` 和 `long_sessions` 会变化。
 
@@ -258,7 +258,7 @@ def read_csv(path: Path):
 
 def main():
     ensure_dirs()
-    csv_path = OUT / "study_log.csv"
+    csv_path = OUT / "records.csv"
     write_csv(csv_path)
     header, valid, skipped = read_csv(csv_path)
     summary = {

@@ -37,7 +37,7 @@ DictWriter: dict -> CSV
 
 Day11 的 `row[2]` 依赖列位置；Day12 的 `row["minutes"]` 依赖字段名。
 
-真实数据里，字段名比位置更重要。你以后读 Kaggle、行情、评估集时，通常会关心 `date`、`close`、`label`、`question` 这些字段，而不是“第 3 列”。
+真实数据里，字段名比位置更重要。你以后读外部数据、行情、评估集时，通常会关心 `date`、`close`、`label`、`question` 这些字段，而不是“第 3 列”。
 
 ## Why
 
@@ -81,7 +81,7 @@ DictReader
 import csv
 from pathlib import Path
 
-path = Path("study_log.csv")
+path = Path("records.csv")
 records = [
     {"day": "11", "topic": "csv reader writer", "minutes": "35"},
     {"day": "12", "topic": "dict csv", "minutes": "45"},
@@ -173,7 +173,7 @@ with path.open("r", newline="", encoding="utf-8") as f:
 
 任务：复制下面代码到 `main.py` 并运行。
 
-验收：生成 `outputs/day012/study_log.csv` 和 `summary.json`。
+验收：生成 `outputs/day012/records.csv` 和 `summary.json`。
 
 ### 强化题 2：替换输入
 
@@ -245,7 +245,7 @@ def load_records(path: Path):
 
 def main():
     ensure_dirs()
-    csv_path = OUT / "study_log.csv"
+    csv_path = OUT / "records.csv"
     write_records(csv_path)
     valid, skipped = load_records(csv_path)
     summary = {
