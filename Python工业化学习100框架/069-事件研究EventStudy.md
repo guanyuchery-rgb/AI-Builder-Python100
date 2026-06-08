@@ -338,32 +338,29 @@ def day069_engineering_note(input_data):
 from pathlib import Path
 import json
 
-TOPIC = '事件研究 Event Study'
 DAY = 69
+TOPIC = "事件研究 Event Study"
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "outputs" / f"day{DAY:03d}"
 
 
-def ensure_dirs():
+def write_json(name, payload):
     OUT.mkdir(parents=True, exist_ok=True)
+    path = OUT / name
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
 
 
-def run_exercise(items):
-    result = []
-    errors = []
-    for index, item in enumerate(items):
-        if item is None:
-            errors.append({"index": index, "reason": "None is not allowed"})
-            continue
-        result.append({"index": index, "value": item, "length": len(str(item))})
-    return {"topic": TOPIC, "result": result, "errors": errors}
+def event_window_return(returns, start=-1, end=1):
+    selected = {day: value for day, value in returns.items() if start <= day <= end}
+    return {"window": selected, "car": round(sum(selected.values()), 4)}
 
 
 def main():
-    ensure_dirs()
-    payload = run_exercise(["alpha", "beta", None, "gamma"])
-    (OUT / "result.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps(payload, ensure_ascii=False, indent=2))
+    returns = {-2: -0.01, -1: 0.005, 0: 0.03, 1: 0.012, 2: -0.004}
+    report = {"topic": TOPIC, **event_window_return(returns)}
+    path = write_json("event_study_report.json", report)
+    print(json.dumps({"saved_to": str(path), **report}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

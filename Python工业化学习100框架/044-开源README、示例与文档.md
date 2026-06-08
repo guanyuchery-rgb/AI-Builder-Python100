@@ -335,32 +335,29 @@ def day044_engineering_note(input_data):
 from pathlib import Path
 import json
 
-TOPIC = '开源 说明文档、示例与文档'
 DAY = 44
+TOPIC = "开源 说明文档、示例与文档"
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "outputs" / f"day{DAY:03d}"
 
 
-def ensure_dirs():
+def write_json(name, payload):
     OUT.mkdir(parents=True, exist_ok=True)
+    path = OUT / name
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
 
 
-def run_exercise(items):
-    result = []
-    errors = []
-    for index, item in enumerate(items):
-        if item is None:
-            errors.append({"index": index, "reason": "None is not allowed"})
-            continue
-        result.append({"index": index, "value": item, "length": len(str(item))})
-    return {"topic": TOPIC, "result": result, "errors": errors}
+def review_readme(sections):
+    required = ["Purpose", "Run", "Inputs", "Outputs", "Status"]
+    missing = [name for name in required if name not in sections]
+    return {"ready": not missing, "missing": missing, "section_count": len(sections)}
 
 
 def main():
-    ensure_dirs()
-    payload = run_exercise(["alpha", "beta", None, "gamma"])
-    (OUT / "result.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps(payload, ensure_ascii=False, indent=2))
+    report = {"topic": TOPIC, "readme_review": review_readme(["Purpose", "Run", "Inputs", "Status"])}
+    path = write_json("readme_quality_report.json", report)
+    print(json.dumps({"saved_to": str(path), **report}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

@@ -335,32 +335,33 @@ def day041_engineering_note(input_data):
 from pathlib import Path
 import json
 
-TOPIC = 'Docker 轻量运行说明'
 DAY = 41
+TOPIC = "Docker 轻量运行说明"
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "outputs" / f"day{DAY:03d}"
 
 
-def ensure_dirs():
+def write_json(name, payload):
     OUT.mkdir(parents=True, exist_ok=True)
+    path = OUT / name
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
 
 
-def run_exercise(items):
-    result = []
-    errors = []
-    for index, item in enumerate(items):
-        if item is None:
-            errors.append({"index": index, "reason": "None is not allowed"})
-            continue
-        result.append({"index": index, "value": item, "length": len(str(item))})
-    return {"topic": TOPIC, "result": result, "errors": errors}
+def build_runtime_contract(command, data_dir):
+    return {
+        "base_image": "python:3.11-slim",
+        "command": command,
+        "mounts": [data_dir],
+        "health_check": "python -m py_compile main.py",
+    }
 
 
 def main():
-    ensure_dirs()
-    payload = run_exercise(["alpha", "beta", None, "gamma"])
-    (OUT / "result.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps(payload, ensure_ascii=False, indent=2))
+    contract = build_runtime_contract("python main.py", "./data")
+    report = {"topic": TOPIC, "runtime_contract": contract}
+    path = write_json("docker_runtime_contract.json", report)
+    print(json.dumps({"saved_to": str(path), **report}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

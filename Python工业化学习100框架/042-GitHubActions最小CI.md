@@ -335,32 +335,29 @@ def day042_engineering_note(input_data):
 from pathlib import Path
 import json
 
-TOPIC = '本地记录 Actions 最小 CI'
 DAY = 42
+TOPIC = "本地记录 Actions 最小 CI"
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "outputs" / f"day{DAY:03d}"
 
 
-def ensure_dirs():
+def write_json(name, payload):
     OUT.mkdir(parents=True, exist_ok=True)
+    path = OUT / name
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
 
 
-def run_exercise(items):
-    result = []
-    errors = []
-    for index, item in enumerate(items):
-        if item is None:
-            errors.append({"index": index, "reason": "None is not allowed"})
-            continue
-        result.append({"index": index, "value": item, "length": len(str(item))})
-    return {"topic": TOPIC, "result": result, "errors": errors}
+def summarize_checks(checks):
+    failed = [item["name"] for item in checks if not item["passed"]]
+    return {"passed": not failed, "failed": failed, "total": len(checks)}
 
 
 def main():
-    ensure_dirs()
-    payload = run_exercise(["alpha", "beta", None, "gamma"])
-    (OUT / "result.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps(payload, ensure_ascii=False, indent=2))
+    checks = [{"name": "py_compile", "passed": True}, {"name": "build_docs", "passed": True}, {"name": "sample_run", "passed": False}]
+    report = {"topic": TOPIC, "ci": summarize_checks(checks)}
+    path = write_json("ci_check_report.json", report)
+    print(json.dumps({"saved_to": str(path), **report}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

@@ -106,7 +106,6 @@ IC001-IC100 不占 Day 数。
 
 每个 IC 包含：
 
-- 2 道 LeetCode 官方题。
 - 1 个工程挑战。
 - GitHub 提交要求。
 - Challenge Review。
@@ -136,19 +135,19 @@ LLM 和 Agent 需要的基础不是一上来写复杂系统，而是先理解：
 ### 阶段二：Python 工程化基本功
 - [Day11 - CSV 基础 reader / writer](011-CSV基础readerwriter.md)
 - [Day12 - CSV 进阶 DictReader / DictWriter](012-CSV进阶DictReaderDictWriter.md)
-- [Day13 - JSON 基础 loads / dumps](013-JSON基础loadsdumps.md)
-- [Day14 - JSON 文件读写与嵌套结构](014-JSON文件读写与嵌套结构.md)
-- [Day15 - CSV vs JSON 结构选择](015-CSVvsJSON结构选择.md)
-- [Day16 - argparse 与命令行参数](016-argparse与命令行参数.md)
-- [Day17 - logging 与 Debug 记录](017-logging与Debug记录.md)
-- [Day18 - pytest 与最小测试](018-pytest与最小测试.md)
-- [Day19 - 类型标注、配置与输入边界](019-类型标注、配置与输入边界.md)
-- [Day20 - CLI、日志与测试整合](020-CLI日志与测试整合.md)
+- [Day13 - JSON 完整学习](013-JSON完整学习.md)
+- [Day14 - class、对象、方法与 self](014-class对象方法与self.md)
+- [Day15 - class 正规化与 dataclass](015-class正规化与dataclass.md)
 
 ### 阶段三：数据分析与本地数据系统
-- [Day21 - 目录结构、说明文档 与 Git 基础](021-工程骨架、README与Git工作流.md)
-- [Day22 - 虚拟环境与 requirements](022-虚拟环境与requirements.md)
-- [Day23 - pandas 读取与数据体检](023-pandas读取与数据体检.md)
+- [Day16 - NumPy 数组基础](016-NumPy数组基础.md)
+- [Day17 - NumPy 向量化与统计](017-NumPy向量化与统计.md)
+- [Day18 - pandas DataFrame 基础](018-pandasDataFrame基础.md)
+- [Day19 - pandas 清洗与筛选](019-pandas清洗筛选.md)
+- [Day20 - pandas 分组聚合](020-pandas分组聚合.md)
+- [Day21 - Matplotlib 基础图表](021-Matplotlib基础图表.md)
+- [Day22 - Matplotlib 多图与保存](022-Matplotlib多图与保存.md)
+- [Day23 - NumPy / pandas / Matplotlib 综合](023-数据分析三库综合.md)
 - [Day24 - 缺失值、类型转换与清洗](024-缺失值、类型转换与清洗.md)
 - [Day25 - 分组聚合与业务指标](025-分组聚合与业务指标.md)
 - [Day26 - 表连接、映射与维表](026-表连接、映射与维表.md)
@@ -243,6 +242,6 @@ LLM 和 Agent 需要的基础不是一上来写复杂系统，而是先理解：
 - Day10-Day100 增加工程问题解决结构，优先理解真实任务、场景、设计原因和未来使用位置。
 - Day11 之后所有新库/API 默认先给认知地图和输入输出表，禁止直接抛复杂代码。
 - 每个 Day 的强化题必须带具体 `main.py` 参考代码；正文上限控制在 600 行以内。
-- IC001-IC100 负责 LeetCode 200 题、工程挑战、GitHub 提交和四个求职项目沉淀。
+- IC001-IC100 负责工程挑战、GitHub 提交和四个求职项目沉淀。
 - 所有示例使用虚拟样例，保持可复现、可公开、可长期维护。
 - 学完一个阶段，至少整理一次 notes 或阶段复盘；完整作品整理放到 IC。

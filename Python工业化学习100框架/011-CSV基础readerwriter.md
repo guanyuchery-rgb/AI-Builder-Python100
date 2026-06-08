@@ -55,8 +55,13 @@ writer: list 行 -> CSV 文件
 昨天如果要保存一组表格记录，你可能会这样写：
 
 ```python
-f.write("day,topic,minutes\n")
-f.write("11,csv,35\n")
+from pathlib import Path
+
+path = Path("manual_records.csv")
+with path.open("w", encoding="utf-8") as f:
+    f.write("day,topic,minutes\n")
+    f.write("11,csv,35\n")
+print(path.read_text(encoding="utf-8"))
 ```
 
 这能跑，但问题是：
@@ -107,6 +112,17 @@ with path.open("w", newline="", encoding="utf-8") as f:
 ### 最小读取
 
 ```python
+import csv
+from pathlib import Path
+
+path = Path("records.csv")
+rows = [
+    ["day", "topic", "minutes"],
+    ["11", "csv reader writer", "35"],
+]
+with path.open("w", newline="", encoding="utf-8") as f:
+    csv.writer(f).writerows(rows)
+
 with path.open("r", newline="", encoding="utf-8") as f:
     reader = csv.reader(f)
     for row in reader:

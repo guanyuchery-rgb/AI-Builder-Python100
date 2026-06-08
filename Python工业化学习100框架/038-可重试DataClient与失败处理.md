@@ -335,32 +335,33 @@ def day038_engineering_note(input_data):
 from pathlib import Path
 import json
 
-TOPIC = '可重试 Data Client 与失败处理'
 DAY = 38
+TOPIC = "可重试 Data Client 与失败处理"
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "outputs" / f"day{DAY:03d}"
 
 
-def ensure_dirs():
+def write_json(name, payload):
     OUT.mkdir(parents=True, exist_ok=True)
+    path = OUT / name
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
 
 
-def run_exercise(items):
-    result = []
-    errors = []
-    for index, item in enumerate(items):
-        if item is None:
-            errors.append({"index": index, "reason": "None is not allowed"})
-            continue
-        result.append({"index": index, "value": item, "length": len(str(item))})
-    return {"topic": TOPIC, "result": result, "errors": errors}
+def request_with_retry(simulated_status, max_retry):
+    trace = []
+    for attempt, status in enumerate(simulated_status, start=1):
+        trace.append({"attempt": attempt, "status": status})
+        if status == "ok" or attempt > max_retry:
+            break
+    return {"success": trace[-1]["status"] == "ok", "trace": trace}
 
 
 def main():
-    ensure_dirs()
-    payload = run_exercise(["alpha", "beta", None, "gamma"])
-    (OUT / "result.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps(payload, ensure_ascii=False, indent=2))
+    result = request_with_retry(["timeout", "timeout", "ok"], max_retry=3)
+    report = {"topic": TOPIC, **result}
+    path = write_json("retry_client_trace.json", report)
+    print(json.dumps({"saved_to": str(path), **report}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
