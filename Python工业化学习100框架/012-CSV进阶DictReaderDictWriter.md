@@ -4,167 +4,198 @@
 
 ## 学习定位
 
-今天只学习一个核心主题：**只学 csv.DictReader 和 csv.DictWriter：CSV -> dict，dict -> CSV**。
+今天只学习一个核心主题：**csv.DictReader / csv.DictWriter：CSV -> dict，dict -> CSV**。
 
-目标不是背 API，而是建立认知地图：这个工具解决什么问题、输入是什么、输出是什么、出错时怎么定位。
+Day11 你已经知道 `reader` 读出来是一行行 list。今天升级成“用字段名读写”，让代码从 `row[2]` 变成 `row["minutes"]`。
 
-Day 主线控制在 4 小时以内，但内容保持足够厚：先理解，再写最小代码，再做小练习。
+这一天的核心不是更高级，而是更可读、更稳、更接近真实数据分析。
 
 ## 前置知识
 
-- 上一站：Day11
-- 下一站：Day13
-- 必须先会：文件路径、函数、列表或字典的基本操作。
+- 上一站：Day11 CSV reader / writer
+- 下一站：Day13 JSON 基础 loads / dumps
+- 必须先会：dict、字段名、文件读写、`int()` 类型转换。
 
 ## 认知地图
 
-先看全局，不直接上复杂代码。
-
-| 层级 | 你要回答的问题 | 本日要求 |
-| --- | --- | --- |
-| What | 它是什么 | 用一句话讲清概念 |
-| Why | 为什么存在 | 说清不用它会怎样 |
-| How | 怎么做 | 写出最小可运行代码 |
-| Error | 怎么错 | 能定位 3 类常见错误 |
-| Future | 哪里复用 | 连接数据、Quant、LLM、Agent |
-
-## 工具地图
-
-| 工具 | 输入 | 输出 | 适用场景 |
+| 工具 | 输入 | 输出 | 适合什么 |
 | --- | --- | --- | --- |
-| `csv.DictReader(f)` | 带表头 CSV | 一行行 dict | 用字段名读取表格 |
-| `csv.DictWriter(f, fieldnames=...)` | dict + 字段名 | CSV 文件 | 用字段名写表格 |
+| `csv.DictReader(f)` | 带表头的 CSV 文件 | 一行行 dict | 用字段名读取记录 |
+| `csv.DictWriter(f, fieldnames=...)` | 文件对象 + 字段名 | writer 对象 | 按字段名写 CSV |
+| `writer.writeheader()` | `fieldnames` | 表头行 | 先写列名 |
+| `writer.writerow(row)` | 一个 dict | CSV 一行 | 写单条记录 |
+| `writer.writerows(rows)` | 多个 dict | CSV 多行 | 批量写记录 |
 
 ## What
 
-CSV 进阶 DictReader / DictWriter 是 Python 工业化学习中的一个小能力。
+`DictReader / DictWriter` 是 CSV 工具里的“字段名版本”。
 
-它的核心是把“人能看懂的东西”变成“程序也能稳定读取、处理和复查的结构”。
+```text
+DictReader: CSV -> dict
+DictWriter: dict -> CSV
+```
 
-学习时不要只看函数名，要同时看三件事：
+Day11 的 `row[2]` 依赖列位置；Day12 的 `row["minutes"]` 依赖字段名。
 
-1. 输入数据长什么样。
-2. 输出结果长什么样。
-3. 错误发生时从哪里开始查。
+真实数据里，字段名比位置更重要。你以后读 Kaggle、行情、评估集时，通常会关心 `date`、`close`、`label`、`question` 这些字段，而不是“第 3 列”。
 
 ## Why
 
-如果不先建立这张地图，你会出现一种很常见的卡点：代码每一行好像都认识，但不知道为什么要这样组合。
-
-例如你看到一个新库时，真正要问的不是“这个函数怎么背”，而是：
-
-- 它把什么变成什么？
-- 它替我省掉了哪一步手工处理？
-- 它的返回值还能继续调用什么？
-- 它和前一天学过的知识有什么关系？
-
-## How：最小流程
-
-先写最小流程，不追求功能多。
+不用 `DictReader` 也能读 CSV，但代码会变脆：
 
 ```python
-# Day12 - CSV 进阶 DictReader / DictWriter 最小骨架
+minutes = int(row[2])
+```
+
+如果以后表格列顺序变了，`row[2]` 可能不再是 minutes。
+
+改成字段名后：
+
+```python
+minutes = int(row["minutes"])
+```
+
+你一眼能看懂这行在取什么。字段名也是数据分析里的“变量名”，它让数据有语义。
+
+## How：从 list 行升级成 dict 行
+
+数据流是：
+
+```text
+dict 记录
+  ↓
+DictWriter(fieldnames)
+  ↓
+带表头 CSV
+  ↓
+DictReader
+  ↓
+一行行 dict
+  ↓
+按字段名取值、校验、汇总
+```
+
+### 最小写入
+
+```python
+import csv
 from pathlib import Path
 
-def inspect_value(value):
-    if value is None:
-        return {"ok": False, "error": "empty value"}
+path = Path("study_log.csv")
+records = [
+    {"day": "11", "topic": "csv reader writer", "minutes": "35"},
+    {"day": "12", "topic": "dict csv", "minutes": "45"},
+]
 
-    return {
-        "ok": True,
-        "type": type(value).__name__,
-        "preview": str(value)[:80],
-    }
+with path.open("w", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(f, fieldnames=["day", "topic", "minutes"])
+    writer.writeheader()
+    writer.writerows(records)
+```
 
-print(inspect_value("demo"))
+### 最小读取
+
+```python
+with path.open("r", newline="", encoding="utf-8") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        print(row["topic"], int(row["minutes"]))
 ```
 
 ## 参数拆解方法
 
-以后第一次看到复杂函数，都按这个表拆。
+### `csv.DictWriter(f, fieldnames=[...])`
 
-| 位置 | 要问的问题 | 例子 |
+| 部分 | 含义 | 为什么重要 |
 | --- | --- | --- |
-| 库名 | 这个工具箱管什么 | `csv` 管 CSV 表格 |
-| 类 / 函数 | 它具体做什么 | `writer` 负责写行 |
-| 第一个参数 | 数据从哪里来 | 文件对象、list、dict |
-| 关键参数 | 它决定什么行为 | 表头、编码、路径、模式 |
-| 返回值 | 后面还能干什么 | 继续 `.read()` / `.write()` / 迭代 |
+| `csv` | CSV 标准库 | 专门处理表格文本 |
+| `DictWriter` | dict 写入 CSV 的类 | 把字段名和列顺序绑定起来 |
+| `f` | 文件对象 | 必须是可写文件，通常 `"w"` 模式 |
+| `fieldnames` | 表头字段列表 | 决定 CSV 列名和列顺序 |
+| 返回值 `writer` | 写入器对象 | 继续调用 `writeheader()`、`writerow()`、`writerows()` |
+
+### `writer.writeheader()`
+
+| 部分 | 含义 |
+| --- | --- |
+| `writer` | 上一步创建的写入器 |
+| `writeheader()` | 把 `fieldnames` 写成 CSV 第一行 |
+| 常见错误 | 忘记写表头，后面 `DictReader` 就不知道字段名 |
+
+### `csv.DictReader(f)`
+
+| 部分 | 含义 |
+| --- | --- |
+| `DictReader` | dict 读取器 |
+| `f` | 可读文件对象 |
+| 输出 | 每一行是 dict，key 来自表头 |
+| 常见错误 | 表头字段拼错，`row["minutes"]` 会 `KeyError` |
 
 ## 和旧知识的连接
 
-新知识不是突然出现的，它通常是旧知识的升级版。
-
-| 旧知识 | 新知识 | 升级点 |
+| Day11 | Day12 | 升级点 |
 | --- | --- | --- |
-| 字符串 | 结构化字段 | 从一整段文本变成可定位字段 |
-| list | 表格行 | 一行数据可以稳定遍历 |
-| dict | 字段记录 | 可以用字段名读取 |
-| 文件读写 | 库读写 | 不再手工拼格式 |
-| 函数 | 可复用流程 | 同一个处理逻辑可以重复调用 |
+| `row[2]` | `row["minutes"]` | 从位置意识升级到字段意识 |
+| list 行 | dict 记录 | 字段含义更清楚 |
+| 手工记列顺序 | `fieldnames` 固定表头 | 输出更稳定 |
+| 打印整行 | 打印 `row.keys()` | Debug 更容易 |
 
 ## Common Errors
 
 | 错误 | 表现 | 定位方法 |
 | --- | --- | --- |
-| 路径错 | 找不到文件 | `print(Path.cwd())` 和 `path.resolve()` |
-| 类型错 | 字符串当数字算 | `print(type(value))` |
-| 返回值没看 | 后续代码接不上 | 先 `print(result)` |
-| 一次写太多 | Debug 找不到点 | 拆成 5 行以内最小复现 |
-| 只复制不解释 | 换数据就不会改 | 写 notes 解释输入输出 |
+| `fieldnames` 缺字段 | 写入时报错或字段丢失 | 对比 `records[0].keys()` |
+| 忘记 `writeheader()` | 读回来第一行变字段名 | 打开 CSV 看第一行 |
+| 数字仍是字符串 | 不能正确计算 | `print(type(row["minutes"]))` |
+| 字段名拼错 | `KeyError` | `print(row.keys())` |
+| 空值没处理 | `int("")` 报错 | 转换前先判断 |
 
 ## Future Usage
 
-这个知识后面会进入四类场景：
-
-- 数据分析：读取、清洗、聚合、图表、报告。
-- Quant：行情、因子、回测、风险指标。
-- LLM：上下文、结构化输出、评估样例。
-- Agent：Tool 参数、执行日志、状态存储。
+- Data：清洗 CSV 原始数据时，字段名就是变量名。
+- Quant：行情字段 `date/open/high/low/close/volume` 要稳定。
+- LLM：评估集字段 `question/answer/score` 适合 CSV。
+- Agent：执行日志里的 `step/tool/status/error` 可以先用 CSV 复盘。
 
 ## 4 小时学习节奏
 
 | 时间 | 做什么 | 产物 |
 | --- | --- | --- |
-| 30 分钟 | 读认知地图 | notes 5 行 |
-| 60 分钟 | 手打最小代码 | main.py |
-| 45 分钟 | 改 2 个输入样例 | output 截图或文本 |
-| 45 分钟 | 故意制造错误 | errors.md |
-| 40 分钟 | 写复盘 | README 片段 |
+| 30 分钟 | 对比 reader 和 DictReader | notes 表格 |
+| 60 分钟 | 手打 DictWriter / DictReader | main.py |
+| 45 分钟 | 改字段名和列顺序 | errors.md |
+| 45 分钟 | 加空值和坏数据 | skipped 输出 |
+| 40 分钟 | 写迁移说明 | review.md |
 
 ## 今日强化题（带具体代码）
 
-> 每天正文上限控制在 600 行以内。强化题不是口头描述，必须能落到 `main.py` 运行。
-
 ### 强化题 1：复现最小案例
 
-任务：把下面参考代码复制到 `main.py`，先不要改，直接运行。
+任务：复制下面代码到 `main.py` 并运行。
 
-验收：终端能打印 JSON，且本地生成 `outputs/day012/`。
+验收：生成 `outputs/day012/study_log.csv` 和 `summary.json`。
 
 ### 强化题 2：替换输入
 
-任务：只改输入数据，至少新增 2 条样例。
+任务：新增字段 `source`，例如 `book`、`video`、`codex`。
 
-验收：输出数量、均值、跳过记录或检索结果发生合理变化。
+验收：你能说明为什么 `fieldnames` 也要同步改。
 
 ### 强化题 3：边界检查
 
-任务：制造 1 个坏输入，例如空值、重复值、非法字段或极端价格。
+任务：删除一行的 `minutes` 或把它改成 `abc`。
 
-验收：程序不会静默失败；你能在输出或 `errors.md` 里解释原因。
+验收：坏行进入 `skipped`，程序继续跑。
 
 ### 强化题 4：结果保存
 
-任务：把运行结果保存到 JSON、CSV、Markdown 或 SQLite 中的一种。
+任务：把有效记录和跳过记录分别保存。
 
-验收：关闭终端后，仍能从文件复查今天结果。
+验收：能复查哪些数据被排除。
 
 ### 强化题 5：迁移说明
 
-任务：写 3 句话说明 `CSV 进阶 DictReader / DictWriter` 会如何迁移到 Data、Quant、LLM 或 Agent。
-
-验收：不是写“以后有用”，而是写清具体场景。
+任务：写 3 句话说明字段意识为什么是 Pandas、SQL、LLM 评估集的基础。
 
 ### 参考代码：`main.py`
 
@@ -173,51 +204,58 @@ from pathlib import Path
 import csv
 import json
 
-TOPIC = 'CSV 进阶 DictReader / DictWriter'
 DAY = 12
+TOPIC = "CSV DictReader / DictWriter"
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "outputs" / f"day{DAY:03d}"
+FIELDS = ["day", "topic", "minutes", "source"]
 
 
 def ensure_dirs():
     OUT.mkdir(parents=True, exist_ok=True)
 
 
-def write_sample_csv(path: Path):
-    rows = [
-        {"day": "11", "topic": "csv", "minutes": "35"},
-        {"day": "12", "topic": "dict csv", "minutes": "45"},
-        {"day": "13", "topic": "json", "minutes": "0"},
+def write_records(path: Path):
+    records = [
+        {"day": "11", "topic": "csv reader writer", "minutes": "35", "source": "course"},
+        {"day": "12", "topic": "dict csv", "minutes": "45", "source": "course"},
+        {"day": "12", "topic": "bad row", "minutes": "abc", "source": "manual"},
     ]
     with path.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["day", "topic", "minutes"])
+        writer = csv.DictWriter(f, fieldnames=FIELDS)
         writer.writeheader()
-        writer.writerows(rows)
+        writer.writerows(records)
 
 
-def read_and_summarize(path: Path):
-    valid_rows = []
+def load_records(path: Path):
+    valid = []
     skipped = []
     with path.open("r", newline="", encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            minutes = int(row["minutes"])
-            if minutes <= 0:
-                skipped.append({"row": row, "reason": "minutes <= 0"})
+        reader = csv.DictReader(f)
+        for line_no, row in enumerate(reader, start=2):
+            try:
+                minutes = int(row["minutes"])
+            except ValueError:
+                skipped.append({"line": line_no, "row": row, "reason": "minutes is not int"})
                 continue
-            valid_rows.append({"day": row["day"], "topic": row["topic"], "minutes": minutes})
-    return {
-        "topic": TOPIC,
-        "valid_count": len(valid_rows),
-        "total_minutes": sum(row["minutes"] for row in valid_rows),
-        "skipped": skipped,
-    }
+            row["minutes"] = minutes
+            valid.append(row)
+    return valid, skipped
 
 
 def main():
     ensure_dirs()
     csv_path = OUT / "study_log.csv"
-    write_sample_csv(csv_path)
-    summary = read_and_summarize(csv_path)
+    write_records(csv_path)
+    valid, skipped = load_records(csv_path)
+    summary = {
+        "topic": TOPIC,
+        "fields": FIELDS,
+        "valid_count": len(valid),
+        "total_minutes": sum(row["minutes"] for row in valid),
+        "sources": sorted({row["source"] for row in valid}),
+        "skipped": skipped,
+    }
     (OUT / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 
@@ -226,159 +264,14 @@ if __name__ == "__main__":
     main()
 ```
 
-### 运行命令
-
-```bash
-python main.py
-```
-
-### Debug 记录要求
-
-```text
-错误现象：
-触发输入：
-定位过程：
-修复方式：
-以后如何避免：
-```
-
 ## 今日复盘模板
 
 ```text
-Day12：CSV 进阶 DictReader / DictWriter
+Day12：CSV DictReader / DictWriter
 
-我今天学会了什么：
-
-这个工具的输入是什么：
-
-这个工具的输出是什么：
-
-我遇到的错误：
-
-我是怎么定位的：
-
+DictReader 的输入是什么：
+DictReader 的输出是什么：
+fieldnames 决定了什么：
+我今天制造了什么错误：
 未来会在哪个 IC 使用：
 ```
-
-## 加厚理解：具体执行步骤
-
-加厚不是把同一句话重复很多遍，也不是提前做完整项目。
-
-这一节的加厚只做 8 层，每一层都有明确产出。做完这 8 层，才算从“看过知识点”进入“能迁移使用”。
-
-### 第 1 层：认知地图
-
-回答 3 个问题：
-
-- `CSV 进阶 DictReader / DictWriter` 解决什么问题？
-- 它的核心对象、函数或概念有哪些？
-- 它和前面已经学过的哪个知识点相连？
-
-产出：在 `notes.md` 写 5 行以内的知识地图。
-
-### 第 2 层：输入 -> 处理 -> 输出
-
-把本节内容压成一张表：
-
-| 部分 | 你要写清楚什么 |
-| --- | --- |
-| 输入 | 数据、参数、文件、用户输入或模型上下文从哪里来 |
-| 处理 | 中间做了哪一步转换、判断、计算或校验 |
-| 输出 | 输出到屏幕、文件、数据库、图表、日志还是返回值 |
-
-产出：写出 1 个最小输入和 1 个最小输出。
-
-### 第 3 层：最小可运行代码
-
-只写一个最小例子，不加复杂功能。
-
-要求：
-
-- 能直接运行。
-- 代码不超过 30 行。
-- 只验证一个核心概念。
-- 运行后能看到明确输出。
-
-产出：`main.py`。
-
-### 第 4 层：逐对象拆解
-
-第一次出现的新函数、新类、新参数，必须拆开。
-
-格式：
-
-```text
-对象/函数：
-它是什么：
-输入是什么：
-输出是什么：
-为什么不用旧方法：
-最容易错在哪里：
-```
-
-产出：`notes.md` 里的“对象拆解”小节。
-
-### 第 5 层：错误实验
-
-主动制造 2 个错误，而不是等报错后慌。
-
-例子：
-
-- 路径写错。
-- 类型传错。
-- 字段名不存在。
-- 空数据。
-- 编码不对。
-- 边界条件为 0 或空列表。
-
-产出：`errors.md`，记录错误信息、原因和修复方式。
-
-### 第 6 层：旧知识连接
-
-写清楚它不是凭空出现的新知识。
-
-模板：
-
-```text
-昨天/之前我会：
-今天升级成：
-升级后解决的问题：
-```
-
-产出：3 行连接说明。
-
-### 第 7 层：迁移场景
-
-至少连接到一个方向：
-
-- Data：它如何帮助数据清洗、分析、可视化或报告。
-- Quant：它如何帮助行情、指标、回测、风险或实验记录。
-- LLM：它如何帮助 prompt、context、embedding、RAG 或 evaluation。
-- Agent：它如何帮助 tool、memory、workflow、logging 或 review。
-
-产出：选择 1 个方向，写 3 句话。
-
-### 第 8 层：IC100 衔接
-
-找到一个最近的 IC，把今天的知识放进去用一次。
-
-要求：
-
-- 不做大项目。
-- 只完成一个小动作。
-- 留下 GitHub commit。
-- 在 review 里写清今天知识点怎么被用到。
-
-产出：对应 IC 的 `review.md` 或当天提交说明。
-
-## 30 分钟加厚执行清单
-
-```text
-5 分钟：写认知地图
-5 分钟：写输入 -> 处理 -> 输出
-10 分钟：跑最小代码
-5 分钟：制造并修复 1 个错误
-5 分钟：写 IC100 迁移说明
-```
-
-判断标准：如果这 30 分钟做不完，说明加厚范围太大，需要砍掉内容，而不是继续堆字数。

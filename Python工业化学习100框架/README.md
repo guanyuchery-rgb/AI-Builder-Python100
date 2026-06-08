@@ -136,9 +136,9 @@ LLM 和 Agent 需要的基础不是一上来写复杂系统，而是先理解：
 ### 阶段二：Python 工程化基本功
 - [Day11 - CSV 基础 reader / writer](011-CSV基础readerwriter.md)
 - [Day12 - CSV 进阶 DictReader / DictWriter](012-CSV进阶DictReaderDictWriter.md)
-- [Day13 - 列表推导式、迭代器与生成器](013-列表推导式、迭代器与生成器.md)
-- [Day14 - 日期时间与时间序列意识](014-日期时间与时间序列意识.md)
-- [Day15 - 面向对象与 dataclass](015-面向对象与dataclass.md)
+- [Day13 - JSON 基础 loads / dumps](013-JSON基础loadsdumps.md)
+- [Day14 - JSON 文件读写与嵌套结构](014-JSON文件读写与嵌套结构.md)
+- [Day15 - CSV vs JSON 结构选择](015-CSVvsJSON结构选择.md)
 - [Day16 - argparse 与命令行参数](016-argparse与命令行参数.md)
 - [Day17 - logging 与 Debug 记录](017-logging与Debug记录.md)
 - [Day18 - pytest 与最小测试](018-pytest与最小测试.md)

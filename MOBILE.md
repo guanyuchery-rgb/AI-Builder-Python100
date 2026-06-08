@@ -1,6 +1,6 @@
 # AI Builder Python100 手机学习入口
 
-这是开源 Python100 课程的手机端入口。每天打开一个 Day，按 2 小时节奏完成：读定位、跑最小案例、做 7 道简单题 + 5 道基础巩固题、记录 Debug。
+这是开源 Python100 课程的手机端入口。每天打开一个 Day，按 2 小时节奏完成：读定位、跑最小案例、做强化题、记录 Debug。
 
 ## 学习入口
 
@@ -20,9 +20,9 @@
 - [010-学习记录CLI基础](Python工业化学习100框架/010-学习记录CLI基础.md)
 - [011-CSV基础readerwriter](Python工业化学习100框架/011-CSV基础readerwriter.md)
 - [012-CSV进阶DictReaderDictWriter](Python工业化学习100框架/012-CSV进阶DictReaderDictWriter.md)
-- [013-列表推导式、迭代器与生成器](Python工业化学习100框架/013-列表推导式、迭代器与生成器.md)
-- [014-日期时间与时间序列意识](Python工业化学习100框架/014-日期时间与时间序列意识.md)
-- [015-面向对象与dataclass](Python工业化学习100框架/015-面向对象与dataclass.md)
+- [013-JSON基础loadsdumps](Python工业化学习100框架/013-JSON基础loadsdumps.md)
+- [014-JSON文件读写与嵌套结构](Python工业化学习100框架/014-JSON文件读写与嵌套结构.md)
+- [015-CSVvsJSON结构选择](Python工业化学习100框架/015-CSVvsJSON结构选择.md)
 - [016-argparse与命令行参数](Python工业化学习100框架/016-argparse与命令行参数.md)
 - [017-logging与Debug记录](Python工业化学习100框架/017-logging与Debug记录.md)
 - [018-pytest与最小测试](Python工业化学习100框架/018-pytest与最小测试.md)
