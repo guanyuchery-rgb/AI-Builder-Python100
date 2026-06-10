@@ -8,6 +8,8 @@ Python100 的公开课程路线图。
 
 ## 算法挑战线
 
+- [LeetCode（Hot Code）300](<leetcode（hot code）300/README.md>)：独立算法模块，60 天，每天 5 道官方题，和 IC 工程项目解耦。
+
 ## 阶段一：Python 零基础与语法地基
 
 | Day | Topic | 学习产物 | 练习的实现过程 |

@@ -21,6 +21,7 @@
 - 知识广度索引：[KNOWLEDGE_EXPANSION_INDEX.md](KNOWLEDGE_EXPANSION_INDEX.md)
 - 库学习地图：[LIBRARY_LEARNING_MAP.md](LIBRARY_LEARNING_MAP.md)
 - IC100 能力体系：[IC100-能力体系](IC100-能力体系/README.md)
+- LeetCode（Hot Code）300：[leetcode（hot code）300](<leetcode（hot code）300/README.md>)
 - 旧工业化挑战积累：[工业化挑战](工业化挑战/README.md)
 - 手机入口：[MOBILE.md](MOBILE.md)
 - 100 天课程目录：[Python工业化学习100框架](Python工业化学习100框架/README.md)
@@ -119,12 +120,12 @@ IC 是额外能力验证，不强行塞进同一天。
 
 Day01-Day100 不承担大型工程交付职责，只保留知识、原理、API、小型示例和 Debug。Day76-Day95 的旧工程化内容已经迁移到 IC。
 
-IC001-IC100 用来验证工程能力，按四条求职项目线持续迭代：
+IC020-IC100 用来验证工程能力，按四条求职项目线持续迭代：
 
-- 每个 IC 有 2 道 LeetCode 官方题，100 天总计 200 题。
 - 每个 IC 有 1 个工程挑战。
 - 每个 IC 要留下运行结果、Debug 记录和 GitHub 提交。
-- IC 最终沉淀为 4 个作品工程：数据分析、Quant、LLM、Agent。
+- IC 最终沉淀为 4 个作品工程：LLM Evaluation Analytics、Quant、LLM、Agent。
+- LeetCode 已独立为 Hot Code 300：60 天，每天 5 题，保留官方刷题记录。
 
 ## 开源说明
 

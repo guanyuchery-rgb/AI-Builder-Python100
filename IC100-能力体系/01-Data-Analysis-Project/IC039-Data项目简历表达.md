@@ -1,96 +1,126 @@
 # IC039 - Data项目简历表达
 
-> Python100 x IC100 最终版：Day100 负责知识体系，IC100 负责能力体系。
+> IC100 Data Analysis Project：LLM Evaluation Analytics Platform。
 
 ## 1. 今日定位
 
-- 所属阶段：Data Analysis Project
-- 学习目标：统计学硕士 -> AI Native Builder -> Agent / LLM / Quant 方向实习求职。
-- 今日原则：不做学生管理系统、通讯录、猜数字等低求职价值项目；所有练习都服务数据、Quant、LLM、Agent 和 GitHub 作品集。
+把项目翻译成求职语言：问题、技术栈、数据规模、方法、产出、影响。
 
-## 2. Part A - LeetCode 2 题
+- 所属项目：Data Analysis Project。
+- 项目方向：LLM Evaluation Analytics Platform。
+- 训练目标：统计学背景 + Python 数据分析 + LLM 评估理解 + GitHub 作品集。
+- 今日不做：真实 API 调用、复杂前端、完整 LLM 系统。
 
-每天只做 2 题。目标是高质量 200 题，而不是低质量刷数量。
+## 项目总目标
 
-### A1. [detect-capital](https://leetcode.com/problems/detect-capital/)
+最终做出一个 `LLM Evaluation Analytics Platform`。它不是训练大模型，也不是直接写 Agent 系统，而是先把 LLM 评估结果变成可分析、可复现、可展示的数据产品。
 
-- 难度：Easy
-- 类型：数组 / 哈希 / 模拟
-- 为什么做：这题训练 `数组 / 哈希 / 模拟` 的基本面试表达，同时帮助你把 Python 数据结构用熟。
-- 思路：把“查找是否出现过”改成字典或集合查询，用空间换时间。
-- 解题步骤：
-   1. 明确 key 是什么，value 存什么。
-   2. 遍历时先查旧状态，再更新新状态。
-   3. 注意重复值、下标和计数边界。
-- 易错点：先更新再查询可能把当前元素和自己配对。
-- 做题记录要求：在 LeetCode 官方页面提交，通过后把通过截图或提交记录链接写进当天 `review.md`。
+你要训练的能力是：
 
-### A2. [longest-uncommon-subsequence-i](https://leetcode.com/problems/longest-uncommon-subsequence-i/)
+- 看懂 LLM eval log 的字段。
+- 用 Python 清洗 JSONL / CSV。
+- 用 pandas / NumPy / SQL 做指标。
+- 用统计学解释模型差异。
+- 用 Matplotlib / Streamlit 做展示。
+- 用 README / 报告 / 截图把项目放到 GitHub。
 
-- 难度：Easy
-- 类型：数组 / 哈希 / 模拟
-- 为什么做：这题训练 `数组 / 哈希 / 模拟` 的基本面试表达，同时帮助你把 Python 数据结构用熟。
-- 思路：把“查找是否出现过”改成字典或集合查询，用空间换时间。
-- 解题步骤：
-   1. 明确 key 是什么，value 存什么。
-   2. 遍历时先查旧状态，再更新新状态。
-   3. 注意重复值、下标和计数边界。
-- 易错点：先更新再查询可能把当前元素和自己配对。
-- 做题记录要求：在 LeetCode 官方页面提交，通过后把通过截图或提交记录链接写进当天 `review.md`。
+## 本项目数据模型
 
-## 3. Part B - 强化任务
+核心事实表：`eval_results`。
 
-### B1. 今日任务
+| 字段 | 含义 | 例子 |
+| --- | --- | --- |
+| `eval_id` | 单条评估记录 ID | `e0001` |
+| `model` | 被评估模型 | `gpt-x` / `local-y` |
+| `task_type` | 任务类型 | `qa` / `summary` / `extract` |
+| `prompt_version` | prompt 版本 | `v1` / `v2` |
+| `score` | 评分，0 到 1 | `0.82` |
+| `judge_label` | 评审标签 | `pass` / `partial` / `fail` |
+| `latency_ms` | 延迟毫秒 | `1200` |
+| `cost_usd` | 单次成本 | `0.003` |
+| `error_type` | 错误类型 | `hallucination` / `format_error` |
+| `created_at` | 评估时间 | `2026-06-10` |
 
-围绕电商用户行为分析，完成「Data项目简历表达」阶段，让数据从原始文件逐步走向报告和 Dashboard。
+## 2. 今日知识加厚
 
-### B2. 输入
+### 核心知识：resume bullet / interview script / portfolio story
 
-- 最近 Day 学到的知识点。
-- 前一个 IC 留下的代码、数据、README 或 review。
-- 一个足够小、能在本地运行的样例。
+这一天不只是“做一个任务”，还要补齐项目背后的知识。你要能回答：
 
-### B3. 输出
+- 这个步骤的输入是什么。
+- 这个步骤的输出是什么。
+- 如果这个步骤做错，后面哪个环节会被污染。
+- 这个步骤如何服务最终 dashboard、报告和简历项目。
 
-- `src/`
-- `data/raw 或 data/processed`
-- `outputs/reports/`
-- `README.md`
+### 输入 -> 处理 -> 输出
 
-### B4. 工业操作步骤
+| 部分 | 本日要求 |
+| --- | --- |
+| 输入 | raw eval logs、上一 IC 产物或手写 toy data |
+| 处理 | resume bullet / interview script / portfolio story |
+| 输出 | `docs/resume_bullets.md` |
 
-1. 写清今天要解决的问题，不超过 3 句话。
-2. 建立最小目录和最小输入，不提前做大系统。
-3. 写最小可运行代码，优先保证能跑通。
-4. 保存输出文件、截图或日志。
-5. 更新 README 或 review，说明今天做了什么、怎么复现、哪里还不稳。
+### 为什么这一步存在
 
-### B5. GitHub 提交要求
+LLM 评估不是只看一个总分。真实工作里，你要同时解释质量、成本、延迟、失败类型和样本可靠性。这个 IC 的作用是把其中一个环节做稳，让后面每一步都有干净输入。
+
+## 3. Part A - 工程任务
+
+### A1. 今日任务
+
+写 3 条简历 bullet 和 1 段面试讲解。
+
+### A2. 具体步骤
+
+1. 在项目根目录确认当前文件结构。
+2. 新建或更新今天需要的 `data/`、`src/`、`outputs/`、`docs/` 文件。
+3. 只实现今天这个小环节，不提前把整个系统写完。
+4. 保存一个可复查输出，文件名要稳定。
+5. 在 README 或 review 里记录运行命令和错误。
+
+### A3. 最小代码片段
+
+```python
+bullet = "Built an LLM evaluation analytics platform with pandas, SQLite and Streamlit to compare model quality, latency and failure modes."
+print(bullet)
+```
+
+这段代码不是最终项目代码，只是今天知识点的最小验证。正式项目里，稳定逻辑应该逐步放进 `src/`，不要长期留在 notebook 或临时代码里。
+
+### A4. 验收标准
+
+- 生成 `docs/resume_bullets.md` 或对应文档。
+- 避免夸大，不写没有实现的功能。
+- 能说清今天输入、处理、输出。
+- 能写出今天最容易出错的 2 个点。
+- 有一次 GitHub commit。
+
+### A5. GitHub 提交要求
 
 ```text
 IC039: Data项目简历表达
 ```
 
-提交必须包含：代码或文档、运行结果、Debug 记录、两道 LeetCode 复盘。
+提交必须包含：代码或文档、运行结果、Debug 记录、项目复盘。
 
-## 4. Part C - Review
+## Review 模板
 
 ```text
 IC编号：IC039
 主题：Data项目简历表达
 完成日期：
 
-今天学到什么：
-今天犯了什么错：
+今天完成的工程动作：
+今天补上的知识点：
+今天遇到的错误：
 我是怎么 Debug 的：
-下次如何优化：
-LeetCode 题目1提交记录：
-LeetCode 题目2提交记录：
+产出文件：
 GitHub commit：
+下次继续做什么：
 ```
 
 ## 5. 求职沉淀
 
-用一句话写进长期作品集：
+今天完成后，长期作品集里可以沉淀一句话：
 
-> 我在 `Data Analysis Project` 中完成 `Data项目简历表达` 阶段，能把知识点转化为可运行代码、可复现输出和可解释复盘。
+> 我在 `LLM Evaluation Analytics Platform` 中完成 `Data项目简历表达`，能把 LLM 评估日志转化为可复现的数据资产和可解释分析结果。
